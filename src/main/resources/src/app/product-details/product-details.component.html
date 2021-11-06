@@ -1,91 +1,96 @@
+
 <div *ngIf="product">
   <!-- PRODUCT -->
+
   <section class="mt-5">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="row">
             <div class="col-12 col-md-6">
+              <app-product-carousel [imagesAgain]="product.images" [coverImage]="product.imgCover"></app-product-carousel>
 
-              <!-- Card -->
-              <div class="card">
+              <!--
+                            &lt;!&ndash; Card &ndash;&gt;
+                            <div class="card">
 
-                <!-- Badge -->
-                <div class="badge badge-primary card-badge text-uppercase">
-                  Sale
-                </div>
+                              &lt;!&ndash; Badge &ndash;&gt;
+                              <div class="badge badge-primary card-badge text-uppercase">
+                                Sale
+                              </div>
 
-                <!-- Slider -->
-                <div class="mb-4"
-                     data-flickity='{"draggable": false, "fade": true, "pageDots": false, "prevNextButtons": false}'
-                     id="productSlider">
+                              &lt;!&ndash; Slider &ndash;&gt;
+                              <div class="mb-4"
+                                   data-flickity='{"draggable": false, "fade": true, "pageDots": false, "prevNextButtons": false}'
+                                   id="productSlider">
 
 
-                  <!--                <a href="{{product.coverImg.path}}" *ngIf="product.coverImg"data-fancybox>-->
-                  <!--                  <img class="card-img-top" [src]=product.coverImg.path *ngIf="product.coverImg" alt="Product Image">-->
-                  <!--                </a>-->
-                  <!--                <a href="{{defaultImageUrl}}" *ngIf="!product.coverImg" data-fancybox>-->
-                  <!--                  <img class="card-img-top" [src]=defaultImageUrl *ngIf="!product.coverImg" alt="Product Image Default">-->
-                  <!--                </a>-->
-                  <!-- Item -->
-                  <a href="assets/img/products/product-122.jpg" data-fancybox>
-                    <img src="assets/img/products/product-122.jpg" alt="..." class="card-img-top">
-                  </a>
+                                &lt;!&ndash;                <a href="{{product.coverImg.path}}" *ngIf="product.coverImg"data-fancybox>&ndash;&gt;
+                                &lt;!&ndash;                  <img class="card-img-top" [src]=product.coverImg.path *ngIf="product.coverImg" alt="Product Image">&ndash;&gt;
+                                &lt;!&ndash;                </a>&ndash;&gt;
+                                &lt;!&ndash;                <a href="{{defaultImageUrl}}" *ngIf="!product.coverImg" data-fancybox>&ndash;&gt;
+                                &lt;!&ndash;                  <img class="card-img-top" [src]=defaultImageUrl *ngIf="!product.coverImg" alt="Product Image Default">&ndash;&gt;
+                                &lt;!&ndash;                </a>&ndash;&gt;
+                                &lt;!&ndash; Item &ndash;&gt;
+                                <a href="assets/img/products/product-122.jpg" data-fancybox>
+                                  <img src="assets/img/products/product-122.jpg" alt="..." class="card-img-top">
+                                </a>
 
-                  <!-- Item -->
-                  <a href="assets/img/products/product-146.jpg" data-fancybox>
-                    <img src="assets/img/products/product-146.jpg" alt="..." class="card-img-top">
-                  </a>
+                                &lt;!&ndash; Item &ndash;&gt;
+                                <a href="assets/img/products/product-146.jpg" data-fancybox>
+                                  <img src="assets/img/products/product-146.jpg" alt="..." class="card-img-top">
+                                </a>
 
-                </div>
+                              </div>
 
-              </div>
+                            </div>
 
-              <!-- Slider -->
-              <div class="flickity-nav mx-n2 mb-10 mb-md-0"
-                   data-flickity='{"asNavFor": "#productSlider", "contain": true, "wrapAround": false, "prevNextButtons": false, "pageDots": false} '>
+                            &lt;!&ndash; Slider &ndash;&gt;
+                            <div class="flickity-nav mx-n2 mb-10 mb-md-0"
+                                 data-flickity='{"asNavFor": "#productSlider", "contain": true, "wrapAround": false, "prevNextButtons": false, "pageDots": false} '>
 
-                <!-- Item -->
-                <div class="col-12 px-2" style="max-width: 113px;">
+                              &lt;!&ndash; Item &ndash;&gt;
+                              <div class="col-12 px-2" style="max-width: 113px;">
 
-                  <!-- Image -->
-                  <div class="embed-responsive embed-responsive-1by1 bg-cover"
-                       style="background-image: url(assets/img/products/product-7.jpg);"></div>
+                                &lt;!&ndash; Image &ndash;&gt;
+                                <div class="embed-responsive embed-responsive-1by1 bg-cover"
+                                     style="background-image: url(assets/img/products/product-7.jpg);"></div>
 
-                </div>
+                              </div>
 
-                <!-- Item -->
-                <div class="col-12 px-2" style="max-width: 113px;">
+                              &lt;!&ndash; Item &ndash;&gt;
+                              <div class="col-12 px-2" style="max-width: 113px;">
 
-                  <!-- Image -->
-                  <div class="embed-responsive embed-responsive-1by1 bg-cover"
-                       style="background-image: url(assets/img/products/product-122.jpg);"></div>
+                                &lt;!&ndash; Image &ndash;&gt;
+                                <div class="embed-responsive embed-responsive-1by1 bg-cover"
+                                     style="background-image: url(assets/img/products/product-122.jpg);"></div>
 
-                </div>
+                              </div>
 
-                <!-- Item -->
-                <div class="col-12 px-2" style="max-width: 113px;">
+                              &lt;!&ndash; Item &ndash;&gt;
+                              <div class="col-12 px-2" style="max-width: 113px;">
 
-                  <!-- Image -->
-                  <div class="embed-responsive embed-responsive-1by1 bg-cover"
-                       style="background-image: url(assets/img/products/product-146.jpg);"></div>
+                                &lt;!&ndash; Image &ndash;&gt;
+                                <div class="embed-responsive embed-responsive-1by1 bg-cover"
+                                     style="background-image: url(assets/img/products/product-146.jpg);"></div>
 
-                </div>
+                              </div>
 
-              </div>
+                            </div>
+              -->
 
             </div>
             <div class="col-12 col-md-6 pl-lg-10">
 
-              <!-- Header -->
+<!--              &lt;!&ndash; Header &ndash;&gt;
               <div class="row mb-1">
                 <div class="col">
 
-                  <!-- Preheading -->
+                  &lt;!&ndash; Preheading &ndash;&gt;
                   <a class="text-muted" href="shop.html">{{product.category.name}}</a>
 
                 </div>
-              </div>
+              </div>-->
 
               <!-- Heading -->
               <h3 class="mb-2">{{product.name}}</h3>
@@ -103,9 +108,9 @@
                       <div>Size is required</div>
                     </div>
                     <div *ngFor="let size of product.sizes" class="custom-control custom-control-inline custom-control-size mb-2">
-                      <input type="radio"  name="size" formControlName="size"  class="custom-control-input form-control"  [ngClass]="{ 'is-invalid': this.submitted && f.size.errors }"id="{{'sizeRadio'+size.size.id}}" value="{{size.size.name}}" data-toggle="form-caption">
+                      <input type="radio"  name="size" formControlName="size"  class="custom-control-input form-control"  [ngClass]="{ 'is-invalid': this.submitted && f.size.errors }"id="{{'sizeRadio'+size.id}}" value="{{size.name}}" data-toggle="form-caption">
 
-                      <label class="custom-control-label" for="{{'sizeRadio'+size.size.id}}">{{size.size.name}}</label>
+                      <label class="custom-control-label" for="{{'sizeRadio'+size.id}}">{{size.name}}</label>
                     </div>
                   </div>
                 </div>
@@ -134,7 +139,9 @@
                           <label for="oneTimeRental">
 
                             <p class="mb-0">ONE-TIME-RENTAL</p>
+<!--
                             <span class="ml-1 font-size-h5 font-weight-bolder text-primary">{{product.rentalPrice | currency:'EUR'}}</span>
+-->
                             <span class="font-size-xxs ml-1">( Keep it for 7 days )</span>
 
                           </label>
@@ -148,7 +155,9 @@
                         <input type="radio" formControlName="rental" name="rental"  id="membershipRental" value="member" checked>
                         <label for="membershipRental">
                           <p class="mb-0">MEMBERSHIP</p>
+<!--
                           <span class="font-size-lg font-weight-bold text-gray-350 text-decoration-line-through">{{product.rentalPrice | currency:'EUR'}}</span>
+-->
                           <span *ngIf="!this.member" class="font-size-xxs ml-1">( Membership starting at €58 )</span>
                           <span *ngIf="this.member" class="font-size-xxs ml-1">( You have 4 bookings available )</span>
 
@@ -333,14 +342,13 @@
                       <p class="mb-4">
                         <strong>Model measurements:</strong>
                       </p>
-
-                      <!-- List -->
+<!--                      &lt;!&ndash; List &ndash;&gt;
                       <ul class="list-unstyled text-gray-500">
                         <li>Height: {{product.measurement.length}} cm</li>
                         <li>Bust/Chest: {{product.measurement.chest}} cm</li>
                         <li>Hips: {{product.measurement.hips}} cm</li>
                         <li>Waist: {{product.measurement.waist}} cm</li>
-                      </ul>
+                      </ul>-->
 
                     </div>
                   </div>

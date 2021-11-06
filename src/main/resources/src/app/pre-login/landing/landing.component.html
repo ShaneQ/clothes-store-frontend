@@ -12,20 +12,15 @@
 <section class="py-14" id="welcome" data-jarallax data-speed=".8" [ngStyle]="{'backgroundImage':'url(assets/img/custom/cover-22.jpg)'}">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-7 col-lg-6 text-white">
+      <div class="col-12 col-md-7 col-lg-8 text-white">
 
         <!-- Heading -->
-        <h1 class="display-6">
+        <h1 class="display-10">
          Get a bigger wardrobe spending less
         </h1>
 
-        <!-- Text -->
-        <p class="mb-8 font-size-lg">
-          *Membership starts from €29.99
-        </p>
-
         <!-- Button -->
-        <a href="#!" class="btn btn-primary">
+        <a href="#!" (click)="register()" class="btn btn-primary">
           Join the club
         </a>
 
@@ -46,145 +41,51 @@
         </h6>
 
         <!-- Heading -->
-        <h2 class="text-center">Be a member and borrow any piece for FREE!</h2>
+        <h2 class="text-center">What will you find in our closet?</h2>
 
         <!-- Subheading -->
         <p class="mb-10 text-gray-500">
-          We want to give you the opportunity of playing with different styles and experiment the fun side of fashion without worrying about the price.
-          Your second closet adapts to multiple occasions, from work to holiday without forgetting quality and comfort.
-        </p>
+          We want to give you the opportunity of playing with diferent styles and experiment the fun side of fashion without worrying about the price.
+          Your second closet adapts to multiple occasions, from work to holiday without forgetting quality and comfort.</p>
 
-        <!-- Slider -->
-        <div class="flickity-buttons-lg flickity-buttons-offset px-lg-12" data-flickity='{"groupCells": true,"prevNextButtons": true}'>
-
-          <!-- Item -->
-          <div class="col pt-3 pb-7" style="max-width: 229px;">
-            <a class="card shadow-hover" >
-
-              <!-- Image -->
-              <img src="assets/img/products/product-50.jpg" alt="..." class="card-img-top">
-
-              <!-- Body -->
-              <div class="card-body font-weight-bold text-center">
-
-                <!-- Heading -->
-                <div class="text-body">Cropped cotton Top</div>
-
-                <!-- Price -->
-                <div class="text-muted">$29.00</div>
-
-              </div>
-
-            </a>
+        <div class="carousel">
+          <div class="carousel-cell" *ngFor="let product of products$| async let i=index">
+            {{ product.name }}
           </div>
-
-          <!-- Item -->
-          <div class="col pt-3 pb-7" style="max-width: 229px;">
-            <a class="card shadow-hover" href="product.html">
-
-              <!-- Image -->
-              <img src="assets/img/products/product-51.jpg" alt="..." class="card-img-top">
-
-              <!-- Body -->
-              <div class="card-body font-weight-bold text-center">
-
-                <!-- Heading -->
-                <div class="text-body">Cropped cotton Top</div>
-
-                <!-- Price -->
-                <div class="text-muted">$29.00</div>
-
-              </div>
-
-            </a>
-          </div>
-
-          <!-- Item -->
-          <div class="col pt-3 pb-7" style="max-width: 229px;">
-            <a class="card shadow-hover" href="product.html">
-
-              <!-- Image -->
-              <img src="assets/img/products/product-52.jpg" alt="..." class="card-img-top">
-
-              <!-- Body -->
-              <div class="card-body font-weight-bold text-center">
-
-                <!-- Heading -->
-                <div class="text-body">Cropped cotton Top</div>
-
-                <!-- Price -->
-                <div class="text-muted">$29.00</div>
-
-              </div>
-
-            </a>
-          </div>
-
-          <!-- Item -->
-          <div class="col pt-3 pb-7" style="max-width: 229px;">
-            <a class="card shadow-hover" href="product.html">
-
-              <!-- Image -->
-              <img src="assets/img/products/product-53.jpg" alt="..." class="card-img-top">
-
-              <!-- Body -->
-              <div class="card-body font-weight-bold text-center">
-
-                <!-- Heading -->
-                <div class="text-body">Cropped cotton Top</div>
-
-                <!-- Price -->
-                <div class="text-muted">$29.00</div>
-
-              </div>
-
-            </a>
-          </div>
-
-          <!-- Item -->
-          <div class="col pt-3 pb-7" style="max-width: 229px;">
-            <a class="card shadow-hover" href="product.html">
-
-              <!-- Image -->
-              <img src="assets/img/products/product-127.jpg" alt="..." class="card-img-top">
-
-              <!-- Body -->
-              <div class="card-body font-weight-bold text-center">
-
-                <!-- Heading -->
-                <div class="text-body">Suede Sandals</div>
-
-                <!-- Price -->
-                <div class="text-muted">$69.00</div>
-
-              </div>
-
-            </a>
-          </div>
-
-          <!-- Item -->
-          <div class="col pt-3 pb-7" style="max-width: 229px;">
-            <a class="card shadow-hover" href="product.html">
-
-              <!-- Image -->
-              <img src="assets/img/products/product-128.jpg" alt="..." class="card-img-top">
-
-              <!-- Body -->
-              <div class="card-body font-weight-bold text-center">
-
-                <!-- Heading -->
-                <div class="text-body">Basic Polo T-Shirt</div>
-
-                <!-- Price -->
-                <div class="text-muted">$22.00</div>
-
-              </div>
-
-            </a>
-          </div>
-
         </div>
+        <!-- Slider -->
+<!--        <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+                      [animation]="'slide'">
+          <mdb-carousel-item *ngFor="let item of slides; let i = index">
+            <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
+              <mdb-card class="my-1">
+                <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
+                <mdb-card-body>
+                  <mdb-card-title>
+                    <h4>{{card.title}}</h4>
+                  </mdb-card-title>
+                  <p>{{card.description}}</p>
+                  <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
+                </mdb-card-body>
+              </mdb-card>
+            </div>
+          </mdb-carousel-item>
+        </mdb-carousel>-->
 
+        <ngb-carousel>
+          <div *ngFor="let product of products$ | async let i=index">
+              <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                  <img [src]=product.imgCover.url alt="Angular Carousel 2">
+                </div>
+                <div class="carousel-caption">
+                  <h3>Title Goes Here</h3>
+                  <p>Consectetur tortor volutpat pretium.</p>
+                </div>
+              </ng-template>
+
+          </div>
+        </ngb-carousel>
       </div>
     </div>
   </div>

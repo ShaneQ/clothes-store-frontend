@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ScriptService} from '../script.service';
 import {ProductService} from '../product.service';
@@ -7,7 +7,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {BookingSummaryComponent} from '../modal/booking-summary/booking-summary.component';
 import {Order} from '../model/order';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
+declare var Flickity: any;
 
 @Component({
   templateUrl: './product-details.component.html',
@@ -38,7 +38,8 @@ export class ProductDetailsComponent implements OnInit{
     private _scriptLoader: ScriptService,
     private _app: ProductService,
     private _modalService: NgbModal,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private el: ElementRef) {
 
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -53,13 +54,13 @@ export class ProductDetailsComponent implements OnInit{
   }
 
   async ngOnInit(): Promise<void> {
-    this._scriptLoader.load('flickity').then(data => {
-    }).catch(error => console.log(error));
+
 
     const productId = this._route.snapshot.paramMap.get('productId');
     this.product = await this._app.getProduct(productId).toPromise();
-    this.productOccasions = this.product.occasions.map(x => x.occasion.name).join(',');
-    this.member = true;
+    console.log(this.product)
+ /*   this.productOccasions = this.product.occasions.map(x => x.occasion.name).join(',');
+    */this.member = true;
     this.rentalPreferenceMembership = this.member;
     this.remainingBookings = 0;
     this.order = new Order(this.product, this.member);

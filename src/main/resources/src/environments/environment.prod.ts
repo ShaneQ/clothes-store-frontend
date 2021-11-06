@@ -13,6 +13,6 @@ export const environment = {
     dotaImages: 'https://cdn-keycloak-angular.herokuapp.com/assets/images/dota-heroes/'
   },
   keycloakConfig,
-  resourceUrl: 'http://ec2-34-242-16-133.eu-west-1.compute.amazonaws.com:8081/resource-server/api/public',
+  resourceUrl: 'http://ec2-34-242-16-133.eu-west-1.compute.amazonaws.com:8084/resource-server/api/public',
   baseUrl: 'http://secondclosetclub.s3-website-eu-west-1.amazonaws.com/'
 };

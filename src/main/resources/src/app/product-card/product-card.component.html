@@ -10,27 +10,27 @@
     </button>
 
     <!-- Image -->
-    <img class="card-img-top" [src]=product.coverImg.path *ngIf="product.coverImg" alt="Product Image">
-    <img class="card-img-top" [src]=defaultImageUrl *ngIf="!product.coverImg" alt="Product Image Default">
+    <img class="card-img-top" [src]=product.imgCover.url *ngIf="product.imgCover" alt="Product Image">
+    <img class="card-img-top" [src]=defaultImageUrl *ngIf="!product.imgCover" alt="Product Image Default">
 
   </div>
 
   <div class="card-body px-0">
 
-    <!-- Category -->
+<!--    &lt;!&ndash; Category &ndash;&gt;
     <div class="font-size-xs">
       <a class="text-muted" routerLink="/base/shop" routerLinkActive="active">{{product.category.name}}</a>
-    </div>
+    </div>-->
 
     <!-- Title -->
     <div class="font-weight-bold">
         {{product.name}}
     </div>
 
-    <!-- Price -->
+<!--    &lt;!&ndash; Price &ndash;&gt;
     <div class="font-weight-bold text-muted">
       {{product.rentalPrice | currency:'EUR'}} one-time-rental
-    </div>
+    </div>-->
 
   </div>
 </div>

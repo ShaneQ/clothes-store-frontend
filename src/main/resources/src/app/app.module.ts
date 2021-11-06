@@ -45,6 +45,8 @@ import { MemberNotificationSlowDownComponent } from './modal/member-notification
 import { BookingSummaryComponent } from './modal/booking-summary/booking-summary.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
+import {NgxGalleryModule} from "@kolkov/ngx-gallery";
 
 const keycloakService = new KeycloakService();
 
@@ -84,11 +86,13 @@ const keycloakService = new KeycloakService();
     ShopFilterComponent,
     ProfileComponent,
     MemberNotificationSlowDownComponent,
-    BookingSummaryComponent
+    BookingSummaryComponent,
+    ProductCarouselComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgxGalleryModule,
     AppRoutingModule,
     RouterModule,
     BrowserAnimationsModule,

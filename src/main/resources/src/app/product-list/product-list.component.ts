@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit {
   constructor(private _service: AppService, private _dataService: ProductService) {
     this.productCount = 0;
     if (!this.displayAmount){
-      this.displayAmount = 10;
+      this.displayAmount = 50;
     }
   }
 
