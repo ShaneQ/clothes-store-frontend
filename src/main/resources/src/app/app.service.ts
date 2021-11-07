@@ -16,7 +16,7 @@ export class Foo {
 
 @Injectable()
 export class AppService {
-  public clientId = environment.keycloakConfig.clientId;
+  public clientId = "frontEnd";
   public redirectUri = environment.baseUrl + '/loading';
   public baseUri = environment.baseUrl
 

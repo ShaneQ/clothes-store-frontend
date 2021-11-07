@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {ApplicationRef, DoBootstrap, NgModule} from '@angular/core';
+import {APP_INITIALIZER, ApplicationRef, DoBootstrap, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {HomeComponent} from './home/home.component';
@@ -47,6 +47,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 import {NgxGalleryModule} from "@kolkov/ngx-gallery";
+import {initializeKeycloak} from "./init/keycloak-init.factory";
 
 const keycloakService = new KeycloakService();
 
@@ -106,32 +107,16 @@ const keycloakService = new KeycloakService();
   ],
   providers: [
     {
-      provide: KeycloakService,
-      useValue: keycloakService,
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
     },
   ],
+  bootstrap: [AppComponent],
   entryComponents: [AppComponent, BookingSummaryComponent],
 
 })
-export class AppModule  implements DoBootstrap  {
-  ngDoBootstrap(appRef: ApplicationRef) {
-    keycloakService
-      .init(
-        {
-          config: environment.keycloakConfig,
-          initOptions: {
-            enableLogging: true,
-            checkLoginIframe: false,
-          },
-          enableBearerInterceptor: true
-        }
-      )
-      .then(() => {
+export class AppModule  {
 
-        appRef.bootstrap(AppComponent);
-      })
-      .catch((error) =>
-        console.error('[ngDoBootstrap] init Keycloak failed', error)
-      );
-  }
 }
