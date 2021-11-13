@@ -4,11 +4,6 @@
   <!-- Image -->
   <div class="card-img" href="" [routerLink]="['/base/product', product.id]" >
 
-    <!-- Action -->
-    <button class="btn btn-xs btn-circle btn-white-primary card-action card-action-right" data-toggle="button">
-      <i class="fe fe-heart"></i>
-    </button>
-
     <!-- Image -->
     <img class="card-img-top" [src]=product.imgCover.url *ngIf="product.imgCover" alt="Product Image">
     <img class="card-img-top" [src]=defaultImageUrl *ngIf="!product.imgCover" alt="Product Image Default">

@@ -1,80 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light @@classList border-bottom">
+<nav class="navbar navbar-expand-xl navbar-light fixed-top bg-white">
   <div class="container">
 
     <!-- Brand -->
-
-    <img src="assets/img/custom/logo.jpg" alt="logo" class="img-fluid img-logo" >
-
+    <img src="assets/img/custom/logo.jpg" alt="logo" class="img-fluid img-logo">
 
 
     <!-- Toggler -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLandingCollapse" aria-controls="navbarLandingCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Collapse -->
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="collapse navbar-collapse" id="navbarLandingCollapse">
 
       <!-- Nav -->
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item dropdown">
-
-          <!-- Toggle -->
-          <a class="nav-link" routerLink="/base/home" routerLinkActive="active" href="#">Home</a>
-
-
+      <ul class="navbar-nav ml-xl-auto">
+        <li class="nav-item">
+          <a class="nav-link " href="#welcome" data-toggle="smooth-scroll">Home</a>
         </li>
-        <li class="nav-item dropdown">
-
-          <!-- Toggle -->
+        <li class="nav-item">
           <a class="nav-link" routerLink="/base/shop" routerLinkActive="active" href="#">Shop</a>
-
-
         </li>
-        <li class="nav-item dropdown position-static">
-
-          <!-- Toggle -->
-          <a class="nav-link" data-toggle="dropdown" href="#">FAQs</a>
-
-
+        <li class="nav-item">
+          <a class="nav-link" href="#howItWorks" data-toggle="smooth-scroll">How it Works</a>
         </li>
-
-        <li class="nav-item dropdown">
-
-          <!-- Toggle -->
-          <a class="nav-link" data-toggle="dropdown" href="#">Membership</a>
-
-
+        <li class="nav-item">
+          <a class="nav-link" href="#pricing" data-toggle="smooth-scroll">FAQs</a>
         </li>
-        <li class="nav-item dropdown">
-
-          <!-- Toggle -->
-          <a class="nav-link" data-toggle="dropdown" href="#">Contact</a>
-
-
+        <li class="nav-item">
+          <a class="nav-link" href="#contact" data-toggle="smooth-scroll">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/base/profile" routerLinkActive="active" >My Account</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="logout()">Logout</a>
-        </li>
-      </ul>
-
-      <!-- Nav -->
-      <ul class="navbar-nav flex-row">
-        <li class="nav-item ml-lg-n4">
-          <a class="nav-link"  routerLink="/base/profile" routerLinkActive="active" href="">
-            <i class="fe fe-user"></i>
-          </a>
-        </li>
-        <li class="nav-item ml-lg-n4">
-          <a class="nav-link" href="@@webRoot/account-wishlist.html">
-            <i class="fe fe-heart"></i>
-          </a>
-        </li>
-
-        <li class="nav-item ml-lg-n4">
-          <a class="nav-link" href="@@webRoot/account-wishlist.html">
-            <i class="fe fe-shopping-bag"></i>
-          </a>
         </li>
       </ul>
 

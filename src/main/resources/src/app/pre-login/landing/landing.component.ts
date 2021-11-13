@@ -11,10 +11,7 @@ import {ProductService} from "../../product.service";
   providers: [ScriptService, ProductService]
 })
 export class LandingComponent implements OnInit {
-  public products$: Observable<Product[]>;
   displayAmount: number;
-  itemsPerSlide = 3;
-  singleSlideOffset = true;
   noWrap = true;
   constructor(
     private _script: ScriptService,
@@ -26,11 +23,6 @@ export class LandingComponent implements OnInit {
     this._script.load('flickity').then(data => {
       console.log('script loaded ', data);
     }).catch(error => console.log(error));
-    this.getProducts();
-    console.log(this.products$)
-  }
-  getProducts() {
-    this.products$ = this._dataService.loadProducts()
   }
 
   register(): void{

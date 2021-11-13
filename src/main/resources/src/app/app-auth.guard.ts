@@ -15,10 +15,7 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard implements CanActi
   private baseUrl = environment.baseUrl
 
   isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    let location = window.location.href;
-    if (location === this.baseUrl){
-      location = this.baseUrl+ '/base/home';
-    }
+    let location = this.baseUrl+ '/base/home';
     return new Promise((resolve, reject) => {
       if (!this.authenticated) {
         this.keycloakAngular.login({scope: 'read', redirectUri: location})

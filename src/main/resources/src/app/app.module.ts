@@ -48,6 +48,7 @@ import { ProductCarouselComponent } from './product-carousel/product-carousel.co
 import {NgxGalleryModule} from "@kolkov/ngx-gallery";
 import {initializeKeycloak} from "./init/keycloak-init.factory";
 import {CarouselModule} from "ngx-bootstrap/carousel";
+import { ContentComponent } from './pre-login/content/content.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import {CarouselModule} from "ngx-bootstrap/carousel";
     ProfileComponent,
     MemberNotificationSlowDownComponent,
     BookingSummaryComponent,
-    ProductCarouselComponent
+    ProductCarouselComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,

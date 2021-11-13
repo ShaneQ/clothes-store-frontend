@@ -5,11 +5,6 @@
   "projects": {
     "Clothes-Store-Frontend": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -39,7 +34,7 @@
             },
             "scripts": [
               "./node_modules/popper.js/dist/umd/popper.min.js",
-            "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "allowedCommonJsDependencies": [
@@ -156,7 +151,10 @@
   "defaultProject": "Clothes-Store-Frontend",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
+  },
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
   }
 }
