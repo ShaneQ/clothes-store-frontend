@@ -47,6 +47,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 import {NgxGalleryModule} from "@kolkov/ngx-gallery";
 import {initializeKeycloak} from "./init/keycloak-init.factory";
+import {CarouselModule} from "ngx-bootstrap/carousel";
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import {initializeKeycloak} from "./init/keycloak-init.factory";
     IconsModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CarouselModule
   ],
   providers: [
     {
