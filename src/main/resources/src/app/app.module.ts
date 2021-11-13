@@ -39,7 +39,6 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {KeycloakAngularModule, KeycloakService} from 'keycloak-angular';
 import { ProfileComponent } from './profile/profile.component';
-import {environment} from '../environments/environment';
 import {IconsModule} from './icons/icons.module';
 import { MemberNotificationSlowDownComponent } from './modal/member-notification-slow-down/member-notification-slow-down.component';
 import { BookingSummaryComponent } from './modal/booking-summary/booking-summary.component';
@@ -48,9 +47,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 import {NgxGalleryModule} from "@kolkov/ngx-gallery";
 import {initializeKeycloak} from "./init/keycloak-init.factory";
-
-const keycloakService = new KeycloakService();
-
 
 @NgModule({
   declarations: [

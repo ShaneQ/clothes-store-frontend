@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ScriptService} from '../../script.service';
 import {KeycloakService} from 'keycloak-angular';
 import {Observable} from "rxjs";
