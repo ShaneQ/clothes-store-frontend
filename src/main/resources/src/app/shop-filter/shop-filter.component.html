@@ -4,16 +4,6 @@
     <div class="row align-items-center">
       <div class="col-12 col-md">
 
-        <!-- Categories -->
-        <nav class="nav nav-overflow mb-6 mb-md-0">
-          <a class="nav-link active" data-toggle="tab" href="#">All</a>
-          <a class="nav-link" data-toggle="tab" href="#">Dresses</a>
-          <a class="nav-link" data-toggle="tab" href="#">Coats</a>
-          <a class="nav-link" data-toggle="tab" href="#">T-Shirts</a>
-          <a class="nav-link" data-toggle="tab" href="#">Jeans</a>
-          <a class="nav-link" data-toggle="tab" href="#">Jumpers</a>
-        </nav>
-
       </div>
       <div class="col-12 col-md-auto text-center">
 
@@ -24,10 +14,6 @@
 
         <!-- Sort -->
         <div class="dropdown ml-6">
-
-          <!-- Toggle -->
-          <a class="dropdown-toggle text-body" data-toggle="dropdown" href="#">Default</a>
-
           <!-- Menu -->
           <form class="dropdown-menu">
             <div class="card">
@@ -72,14 +58,15 @@
   <form class="py-7 border-bottom">
     <div class="container">
       <div class="row">
+<!--
         <div class="col-12 col-md-3">
 
-          <!-- Heading -->
+          &lt;!&ndash; Heading &ndash;&gt;
           <p class="font-size-lg">
             <strong>Season:</strong>
           </p>
 
-          <!-- Form group -->
+          &lt;!&ndash; Form group &ndash;&gt;
           <div class="form-group form-group-overflow mb-md-0">
             <div class="custom-control custom-checkbox mb-3">
               <input class="custom-control-input" id="seasonOne" name="category" type="checkbox" value="Summer">
@@ -96,6 +83,7 @@
           </div>
 
         </div>
+-->
         <div class="col-12 col-md-3">
 
           <!-- Heading -->
@@ -104,84 +92,23 @@
           </p>
 
           <!-- Form group -->
-          <div class="form-group form-group-overflow mb-md-0">
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeOne" type="checkbox">
-              <label class="custom-control-label" for="sizeOne">
-                3XS
-              </label>
-            </div>
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeTwo" type="checkbox" disabled>
-              <label class="custom-control-label" for="sizeTwo">
-                2XS
-              </label>
-            </div>
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeThree" type="checkbox">
-              <label class="custom-control-label" for="sizeThree">
-                XS
-              </label>
-            </div>
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeFour" type="checkbox">
-              <label class="custom-control-label" for="sizeFour">
-                S
-              </label>
-            </div>
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeFive" type="checkbox">
-              <label class="custom-control-label" for="sizeFive">
-                M
-              </label>
-            </div>
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeSix" type="checkbox">
-              <label class="custom-control-label" for="sizeSix">
-                L
-              </label>
-            </div>
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeSeven" type="checkbox">
-              <label class="custom-control-label" for="sizeSeven">
-                XL
-              </label>
-            </div>
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeEight" type="checkbox" disabled>
-              <label class="custom-control-label" for="sizeEight">
-                2XL
-              </label>
-            </div>
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeNine" type="checkbox">
-              <label class="custom-control-label" for="sizeNine">
-                3XL
-              </label>
-            </div>
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeTen" type="checkbox">
-              <label class="custom-control-label" for="sizeTen">
-                4XL
-              </label>
-            </div>
-            <div class="custom-control custom-control-inline custom-control-size mb-2">
-              <input class="custom-control-input" id="sizeEleven" type="checkbox">
-              <label class="custom-control-label" for="sizeEleven">
-                One Size
-              </label>
-            </div>
+          <div class="form-group form-group-overflow mb-md-0" [formGroup]="searchForm">
+              <div *ngFor="let data of Sizes; let i=index" class="custom-control custom-control-inline custom-control-size mb-2">
+                <input [value]="data.value" class="custom-control-input form-control" [id]="data.value" (change)="onCheckboxChange($event)" type="checkbox">
+                <label class="custom-control-label" [for]="data.value">
+                  {{data.name}}
+                </label>
+              </div>
           </div>
-
         </div>
-        <div class="col-12 col-md-3">
+<!--        <div class="col-12 col-md-3">
 
-          <!-- Heading -->
+          &lt;!&ndash; Heading &ndash;&gt;
           <p class="font-size-lg">
             <strong>Color:</strong>
           </p>
 
-          <!-- Form group -->
+          &lt;!&ndash; Form group &ndash;&gt;
           <div class="form-group form-group-overflow mb-md-0">
             <div class="custom-control custom-control-color custom-control-inline mb-3">
               <input class="custom-control-input" id="colorOne" type="checkbox">
@@ -220,12 +147,12 @@
         </div>
         <div class="col-12 col-md-3">
 
-          <!-- Heading -->
+          &lt;!&ndash; Heading &ndash;&gt;
           <p class="font-size-lg">
             <strong>Price:</strong>
           </p>
 
-          <!-- Form group-->
+          &lt;!&ndash; Form group&ndash;&gt;
           <div class="form-group form-group-overflow mb-6" id="priceGroup">
             <div class="custom-control custom-checkbox mb-3">
               <input class="custom-control-input" id="priceOne" type="checkbox">
@@ -253,21 +180,21 @@
             </div>
           </div>
 
-          <!-- Range -->
+          &lt;!&ndash; Range &ndash;&gt;
           <div class="d-flex align-items-center">
 
-            <!-- Input -->
+            &lt;!&ndash; Input &ndash;&gt;
             <input type="number" class="form-control form-control-xs" placeholder="$10.00" min="10">
 
-            <!-- Divider -->
+            &lt;!&ndash; Divider &ndash;&gt;
             <div class="text-gray-350 mx-2">‒</div>
 
-            <!-- Input -->
+            &lt;!&ndash; Input &ndash;&gt;
             <input type="number" class="form-control form-control-xs" placeholder="$350.00" max="350">
 
           </div>
 
-        </div>
+        </div>-->
       </div>
     </div>
   </form>
