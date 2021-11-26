@@ -15,8 +15,6 @@ export class ProductCarouselComponent implements OnInit{
   imagesAgain: Image[]
 
   ngOnInit(): void {
-    console.log(this.coverImage)
-    console.log(this.imagesAgain)
   }
 
 

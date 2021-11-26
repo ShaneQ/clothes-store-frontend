@@ -9,16 +9,17 @@ import {environment} from "../environments/environment";
 })
 export class ProductService {
 
-  private productUrl = environment.publicResourceUrl +'/product';
+  private publicUrl = environment.publicResourceUrl +'/product';
+  private privateUrl = environment.resourceUrl +'/product';
 
   constructor(private _service: AppService) { }
 
   loadProducts(): Observable<Product[]>{
-    return this._service.getProductsResource(this.productUrl);
+    return this._service.getProductsResource(this.publicUrl);
 
   }
 
   getProduct(productId): Observable<Product> {
-    return this._service.getProductResource(this.productUrl + '/' + productId);
+    return this._service.getProductResource(this.privateUrl + '/' + productId);
   }
 }

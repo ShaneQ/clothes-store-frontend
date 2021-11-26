@@ -49,6 +49,10 @@ import {NgxGalleryModule} from "@kolkov/ngx-gallery";
 import {initializeKeycloak} from "./init/keycloak-init.factory";
 import {CarouselModule} from "ngx-bootstrap/carousel";
 import { ContentComponent } from './pre-login/content/content.component';
+import { MyAccountOrderComponent } from './my-account-order/my-account-order.component';
+import { MyAccountBaseComponent } from './my-account-base/my-account-base.component';
+import { MyAccountOrdersComponent } from './my-account-orders/my-account-orders.component';
+import { MyAccountNavbarComponent } from './my-account-navbar/my-account-navbar.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +91,11 @@ import { ContentComponent } from './pre-login/content/content.component';
     MemberNotificationSlowDownComponent,
     BookingSummaryComponent,
     ProductCarouselComponent,
-    ContentComponent
+    ContentComponent,
+    MyAccountOrderComponent,
+    MyAccountBaseComponent,
+    MyAccountOrdersComponent,
+    MyAccountNavbarComponent
   ],
   imports: [
     BrowserModule,

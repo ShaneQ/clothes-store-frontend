@@ -15,6 +15,7 @@ export class Product {
     public washInfo: string,
     public description: string,
     public dryClean: boolean,
+    public measurements: ProductMeasurement,
     public imgCover: Image,
     public images: Image[],
     public sizes: Size[]

@@ -12281,3 +12281,7 @@ a.text-decoration-underline:hover, a.text-decoration-underline:focus {
 
 .simplebar-scrollbar {
   background-color: #1f1f1f; }
+
+.fix-overlap {
+  padding-top: 70px;
+}

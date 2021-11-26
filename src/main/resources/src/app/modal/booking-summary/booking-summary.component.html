@@ -1,18 +1,41 @@
 <div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">Review your Booking</h4>
+  <h4 class="modal-title" id="modal-basic-title">Booking Request</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <img [src]="order.product.imgCover.url">
-  <p><strong>{{order.product.name}}</strong></p>
-  <p>Size: {{this.order.selectedSize}}</p>
-  <p></p>
-  <p>Pickup Date: {{this.order.date}}</p>
-  <p></p>
-  <p>Return Date: </p>
-  <p></p>
-  <p>Collection Place: {{this.order.dispatch}}</p>
-  <button  type="button" class="btn btn-dark w-100">Confirm</button>
+  <div class="row align-items-center">
+    <div class="col-4">
+
+      <!-- Image -->
+      <a href="./product.html">
+        <img class="img-fluid" [src]="order.product.imgCover.url">
+      </a>
+
+    </div>
+    <div class="col-8">
+
+      <!-- Title -->
+      <p class="font-size-sm font-weight-bold mb-6">
+        <a class="text-body">{{order.product.name}}</a> <br>
+      </p>
+
+      <p class="font-size-sm font-weight-bold mb-6">
+        Size:  <a class="text-muted">{{this.order.sizeName}}</a> <br>
+
+      </p>
+
+      <p class="font-size-sm font-weight-bold mb-6">
+        Pickup Date: <a class="text-muted">{{this.order.startDate | date:'dd/MM/yyyy'}}</a> <br>
+      </p>
+      <p class="font-size-sm font-weight-bold mb-6">
+        Collection Place: <a class="text-muted"> {{this.order.collectionPlace}}</a> <br>
+      </p>
+    </div>
+  </div>
+  <p class="text-muted text-center">The booking of any garment should be returned within maximum of 10 days. For any questions
+    regarding collections and returns please reach us through 2ndclosetclub@gmail.com or +353 83 095 9559.</p>
+  <br/>
+  <button  type="button" class="btn btn-dark w-100" (click)="book()">Confirm</button>
 </div>

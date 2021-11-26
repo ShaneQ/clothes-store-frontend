@@ -8,6 +8,9 @@ import {ShopComponent} from './shop/shop.component';
 import {CanAuthenticationGuard} from './app-auth.guard';
 import {ProfileComponent} from './profile/profile.component';
 import {ContentComponent} from "./pre-login/content/content.component";
+import {MyAccountOrderComponent} from "./my-account-order/my-account-order.component";
+import {MyAccountBaseComponent} from "./my-account-base/my-account-base.component";
+import {MyAccountOrdersComponent} from "./my-account-orders/my-account-orders.component";
 
 const routes: Routes = [
   { path: '', component: LandingComponent,
@@ -49,6 +52,21 @@ const routes: Routes = [
       {
         path: 'product/:productId',
         component: ProductDetailsComponent,
+      },
+      {
+        path: 'account',
+        component: MyAccountBaseComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'orders',
+            pathMatch: 'full'},
+
+          {
+            path: 'orders',
+            component: MyAccountOrdersComponent,
+          }
+      ]
       },
     ]}
     ];

@@ -1,5 +1,5 @@
 <!-- Card -->
-<div class="card mb-7" >
+<div class="card mb-7 " >
 
   <!-- Image -->
   <div class="card-img" href="" [routerLink]="['/base/product', product.id]" >
@@ -18,14 +18,13 @@
     </div>-->
 
     <!-- Title -->
-    <div class="font-weight-bold">
+    <div class="font-weight-bold text-center">
         {{product.name}}
     </div>
 
-<!--    &lt;!&ndash; Price &ndash;&gt;
-    <div class="font-weight-bold text-muted">
-      {{product.rentalPrice | currency:'EUR'}} one-time-rental
-    </div>-->
+    <div class="font-weight-bold text-muted text-center">
+      {{product.quickDesc }}
+    </div>
 
   </div>
 </div>

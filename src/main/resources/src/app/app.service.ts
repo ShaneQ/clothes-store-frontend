@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import {Product} from './model/product';
 import {Router} from '@angular/router';
 import {environment} from "../environments/environment";
+import {BookingRequest} from "./model/bookingRequest";
 
 export class Foo {
   constructor(
@@ -57,6 +58,17 @@ export class AppService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  postBookingResource(request :BookingRequest, resourceUrl) : Observable<any>{
+    let headers: HttpHeaders;
+    headers = new HttpHeaders({
+      'content-type': 'application/json',
+      Authorization: 'Bearer ' + Cookie.get('access_token'),
+    });
+    const body=JSON.stringify(request);
+
+    return this._http.post<any>(resourceUrl, body,{ 'headers': headers });
+  }
+
   getProductsResource(resourceUrl): Observable<Product[]>{
     let headers: HttpHeaders;
     headers = new HttpHeaders({
@@ -77,15 +89,6 @@ export class AppService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  getSecurityFreeResource(resourceUrl): Observable<any>{
-    let headers: HttpHeaders;
-    headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-      Authorization: 'Bearer ' + Cookie.get('access_token')
-    });
-    return this._http.get(resourceUrl, { headers })
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-  }
 
   checkCredentials(): boolean{
     return Cookie.check('access_token');
@@ -98,5 +101,15 @@ export class AppService {
 
   redirectToLogin(): void {
     window.location.href = this.baseUri;
+  }
+
+  getBookingsResource(resourceUrl: string) {
+    let headers: HttpHeaders;
+    headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      Authorization: 'Bearer ' + Cookie.get('access_token')
+    });
+    return this._http.get<BookingRequest[]>(resourceUrl, { headers })
+    .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 }

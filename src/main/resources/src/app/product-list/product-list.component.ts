@@ -62,15 +62,7 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  loopThroughArray(size: Number, sizeArr: Number[]){
-    console.log(size)
-    console.log(sizeArr)
-    return sizeArr.includes(size)
-
-  }
-
   onProductSelected(product: Product) {
-    console.log('Card was selected');
     console.log(product);
 
   }
