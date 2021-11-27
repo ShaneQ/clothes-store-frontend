@@ -9,7 +9,7 @@
         <label for="firstName">
           First Name *
         </label>
-        <input class="form-control form-control-sm" id="firstName" formControlName="firstName" type="text"
+        <input class="form-control form-control-sm" id="firstName" formControlName="firstName" type="email"
                placeholder="First Name *" required>
         <div *ngIf="submitted && f.firstName.errors" class="text-danger">
           <div *ngIf="f.firstName.errors.required"><small>Required</small></div>
@@ -177,7 +177,9 @@
     <div class="col-12">
       <!-- Button -->
       <button class="btn btn-dark" type="submit">Save Changes</button>
-
+      <div *ngIf="this.saved" class="text-success">
+        <div ><small>Changes Saved</small></div>
+      </div>
     </div>
   </div>
 </form>

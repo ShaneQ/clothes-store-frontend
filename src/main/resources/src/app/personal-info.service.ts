@@ -21,6 +21,6 @@ export class PersonalInfoService {
     return this._service.postPersonalInfoResource(personalInfo, this.privateUrl)
   }
   updatePersonalInfo(personalInfo: PersonalInfo) : Observable<any> {
-    return this._service.postPersonalInfoResource(personalInfo, this.privateUrl+"/"+ personalInfo.id)
+    return this._service.putPersonalInfoResource(personalInfo, this.privateUrl+"/"+ personalInfo.id)
   }
 }

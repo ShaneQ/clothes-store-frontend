@@ -131,6 +131,18 @@ export class AppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     const body=JSON.stringify(personalInfo);
+    let observable = this._http.post<any>(privateUrl, body,{ 'headers': headers });
+    observable.subscribe(data => console.log(data))
+    return observable
+  }
+
+  putPersonalInfoResource(personalInfo: PersonalInfo, privateUrl: string) {
+    let headers: HttpHeaders;
+    headers = new HttpHeaders({
+      'content-type': 'application/json',
+      Authorization: 'Bearer ' + Cookie.get('access_token'),
+    });
+    const body=JSON.stringify(personalInfo);
     let observable = this._http.put<any>(privateUrl, body,{ 'headers': headers });
     observable.subscribe(data => console.log(data))
     return observable

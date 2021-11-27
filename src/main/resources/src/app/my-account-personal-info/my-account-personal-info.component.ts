@@ -16,6 +16,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   public minDate : Date
   public maxDate : Date
   public submitted: boolean
+  public saved: boolean;
 
   constructor(private fb: FormBuilder,private _app: PersonalInfoService, private spinner: NgxSpinnerService) { }
 
@@ -24,6 +25,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
     this.minDate = new Date("January 1, 1970 01:15:00");
     this.maxDate = new Date("January 1, 2000 01:15:00");
     this.submitted = false
+    this.saved = false
     this.personalInfo$ = this._app.getPersonalInfo()
     this.initializeEmptyForm()
     this.personalInfo$.subscribe(data => this.handleGetSuccess(data), error => this.handleError(error))
@@ -32,7 +34,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
 
   initializeEmptyForm(){
     this.personalInfoForm = this.fb.group({
-      id: [''],
+      id: [],
       firstName: ['Testing First', [Validators.required]],
       lastName: ['last', [Validators.required]],
       email: ['Testing', [Validators.required]],
@@ -68,21 +70,17 @@ export class MyAccountPersonalInfoComponent implements OnInit {
 
   submit() {
     this.submitted = true
-    console.log(this.personalInfoForm.controls.dateOfBirth.errors)
 
     if (this.personalInfoForm.invalid) {
-      console.log('invalid');
       return;
     }
     let info: PersonalInfo;
     info = this.personalInfoForm.value;
-    console.log(info)
     if(this.personalInfoForm.get("id").value){
-      this._app.updatePersonalInfo(info)
+      this._app.updatePersonalInfo(info).subscribe(data => this.saved = true)
     }else{
-      this._app.createPersonalInfo(info)
+      this._app.createPersonalInfo(info).subscribe(data => this.saved = true)
     }
-    console.log("Success")
   }
 
   onReset() {
