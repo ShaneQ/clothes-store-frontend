@@ -53,6 +53,8 @@ import { MyAccountOrderComponent } from './my-account-order/my-account-order.com
 import { MyAccountBaseComponent } from './my-account-base/my-account-base.component';
 import { MyAccountOrdersComponent } from './my-account-orders/my-account-orders.component';
 import { MyAccountNavbarComponent } from './my-account-navbar/my-account-navbar.component';
+import { MyAccountPersonalInfoComponent } from './my-account-personal-info/my-account-personal-info.component';
+import {NgxSpinnerModule} from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -95,24 +97,26 @@ import { MyAccountNavbarComponent } from './my-account-navbar/my-account-navbar.
     MyAccountOrderComponent,
     MyAccountBaseComponent,
     MyAccountOrdersComponent,
-    MyAccountNavbarComponent
+    MyAccountNavbarComponent,
+    MyAccountPersonalInfoComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    NgxGalleryModule,
-    AppRoutingModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    BsDatepickerModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    KeycloakAngularModule,
-    IconsModule,
-    NgbModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CarouselModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        NgxGalleryModule,
+        AppRoutingModule,
+        RouterModule,
+        BrowserAnimationsModule,
+        BsDatepickerModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        KeycloakAngularModule,
+        IconsModule,
+        NgbModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CarouselModule,
+        NgxSpinnerModule
+    ],
   providers: [
     {
       provide: APP_INITIALIZER,

@@ -1,0 +1,183 @@
+<!-- Form -->
+<ngx-spinner></ngx-spinner>
+<form [formGroup]="personalInfoForm" (ngSubmit)="submit()">
+  <div class="row">
+    <div class="col-12 col-md-6">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="firstName">
+          First Name *
+        </label>
+        <input class="form-control form-control-sm" id="firstName" formControlName="firstName" type="text"
+               placeholder="First Name *" required>
+        <div *ngIf="submitted && f.firstName.errors" class="text-danger">
+          <div *ngIf="f.firstName.errors.required"><small>Required</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="lastName">
+          Last Name *
+        </label>
+        <input class="form-control form-control-sm" id="lastName" formControlName="lastName" type="text"
+               placeholder="Last Name *" required>
+        <div *ngIf="submitted && f.lastName.errors" class="text-danger">
+          <div *ngIf="f.lastName.errors.required"><small>Required</small></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">
+          Email Address *
+        </label>
+        <input class="form-control form-control-sm" id="email" type="email" formControlName="email"
+               placeholder="Email Address *" required>
+        <div *ngIf="submitted && f.email.errors" class="text-danger">
+          <div *ngIf="f.email.errors.required"><small>Required</small></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6">
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="country">
+          Country
+        </label>
+        <input class="form-control form-control-sm" id="country" formControlName="country" type="text"
+               placeholder="Country" required>
+        <div *ngIf="submitted && f.country.errors" class="text-danger">
+          <div *ngIf="f.country.errors.required"><small>Required</small></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="addressLineOne">
+          Address Line 1*
+        </label>
+        <input class="form-control form-control-sm" id="addressLineOne" formControlName="addressLineOne" type="text"
+               required>
+        <div *ngIf="submitted && f.addressLineOne.errors" class="text-danger">
+          <div *ngIf="f.addressLineOne.errors.required"><small>Required</small></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="addressLineTwo">
+          Address Line 2*
+        </label>
+        <input class="form-control form-control-sm" id="addressLineTwo" formControlName="addressLineTwo" type="text"
+               required>
+        <div *ngIf="submitted && f.addressLineTwo.errors" class="text-danger">
+          <div *ngIf="f.addressLineTwo.errors.required"><small>Required</small></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="city">
+          Town/City *
+        </label>
+        <input class="form-control form-control-sm" id="city" formControlName="city" type="text"
+               placeholder="Town/City" required>
+        <div *ngIf="submitted && f.city.errors" class="text-danger">
+          <div *ngIf="f.city.errors.required"><small>Required</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="eirCode">
+          Eircode
+        </label>
+        <input class="form-control form-control-sm" id="eirCode" formControlName="eirCode" type="text"
+               required>
+        <div *ngIf="submitted && f.eirCode.errors" class="text-danger">
+          <div *ngIf="f.eirCode.errors.required"><small>Required</small></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6">
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="phone">
+          Mobile Phone
+        </label>
+        <input class="form-control form-control-sm" id="phone" type="text"
+               placeholder="000 000 0000"  formControlName="phone">
+        <div *ngIf="submitted && f.phone.errors" class="text-danger">
+          <div *ngIf="f.phone.errors.required"><small>Required</small></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-12 col-lg-6">
+
+      <!-- Birthday -->
+      <div class="form-group">
+
+        <!-- Label -->
+        <label>Date of Birth</label>
+
+        <!-- Inputs -->
+
+        <div class="form-group">
+          <input
+            formControlName="dateOfBirth"
+            type="text"
+            class="form-control"
+            bsDatepicker
+            [bsConfig]="{ isAnimated: true, containerClass : 'theme-default'}"
+            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+            [minDate]="minDate"
+            [maxDate]="maxDate">
+          <div *ngIf="submitted && f.dateOfBirth.errors" class="text-danger">
+            <div *ngIf="f.dateOfBirth.errors.required"><small>Required</small></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-12">
+      <!-- Button -->
+      <button class="btn btn-dark" type="submit">Save Changes</button>
+
+    </div>
+  </div>
+</form>

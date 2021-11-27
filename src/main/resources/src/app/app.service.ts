@@ -8,6 +8,7 @@ import {Product} from './model/product';
 import {Router} from '@angular/router';
 import {environment} from "../environments/environment";
 import {BookingRequest} from "./model/bookingRequest";
+import {PersonalInfo} from "./model/personalInfo";
 
 export class Foo {
   constructor(
@@ -111,5 +112,27 @@ export class AppService {
     });
     return this._http.get<BookingRequest[]>(resourceUrl, { headers })
     .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  getPersonalInfo(resourceUrl: string):Observable<PersonalInfo> {
+    let headers: HttpHeaders;
+    headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      Authorization: 'Bearer ' + Cookie.get('access_token')
+    });
+    return this._http.get<PersonalInfo>(resourceUrl, { headers })
+    .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  postPersonalInfoResource(personalInfo: PersonalInfo, privateUrl: string) {
+    let headers: HttpHeaders;
+    headers = new HttpHeaders({
+      'content-type': 'application/json',
+      Authorization: 'Bearer ' + Cookie.get('access_token'),
+    });
+    const body=JSON.stringify(personalInfo);
+    let observable = this._http.put<any>(privateUrl, body,{ 'headers': headers });
+    observable.subscribe(data => console.log(data))
+    return observable
   }
 }

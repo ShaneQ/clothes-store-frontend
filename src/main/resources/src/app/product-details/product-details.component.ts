@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ScriptService} from '../script.service';
 import {ProductService} from '../product.service';
@@ -7,7 +7,6 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {BookingSummaryComponent} from '../modal/booking-summary/booking-summary.component';
 import {BookingRequest} from '../model/bookingRequest';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-declare var Flickity: any;
 
 @Component({
   templateUrl: './product-details.component.html',
@@ -26,7 +25,6 @@ export class ProductDetailsComponent implements OnInit{
   public isMemberInfoBtnVis: boolean;
   public remainingBookings: number;
   public submitted = false;
-  public rentalPreferenceMembership: boolean;
   get f() {
     console.log(this.orderForm.controls);
     return this.orderForm.controls;
@@ -93,8 +91,7 @@ export class ProductDetailsComponent implements OnInit{
     private _scriptLoader: ScriptService,
     private _app: ProductService,
     private _modalService: NgbModal,
-    private formBuilder: FormBuilder,
-    private el: ElementRef) {
+    private formBuilder: FormBuilder) {
 
     this.minDate = new Date();
     this.maxDate = new Date();
