@@ -89,12 +89,17 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       let info: PersonalInfo;
       info = this.personalInfoForm.value;
       if(this.personalInfoForm.get("id").value){
-        this._app.updatePersonalInfo(info).subscribe(data => this.saved = true)
+        this._app.updatePersonalInfo(info).subscribe(data => this.saveAndUpdateFormWithId(data))
       }else{
         this._app.createPersonalInfo(info).subscribe(data => this.saved = true)
       }
     }
 
+  }
+
+  saveAndUpdateFormWithId(id : string){
+    this.saved = true
+    console.log(id)
   }
 
   onReset() {

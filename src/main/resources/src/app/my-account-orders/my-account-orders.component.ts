@@ -12,7 +12,7 @@ import {BookingRequest} from "../model/bookingRequest";
 export class MyAccountOrdersComponent implements OnInit {
 
   public items$: Observable<BookingRequest[]>;
-
+  public items: BookingRequest[] = []
   constructor(private __dataService : BookingService) { }
 
   ngOnInit(): void {
@@ -21,8 +21,7 @@ export class MyAccountOrdersComponent implements OnInit {
   }
 
   getBookings(){
-    this.items$ = this.__dataService.getBookings()
-    this.items$.subscribe(request => console.log(request))
+    this.__dataService.getBookings().subscribe(data => this.items = data)
   }
 
   onItemSelected($item: BookingRequest) {

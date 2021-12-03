@@ -141,8 +141,6 @@ export class AppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     const body=JSON.stringify(personalInfo);
-    let observable = this._http.put<any>(privateUrl, body,{ 'headers': headers });
-    observable.subscribe(data => console.log(data))
-    return observable
+    return this._http.put<any>(privateUrl, body,{ 'headers': headers });
   }
 }

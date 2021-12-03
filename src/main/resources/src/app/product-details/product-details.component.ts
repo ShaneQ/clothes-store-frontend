@@ -57,7 +57,6 @@ export class ProductDetailsComponent implements OnInit{
 
   async ngOnInit(): Promise<void> {
 
-
     const productId = this._route.snapshot.paramMap.get('productId');
     this.product = await this._app.getProduct(productId).toPromise();
     this.remainingBookings = 0;

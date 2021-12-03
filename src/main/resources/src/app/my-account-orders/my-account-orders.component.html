@@ -1,7 +1,7 @@
 <!-- Order -->
-<div *ngIf="(items$ | async)?.length==0">No records found.</div>
+<div *ngIf="items?.length==0">No records found.</div>
 
-<div *ngFor="let item of items$ | async let i=index">
+<div *ngFor="let item of items">
   <app-my-account-order (itemSelected)="onItemSelected($event)" [item]="item"></app-my-account-order>
 
 </div>
