@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PersonalInfoService} from "../personal-info.service";
 import {PersonalInfo} from "../model/personalInfo";
 import {Observable} from "rxjs";
 import {NgxSpinnerService} from "ngx-spinner";
+import {Product} from "../model/product";
 
 @Component({
   selector: 'app-my-account-personal-info',
@@ -17,6 +18,11 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   public maxDate : Date
   public submitted: boolean
   public saved: boolean;
+  @Input()
+  public isRegistrationPage: boolean
+  @Output('registrationSuccessful')
+  public registrationSuccessful= new EventEmitter<boolean>();
+  public created: boolean
 
   constructor(private fb: FormBuilder,private _app: PersonalInfoService, private spinner: NgxSpinnerService) { }
 
@@ -33,6 +39,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
 
 
   initializeEmptyForm(){
+    this.created = false
     this.personalInfoForm = this.fb.group({
       id: [],
       firstName: ['Testing First', [Validators.required]],
@@ -48,7 +55,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
     })
   }
   initializeFilledForm(data: PersonalInfo){
-
+    this.created = true
     var date = new Date(data.dateOfBirth);
 
 
@@ -74,13 +81,20 @@ export class MyAccountPersonalInfoComponent implements OnInit {
     if (this.personalInfoForm.invalid) {
       return;
     }
-    let info: PersonalInfo;
-    info = this.personalInfoForm.value;
-    if(this.personalInfoForm.get("id").value){
-      this._app.updatePersonalInfo(info).subscribe(data => this.saved = true)
+    if(this.isRegistrationPage){
+      let info: PersonalInfo;
+      info = this.personalInfoForm.value;
+      this._app.createPersonalInfo(info).subscribe(data => this.registrationSuccessful.emit(true))
     }else{
-      this._app.createPersonalInfo(info).subscribe(data => this.saved = true)
+      let info: PersonalInfo;
+      info = this.personalInfoForm.value;
+      if(this.personalInfoForm.get("id").value){
+        this._app.updatePersonalInfo(info).subscribe(data => this.saved = true)
+      }else{
+        this._app.createPersonalInfo(info).subscribe(data => this.saved = true)
+      }
     }
+
   }
 
   onReset() {
@@ -99,10 +113,15 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   }
 
   private handleGetSuccess(data: PersonalInfo) {
-    this.initializeFilledForm(data)
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, 2000);
+    if(this.isRegistrationPage){
+      console.log("EMMITTING")
+      this.registrationSuccessful.emit(true)
+    }else{
+      this.initializeFilledForm(data)
+      setTimeout(() => {
+        /** spinner ends after 5 seconds */
+        this.spinner.hide();
+      }, 2000);
+    }
   }
 }

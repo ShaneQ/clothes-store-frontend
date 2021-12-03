@@ -10,6 +10,7 @@ import {ContentComponent} from "./pre-login/content/content.component";
 import {MyAccountBaseComponent} from "./my-account-base/my-account-base.component";
 import {MyAccountOrdersComponent} from "./my-account-orders/my-account-orders.component";
 import {MyAccountPersonalInfoComponent} from "./my-account-personal-info/my-account-personal-info.component";
+import {RegistrationComponent} from "./registration/registration.component";
 
 const routes: Routes = [
   { path: '', component: LandingComponent,
@@ -27,9 +28,15 @@ const routes: Routes = [
       path: 'product/:productId',
       component: ProductDetailsComponent,
     },
+    {
+      path: 'registration-part-2',
+      component: RegistrationComponent
+    },
   ]},
+
   { path: 'base', component: BaseComponent,
     canActivate: [CanAuthenticationGuard],
+    data: { roles: ['scc_user_role']},
     children: [
       {
         path: '',

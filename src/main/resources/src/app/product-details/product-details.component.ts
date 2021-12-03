@@ -25,60 +25,7 @@ export class ProductDetailsComponent implements OnInit{
   public isMemberInfoBtnVis: boolean;
   public remainingBookings: number;
   public submitted = false;
-  get f() {
-    console.log(this.orderForm.controls);
-    return this.orderForm.controls;
-  }
 
-  sizes: Array<any> = [
-    {name: 'One Size', value: '1'},
-    {name: 'XS', value: '2'},
-    {name: 'S', value: '3'},
-    {name: 'M', value: '4'},
-    {name: 'L', value: '5'},
-    {name: 'XL', value: '6'}
-
-  ];
-
-  getProductCategories() {
-    return [
-      {name: 'Dresses', id: '1'},
-      {name: 'Tops', id: '2'},
-      {name: 'Pants', id: '3'},
-      {name: 'Skirts', id: '4'},
-      {name: 'Jumpsuits & Rompers', id: '5'},
-      {name: 'Jackets & Coats', id: '6'},
-      {name: 'Bags', id: '7'},
-    ];
-  }
-  getSeasons() {
-    return [
-      {name: 'Winter', id: '1'},
-      {name: 'Spring', id: '2'},
-      {name: 'Fall', id: '3'},
-      {name: 'Summer', id: '4'}
-    ];
-  }
-  getColors() {
-    return [
-      {name: 'black', id: 1},
-      {name: 'white', id: 2},
-      {name: 'grey', id: 3},
-      {name: 'cream', id: 4},
-      {name: 'brown', id: 5},
-      {name: 'red', id: 6},
-      {name: 'orange', id: 7},
-      {name: 'yellow', id: 8},
-      {name: 'green', id: 9},
-      {name: 'blue', id: 10},
-      {name: 'purple', id: 11},
-      {name: 'pink', id: 12},
-      {name: 'gold', id: 13},
-      {name: 'silver', id: 14},
-      {name: 'print', id: 15},
-
-    ];
-  }
 
 
   productCategories = []
@@ -138,5 +85,60 @@ export class ProductDetailsComponent implements OnInit{
     this.order.collectionPlace = this.orderForm.value.dispatch;
     const modalRef = this._modalService.open(BookingSummaryComponent);
     modalRef.componentInstance.order = this.order;
+  }
+
+  get f() {
+    console.log(this.orderForm.controls);
+    return this.orderForm.controls;
+  }
+
+  sizes: Array<any> = [
+    {name: 'One Size', value: '1'},
+    {name: 'XS', value: '2'},
+    {name: 'S', value: '3'},
+    {name: 'M', value: '4'},
+    {name: 'L', value: '5'},
+    {name: 'XL', value: '6'}
+
+  ];
+
+  getProductCategories() {
+    return [
+      {name: 'Dresses', id: '1'},
+      {name: 'Tops', id: '2'},
+      {name: 'Pants', id: '3'},
+      {name: 'Skirts', id: '4'},
+      {name: 'Jumpsuits & Rompers', id: '5'},
+      {name: 'Jackets & Coats', id: '6'},
+      {name: 'Bags', id: '7'},
+    ];
+  }
+  getSeasons() {
+    return [
+      {name: 'Winter', id: '1'},
+      {name: 'Spring', id: '2'},
+      {name: 'Fall', id: '3'},
+      {name: 'Summer', id: '4'}
+    ];
+  }
+  getColors() {
+    return [
+      {name: 'black', id: 1},
+      {name: 'white', id: 2},
+      {name: 'grey', id: 3},
+      {name: 'cream', id: 4},
+      {name: 'brown', id: 5},
+      {name: 'red', id: 6},
+      {name: 'orange', id: 7},
+      {name: 'yellow', id: 8},
+      {name: 'green', id: 9},
+      {name: 'blue', id: 10},
+      {name: 'purple', id: 11},
+      {name: 'pink', id: 12},
+      {name: 'gold', id: 13},
+      {name: 'silver', id: 14},
+      {name: 'print', id: 15},
+
+    ];
   }
 }

@@ -174,7 +174,10 @@
       </div>
 
     </div>
-    <div class="col-12">
+    <div *ngIf="this.isRegistrationPage">
+      <button class="btn btn-dark" type="submit">Send Request</button>
+    </div>
+    <div *ngIf="!this.isRegistrationPage" class="col-12">
       <!-- Button -->
       <button class="btn btn-dark" type="submit">Save Changes</button>
       <div *ngIf="this.saved" class="text-success">

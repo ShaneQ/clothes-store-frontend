@@ -18,6 +18,7 @@ export class PersonalInfoService {
   }
 
   createPersonalInfo(personalInfo: PersonalInfo) : Observable<any> {
+    console.log("CREATE PERSONAL INFO")
     return this._service.postPersonalInfoResource(personalInfo, this.privateUrl)
   }
   updatePersonalInfo(personalInfo: PersonalInfo) : Observable<any> {

@@ -55,6 +55,7 @@ import { MyAccountOrdersComponent } from './my-account-orders/my-account-orders.
 import { MyAccountNavbarComponent } from './my-account-navbar/my-account-navbar.component';
 import { MyAccountPersonalInfoComponent } from './my-account-personal-info/my-account-personal-info.component';
 import {NgxSpinnerModule} from "ngx-spinner";
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import {NgxSpinnerModule} from "ngx-spinner";
     MyAccountBaseComponent,
     MyAccountOrdersComponent,
     MyAccountNavbarComponent,
-    MyAccountPersonalInfoComponent
+    MyAccountPersonalInfoComponent,
+    RegistrationComponent
   ],
     imports: [
         BrowserModule,

@@ -1,8 +1,5 @@
 import {Image} from './image';
-import {ProductSize} from './productSize';
-import {ProductCategory} from './productCategory';
 import {ProductMeasurement} from './productMeasurement';
-import {ProductOccasion} from './productOccasion';
 import {Size} from "./size";
 
 export class Product {

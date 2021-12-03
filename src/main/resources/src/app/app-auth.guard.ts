@@ -21,11 +21,11 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard implements CanActi
     }
     return new Promise((resolve, reject) => {
       if (!this.authenticated) {
-        this.keycloakAngular.login({scope: 'read', redirectUri: location})
+        this.keycloakAngular.login({scope: 'scc_user', redirectUri: location})
           .catch(e => console.error(e));
         return reject(false);
       }
-
+      console.log(this.roles)
       const requiredRoles: string[] = route.data.roles;
       if (!requiredRoles || requiredRoles.length === 0) {
         return resolve(true);
@@ -33,7 +33,22 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard implements CanActi
         if (!this.roles || this.roles.length === 0) {
           resolve(false);
         }
-        resolve(requiredRoles.every(role => this.roles.indexOf(role) > -1));
+        let hasRequiredRole = requiredRoles.every(role => this.roles.indexOf(role) > -1)
+        let hasSCCUSerRole = this.roles.indexOf("scc_user_role")
+        console.log(hasSCCUSerRole)
+        if(hasSCCUSerRole == -1){
+          this.router.navigate(['/registration-part-2'], {})
+        }
+        resolve(hasRequiredRole);
+      }
+    });
+  }
+
+  logout(){
+    this.keycloakAngular.logout(environment.baseUrl);
+    this.router.navigate(['/'], {
+      queryParams: {
+        userMissingPrivilege: true
       }
     });
   }
