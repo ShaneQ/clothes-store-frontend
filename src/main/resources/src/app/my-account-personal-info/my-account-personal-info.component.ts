@@ -4,28 +4,29 @@ import {PersonalInfoService} from "../personal-info.service";
 import {PersonalInfo} from "../model/personalInfo";
 import {Observable} from "rxjs";
 import {NgxSpinnerService} from "ngx-spinner";
-import {Product} from "../model/product";
+import {UserInfo} from "../model/userInfo";
 
 @Component({
   selector: 'app-my-account-personal-info',
   templateUrl: './my-account-personal-info.component.html',
-  providers:[PersonalInfoService],
-  styleUrls: ['./my-account-personal-info.component.scss']
+  providers: [PersonalInfoService]
 })
 export class MyAccountPersonalInfoComponent implements OnInit {
   public personalInfo$: Observable<PersonalInfo>;
   public personalInfoForm: FormGroup
-  public minDate : Date
-  public maxDate : Date
+  public minDate: Date
+  public maxDate: Date
   public submitted: boolean
   public saved: boolean;
+  public keycloakInfo: UserInfo
   @Input()
   public isRegistrationPage: boolean
   @Output('registrationSuccessful')
-  public registrationSuccessful= new EventEmitter<boolean>();
+  public registrationSuccessful = new EventEmitter<boolean>();
   public created: boolean
 
-  constructor(private fb: FormBuilder,private _app: PersonalInfoService, private spinner: NgxSpinnerService) { }
+  constructor(private fb: FormBuilder, private _app: PersonalInfoService, private spinner: NgxSpinnerService) {
+  }
 
   ngOnInit(): void {
     this.spinner.show();
@@ -34,18 +35,19 @@ export class MyAccountPersonalInfoComponent implements OnInit {
     this.submitted = false
     this.saved = false
     this.personalInfo$ = this._app.getPersonalInfo()
-    this.initializeEmptyForm()
+    this.initializeEmptyForm(null)
     this.personalInfo$.subscribe(data => this.handleGetSuccess(data), error => this.handleError(error))
   }
 
 
-  initializeEmptyForm(){
+  initializeEmptyForm(keycloakInfo: UserInfo) {
+    if(keycloakInfo)
     this.created = false
     this.personalInfoForm = this.fb.group({
       id: [],
-      firstName: ['Testing First', [Validators.required]],
-      lastName: ['last', [Validators.required]],
-      email: ['Testing', [Validators.required]],
+      firstName: [keycloakInfo?.firstName, [Validators.required]],
+      lastName: [keycloakInfo?.lastName, [Validators.required]],
+      email: [keycloakInfo?.email, [Validators.required]],
       country: ['Testing', [Validators.required]],
       addressLineOne: ['Testing', [Validators.required]],
       addressLineTwo: ['Testing', [Validators.required]],
@@ -56,7 +58,8 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       membership: []
     })
   }
-  initializeFilledForm(data: PersonalInfo){
+
+  initializeFilledForm(data: PersonalInfo) {
     this.created = true
     var date = new Date(data.dateOfBirth);
 
@@ -76,7 +79,10 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       membership: [1]
     })
   }
-  get f() { return this.personalInfoForm.controls; }
+
+  get f() {
+    return this.personalInfoForm.controls;
+  }
 
   submit() {
     this.submitted = true
@@ -85,25 +91,20 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       return;
     }
 
-    if(this.isRegistrationPage){
+    if (this.isRegistrationPage) {
       let info: PersonalInfo;
       info = this.personalInfoForm.value;
       this._app.createPersonalInfo(info).subscribe(data => this.registrationSuccessful.emit(true))
-    }else{
+    } else {
       let info: PersonalInfo;
       info = this.personalInfoForm.value;
-      if(this.personalInfoForm.get("id").value){
-        this._app.updatePersonalInfo(info).subscribe(data => this.saveAndUpdateFormWithId(data))
-      }else{
+      if (this.personalInfoForm.get("id").value) {
+        this._app.updatePersonalInfo(info).subscribe(data => this.saved = true)
+      } else {
         this._app.createPersonalInfo(info).subscribe(data => this.saved = true)
       }
     }
 
-  }
-
-  saveAndUpdateFormWithId(id : string){
-    this.saved = true
-    console.log(id)
   }
 
   onReset() {
@@ -112,20 +113,21 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   }
 
   private handleError(error: any) {
-    if (error.status = 404){
+    if (error.status = 404) {
+      this._app.getKeycloakUserInfo().subscribe(data => this.initializeEmptyForm(data))
+
       setTimeout(() => {
         /** spinner ends after 5 seconds */
         this.spinner.hide();
       }, 2000);
-      this.initializeEmptyForm();
+
     }
   }
 
   private handleGetSuccess(data: PersonalInfo) {
-    if(this.isRegistrationPage){
-      console.log("EMMITTING")
+    if (this.isRegistrationPage) {
       this.registrationSuccessful.emit(true)
-    }else{
+    } else {
       this.initializeFilledForm(data)
       setTimeout(() => {
         /** spinner ends after 5 seconds */
