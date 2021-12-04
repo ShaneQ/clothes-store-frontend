@@ -140,7 +140,7 @@
           Mobile Phone
         </label>
         <input class="form-control form-control-sm" id="phone" type="text"
-               placeholder="000 000 0000"  formControlName="phone">
+               placeholder="000 000 0000" formControlName="phone">
         <div *ngIf="submitted && f.phone.errors" class="text-danger">
           <div *ngIf="f.phone.errors.required"><small>Required</small></div>
         </div>
@@ -174,14 +174,47 @@
       </div>
 
     </div>
-    <div *ngIf="this.isRegistrationPage">
+
+    <div *ngIf="this.isRegistrationPage" class="container pb-5">
+      <p>Select membership (value corresponds to 3 months membership)</p>
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group">
+            <div class="input-group-text">
+              <label style="color: black" class="text-black-50"><input type="radio" name="membership" value="1" formControlName="membership"> Casual - €80.00</label>
+              <div class="ml-10">
+
+                <p class="m-0" style="color: black">One piece at a time</p>
+                <p style="color: black">Up to 4 pieces per month</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-6">
+
+          <div class="input-group">
+            <div class="input-group-text">
+              <label style="color: black"><input type="radio" name="membership" value="2"formControlName="membership"> Chic - €150.00</label>
+              <div class="ml-10" style="color: black">
+                <p class="m-0" style="color: black">Two pieces at a time</p>
+                <p>Up to 8 pieces per month</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="this.isRegistrationPage" class="col-12">
       <button class="btn btn-dark" type="submit">Send Request</button>
     </div>
     <div *ngIf="!this.isRegistrationPage" class="col-12">
       <!-- Button -->
       <button class="btn btn-dark" type="submit">Save Changes</button>
       <div *ngIf="this.saved" class="text-success">
-        <div ><small>Changes Saved</small></div>
+        <div><small>Changes Saved</small></div>
       </div>
     </div>
   </div>

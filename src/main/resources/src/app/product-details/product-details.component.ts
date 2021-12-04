@@ -26,8 +26,6 @@ export class ProductDetailsComponent implements OnInit{
   public remainingBookings: number;
   public submitted = false;
 
-
-
   productCategories = []
   colors = []
   seasons = []

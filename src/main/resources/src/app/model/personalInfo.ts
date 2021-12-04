@@ -10,5 +10,9 @@ export class PersonalInfo {
   public eirCode: string;
   public phone: string;
   public dateOfBirth: Date;
+  public status: string;
+  public membership: number
+  public startDate: Date;
+  public endDate: Date;
 
 }

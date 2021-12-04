@@ -11,6 +11,7 @@ import {MyAccountBaseComponent} from "./my-account-base/my-account-base.componen
 import {MyAccountOrdersComponent} from "./my-account-orders/my-account-orders.component";
 import {MyAccountPersonalInfoComponent} from "./my-account-personal-info/my-account-personal-info.component";
 import {RegistrationComponent} from "./registration/registration.component";
+import {MyAccountMembershipComponent} from "./my-account-membership/my-account-membership.component";
 
 const routes: Routes = [
   { path: '', component: LandingComponent,
@@ -75,6 +76,10 @@ const routes: Routes = [
           {
             path: 'personal',
             component: MyAccountPersonalInfoComponent,
+          },
+          {
+            path: 'membership',
+            component: MyAccountMembershipComponent,
           }
       ]
       },

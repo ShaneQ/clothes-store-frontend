@@ -9,7 +9,8 @@ import {Product} from "../model/product";
 @Component({
   selector: 'app-my-account-personal-info',
   templateUrl: './my-account-personal-info.component.html',
-  providers:[PersonalInfoService]
+  providers:[PersonalInfoService],
+  styleUrls: ['./my-account-personal-info.component.scss']
 })
 export class MyAccountPersonalInfoComponent implements OnInit {
   public personalInfo$: Observable<PersonalInfo>;
@@ -51,7 +52,8 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       city: ['Testing', [Validators.required]],
       eirCode: ['Testing', [Validators.required]],
       phone: ['0851231234', [Validators.required]],
-      dateOfBirth: ['01/01/1990', Validators.required]
+      dateOfBirth: ['01/01/1990', Validators.required],
+      membership: []
     })
   }
   initializeFilledForm(data: PersonalInfo){
@@ -70,17 +72,19 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       city: [data.city, [Validators.required]],
       eirCode: [data.eirCode, [Validators.required]],
       phone: [data.phone, [Validators.required]],
-      dateOfBirth: [date, Validators.required]
+      dateOfBirth: [date, Validators.required],
+      membership: [1]
     })
   }
   get f() { return this.personalInfoForm.controls; }
 
   submit() {
     this.submitted = true
-
-    if (this.personalInfoForm.invalid) {
+    let membership = this.personalInfoForm.get("membership").value
+    if (this.personalInfoForm.invalid || membership === null) {
       return;
     }
+
     if(this.isRegistrationPage){
       let info: PersonalInfo;
       info = this.personalInfoForm.value;
