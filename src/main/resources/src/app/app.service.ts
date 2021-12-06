@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Cookie} from 'ng2-cookies';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -147,5 +147,17 @@ export class AppService {
       console.log(error)
 
     }
+  }
+
+  getFilteredProductResource(url: string, myparams: HttpParams): Observable<Product[]> {
+    let headers: HttpHeaders;
+    headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      Authorization: 'Bearer ' + Cookie.get('access_token')
+    });
+    const options = { params: myparams, headers: headers };
+    console.log(myparams)
+    return this._http.get<Product[]>(url, options)
+    .catch((e: any) => Observable.throw(this.errorHandler(e)));
   }
 }

@@ -15,6 +15,10 @@ export class ProductListComponent implements OnInit {
   public products$: Observable<Product[]>;
   public allProducts$: Observable<Product[]>;
   public filteredProducts: Product[] = [];
+  public filterBySizes: string
+  private filterByColor: string;
+  private filterBySeason: string;
+  private filterByCategory: string;
 
   productCount: number;
 
@@ -37,15 +41,36 @@ export class ProductListComponent implements OnInit {
     this.getProducts();
     this._searchService.sizeFilterClickedEvent
     .subscribe((data: string) => {
-      if(data.length > 0){
-        let b = data.split(',').map(function(item) {
-          return parseInt(item, 10);
-        });
-        this.filterProducts(b)
-      }else{
-        this.products$ = this.allProducts$
-      }
+      this.filterBySizes = data
     });
+    this._searchService.showResultsClickEvent
+    .subscribe(() => {
+      this.products$ = this._dataService.filterProducts(this.filterBySizes, this.filterByColor, this.filterBySeason, this.filterByCategory)
+    });
+    this._searchService.colorFilterClickedEvent
+    .subscribe((data: string) => {
+      this.filterByColor = data
+    });
+    this._searchService.seasonFilterClickedEvent
+    .subscribe((data: string) => {
+      this.filterBySeason = data
+    });
+    this._searchService.categoryFilterClickedEvent
+    .subscribe((data: string) => {
+      this.filterByCategory = data
+    });
+
+  }
+
+  startFiltering(data){
+    if(data.length > 0){
+      let b = data.split(',').map(function(item) {
+        return parseInt(item, 10);
+      });
+      this.filterProducts(b)
+    }else{
+      this.products$ = this.allProducts$
+    }
   }
 
 

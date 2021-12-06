@@ -25,9 +25,6 @@ export class ContentComponent implements OnInit {
   ){}
 
   ngOnInit(){
-    this._script.load('flickity').then(data => {
-      console.log('script loaded ', data);
-    }).catch(error => console.log(error));
     this.getProducts();
     console.log(this.products$)
   }
