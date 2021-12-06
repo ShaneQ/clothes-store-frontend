@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {ProductService} from "../product.service";
 import {SearchProductsService} from "../search-products.service";
 
 @Component({
@@ -11,47 +10,48 @@ import {SearchProductsService} from "../search-products.service";
 export class ShopFilterComponent implements OnInit {
   searchForm: FormGroup
   sizes: Array<any> = [
-    { name: 'XS', value: '2' },
-    { name: 'S', value: '3' },
-    { name: 'M', value: '4' },
-    { name: 'L', value: '5' },
-    { name: 'XL', value: '6' },
-    { name: 'One Size', value: '1' }
+    {name: 'XS', value: '2'},
+    {name: 'S', value: '3'},
+    {name: 'M', value: '4'},
+    {name: 'L', value: '5'},
+    {name: 'XL', value: '6'},
+    {name: 'One Size', value: '1'}
   ];
   seasons: Array<any> = [
-    { name: 'Winter', value: 1 },
-    { name: 'Summer', value: 2 },
-    { name: 'Spring & Fall', value: 3 }
+    {name: 'Winter', value: 1},
+    {name: 'Summer', value: 2},
+    {name: 'Spring & Fall', value: 3}
   ];
   colors: Array<any> = [
-    { name: 'black', value: 1, code: 'something'},
-    { name: 'white', value: 2 },
-    { name: 'grey', value: 3 },
-    { name: 'cream', value: 4 },
-    { name: 'brown', value: 5 },
-    { name: 'red', value: 6 },
-    { name: 'orange', value: 7 },
-    { name: 'yellow', value: 8 },
-    { name: 'green', value: 9 },
-    { name: 'blue', value: 10 },
-    { name: 'purple', value: 11 },
-    { name: 'pink', value: 12 },
-    { name: 'gold', value: 13},
-    { name: 'silver', value: 14 },
-    { name: 'print', value: 15 }
+    {name: 'black', value: 1, code: 'something'},
+    {name: 'white', value: 2},
+    {name: 'grey', value: 3},
+    {name: 'cream', value: 4},
+    {name: 'brown', value: 5},
+    {name: 'red', value: 6},
+    {name: 'orange', value: 7},
+    {name: 'yellow', value: 8},
+    {name: 'green', value: 9},
+    {name: 'blue', value: 10},
+    {name: 'purple', value: 11},
+    {name: 'pink', value: 12},
+    {name: 'gold', value: 13},
+    {name: 'silver', value: 14},
+    {name: 'print', value: 15}
 
   ];
   categories: Array<any> = [
-    { name: 'Dresses', value: 1 },
-    { name: 'Tops', value: 2 },
-    { name: 'Pants', value: 3 },
-    { name: 'Skirts', value: 4 },
-    { name: 'Jumpsuits & Rompers', value: 5 },
-    { name: 'Jackets & Coats', value: 6 },
-    { name: 'Bags', value: 7 }
+    {name: 'Dresses', value: 1},
+    {name: 'Tops', value: 2},
+    {name: 'Pants', value: 3},
+    {name: 'Skirts', value: 4},
+    {name: 'Jumpsuits & Rompers', value: 5},
+    {name: 'Jackets & Coats', value: 6},
+    {name: 'Bags', value: 7}
   ];
 
-  constructor(private fb: FormBuilder, private _searchService: SearchProductsService) { }
+  constructor(private fb: FormBuilder, private _searchService: SearchProductsService) {
+  }
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
@@ -63,7 +63,7 @@ export class ShopFilterComponent implements OnInit {
     })
   }
 
-  filterProducts(){
+  filterProducts() {
     this._searchService.showResults();
   }
 
@@ -91,7 +91,35 @@ export class ShopFilterComponent implements OnInit {
     this._searchService.colorClicked(this.searchForm.get('colors').value.toString());
   }
 
-  updateArray(e, checkArray: FormArray){
+  clearColors() {
+    const checkArray: FormArray = this.searchForm.get('colors') as FormArray;
+    checkArray.clear()
+    this._searchService.colorClicked('');
+    this._searchService.showResults();
+  }
+
+  clearCategorys() {
+    const checkArray: FormArray = this.searchForm.get('categories') as FormArray;
+    checkArray.clear()
+    this._searchService.categoryClicked('');
+    this._searchService.showResults();
+  }
+
+  clearSeasons() {
+    const checkArray: FormArray = this.searchForm.get('seasons') as FormArray;
+    checkArray.clear()
+    this._searchService.seasonClicked('');
+    this._searchService.showResults();
+  }
+
+  clearSizes() {
+    const checkArray: FormArray = this.searchForm.get('sizes') as FormArray;
+    checkArray.clear()
+    this._searchService.sizeClicked('');
+    this._searchService.showResults();
+  }
+
+  updateArray(e, checkArray: FormArray) {
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
     } else {
