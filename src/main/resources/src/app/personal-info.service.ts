@@ -10,12 +10,13 @@ import {UserInfo} from "./model/userInfo";
 })
 export class PersonalInfoService {
 
-  private privateUrl = environment.resourceUrl +'/personal';
+  private privateUrl = environment.resourceUrl +'private/personal';
+  private registrationUrl = environment.resourceUrl +"registration/personal"
 
   constructor(private _service: AppService) { }
 
   getKeycloakUserInfo():Observable<UserInfo>{
-    return this._service.getUserInfo(environment.resourceUrl+"/user/info")
+    return this._service.getUserInfo(environment.resourceUrl+"registration/user/info")
   }
 
   getPersonalInfo():Observable<PersonalInfo>{
@@ -23,7 +24,7 @@ export class PersonalInfoService {
   }
 
   createPersonalInfo(personalInfo: PersonalInfo) : Observable<any> {
-    return this._service.postPersonalInfoResource(personalInfo, this.privateUrl)
+    return this._service.postPersonalInfoResource(personalInfo, this.registrationUrl)
   }
   updatePersonalInfo(personalInfo: PersonalInfo) : Observable<any> {
     return this._service.putPersonalInfoResource(personalInfo, this.privateUrl+"/"+ personalInfo.id)

@@ -10,7 +10,7 @@ import {Product} from "./model/product";
 })
 export class BookingService {
 
-  private privateUrl = environment.resourceUrl +'/booking';
+  private privateUrl = environment.resourceUrl +'private/booking';
 
   constructor(private _service: AppService) { }
 

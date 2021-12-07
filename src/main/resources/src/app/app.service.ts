@@ -52,12 +52,12 @@ export class AppService {
 
   getProductsResource(resourceUrl): Observable<Product[]> {
     let headers: HttpHeaders;
-    headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-      Authorization: 'Bearer ' + Cookie.get('access_token')
-    });
+    /*    headers = new HttpHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+          Authorization: 'Bearer ' + Cookie.get('access_token')
+        });*/
     return this._http.get<Product[]>(resourceUrl, {headers})
-    .catch((e: any) => Observable.throw(this.errorHandler(e)));
   }
 
   getProductResource(resourceUrl): Observable<Product> {
@@ -152,10 +152,9 @@ export class AppService {
   getFilteredProductResource(url: string, myparams: HttpParams): Observable<Product[]> {
     let headers: HttpHeaders;
     headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-      Authorization: 'Bearer ' + Cookie.get('access_token')
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'
     });
-    const options = { params: myparams, headers: headers };
+    const options = {params: myparams, headers: headers};
     console.log(myparams)
     return this._http.get<Product[]>(url, options)
     .catch((e: any) => Observable.throw(this.errorHandler(e)));

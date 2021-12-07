@@ -10,13 +10,12 @@ import {HttpParams} from "@angular/common/http";
 })
 export class ProductService {
 
-  private publicUrl = environment.publicResourceUrl +'/product';
-  private privateUrl = environment.resourceUrl +'/product';
+  private privateUrl = environment.resourceUrl +'public/product';
 
   constructor(private _service: AppService) { }
 
   loadProducts(): Observable<Product[]>{
-    return this._service.getProductsResource(this.publicUrl);
+    return this._service.getProductsResource(this.privateUrl);
 
   }
 
