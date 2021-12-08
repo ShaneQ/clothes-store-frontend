@@ -2,16 +2,15 @@ import {NgModule} from '@angular/core';
 import {BaseComponent} from './base/base.component';
 import {RouterModule, Routes} from '@angular/router';
 import {LandingComponent} from './pre-login/landing/landing.component';
-import {ProductDetailsComponent} from './product-details/product-details.component';
+import {ProductDetailsComponent} from './product/product-details/product-details.component';
 import {ShopComponent} from './shop/shop.component';
 import {CanAuthenticationGuard} from './app-auth.guard';
-import {ProfileComponent} from './profile/profile.component';
 import {ContentComponent} from "./pre-login/content/content.component";
-import {MyAccountBaseComponent} from "./my-account-base/my-account-base.component";
-import {MyAccountOrdersComponent} from "./my-account-orders/my-account-orders.component";
-import {MyAccountPersonalInfoComponent} from "./my-account-personal-info/my-account-personal-info.component";
+import {MyAccountBaseComponent} from "./my-account/my-account-base/my-account-base.component";
+import {MyAccountOrdersComponent} from "./my-account/my-account-orders/my-account-orders.component";
+import {MyAccountPersonalInfoComponent} from "./my-account/my-account-personal-info/my-account-personal-info.component";
 import {RegistrationComponent} from "./registration/registration.component";
-import {MyAccountMembershipComponent} from "./my-account-membership/my-account-membership.component";
+import {MyAccountMembershipComponent} from "./my-account/my-account-membership/my-account-membership.component";
 
 const routes: Routes = [
   { path: '', component: LandingComponent,
@@ -51,10 +50,6 @@ const routes: Routes = [
       {
         path: 'shop',
         component: ShopComponent,
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
       },
       {
         path: 'product/:productId',
