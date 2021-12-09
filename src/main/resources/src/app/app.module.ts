@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { FooterComponent } from './footer/footer.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
-import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarLandingComponent } from './pre-login/navbar-landing/navbar-landing.component';
 import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.component';
@@ -56,7 +55,6 @@ import {HeadComponent} from "./partials/head/head.component";
     ProductDetailsComponent,
     FooterComponent,
     NoPageFoundComponent,
-    HeaderComponent,
     NavbarComponent,
     HeadComponent,
     NavbarLandingComponent,

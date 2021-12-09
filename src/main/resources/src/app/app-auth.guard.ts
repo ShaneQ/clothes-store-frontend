@@ -3,12 +3,13 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
 import * as jwt_decode from 'jwt-decode';
 import {environment} from "../environments/environment";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CanAuthenticationGuard extends KeycloakAuthGuard implements CanActivate {
-  constructor(protected router: Router, protected keycloakAngular: KeycloakService) {
+  constructor(protected router: Router, protected keycloakAngular: KeycloakService, private _authService: AuthService) {
     super(router, keycloakAngular);
   }
 
@@ -17,13 +18,15 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard implements CanActi
   isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     let location = window.location.href;
     if (location === this.baseUrl){
-      location = this.baseUrl+ '/base/home';
+      location = this.baseUrl+"/account";
     }
     return new Promise((resolve, reject) => {
       if (!this.authenticated) {
         this.keycloakAngular.login({scope: 'scc_user', redirectUri: location})
           .catch(e => console.error(e));
         return reject(false);
+      }else{
+        this._authService.setLogin()
       }
       console.log(this.roles)
       const requiredRoles: string[] = route.data.roles;
@@ -45,7 +48,7 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard implements CanActi
   }
 
   logout(){
-    this.keycloakAngular.logout(environment.baseUrl);
+    this._authService.logout(environment.baseUrl)
     this.router.navigate(['/'], {
       queryParams: {
         userMissingPrivilege: true

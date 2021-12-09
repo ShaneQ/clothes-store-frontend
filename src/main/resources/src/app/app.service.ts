@@ -10,6 +10,7 @@ import {environment} from "../environments/environment";
 import {BookingRequest} from "./model/bookingRequest";
 import {PersonalInfo} from "./model/personalInfo";
 import {UserInfo} from "./model/userInfo";
+import {AuthService} from "./auth.service";
 
 export class Foo {
   constructor(
@@ -24,7 +25,7 @@ export class AppService {
 
   constructor(
     private _http: HttpClient,
-    private _router: Router) {
+    private _router: Router, private _authService : AuthService) {
   }
 
   getResource(resourceUrl): Observable<any> {
@@ -77,11 +78,7 @@ export class AppService {
 
   logout(): void {
     Cookie.delete('access_token');
-    this.redirectToLogin();
-  }
-
-  redirectToLogin(): void {
-    window.location.href = this.baseUri;
+    this._authService.logout(this.baseUri)
   }
 
   getBookingsResource(resourceUrl: string) {

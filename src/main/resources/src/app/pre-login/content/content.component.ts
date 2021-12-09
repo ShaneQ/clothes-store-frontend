@@ -26,7 +26,6 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(){
     this.getProducts();
-    console.log(this.products$)
   }
   getProducts() {
     this.products$ = this._dataService.loadProducts()

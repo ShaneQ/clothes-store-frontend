@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
-import {BaseComponent} from './base/base.component';
 import {RouterModule, Routes} from '@angular/router';
-import {LandingComponent} from './pre-login/landing/landing.component';
 import {ProductDetailsComponent} from './product/product-details/product-details.component';
 import {ShopComponent} from './shop/shop.component';
 import {CanAuthenticationGuard} from './app-auth.guard';
@@ -13,78 +11,55 @@ import {RegistrationComponent} from "./registration/registration.component";
 import {MyAccountMembershipComponent} from "./my-account/my-account-membership/my-account-membership.component";
 
 const routes: Routes = [
-  { path: '', component: LandingComponent,
-  children:[
-    {
-      path: '',
-      component: ContentComponent,
-    },
-    {
-      path: 'shop',
-      component: ShopComponent,
-      pathMatch: 'full'
-    },
-    {
-      path: 'product/:productId',
-      component: ProductDetailsComponent,
-    },
-    {
-      path: 'registration-part-2',
-      component: RegistrationComponent
-    },
-  ]},
+  {
+    path: '',
+    component: ContentComponent,
+  },
+  {
+    path: 'registration-part-2',
+    component: RegistrationComponent
+  },
+  {
+    path: 'shop',
+    component: ShopComponent,
+  },
+  {
+    path: 'product/:productId',
+    component: ProductDetailsComponent,
+  },
 
-  { path: 'base', component: BaseComponent,
+  {
+    path: 'account',
+    component: MyAccountBaseComponent,
     canActivate: [CanAuthenticationGuard],
-    data: { roles: ['scc_user_role']},
+    data: {roles: ['scc_user_role']},
     children: [
       {
         path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'},
+        redirectTo: 'orders',
+        pathMatch: 'full'
+      },
 
       {
-        path: 'home',
-        component: ContentComponent,
+        path: 'orders',
+        component: MyAccountOrdersComponent,
       },
       {
-        path: 'shop',
-        component: ShopComponent,
+        path: 'personal',
+        component: MyAccountPersonalInfoComponent,
       },
       {
-        path: 'product/:productId',
-        component: ProductDetailsComponent,
-      },
-      {
-        path: 'account',
-        component: MyAccountBaseComponent,
-        children: [
-          {
-            path: '',
-            redirectTo: 'orders',
-            pathMatch: 'full'},
-
-          {
-            path: 'orders',
-            component: MyAccountOrdersComponent,
-          },
-          {
-            path: 'personal',
-            component: MyAccountPersonalInfoComponent,
-          },
-          {
-            path: 'membership',
-            component: MyAccountMembershipComponent,
-          }
-      ]
-      },
-    ]}
-    ];
-
+        path: 'membership',
+        component: MyAccountMembershipComponent,
+      }
+    ]
+  }
+];
 @NgModule({
   declarations: [],
   imports: [RouterModule.forRoot(routes as Routes)],
   exports: [],
   providers: [CanAuthenticationGuard]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

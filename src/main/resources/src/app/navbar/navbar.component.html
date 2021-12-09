@@ -16,13 +16,13 @@
       <!-- Nav -->
       <ul class="navbar-nav ml-xl-auto">
         <li class="nav-item">
-          <a class="nav-link " routerLink="/base/home/" data-toggle="smooth-scroll">Home</a>
+          <a class="nav-link " routerLink="/" data-toggle="smooth-scroll">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/base/shop" routerLinkActive="active" href="#">Shop</a>
+          <a class="nav-link" routerLink="/shop" routerLinkActive="active" href="#">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/base/home/" fragment="howItWorks" data-toggle="smooth-scroll">How it Works</a>
+          <a class="nav-link" routerLink="/" fragment="howItWorks" data-toggle="smooth-scroll">How it Works</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#pricing" data-toggle="smooth-scroll">FAQs</a>
@@ -30,12 +30,22 @@
         <li class="nav-item">
           <a class="nav-link" href="#contact" data-toggle="smooth-scroll">Contact</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/base/account" routerLinkActive="active" >My Account</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="logout()">Logout</a>
-        </li>
+        <div *ngIf="isLoggedIn && !isRegistrationPage">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/account" routerLinkActive="active" >My Account</a>
+          </li>
+        </div>
+        <div *ngIf="isLoggedIn">
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
+        </div>
+        <div *ngIf="!isRegistrationPage && !isLoggedIn">
+          <li class="nav-item">
+            <a class="nav-link" (click)="login()"  >Login</a>
+          </li>
+        </div>
+
       </ul>
 
     </div>
