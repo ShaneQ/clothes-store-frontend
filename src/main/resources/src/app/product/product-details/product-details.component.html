@@ -186,9 +186,16 @@
                     <div class="col-6 ">
 
                       <!-- Submit -->
-                      <button type="submit"  class="btn btn-block btn-dark mb-2"  [disabled]="this.isMemberInfoBtnVis" data-toggle="modal" href="#modalMemberSlowDown" >
-                        Book it <i class="fe fe-shopping-cart ml-2"></i>
-                      </button>
+                      <div *ngIf="isLoggedIn">
+                        <button type="submit"  class="btn btn-block btn-dark mb-2"  [disabled]="this.isMemberInfoBtnVis" data-toggle="modal" href="#modalMemberSlowDown" >
+                          Book it <i class="fe fe-shopping-cart ml-2"></i>
+                        </button>
+                      </div>
+                      <div *ngIf="!isLoggedIn">
+                        <button type="button"  class="btn btn-block btn-dark mb-2"  data-toggle="modal" (click)="register()" >
+                          Sign Up
+                        </button>
+                      </div>
 
 
                     </div>

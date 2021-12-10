@@ -7,14 +7,12 @@ import {ProductListComponent} from './product/product-list/product-list.componen
 import {ProductCardComponent} from './product/product-card/product-card.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
-import { LandingComponent } from './pre-login/landing/landing.component';
 import { BaseComponent } from './base/base.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { FooterComponent } from './footer/footer.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NavbarLandingComponent } from './pre-login/navbar-landing/navbar-landing.component';
 import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.component';
 import { ShopLoadMoreComponent } from './shop/shop-load-more/shop-load-more.component';
 import { ShopComponent } from './shop/shop.component';
@@ -32,7 +30,7 @@ import { ProductCarouselComponent } from './product/product-carousel/product-car
 import {NgxGalleryModule} from "@kolkov/ngx-gallery";
 import {initializeKeycloak} from "./init/keycloak-init.factory";
 import {CarouselModule} from "ngx-bootstrap/carousel";
-import { ContentComponent } from './pre-login/content/content.component';
+import { ContentComponent } from './content/content.component';
 import { MyAccountOrderComponent } from './my-account/my-account-order/my-account-order.component';
 import { MyAccountBaseComponent } from './my-account/my-account-base/my-account-base.component';
 import { MyAccountOrdersComponent } from './my-account/my-account-orders/my-account-orders.component';
@@ -50,14 +48,12 @@ import {HeadComponent} from "./partials/head/head.component";
     ProductListComponent,
     ProductCardComponent,
     HomeComponent,
-    LandingComponent,
     BaseComponent,
     ProductDetailsComponent,
     FooterComponent,
     NoPageFoundComponent,
     NavbarComponent,
     HeadComponent,
-    NavbarLandingComponent,
     ShopCategoriesComponent,
     ShopLoadMoreComponent,
     ShopComponent,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {KeycloakService} from "keycloak-angular";
 import {NavbarService} from "../navbar.service";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +12,7 @@ export class RegistrationComponent implements OnInit {
 
   public isRegistered =false
 
-  constructor(private _keycloak: KeycloakService, private _navBarService: NavbarService) { }
+  constructor(private _keycloak: KeycloakService, private _navBarService: NavbarService, private _authService: AuthService) { }
 
   ngOnInit(): void {
     this._navBarService.navbarEvent.next("REGISTRATION")
@@ -23,7 +24,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   logout() {
-    console.log('Logged Out');
-    this._keycloak.logout(environment.baseUrl);
+    this._authService.logout(environment.baseUrl)
   }
 }

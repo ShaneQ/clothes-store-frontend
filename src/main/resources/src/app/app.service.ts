@@ -11,6 +11,7 @@ import {BookingRequest} from "./model/bookingRequest";
 import {PersonalInfo} from "./model/personalInfo";
 import {UserInfo} from "./model/userInfo";
 import {AuthService} from "./auth.service";
+import {throwError} from "rxjs";
 
 export class Foo {
   constructor(
@@ -65,7 +66,6 @@ export class AppService {
     let headers: HttpHeaders;
     headers = new HttpHeaders({
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-      Authorization: 'Bearer ' + Cookie.get('access_token')
     });
     return this._http.get<Product>(resourceUrl, {headers})
     .catch((e: any) => Observable.throw(this.errorHandler(e)));
@@ -135,9 +135,22 @@ export class AppService {
 
   }
 
+  hasUserRegistered(url: string): Observable<any> {
+    let headers: HttpHeaders;
+    headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      Authorization: 'Bearer ' + Cookie.get('access_token')
+    });
+    return this._http.get<any>(url, {headers})
+    .catch((e: any) => throwError(e));
+
+
+  }
+
   errorHandler(error: any): void {
     if (error.status === 0) {
-      this.logout()
+      console.log("SHOULD I LOG OUT");
+      //this.logout()
     } else if (error.status === 404) {
 
     } else {

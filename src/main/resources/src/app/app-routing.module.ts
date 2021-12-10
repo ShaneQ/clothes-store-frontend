@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ProductDetailsComponent} from './product/product-details/product-details.component';
 import {ShopComponent} from './shop/shop.component';
 import {CanAuthenticationGuard} from './app-auth.guard';
-import {ContentComponent} from "./pre-login/content/content.component";
+import {ContentComponent} from "./content/content.component";
 import {MyAccountBaseComponent} from "./my-account/my-account-base/my-account-base.component";
 import {MyAccountOrdersComponent} from "./my-account/my-account-orders/my-account-orders.component";
 import {MyAccountPersonalInfoComponent} from "./my-account/my-account-personal-info/my-account-personal-info.component";

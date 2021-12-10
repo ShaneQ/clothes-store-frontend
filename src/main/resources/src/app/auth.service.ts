@@ -43,4 +43,8 @@ export class AuthService {
     this._keycloak.login({scope: 'scc_user', redirectUri: location})
     .catch(e => console.error(e));
   }
+
+  register() {
+    this._keycloak.register()
+  }
 }

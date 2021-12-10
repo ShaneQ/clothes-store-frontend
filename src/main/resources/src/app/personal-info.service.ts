@@ -29,4 +29,9 @@ export class PersonalInfoService {
   updatePersonalInfo(personalInfo: PersonalInfo) : Observable<any> {
     return this._service.putPersonalInfoResource(personalInfo, this.privateUrl+"/"+ personalInfo.id)
   }
+
+  hasUserRegistered() {
+    return this._service.hasUserRegistered(environment.resourceUrl+"registration/personal/exists")
+
+  }
 }

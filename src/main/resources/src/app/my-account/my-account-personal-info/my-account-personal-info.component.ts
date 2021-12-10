@@ -5,6 +5,9 @@ import {PersonalInfo} from "../../model/personalInfo";
 import {Observable} from "rxjs";
 import {NgxSpinnerService} from "ngx-spinner";
 import {UserInfo} from "../../model/userInfo";
+import {HttpErrorResponse} from "@angular/common/http";
+import {AuthService} from "../../auth.service";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-my-account-personal-info',
@@ -18,14 +21,13 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   public maxDate: Date
   public submitted: boolean
   public saved: boolean;
-  public keycloakInfo: UserInfo
   @Input()
   public isRegistrationPage: boolean
   @Output('registrationSuccessful')
   public registrationSuccessful = new EventEmitter<boolean>();
   public created: boolean
 
-  constructor(private fb: FormBuilder, private _app: PersonalInfoService, private spinner: NgxSpinnerService) {
+  constructor(private fb: FormBuilder, private _app: PersonalInfoService, private spinner: NgxSpinnerService, private _authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -34,15 +36,31 @@ export class MyAccountPersonalInfoComponent implements OnInit {
     this.maxDate = new Date("January 1, 2000 01:15:00");
     this.submitted = false
     this.saved = false
-    this.personalInfo$ = this._app.getPersonalInfo()
+    if (!this.isRegistrationPage) {
+      this.personalInfo$ = this._app.getPersonalInfo()
+      this.personalInfo$.subscribe(data => this.handleGetSuccess(data))
+    } else {
+      this._app.hasUserRegistered().subscribe(() => this.registrationSuccessful.emit(true), err => this.onError(err))
+    }
     this.initializeEmptyForm(null)
-    this.personalInfo$.subscribe(data => this.handleGetSuccess(data), error => this.handleError(error))
+  }
+
+  onError(err: HttpErrorResponse) {
+    if (err.status === 401) {
+      this._authService.logout(environment.baseUrl)
+    } else if (err.status === 404) {
+      this._app.getKeycloakUserInfo().subscribe(data => this.initializeEmptyForm(data))
+      setTimeout(() => {
+        /** spinner ends after 5 seconds */
+        this.spinner.hide();
+      }, 2000);
+    }
   }
 
 
   initializeEmptyForm(keycloakInfo: UserInfo) {
-    if(keycloakInfo)
-    this.created = false
+    if (keycloakInfo)
+      this.created = false
     this.personalInfoForm = this.fb.group({
       id: [],
       firstName: [keycloakInfo?.firstName, [Validators.required]],
@@ -110,18 +128,6 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   onReset() {
     this.submitted = false;
     this.personalInfoForm.reset();
-  }
-
-  private handleError(error: any) {
-    if (error.status = 404) {
-      this._app.getKeycloakUserInfo().subscribe(data => this.initializeEmptyForm(data))
-
-      setTimeout(() => {
-        /** spinner ends after 5 seconds */
-        this.spinner.hide();
-      }, 2000);
-
-    }
   }
 
   private handleGetSuccess(data: PersonalInfo) {

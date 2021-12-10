@@ -7,13 +7,14 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {BookingSummaryComponent} from '../../modal/booking-summary/booking-summary.component';
 import {BookingRequest} from '../../model/bookingRequest';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from "../../auth.service";
 
 @Component({
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss'],
   providers: [ScriptService, ProductService]
 })
-export class ProductDetailsComponent implements OnInit{
+export class ProductDetailsComponent implements OnInit {
   public id;
   public product: Product;
   public productOccasions: string;
@@ -25,6 +26,7 @@ export class ProductDetailsComponent implements OnInit{
   public isMemberInfoBtnVis: boolean;
   public remainingBookings: number;
   public submitted = false;
+  public isLoggedIn= false;
 
   productCategories = []
   colors = []
@@ -36,7 +38,8 @@ export class ProductDetailsComponent implements OnInit{
     private _scriptLoader: ScriptService,
     private _app: ProductService,
     private _modalService: NgbModal,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private _authService: AuthService) {
 
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -54,7 +57,7 @@ export class ProductDetailsComponent implements OnInit{
 
 
   async ngOnInit(): Promise<void> {
-
+    this._authService.getLoggedInStatus().subscribe(data => this.isLoggedIn = data)
     const productId = this._route.snapshot.paramMap.get('productId');
     this.product = await this._app.getProduct(productId).toPromise();
     this.remainingBookings = 0;
@@ -63,8 +66,8 @@ export class ProductDetailsComponent implements OnInit{
 
   }
 
-  onMembershipClick(setting){
-    if (!this.member){
+  onMembershipClick(setting) {
+    if (!this.member) {
       this.isMemberInfoBtnVis = setting;
     }
   }
@@ -110,6 +113,7 @@ export class ProductDetailsComponent implements OnInit{
       {name: 'Bags', id: '7'},
     ];
   }
+
   getSeasons() {
     return [
       {name: 'Winter', id: '1'},
@@ -118,6 +122,7 @@ export class ProductDetailsComponent implements OnInit{
       {name: 'Summer', id: '4'}
     ];
   }
+
   getColors() {
     return [
       {name: 'black', id: 1},
@@ -137,5 +142,9 @@ export class ProductDetailsComponent implements OnInit{
       {name: 'print', id: 15},
 
     ];
+  }
+
+  register() {
+    this._authService.register()
   }
 }
