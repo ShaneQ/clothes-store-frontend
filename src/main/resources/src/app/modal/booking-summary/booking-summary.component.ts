@@ -19,7 +19,7 @@ export class BookingSummaryComponent {
   book(){
     return this._dataService.postBooking(this.order).subscribe(() => {
       this.activeModal.dismiss();
-        this._router.navigate(['/base/account/orders']);
+        this._router.navigate(['/account/orders']);
       },
       err => {
         //status 0 means it cant connect to the backend
