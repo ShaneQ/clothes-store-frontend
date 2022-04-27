@@ -3,7 +3,6 @@ import {environment} from "../environments/environment";
 import {AppService} from "./app.service";
 import {BookingRequest} from "./model/bookingRequest";
 import {Observable} from "rxjs/Observable";
-import {Product} from "./model/product";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +10,7 @@ import {Product} from "./model/product";
 export class BookingService {
 
   private privateUrl = environment.resourceUrl +'private/booking';
+  private privateUrlBookings = environment.resourceUrl +'private/bookings';
 
   constructor(private _service: AppService) { }
 
@@ -19,8 +19,7 @@ export class BookingService {
   }
 
   getBookings(): Observable<BookingRequest[]>{
-    return this._service.getBookingsResource(this.privateUrl);
-
+    return this._service.getBookingsResource(this.privateUrlBookings);
   }
 
 }
