@@ -62,7 +62,7 @@
             <!-- Button -->
             <label>RETURN DATE:</label>
             <div class="btn btn-sm btn-block btn-outline-dark" href="account-order.html">
-              {{getEndDate()| date:'dd/MM/yyyy'}}
+              {{item.returnDate| date:'dd/MM/yyyy'}}
             </div>
 
           </div>
@@ -71,7 +71,7 @@
             <!-- Button -->
             <label>STATUS:</label>
             <div class="btn btn-sm btn-block btn-outline-dark" href="#!">
-              {{item.status}}
+              {{convertStatusToReadable(item.status)}}
             </div>
 
           </div>

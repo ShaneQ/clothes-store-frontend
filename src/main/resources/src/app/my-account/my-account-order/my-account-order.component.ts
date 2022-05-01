@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Product} from "../../model/product";
 import {BookingRequest} from "../../model/bookingRequest";
 
 @Component({
@@ -14,13 +13,22 @@ export class MyAccountOrderComponent implements OnInit {
   @Output('itemSelected')
   itemEmitted = new EventEmitter<BookingRequest>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
-  getEndDate(): number {
-    let number = this.item.startDate as unknown as number
-    return number +864000000
+  public convertStatusToReadable(str) {
+    return str.toLowerCase()
+    .replace(/(^|[^a-z0-9]+?)[a-z0-9]/ig, function (match) {
+      if (match.length === 1) {
+        // the 1st char
+        return match.toUpperCase();
+      }
+      // char after special char
+      return ' ' + match[1].toUpperCase()
+    });
   }
+
 }

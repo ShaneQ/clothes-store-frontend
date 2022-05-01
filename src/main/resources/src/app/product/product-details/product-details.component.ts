@@ -26,7 +26,7 @@ export class ProductDetailsComponent implements OnInit {
   public isMemberInfoBtnVis: boolean;
   public remainingBookings: number;
   public submitted = false;
-  public isLoggedIn= false;
+  public isLoggedIn = false;
 
   productCategories = []
   colors = []
@@ -78,8 +78,9 @@ export class ProductDetailsComponent implements OnInit {
       return;
     }
     this.order.productId = this.product.id
-    this.order.productSize = this.orderForm.value.size;
-    this.order.sizeName = this.sizes[this.orderForm.value.size].name
+    const size = this.product.sizes.filter(size => size.id == this.orderForm.value.size)[0]
+    this.order.productSize = size;
+    this.order.sizeName = this.sizes[size.id_size].name
     this.order.startDate = this.orderForm.value.orderDate;
     this.order.rentalType = this.orderForm.value.rental;
     this.order.collectionPlace = this.orderForm.value.dispatch;
