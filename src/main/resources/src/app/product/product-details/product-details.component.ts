@@ -21,16 +21,16 @@ export class ProductDetailsComponent implements OnInit {
   public member: boolean;
   public order: BookingRequest;
   public orderForm: FormGroup;
-  minDate: Date;
-  maxDate: Date;
+  public minDate: Date;
+  public maxDate: Date;
   public isMemberInfoBtnVis: boolean;
   public remainingBookings: number;
   public submitted = false;
   public isLoggedIn = false;
-
-  productCategories = []
-  colors = []
-  seasons = []
+  public hasActiveMembership = false;
+  public productCategories = []
+  public colors = []
+  public seasons = []
 
   constructor(
     private _router: Router,
@@ -58,6 +58,8 @@ export class ProductDetailsComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this._authService.getLoggedInStatus().subscribe(data => this.isLoggedIn = data)
+    this._authService.getMembershipStatus().subscribe(data => this.hasActiveMembership = data)
+
     const productId = this._route.snapshot.paramMap.get('productId');
     this.product = await this._app.getProduct(productId).toPromise();
     this.remainingBookings = 0;

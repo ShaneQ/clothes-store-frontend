@@ -186,10 +186,13 @@
                     <div class="col-6 ">
 
                       <!-- Submit -->
-                      <div *ngIf="isLoggedIn">
+                      <div *ngIf="hasActiveMembership">
                         <button type="submit"  class="btn btn-block btn-dark mb-2"  [disabled]="this.isMemberInfoBtnVis" data-toggle="modal" href="#modalMemberSlowDown" >
                           Book it <i class="fe fe-shopping-cart ml-2"></i>
                         </button>
+                      </div>
+                      <div *ngIf="!hasActiveMembership && isLoggedIn">
+                        <p>Please contact management if you wish to become an active member</p>
                       </div>
                       <div *ngIf="!isLoggedIn">
                         <button type="button"  class="btn btn-block btn-dark mb-2"  data-toggle="modal" (click)="register()" >

@@ -42,6 +42,10 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard implements CanActi
         if(hasSCCUSerRole == -1){
           this.router.navigate(['/registration-part-2'], {})
         }
+        let hasSCCMemberRole = this.roles.indexOf("scc_active_membership")
+        if(hasSCCMemberRole != -1){
+          this._authService.setActiveMembership()
+        }
         resolve(hasRequiredRole);
       }
     });
