@@ -21,6 +21,9 @@ export class RegistrationComponent implements OnInit {
   registered(event: boolean) {
     console.log("CAUGHT EMITTED EVENT")
     this.isRegistered = true
+    if(this.isRegistered){
+      this._authService.login()
+    }
   }
 
   logout() {

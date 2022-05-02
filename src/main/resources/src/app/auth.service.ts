@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   login() {
-    let location = this.baseUrl + "/account";
+    let location = this.baseUrl + "/browser";
 
     this._keycloak.login({scope: 'scc_user', redirectUri: location})
     .catch(e => console.error(e));

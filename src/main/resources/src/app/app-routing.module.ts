@@ -24,6 +24,12 @@ const routes: Routes = [
     component: ShopComponent,
   },
   {
+    path: 'browser',
+    canActivate: [CanAuthenticationGuard],
+    component: ShopComponent,
+    data: {roles: ['scc_user_role']}
+  },
+  {
     path: 'product/:productId',
     component: ProductDetailsComponent,
   },

@@ -50,7 +50,9 @@
           <div class="col-3">
 
             <!-- Image -->
-            <div class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url({{item.coverImg.url}});"></div>
+            <a target="_blank" href="{{item.coverImg.url}}">
+              <img src="{{item.coverImg.url}}" style="width:100px">
+            </a>
 
           </div>
         </div>
@@ -61,7 +63,7 @@
 
             <!-- Button -->
             <label>RETURN DATE:</label>
-            <div class="btn btn-sm btn-block btn-outline-dark" href="account-order.html">
+            <div class="btn btn-sm btn-block btn-outline-dark">
               {{item.returnDate| date:'dd/MM/yyyy'}}
             </div>
 
@@ -70,7 +72,7 @@
 
             <!-- Button -->
             <label>STATUS:</label>
-            <div class="btn btn-sm btn-block btn-outline-dark" href="#!">
+            <div class="btn btn-sm btn-block btn-outline-dark">
               {{convertStatusToReadable(item.status)}}
             </div>
 

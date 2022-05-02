@@ -1,20 +1,3 @@
-<div *ngIf="this.isRegistered">
-  <div class="container py-15 pr-10 pl-10">
-    <div class="pt-5">
-      <h5 class="text-center"> Your request has been sent sucessfully! </h5>
-      <p class="text-center">We will be in contact soon for payment details.
-        For any questions please reach us through 2ndclosetclub@gmail.com or +353 83 095 9559.</p>
-      <div class="container">
-        <div class="row">
-          <div class="col text-center">
-            <button class="btn btn-dark" (click)="logout()">Home</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div *ngIf="!this.isRegistered">
   <div class="container pr-10 pl-10 py-10">
   <app-my-account-personal-info [isRegistrationPage]="true"

@@ -75,6 +75,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true
     if (this.orderForm.invalid) {
       console.log('invalid');
       return;

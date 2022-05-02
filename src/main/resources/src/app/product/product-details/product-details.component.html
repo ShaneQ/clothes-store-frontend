@@ -1,4 +1,3 @@
-
 <div *ngIf="product" class="fix-overlap">
   <!-- PRODUCT -->
 
@@ -8,7 +7,8 @@
         <div class="col-12">
           <div class="row">
             <div class="col-12 col-md-6">
-              <app-product-carousel [imagesAgain]="product.images" [coverImage]="product.imgCover"></app-product-carousel>
+              <app-product-carousel [imagesAgain]="product.images"
+                                    [coverImage]="product.imgCover"></app-product-carousel>
 
               <!--
                             &lt;!&ndash; Card &ndash;&gt;
@@ -82,15 +82,15 @@
             </div>
             <div class="col-12 col-md-6 pl-lg-10">
 
-<!--              &lt;!&ndash; Header &ndash;&gt;
-              <div class="row mb-1">
-                <div class="col">
+              <!--              &lt;!&ndash; Header &ndash;&gt;
+                            <div class="row mb-1">
+                              <div class="col">
 
-                  &lt;!&ndash; Preheading &ndash;&gt;
-                  <a class="text-muted" href="shop.html">{{product.category.name}}</a>
+                                &lt;!&ndash; Preheading &ndash;&gt;
+                                <a class="text-muted" href="shop.html">{{product.category.name}}</a>
 
-                </div>
-              </div>-->
+                              </div>
+                            </div>-->
 
               <!-- Heading -->
               <h3 class="mb-2">{{product.name}}</h3>
@@ -105,104 +105,100 @@
                   <label>Size:</label>
                   <!-- Radio -->
                   <div class="mb-2">
-                    <div *ngIf="submitted">
-                      <div>Size is required</div>
-                    </div>
-                    <div *ngFor="let size of product.sizes" class="custom-control custom-control-inline custom-control-size mb-2">
-                      <input type="radio"  name="size" formControlName="size"  class="custom-control-input form-control"  id="{{'sizeRadio'+size.id}}" value="{{size.id}}" checked data-toggle="form-caption">
-                      <label class="custom-control-label" for="{{'sizeRadio'+size.id}}">{{sizes[size.id_size.valueOf()].name}}</label>
+
+                    <div *ngFor="let size of product.sizes"
+                         class="custom-control custom-control-inline custom-control-size mb-2">
+                      <input type="radio" name="size" formControlName="size" class="custom-control-input form-control"
+                             id="{{'sizeRadio'+size.id}}" value="{{size.id}}" checked data-toggle="form-caption">
+                      <label class="custom-control-label"
+                             for="{{'sizeRadio'+size.id}}">{{sizes[size.id_size.valueOf()].name}}</label>
                     </div>
                   </div>
                 </div>
 
-                  <div class="container">
+                <div class="container">
 
-                    <div class="form-row">
-                      <div class="col-6">
-                        <div class=" theme-default">
-                          <div class="row ">
-                            <div class="form-group">
-                              <input
-                                formControlName="orderDate"
-                                type="text"
-                                placeholder="Pickup Date"
-                                class="form-control border-dark"
-                                bsDatepicker
-                                [bsConfig]="{ isAnimated: true, containerClass : 'theme-default'}"
-                                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
-                                [minDate]="minDate"
-                                [maxDate]="maxDate">
-                            </div>
+                  <div class="form-row">
+                    <div class="col-6">
+                      <div class=" theme-default">
+                        <div class="row ">
+                          <div class="form-group">
+                            <input
+                              formControlName="orderDate"
+                              type="text"
+                              placeholder="Pickup Date"
+                              class="form-control border-dark text-body"
+                              bsDatepicker
+                              [bsConfig]="{ isAnimated: true, containerClass : 'theme-default', dateInputFormat: 'DD/MM/YYYY' }"
+                              [minDate]="minDate"
+                              [maxDate]="maxDate">
                           </div>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="btn-group dropdown">
-
-                          <!-- Toggle -->
-                          <button class="btn btn-sm btn-block btn-outline-border border-dark dropdown-toggle" data-toggle="dropdown"
-                                  data-display="static">
-                            Collection Place
-                          </button>
-
-                          <!-- Menu -->
-                          <div class="dropdown-menu">
-                            <div class="card">
-                              <div class="card-body">
-
-                                <!-- Form group -->
-                                <div class="form-group-overflow">
-                                  <div class="custom-control custom-radio mb-3">
-                                    <input class="custom-control-input" formControlName="dispatch" id="categoryOne" type="radio" value="Smithfield 8am to 9am">
-                                    <label class="custom-control-label" for="categoryOne">Smithfield 8am to 9am</label>
-                                  </div>
-                                  <div class="custom-control custom-radio mb-3">
-                                    <input class="custom-control-input" formControlName="dispatch" id="categoryTwo"  type="radio" value="Smithfield 1pm to 2pm">
-                                    <label class="custom-control-label" for="categoryTwo">Smithfield 1pm to 2pm</label>
-                                  </div>
-                                  <div class="custom-control custom-radio mb-3">
-                                    <input class="custom-control-input" formControlName="dispatch" id="categoryThree" type="radio" value="Smithfield 6pm to 7pm">
-                                    <label class="custom-control-label" for="categoryThree">Smithfield 6pm to 7pm</label>
-                                  </div>
-                                </div>
-
-                              </div>
-
-                            </div>
-                          </div>
-
                         </div>
                       </div>
                     </div>
+                    <div class="col-6">
+                      <div class="form-group ">
+                        <label class="sr-only" for="paymentMonth">Month</label>
+                        <select class="custom-select border-dark text-body" id="paymentMonth" required
+                                formControlName="dispatch">
+                          <option selected disabled value="">Collection Time</option>
+                          <option>8am to 9am</option>
+                          <option>1pm to 2pm</option>
+                          <option>6pm to 7pm</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="submitted && orderForm.invalid" class="mb-3">
+                  <div *ngIf="orderForm.controls['orderDate'].invalid">
+                    <div class="col-6 form-row ">
+                      Please select pickup date
+                    </div>
+                  </div>
+                  <div *ngIf="orderForm.controls['dispatch'].invalid">
+                    <div class="col-6 form-row ">
+                      Please select a pickup time
+                    </div>
+                  </div>
+                  <div *ngIf="orderForm.controls['size'].invalid">
+                    <div class="col-6 form-row ">
+                      Please select a size
+                    </div>
                   </div>
 
-                  <div class="form-row mb-7">
-<!--                    <div class="col-12 col-lg-auto">
-                      &lt;!&ndash; Wishlist &ndash;&gt;
-                      <button class="btn btn-outline-dark btn-block mb-2" data-toggle="button">
-                        Wishlist <i class="fe fe-heart ml-2"></i>
+                </div>
+                <div class="form-row mb-7">
+                  <!--                    <div class="col-12 col-lg-auto">
+                                        &lt;!&ndash; Wishlist &ndash;&gt;
+                                        <button class="btn btn-outline-dark btn-block mb-2" data-toggle="button">
+                                          Wishlist <i class="fe fe-heart ml-2"></i>
+                                        </button>
+                                      </div>-->
+
+                  <div class="col-6 ">
+
+                    <!-- Submit -->
+                    <div *ngIf="hasActiveMembership">
+                      <button type="submit" class="btn btn-block btn-dark mb-2" [disabled]="this.isMemberInfoBtnVis"
+                              data-toggle="modal" href="#modalMemberSlowDown">
+                        Book it <i class="fe fe-shopping-cart ml-2"></i>
                       </button>
-                    </div>-->
-                    <div class="col-6 ">
-
-                      <!-- Submit -->
-                      <div *ngIf="hasActiveMembership">
-                        <button type="submit"  class="btn btn-block btn-dark mb-2"  [disabled]="this.isMemberInfoBtnVis" data-toggle="modal" href="#modalMemberSlowDown" >
-                          Book it <i class="fe fe-shopping-cart ml-2"></i>
-                        </button>
-                      </div>
-                      <div *ngIf="!hasActiveMembership && isLoggedIn">
-                        <p>Please contact management if you wish to become an active member</p>
-                      </div>
-                      <div *ngIf="!isLoggedIn">
-                        <button type="button"  class="btn btn-block btn-dark mb-2"  data-toggle="modal" (click)="register()" >
-                          Sign Up
-                        </button>
-                      </div>
-
-
                     </div>
+                    <div *ngIf="!hasActiveMembership && isLoggedIn">
+                      <p>Please contact management if you wish to become an active member</p>
+                    </div>
+                    <div *ngIf="!isLoggedIn">
+                      <button type="button" class="btn btn-block btn-danger mb-2" data-toggle="modal"
+                              (click)="register()">
+                        SIGN UP
+                      </button>
+                    </div>
+
+
                   </div>
+                </div>
               </form>
 
             </div>

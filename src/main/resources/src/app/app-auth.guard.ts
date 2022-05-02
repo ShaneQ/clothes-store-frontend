@@ -18,7 +18,7 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard implements CanActi
   isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     let location = window.location.href;
     if (location === this.baseUrl){
-      location = this.baseUrl+"/account";
+      location = this.baseUrl+"/browser";
     }
     return new Promise((resolve, reject) => {
       if (!this.authenticated) {
