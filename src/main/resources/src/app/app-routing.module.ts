@@ -29,6 +29,10 @@ const routes: Routes = [
     component: FaqComponent,
   },
   {
+    path: 'contact',
+    component: ContentComponent,
+  },
+  {
     path: 'browser',
     canActivate: [CanAuthenticationGuard],
     component: ShopComponent,
