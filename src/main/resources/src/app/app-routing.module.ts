@@ -10,6 +10,7 @@ import {MyAccountPersonalInfoComponent} from "./my-account/my-account-personal-i
 import {RegistrationComponent} from "./registration/registration.component";
 import {MyAccountMembershipComponent} from "./my-account/my-account-membership/my-account-membership.component";
 import {FaqComponent} from "./faq/faq.component";
+import {ContactComponent} from "./contact/contact.component";
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'contact',
-    component: ContentComponent,
+    component: ContactComponent,
   },
   {
     path: 'browser',
