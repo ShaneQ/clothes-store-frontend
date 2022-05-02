@@ -40,6 +40,7 @@ import {NgxSpinnerModule} from "ngx-spinner";
 import { RegistrationComponent } from './registration/registration.component';
 import { MyAccountMembershipComponent } from './my-account/my-account-membership/my-account-membership.component';
 import {HeadComponent} from "./partials/head/head.component";
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import {HeadComponent} from "./partials/head/head.component";
     MyAccountNavbarComponent,
     MyAccountPersonalInfoComponent,
     RegistrationComponent,
-    MyAccountMembershipComponent
+    MyAccountMembershipComponent,
+    FaqComponent
   ],
     imports: [
         BrowserModule,

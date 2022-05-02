@@ -9,6 +9,7 @@ import {MyAccountOrdersComponent} from "./my-account/my-account-orders/my-accoun
 import {MyAccountPersonalInfoComponent} from "./my-account/my-account-personal-info/my-account-personal-info.component";
 import {RegistrationComponent} from "./registration/registration.component";
 import {MyAccountMembershipComponent} from "./my-account/my-account-membership/my-account-membership.component";
+import {FaqComponent} from "./faq/faq.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'shop',
     component: ShopComponent,
+  },
+  {
+    path: 'faq',
+    component: FaqComponent,
   },
   {
     path: 'browser',
