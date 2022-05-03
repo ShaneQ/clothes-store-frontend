@@ -11,6 +11,7 @@ import {RegistrationComponent} from "./registration/registration.component";
 import {MyAccountMembershipComponent} from "./my-account/my-account-membership/my-account-membership.component";
 import {FaqComponent} from "./faq/faq.component";
 import {ContactComponent} from "./contact/contact.component";
+import {AboutComponent} from "./about/about.component";
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'shop',
     component: ShopComponent,
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
   },
   {
     path: 'faq',

@@ -42,7 +42,8 @@ import {MyAccountMembershipComponent} from './my-account/my-account-membership/m
 import {HeadComponent} from "./partials/head/head.component";
 import {FaqComponent} from './faq/faq.component';
 import {ContactComponent} from './contact/contact.component';
-import {GoogleMapsModule} from '@angular/google-maps'
+import {GoogleMapsModule} from '@angular/google-maps';
+import { AboutComponent } from './about/about.component'
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import {GoogleMapsModule} from '@angular/google-maps'
     RegistrationComponent,
     MyAccountMembershipComponent,
     FaqComponent,
-    ContactComponent
+    ContactComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
