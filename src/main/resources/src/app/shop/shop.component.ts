@@ -4,15 +4,14 @@ import {KeycloakService} from "keycloak-angular";
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss'],
-  providers:[KeycloakService]
+  styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
 
-  constructor(private _keycloak: KeycloakService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this._keycloak.isLoggedIn().then((data => console.log(data)))
+    console.log("SHOP PAGE ON INIT")
   }
 
 }

@@ -1,4 +1,5 @@
 import { KeycloakService} from "keycloak-angular";
+import {environment} from "../../environments/environment";
 
 export function initializeKeycloak(
   keycloak: KeycloakService
@@ -6,9 +7,16 @@ export function initializeKeycloak(
   return () =>
     keycloak.init({
       config: {
-        url: 'http://localhost:8083/auth',
+        url: environment.authUrl,
         realm: 'secondClosetClub',
         clientId: 'frontEnd'
+      },
+      initOptions: {
+        onLoad: 'check-sso',
+        enableLogging: true,
+        silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html',
+
       }
     });
 }

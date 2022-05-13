@@ -42,7 +42,7 @@
         </div>
         <div *ngIf="!isRegistrationPage && !isLoggedIn">
           <li class="nav-item">
-            <a class="nav-link" (click)="login()"  >Sign in</a>
+            <a class="nav-link" routerLink="/browser" routerLinkActive="active"  >Sign in</a>
           </li>
         </div>
 

@@ -1,72 +1,46 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot
+} from '@angular/router';
 import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
-import * as jwt_decode from 'jwt-decode';
-import {environment} from "../environments/environment";
 import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CanAuthenticationGuard extends KeycloakAuthGuard implements CanActivate {
-  constructor(protected router: Router, protected keycloakAngular: KeycloakService, private _authService: AuthService) {
-    super(router, keycloakAngular);
+export class CanAuthenticationGuard extends KeycloakAuthGuard {
+  constructor(
+    protected readonly router: Router,
+    protected readonly keycloak: KeycloakService,
+    protected readonly auth: AuthService
+  ) {
+    super(router, keycloak);
   }
 
-  private baseUrl = environment.baseUrl
-
-  isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    let location = window.location.href;
-    if (location === this.baseUrl){
-      location = this.baseUrl+"/browser";
+  public async isAccessAllowed(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ) {
+    // Force the user to log in if currently unauthenticated.
+    if (!this.authenticated) {
+      await this.keycloak.login({ scope:"scc_user",
+        redirectUri: window.location.origin + state.url
+      });
+    }else{
+      this.auth.setLogin()
     }
-    return new Promise((resolve, reject) => {
-      if (!this.authenticated) {
-        this.keycloakAngular.login({scope: 'scc_user', redirectUri: location})
-          .catch(e => console.error(e));
-        return reject(false);
-      }else{
-        this._authService.setLogin()
-      }
-      console.log(this.roles)
-      const requiredRoles: string[] = route.data.roles;
-      if (!requiredRoles || requiredRoles.length === 0) {
-        return resolve(true);
-      } else {
-        if (!this.roles || this.roles.length === 0) {
-          resolve(false);
-        }
-        let hasRequiredRole = requiredRoles.every(role => this.roles.indexOf(role) > -1)
-        let hasSCCUSerRole = this.roles.indexOf("scc_user_role")
-        console.log(hasSCCUSerRole)
-        if(hasSCCUSerRole == -1){
-          this.router.navigate(['/registration-part-2'], {})
-        }
-        let hasSCCMemberRole = this.roles.indexOf("scc_active_membership")
-        if(hasSCCMemberRole != -1){
-          this._authService.setActiveMembership()
-        }
-        resolve(hasRequiredRole);
-      }
-    });
-  }
 
-  logout(){
-    this._authService.logout(environment.baseUrl)
-    this.router.navigate(['/'], {
-      queryParams: {
-        userMissingPrivilege: true
-      }
-    });
-  }
+    // Get the roles required from the route.
+    const requiredRoles = route.data.roles;
 
-  getDecodedAccessToken(token: string): any {
-    try{
-      return jwt_decode(token);
+    // Allow the user to to proceed if no additional roles are required to access the route.
+    if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
+      return true;
     }
-    catch (Error){
-      return null;
-    }
-  }
 
+    // Allow the user to proceed if all the required roles are present.
+    return requiredRoles.every((role) => this.roles.includes(role));
+  }
 }

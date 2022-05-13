@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
     console.log("CAUGHT EMITTED EVENT")
     this.isRegistered = true
     if(this.isRegistered){
-      this._authService.login()
+      //this._authService.login()
     }
   }
 

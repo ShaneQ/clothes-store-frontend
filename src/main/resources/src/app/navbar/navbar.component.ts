@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
   }
 
   login() {
-    this._authService.login()
+    //this._authService.login()
   }
 
   sortEvents(data){
