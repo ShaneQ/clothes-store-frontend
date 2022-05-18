@@ -16,6 +16,8 @@ phases:
     commands:
       # - echo testing...
       # - echo building...
+      - pwd
+      - ls -ltr
       - ng build --prod
 artifacts:
   files:
