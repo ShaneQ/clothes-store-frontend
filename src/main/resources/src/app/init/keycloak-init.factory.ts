@@ -13,10 +13,7 @@ export function initializeKeycloak(
       },
       initOptions: {
         onLoad: 'check-sso',
-        enableLogging: true,
-        silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html',
-
+        enableLogging: true
       }
     });
 }

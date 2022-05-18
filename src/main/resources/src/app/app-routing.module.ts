@@ -16,7 +16,7 @@ import {AboutComponent} from "./about/about.component";
 const routes: Routes = [
   {
     path: '',
-    component: ContentComponent,
+    component: ContentComponent
   },
   {
     path: 'registration-part-2',

@@ -45,13 +45,5 @@ export class AuthService {
     this._keycloak.logout(redirectUri)
   }
 
-  login() {
-    let location = this.baseUrl + "/browser";
 
-    this._keycloak.login({scope: 'scc_user', redirectUri: location});
-  }
-
-  register() {
-    this._keycloak.register()
-  }
 }

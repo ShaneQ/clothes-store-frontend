@@ -8,6 +8,7 @@ import {UserInfo} from "../../model/userInfo";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AuthService} from "../../auth.service";
 import {environment} from "../../../environments/environment";
+import {AuthTwoService} from "../../../auth/service/auth-two.service";
 
 @Component({
   selector: 'app-my-account-personal-info',
@@ -27,7 +28,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   public registrationSuccessful = new EventEmitter<boolean>();
   public created: boolean
 
-  constructor(private fb: FormBuilder, private _app: PersonalInfoService, private spinner: NgxSpinnerService, private _authService: AuthService) {
+  constructor(private fb: FormBuilder, private _app: PersonalInfoService, private spinner: NgxSpinnerService, private _authService: AuthTwoService) {
   }
 
   ngOnInit(): void {
@@ -47,7 +48,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
 
   onError(err: HttpErrorResponse) {
     if (err.status === 401) {
-      this._authService.logout(environment.baseUrl)
+      this._authService.logout()
     } else if (err.status === 404) {
       this._app.getKeycloakUserInfo().subscribe(data => this.initializeEmptyForm(data))
       setTimeout(() => {

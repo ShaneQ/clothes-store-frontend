@@ -44,6 +44,7 @@ import {FaqComponent} from './faq/faq.component';
 import {ContactComponent} from './contact/contact.component';
 import {GoogleMapsModule} from '@angular/google-maps';
 import { AboutComponent } from './about/about.component'
+import {AuthModule} from "../auth-module/auth.module";
 
 @NgModule({
   declarations: [
@@ -93,16 +94,10 @@ import { AboutComponent } from './about/about.component'
     ReactiveFormsModule,
     CarouselModule,
     NgxSpinnerModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    AuthModule
   ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService],
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

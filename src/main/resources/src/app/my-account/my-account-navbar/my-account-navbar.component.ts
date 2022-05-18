@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {KeycloakService} from "keycloak-angular";
 import {AuthService} from "../../auth.service";
+import {AuthTwoService} from "../../../auth/service/auth-two.service";
 
 @Component({
   selector: 'app-my-account-navbar',
@@ -9,14 +10,14 @@ import {AuthService} from "../../auth.service";
 })
 export class MyAccountNavbarComponent implements OnInit {
 
-  constructor(private _authService: AuthService) { }
+  constructor(private _authService: AuthTwoService) { }
 
   ngOnInit(): void {
   }
 
   logout() {
     console.log('Logged Out');
-    this._authService.logout(environment.baseUrl);
+    this._authService.logout();
   }
 
 }
