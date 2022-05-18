@@ -29,14 +29,14 @@
 @import "footer";
 @import "rating";
 @import "brand";
-@import "line";
+@import "src/assets/scss/line";
 @import "collapse";
 @import "avatar";
 @import "rate";
 @import "review";
 
 // Vendor
-@import "vendors/flickity";
-@import "vendors/fancybox";
-@import "vendors/feather";
-@import "vendors/simplebar";
+@import "src/assets/scss/theme/vendors/flickity";
+@import "src/assets/scss/theme/vendors/fancybox";
+@import "src/assets/scss/theme/vendors/feather";
+@import "src/assets/scss/theme/vendors/simplebar";

@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+@import "~/assets/libs/flickity-fade/flickity-fade.css";
+*/
+
+@import "../node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css";
+@import "../node_modules/flickity/dist/flickity.min.css";
+@import "../node_modules/highlightjs/styles/vs2015.css";
+@import "../node_modules/simplebar/dist/simplebar.min.css";
+@import "./assets/fonts/feather/feather.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+
+
+/* Importing Bootstrap SCSS file. */
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
+@import '../node_modules/@fortawesome/fontawesome-free/scss/solid';
+@import '../node_modules/@fortawesome/fontawesome-free/scss/regular';
+@import '../node_modules/@fortawesome/fontawesome-free/scss/brands';
+

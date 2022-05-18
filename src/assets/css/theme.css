@@ -10932,22 +10932,22 @@ a {
 
 @font-face {
   font-family: "Jost";
-  src: url(../fonts/jost/Jost-400-Book.woff2) format("woff2"), url(../fonts/jost/Jost-400-Book.woff) format("woff"), url(../fonts/jost/Jost-400-Book.ttf) format("truetype"); }
+  src: url(src/assets/fonts/jost/Jost-400-Book.woff2) format("woff2"), url(src/assets/fonts/jost/Jost-400-Book.woff) format("woff"), url(src/assets/fonts/jost/Jost-400-Book.ttf) format("truetype"); }
 
 @font-face {
   font-family: "Jost";
   font-style: italic;
-  src: url(../fonts/jost/Jost-400-BookItalic.woff2) format("woff2"), url(../fonts/jost/Jost-400-BookItalic.woff) format("woff"), url(../fonts/jost/Jost-400-BookItalic.ttf) format("truetype"); }
+  src: url(src/assets/fonts/jost/Jost-400-BookItalic.woff2) format("woff2"), url(src/assets/fonts/jost/Jost-400-BookItalic.woff) format("woff"), url(src/assets/fonts/jost/Jost-400-BookItalic.ttf) format("truetype"); }
 
 @font-face {
   font-family: "Jost";
   font-weight: 500;
-  src: url(../fonts/jost/Jost-500-Medium.woff2) format("woff2"), url(../fonts/jost/Jost-500-Medium.woff) format("woff"), url(../fonts/jost/Jost-500-Medium.ttf) format("truetype"); }
+  src: url(src/assets/fonts/jost/Jost-500-Medium.woff2) format("woff2"), url(src/assets/fonts/jost/Jost-500-Medium.woff) format("woff"), url(src/assets/fonts/jost/Jost-500-Medium.ttf) format("truetype"); }
 
 @font-face {
   font-family: "Jost";
   font-weight: 600;
-  src: url(../fonts/jost/Jost-600-Semi.woff2) format("woff2"), url(../fonts/jost/Jost-600-Semi.woff) format("woff"), url(../fonts/jost/Jost-600-Semi.ttf) format("truetype"); }
+  src: url(src/assets/fonts/jost/Jost-600-Semi.woff2) format("woff2"), url(src/assets/fonts/jost/Jost-600-Semi.woff) format("woff"), url(src/assets/fonts/jost/Jost-600-Semi.ttf) format("truetype"); }
 
 @media (max-width: 767.98px) {
   h1, .h1 {
@@ -11074,7 +11074,7 @@ dl {
   background-clip: content-box !important; }
 
 .bg-pattern {
-  background-image: url(../img/patterns/pattern-1.svg) !important; }
+  background-image: url(src/assets/img/patterns/pattern-1.svg) !important; }
 
 .bg-white-90 {
   background-color: rgba(255, 255, 255, 0.9) !important; }
@@ -11917,7 +11917,7 @@ a.text-decoration-underline:hover, a.text-decoration-underline:focus {
     position: absolute;
     width: 0;
     height: 0;
-    background-image: url(../img/masks/avatar-status.svg), url(../img/masks/avatar-group.svg), url(../img/masks/avatar-group-hover.svg), url(../img/masks/avatar-group-hover-last.svg); }
+    background-image: url(src/assets/img/masks/avatar-status.svg), url(src/assets/img/masks/avatar-group.svg), url(src/assets/img/masks/avatar-group-hover.svg), url(src/assets/img/masks/avatar-group-hover-last.svg); }
 
 .avatar-img {
   width: 100%;
@@ -11946,8 +11946,8 @@ a.text-decoration-underline:hover, a.text-decoration-underline:focus {
 
 .avatar-online .avatar-img,
 .avatar-offline .avatar-img {
-  -webkit-mask-image: url(../img/masks/avatar-status.svg);
-          mask-image: url(../img/masks/avatar-status.svg);
+  -webkit-mask-image: url(src/assets/img/masks/avatar-status.svg);
+          mask-image: url(src/assets/img/masks/avatar-status.svg);
   -webkit-mask-size: 100% 100%;
           mask-size: 100% 100%; }
 
@@ -12020,8 +12020,8 @@ a.text-decoration-underline:hover, a.text-decoration-underline:focus {
   .avatar-group .avatar-xxl + .avatar-xxl {
     margin-left: -1.5625rem; }
   .avatar-group .avatar:not(:last-child) {
-    -webkit-mask-image: url(../img/masks/avatar-group.svg);
-            mask-image: url(../img/masks/avatar-group.svg);
+    -webkit-mask-image: url(src/assets/img/masks/avatar-group.svg);
+            mask-image: url(src/assets/img/masks/avatar-group.svg);
     -webkit-mask-size: 100% 100%;
             mask-size: 100% 100%; }
   .avatar-group .avatar:hover {
@@ -12029,13 +12029,13 @@ a.text-decoration-underline:hover, a.text-decoration-underline:focus {
             mask-image: none;
     z-index: 1; }
     .avatar-group .avatar:hover + .avatar {
-      -webkit-mask-image: url(../img/masks/avatar-group-hover.svg);
-              mask-image: url(../img/masks/avatar-group-hover.svg);
+      -webkit-mask-image: url(src/assets/img/masks/avatar-group-hover.svg);
+              mask-image: url(src/assets/img/masks/avatar-group-hover.svg);
       -webkit-mask-size: 100% 100%;
               mask-size: 100% 100%; }
       .avatar-group .avatar:hover + .avatar:last-child {
-        -webkit-mask-image: url(../img/masks/avatar-group-hover-last.svg);
-                mask-image: url(../img/masks/avatar-group-hover-last.svg); }
+        -webkit-mask-image: url(src/assets/img/masks/avatar-group-hover-last.svg);
+                mask-image: url(src/assets/img/masks/avatar-group-hover-last.svg); }
 
 .rate-item {
   color: #111;
