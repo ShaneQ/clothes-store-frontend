@@ -18,7 +18,8 @@ phases:
       # - echo building...
       - pwd
       - ls -ltr
-      - cd ./src
+      - cd ./src/main/resources/src
+      - pwd
       - ng build --prod
 artifacts:
   files:
