@@ -4,12 +4,12 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import {Product} from './model/product';
+import {Product} from '../model/product';
 import {Router} from '@angular/router';
-import {environment} from "../environments/environment";
-import {BookingRequest} from "./model/bookingRequest";
-import {PersonalInfo} from "./model/personalInfo";
-import {UserInfo} from "./model/userInfo";
+import {environment} from "../../environments/environment";
+import {BookingRequest} from "../model/bookingRequest";
+import {PersonalInfo} from "../model/personalInfo";
+import {UserInfo} from "../model/userInfo";
 import {AuthService} from "./auth.service";
 import {throwError} from "rxjs";
 

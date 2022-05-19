@@ -1,7 +1,7 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {KeycloakService} from "keycloak-angular";
 import {Observable, of} from "rxjs";
-import {environment} from "../environments/environment";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

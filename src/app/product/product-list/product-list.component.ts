@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AppService} from '../../app.service';
-import {ProductService} from '../../product.service';
+import {AppService} from '../../services/app.service';
+import {ProductService} from '../../services/product.service';
 import {Observable} from 'rxjs';
 import {Product} from '../../model/product';
-import {SearchProductsService} from "../../search-products.service";
+import {SearchProductsService} from "../../services/search-products.service";
 import {Size} from "../../model/size";
 
 @Component({

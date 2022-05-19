@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ScriptService} from '../../script.service';
-import {ProductService} from '../../product.service';
+import {ScriptService} from '../../services/script.service';
+import {ProductService} from '../../services/product.service';
 import {Product} from '../../model/product';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {BookingSummaryComponent} from '../../modal/booking-summary/booking-summary.component';
 import {BookingRequest} from '../../model/bookingRequest';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from "../../auth.service";
+import {AuthService} from "../../services/auth.service";
 import {KeycloakService} from "keycloak-angular";
-import {AuthTwoService} from "../../../auth/service/auth-two.service";
+import {AuthTwoService} from "../../module-auth/auth-two.service";
 
 @Component({
   templateUrl: './product-details.component.html',

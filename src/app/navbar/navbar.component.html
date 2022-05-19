@@ -1,4 +1,8 @@
-<nav class="navbar navbar-expand-xl navbar-light bg-white border-bottom">
+<div *ngIf="this.isAdmin">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+
+<nav *ngIf="!this.isAdmin" class="navbar navbar-expand-xl navbar-light bg-white border-bottom">
   <div class="container">
 
     <!-- Brand -->

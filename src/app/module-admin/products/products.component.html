@@ -1,0 +1,50 @@
+<div class="container mb-10">
+
+  <div *ngIf="this.inventory?.length > 0" class="container py-10">
+
+
+    <table datatable [dtOptions]="dtOptions" class="row-border hover text-center">
+      <thead>
+      <tr>
+        <th>Thumb</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Size</th>
+        <th>Colour</th>
+        <th>Retail</th>
+        <th>Status</th>
+        <th>View</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of inventory">
+        <td><a target="_blank" href="{{item.product.imgCover.url}}">
+          <img src="{{item.product.imgCover.url}}" style="width:150px">
+        </a></td>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.product.id }}</td>
+        <td>{{ sizes[item.id_size].name }}</td>
+        <td>{{ colors[item.product.color].name }}</td>
+        <td>€{{item.product.retailPrice}}</td>
+        <td><select class="form-control" id="DropdownOptions" (change)="updateStatus($event, item.id, item.product.id)">
+          <option
+            *ngFor="let statusName of inventoryStatus "
+            [selected]="statusName === item.status"
+            [value]="statusName"
+          >
+            {{ statusName }}
+          </option>
+        </select></td>
+        <td>
+          <button class="btn  btn-success btn-xxs" [routerLink]="['/admin/product', item.id]">View</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <li class="nav-item dropdown">
+    <button type="button" class="nav-link" routerLink="/admin/product" routerLinkActive="active" href="#">+ New product
+    </button>
+  </li>
+</div>
+

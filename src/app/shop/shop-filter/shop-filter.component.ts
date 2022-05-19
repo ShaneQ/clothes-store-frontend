@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {SearchProductsService} from "../../search-products.service";
+import {SearchProductsService} from "../../services/search-products.service";
 
 @Component({
   selector: 'app-shop-filter',

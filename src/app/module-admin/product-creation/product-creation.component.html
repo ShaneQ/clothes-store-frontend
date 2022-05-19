@@ -1,0 +1,201 @@
+<div *ngIf="this.update">
+  <div *ngIf="this.productId">
+    <app-bookings productId="{{this.product.id}}"></app-bookings>
+  </div>
+  <div class="container py-5 pt-10">
+    <div class="row">
+      <div class="col-6">
+        <div *ngIf="this.hidden">
+          <button class="btn btn-danger center" (click)="showProduct()">Unhide</button>
+        </div>
+        <div *ngIf="this.hidden === false">
+          <button class="btn btn-danger center" (click)="hideProduct()">Hide</button>
+        </div>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-danger center" (click)="deleteProduct()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<form [formGroup]="productForm" (ngSubmit)="submit()">
+  <input type="hidden" id="id" formControlName="id">
+  <div class="container py-5">
+    <div class="row">
+      <div class="form-group">
+        <input type="hidden" formControlName="ignore">
+      </div>
+      <div class="form-group col-3">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+      <div class="form-group col-3">
+        <label for="fittingInfo">Fitting Info</label>
+        <input type="text" class="form-control" id="fittingInfo" formControlName="fittingInfo">
+      </div>
+      <div class="form-group col-3">
+        <label for="material">Material</label>
+        <input type="text" class="form-control" id="material" formControlName="material">
+      </div>
+      <div class="form-group col-3">
+        <label for="retailPrice">Retail Price</label>
+        <input type="number" class="form-control" id="retailPrice" formControlName="retailPrice">
+      </div>
+      <div class="form-group col-3">
+        <label for="brand">Brand</label>
+        <input type="text" class="form-control" id="brand" formControlName="brand">
+      </div>
+    </div>
+  </div>
+  <div class="container py-5">
+    <div class="row">
+      <div class="form-group col-4">
+        <label for="quickDesc">Quick Description</label>
+        <textarea id="quickDesc" name="description" rows="4" formControlName="quickDesc" cols="50"></textarea>
+      </div>
+      <div class="form-group col-4">
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description" name="description" rows="4" cols="50"></textarea>
+      </div>
+      <div class="form-group col-4">
+        <label for="washInfo">Wash Info</label>
+
+        <textarea id="washInfo" formControlName="washInfo" name="washInfo" rows="4" cols="50"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-4">
+        <label for="productCategory">Product Category:</label>
+        <select class="custom-select form-control" formControlName="productCategory" id="productCategory">
+          <option *ngFor="let category of productCategories" [value]="category.id">
+            {{category.name}}
+          </option>
+        </select>
+
+      </div>
+      <div class="col-4">
+        <label for="color">Color:</label>
+        <select class="custom-select form-control" formControlName="color" id="color">
+          <option *ngFor="let color of colors" [value]="color.id">
+            {{color.name}}
+          </option>
+        </select>
+      </div>
+      <div class="col-4">
+        <label for="season">Season:</label>
+        <select class="custom-select form-control" formControlName="season" id="season">
+          <option *ngFor="let season of seasons" [value]="season.id">
+            {{season.name}}
+          </option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <label>Product Measurements</label>
+    <div class="form-group row" formGroupName="measurements">
+      <div class="col-6">
+        <label for="chest">Bust/Chest</label>
+        <input type="text" name="chest" id="chest" class="form-control" formControlName="chest">
+      </div>
+      <div class="col-6">
+        <label for="hips">Hips</label>
+        <input type="text" name="hips" id="hips" class="form-control" formControlName="hips">
+      </div>
+      <div class="col-6">
+        <label for="waist">Waist</label>
+        <input type="text" name="waist" id="waist" class="form-control" formControlName="waist">
+      </div>
+      <div class="col-6">
+        <label for="length">Length</label>
+        <input type="text" name="length" id="length" class="form-control" formControlName="length">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container py-5">
+    <div class="form-group" formGroupName="imgCover">
+      <label for="url">Cover Image</label>
+      <input type="text" class="form-control" id="url" formControlName="url" required>
+      <app-image-upload (image)="onImageAdded($event)"></app-image-upload>
+
+    </div>
+
+  </div>
+
+  <div class="container py-5">
+    <label>Images:</label>
+    <div class="form-group">
+
+      <div formArrayName="images">
+        <div *ngFor="let image of images.controls; let i=index">
+          <div [formGroupName]="i" class="py-5">
+            <input type="text" class="form-control" formControlName="url" required>
+            <button type="button" class="btn btn-danger" (click)="removeImage(i)">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-image-upload (image)="addImage($event)"></app-image-upload>
+
+
+  </div>
+
+
+  <div class="container py-5">
+    <div class="row">
+      <h5> Select Sizes available</h5>
+
+    </div>
+    <div class="row">
+      <div class="form-group" formGroupName="sizes">
+        <ul class="checkbox">
+          <div *ngFor="let data of sizes; let i=index">
+            <li>
+
+              <label>
+                <input type="checkbox" [value]="data.value" formControlName="size{{data.value}}">
+
+                {{data.name}}
+              </label>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container py-5">
+    <div class="row">
+      <h5> Is this to be drycleaned?</h5>
+    </div>
+    <div class="row">
+
+
+      <label>Yes?</label>
+      <input formControlName="dryClean" id="dryClean" type="checkbox">
+      <br>
+    </div>
+  </div>
+  <div class="container py-5">
+    <div class="row">
+
+      <div *ngIf="this.productId">
+        <button type="submit" class="btn btn-success">Update Product</button>
+      </div>
+      <div *ngIf="!this.productId">
+        <button type="submit" class="btn btn-success">Create Product</button>
+      </div>
+      <div *ngIf="this.saved" class="text-success">
+        <div><small>Product Updated</small></div>
+      </div>
+      <div *ngIf="this.created" class="text-success">
+        <div><small>Product Created</small></div>
+      </div>
+    </div>
+  </div>
+</form>

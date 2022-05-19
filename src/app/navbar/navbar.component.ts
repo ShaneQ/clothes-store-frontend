@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AppService} from '../app.service';
-import {KeycloakService} from 'keycloak-angular';
-import {environment} from "../../environments/environment";
-import {AuthService} from "../auth.service";
-import {NavbarService} from "../navbar.service";
-import {AuthTwoService} from "../../auth/service/auth-two.service";
+import {AppService} from '../services/app.service';
+import {NavbarService} from "../services/navbar.service";
+import {AuthTwoService} from "../module-auth/auth-two.service";
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +12,7 @@ export class NavbarComponent implements OnInit {
 
   public isLoggedIn: boolean
   public isRegistrationPage: boolean;
+  public isAdmin: boolean;
 
   constructor(
     private _service: AppService, private _authService: AuthTwoService, private _navBarService: NavbarService){}
@@ -27,15 +25,10 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("NAVBAR INIT");
     this.isRegistrationPage = false
     this._navBarService.navbarEvent.subscribe(data => this.sortEvents(data))
-    console.log("NAVBAR - "+this._authService.isLoggedIn());
     this._authService.isLoggedIn().then(result => this.isLoggedIn = result);
-  }
-
-  login() {
-    //this._authService.login()
+    this.isAdmin = this._authService.getUserRoles().includes("scc_admin_role")
   }
 
   sortEvents(data){

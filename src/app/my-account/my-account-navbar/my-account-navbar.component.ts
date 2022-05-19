@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {KeycloakService} from "keycloak-angular";
-import {AuthService} from "../../auth.service";
-import {AuthTwoService} from "../../../auth/service/auth-two.service";
+import {AuthService} from "../../services/auth.service";
+import {AuthTwoService} from "../../module-auth/auth-two.service";
 
 @Component({
   selector: 'app-my-account-navbar',

@@ -1,14 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PersonalInfoService} from "../../personal-info.service";
+import {PersonalInfoService} from "../../services/personal-info.service";
 import {PersonalInfo} from "../../model/personalInfo";
 import {Observable} from "rxjs";
 import {NgxSpinnerService} from "ngx-spinner";
 import {UserInfo} from "../../model/userInfo";
 import {HttpErrorResponse} from "@angular/common/http";
-import {AuthService} from "../../auth.service";
+import {AuthService} from "../../services/auth.service";
 import {environment} from "../../../environments/environment";
-import {AuthTwoService} from "../../../auth/service/auth-two.service";
+import {AuthTwoService} from "../../module-auth/auth-two.service";
 
 @Component({
   selector: 'app-my-account-personal-info',

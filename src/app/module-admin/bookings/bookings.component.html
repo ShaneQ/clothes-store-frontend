@@ -1,0 +1,53 @@
+<div *ngIf="this.bookings?.length > 0" class="container pb-10">
+
+
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th *ngIf="!this.userId!!">User</th>
+      <th>Product</th>
+      <th>Size</th>
+      <th>Pickup Date</th>
+      <th>Collection</th>
+      <th>Return</th>
+      <th>Status</th>
+      <th>Inventory Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let booking of bookings" class="text-center">
+      <td>{{booking.id}}</td>
+      <td *ngIf="!this.userId!!">
+        <i-feather name="eye" class="big text-black-50" [routerLink]="['/admin/user', booking.userId]"></i-feather>
+        {{booking.userName}}</td>
+      <td>
+        <i-feather name="eye" class="big text-black-50" [routerLink]="['/admin/product', booking.productId]"></i-feather>
+        {{booking.productName}}</td>
+      <td>{{ sizes[booking.productSize.id_size].name }}</td>
+      <td>{{ booking.startDate | date:'dd/MM/yyyy' }}</td>
+      <td>{{ booking.collectionPlace }}</td>
+      <td>{{ booking.returnDate | date:'dd/MM/yyyy' }}
+      <td><select class="form-control" id="DropdownOptions" (change)="updateStatus($event, booking.id)">
+        <option
+          *ngFor="let statusName of status.keys() "
+          [selected]="statusName === booking.status"
+          [value]="statusName"
+        >
+          {{ statusName }}
+        </option>
+      </select></td>
+      <td><select class="form-control" (change)="updateInventoryStatus($event, booking.productSize.id, booking.productId)">
+        <option
+          *ngFor="let statusName of inventoryStatus "
+          [selected]="statusName === booking.productSize.status"
+          [value]="statusName"
+        >
+          {{ statusName }}
+        </option>
+      </select></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

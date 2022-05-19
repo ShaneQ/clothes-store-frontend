@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonalInfoService} from "../../personal-info.service";
+import {PersonalInfoService} from "../../services/personal-info.service";
 import {Observable} from "rxjs";
 import {PersonalInfo} from "../../model/personalInfo";
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {AppService} from './app.service';
-import {Product} from './model/product';
-import {environment} from "../environments/environment";
+import {Product} from '../model/product';
+import {environment} from "../../environments/environment";
 import {HttpParams} from "@angular/common/http";
 
 @Injectable({

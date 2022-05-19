@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {environment} from "../environments/environment";
+import {environment} from "../../environments/environment";
 import {AppService} from "./app.service";
-import {BookingRequest} from "./model/bookingRequest";
+import {BookingRequest} from "../model/bookingRequest";
 import {Observable} from "rxjs/Observable";
 
 @Injectable({

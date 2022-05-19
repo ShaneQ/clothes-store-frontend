@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Product} from "../model/product";
-import {ScriptService} from "../script.service";
+import {ScriptService} from "../services/script.service";
 import {KeycloakService} from "keycloak-angular";
-import {ProductService} from "../product.service";
+import {ProductService} from "../services/product.service";
 import {environment} from "../../environments/environment";
 
 @Component({

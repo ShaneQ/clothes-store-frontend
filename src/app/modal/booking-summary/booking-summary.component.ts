@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {BookingRequest} from '../../model/bookingRequest';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {BookingService} from "../../booking.service";
-import {AppService} from "../../app.service";
+import {BookingService} from "../../services/booking.service";
+import {AppService} from "../../services/app.service";
 import {Router} from "@angular/router";
 
 @Component({

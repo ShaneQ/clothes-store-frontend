@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import {AppService} from './app.service';
-import {AuthService} from "./auth.service";
-import {NavbarService} from "./navbar.service";
+import {AppService} from './services/app.service';
+import {AuthService} from "./services/auth.service";
+import {NavbarService} from "./services/navbar.service";
 import {environment} from "../environments/environment";
-import {AuthTwoService} from "../auth/service/auth-two.service";
+import {AuthTwoService} from "./module-auth/auth-two.service";
 
 @Component({
   selector: 'app-root',

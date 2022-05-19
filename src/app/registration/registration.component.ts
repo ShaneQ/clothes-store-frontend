@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {KeycloakService} from "keycloak-angular";
-import {NavbarService} from "../navbar.service";
-import {AuthService} from "../auth.service";
+import {NavbarService} from "../services/navbar.service";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-registration',

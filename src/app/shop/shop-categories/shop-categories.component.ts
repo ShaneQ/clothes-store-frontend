@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ScriptService} from '../../script.service';
+import {ScriptService} from '../../services/script.service';
 
 @Component({
   selector: 'app-shop-topbar',

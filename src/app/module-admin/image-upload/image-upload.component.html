@@ -1,0 +1,3 @@
+
+<input type="file" id="customFile" (change)="selectFile($event)">
+<button type=button class="btn btn-primary" [disabled]="!selectedFiles" (click)="upload()">Save File</button>
