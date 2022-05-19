@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-booking-summary',
   templateUrl: './booking-summary.component.html',
+  styleUrls: ['./booking-summary.component.scss'],
   providers: [AppService, BookingService]
 })
 export class BookingSummaryComponent {

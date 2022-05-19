@@ -41,7 +41,6 @@ import {MyAccountMembershipComponent} from './my-account/my-account-membership/m
 import {HeadComponent} from "./partials/head/head.component";
 import {FaqComponent} from './faq/faq.component';
 import {ContactComponent} from './contact/contact.component';
-import {GoogleMapsModule} from '@angular/google-maps';
 import {AboutComponent} from './about/about.component'
 import {AuthModule} from "./module-auth/auth.module";
 import {AdminModule} from "./module-admin/admin-module";
@@ -94,7 +93,6 @@ import {AdminModule} from "./module-admin/admin-module";
     ReactiveFormsModule,
     CarouselModule,
     NgxSpinnerModule,
-    GoogleMapsModule,
     AuthModule,
     AdminModule
   ],

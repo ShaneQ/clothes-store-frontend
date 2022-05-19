@@ -14,7 +14,7 @@ import {DataTablesModule} from "angular-datatables";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {BsDatepickerModule, DatepickerModule} from "ngx-bootstrap/datepicker";
+import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {IconsModule} from "./icons/icons.module";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
@@ -51,7 +51,6 @@ import {AppAdminRoutingModule} from "./app-admin-routing.module";
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    DatepickerModule,
     DataTablesModule,
     AppAdminRoutingModule
   ]
