@@ -1,6 +1,6 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
-import {initializeKeycloak} from "../init/keycloak-init.factory";
+import {initializeKeycloak} from "./keycloak-init.factory";
 import {CanAuthenticationGuard} from "./app-auth.guard";
 import {AuthService} from "./auth.service";
 
