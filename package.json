@@ -24,7 +24,7 @@
     "@fancyapps/fancybox": "^3.5.7",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@kolkov/ngx-gallery": "^2.0.1",
-    "@ng-bootstrap/ng-bootstrap": "^12.1.2",
+    "@ng-bootstrap/ng-bootstrap": "^11.0.1",
     "@popperjs/core": "^2.11.5",
     "@types/scriptjs": "^0.0.2",
     "angular-datatables": "^13.0.1",
