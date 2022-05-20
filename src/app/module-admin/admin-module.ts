@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BookingsComponent } from './bookings/bookings.component';
-import { AdminHeaderComponent } from './header/admin-header.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { AdminNavbarComponent } from './navbar/admin-navbar.component';
 import { ProductCreationComponent } from './product-creation/product-creation.component';
@@ -26,7 +25,6 @@ import { AppAdminRoutingModule } from './app-admin-routing.module';
     AdminBaseComponent,
     BookingComponent,
     BookingsComponent,
-    AdminHeaderComponent,
     ImageUploadComponent,
     AdminNavbarComponent,
     ProductCreationComponent,
@@ -34,7 +32,7 @@ import { AppAdminRoutingModule } from './app-admin-routing.module';
     UserComponent,
     UsersComponent,
   ],
-  exports: [AdminHeaderComponent, AdminNavbarComponent],
+  exports: [AdminNavbarComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

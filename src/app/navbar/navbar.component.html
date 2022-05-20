@@ -4,7 +4,7 @@
 
 <nav
   *ngIf="!this.isAdmin"
-  class="navbar navbar-expand-xl navbar-light bg-white border-bottom"
+  class="navbar navbar-expand-lg navbar-light bg-white border-bottom"
 >
   <div class="container">
     <!-- Brand -->
@@ -18,8 +18,8 @@
     <button
       class="navbar-toggler"
       type="button"
-      data-toggle="collapse"
-      data-target="#navbarLandingCollapse"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarLandingCollapse"
       aria-controls="navbarLandingCollapse"
       aria-expanded="false"
       aria-label="Toggle navigation"
@@ -32,7 +32,7 @@
       <!-- Nav -->
       <ul class="navbar-nav ml-xl-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" data-toggle="smooth-scroll"
+          <a class="nav-link" routerLink="/" data-bs-toggle="smooth-scroll"
             >Home</a
           >
         </li>
@@ -50,7 +50,7 @@
             class="nav-link"
             routerLink="/about"
             routerLinkActive="active"
-            data-toggle="smooth-scroll"
+            data-bs-toggle="smooth-scroll"
             >How it Works</a
           >
         </li>

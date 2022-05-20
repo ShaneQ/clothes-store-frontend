@@ -117,7 +117,7 @@
                         id="{{ 'sizeRadio' + size.id }}"
                         value="{{ size.id }}"
                         checked
-                        data-toggle="form-caption"
+                        data-bs-toggle="form-caption"
                       />
                       <label
                         class="custom-control-label"
@@ -183,7 +183,7 @@
                 <div class="form-row mb-7">
                   <!--                    <div class="col-12 col-lg-auto">
                                         &lt;!&ndash; Wishlist &ndash;&gt;
-                                        <button class="btn btn-outline-dark btn-block mb-2" data-toggle="button">
+                                        <button class="btn btn-outline-dark btn-block mb-2" data-bs-toggle="button">
                                           Wishlist <i class="fe fe-heart ml-2"></i>
                                         </button>
                                       </div>-->
@@ -195,7 +195,7 @@
                         type="submit"
                         class="btn btn-block btn-dark mb-2"
                         [disabled]="this.isMemberInfoBtnVis"
-                        data-toggle="modal"
+                        data-bs-toggle="modal"
                         href="#modalMemberSlowDown"
                       >
                         Book it <i class="fe fe-shopping-cart ml-2"></i>
@@ -211,7 +211,7 @@
                       <button
                         type="button"
                         class="btn btn-block btn-danger mb-2"
-                        data-toggle="modal"
+                        data-bs-toggle="modal"
                         (click)="register()"
                       >
                         SIGN UP
@@ -236,13 +236,13 @@
           <div
             class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom"
           >
-            <a class="nav-link active" data-toggle="tab" href="#descriptionTab">
+            <a class="nav-link active" data-bs-toggle="tab" href="#descriptionTab">
               Description
             </a>
-            <a class="nav-link" data-toggle="tab" href="#sizeTab">
+            <a class="nav-link" data-bs-toggle="tab" href="#sizeTab">
               Size & Fit
             </a>
-            <a class="nav-link" data-toggle="tab" href="#washInfo">
+            <a class="nav-link" data-bs-toggle="tab" href="#washInfo">
               Wash & Care
             </a>
           </div>
