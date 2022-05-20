@@ -116,13 +116,11 @@
                   </div>
                 </div>
 
-                <div class="container">
+                <div class="form-group">
 
                   <div class="form-row">
                     <div class="col-6">
                       <div class=" theme-default">
-                        <div class="row ">
-                          <div class="form-group">
                             <input
                               formControlName="orderDate"
                               type="text"
@@ -132,12 +130,9 @@
                               [bsConfig]="{ isAnimated: true, containerClass : 'theme-default', dateInputFormat: 'DD/MM/YYYY' }"
                               [minDate]="minDate"
                               [maxDate]="maxDate">
-                          </div>
-                        </div>
                       </div>
                     </div>
                     <div class="col-6">
-                      <div class="form-group ">
                         <label class="sr-only" for="paymentMonth">Month</label>
                         <select class="custom-select border-dark text-body" id="paymentMonth" required
                                 formControlName="dispatch">
@@ -146,7 +141,6 @@
                           <option>1pm to 2pm</option>
                           <option>6pm to 7pm</option>
                         </select>
-                      </div>
                     </div>
                   </div>
                 </div>

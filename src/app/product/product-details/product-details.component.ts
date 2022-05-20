@@ -7,14 +7,12 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {BookingSummaryComponent} from '../../modal/booking-summary/booking-summary.component';
 import {BookingRequest} from '../../model/bookingRequest';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from "../../services/auth.service";
-import {KeycloakService} from "keycloak-angular";
-import {AuthTwoService} from "../../module-auth/auth-two.service";
+import {AuthService} from "../../module-auth/auth.service";
 
 @Component({
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss'],
-  providers: [ScriptService, ProductService, KeycloakService]
+  providers: [ScriptService, ProductService]
 })
 export class ProductDetailsComponent implements OnInit {
   public id;
@@ -41,8 +39,7 @@ export class ProductDetailsComponent implements OnInit {
     private _app: ProductService,
     private _modalService: NgbModal,
     private formBuilder: FormBuilder,
-    private _authService: AuthService,
-    private _keycloakService: AuthTwoService) {
+    private _authService: AuthService) {
 
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -60,9 +57,9 @@ export class ProductDetailsComponent implements OnInit {
 
 
   async ngOnInit(): Promise<void> {
-    this._authService.getLoggedInStatus().subscribe(data => this.isLoggedIn = data)
+    this._authService.isLoggedIn().then(data => this.isLoggedIn = data)
 
-    this.hasActiveMembership = this._keycloakService.getUserRoles().includes("scc_active_membership")
+    this.hasActiveMembership = this._authService.getUserRoles().includes("scc_active_membership")
 
     const productId = this._route.snapshot.paramMap.get('productId');
     this.product = await this._app.getProduct(productId).toPromise();
@@ -153,6 +150,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   register() {
-    this._keycloakService.register()
+    this._authService.register()
   }
 }

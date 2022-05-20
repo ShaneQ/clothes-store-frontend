@@ -6,9 +6,7 @@ import {Observable} from "rxjs";
 import {NgxSpinnerService} from "ngx-spinner";
 import {UserInfo} from "../../model/userInfo";
 import {HttpErrorResponse} from "@angular/common/http";
-import {AuthService} from "../../services/auth.service";
-import {environment} from "../../../environments/environment";
-import {AuthTwoService} from "../../module-auth/auth-two.service";
+import {AuthService} from "../../module-auth/auth.service";
 
 @Component({
   selector: 'app-my-account-personal-info',
@@ -28,7 +26,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   public registrationSuccessful = new EventEmitter<boolean>();
   public created: boolean
 
-  constructor(private fb: FormBuilder, private _app: PersonalInfoService, private spinner: NgxSpinnerService, private _authService: AuthTwoService) {
+  constructor(private fb: FormBuilder, private _app: PersonalInfoService, private spinner: NgxSpinnerService, private _authService: AuthService) {
   }
 
   ngOnInit(): void {

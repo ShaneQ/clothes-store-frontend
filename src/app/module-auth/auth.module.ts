@@ -1,10 +1,8 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {initializeKeycloak} from "../init/keycloak-init.factory";
-import {AuthService} from "../services/auth.service";
-import {CanAuthenticationGuard} from "../app-auth.guard";
-
+import {CanAuthenticationGuard} from "./app-auth.guard";
+import {AuthService} from "./auth.service";
 
 
 @NgModule({
@@ -23,4 +21,5 @@ import {CanAuthenticationGuard} from "../app-auth.guard";
     CanAuthenticationGuard
   ],
 })
-export class AuthModule { }
+export class AuthModule {
+}

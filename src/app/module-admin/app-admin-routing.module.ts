@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CanAuthenticationGuard} from './app-auth.guard';
 import {AdminBaseComponent} from "./base/base.component";
 import {ProductCreationComponent} from "./product-creation/product-creation.component";
 import {ProductsComponent} from "./products/products.component";
@@ -8,6 +7,7 @@ import {UsersComponent} from "./users/users.component";
 import {UserComponent} from "./user/user.component";
 import {BookingsComponent} from "./bookings/bookings.component";
 import {BookingComponent} from "./booking/booking.component";
+import {CanAuthenticationGuard} from "../module-auth/app-auth.guard";
 
 const routes: Routes = [
   {

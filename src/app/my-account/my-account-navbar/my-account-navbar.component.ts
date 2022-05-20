@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {KeycloakService} from "keycloak-angular";
-import {AuthService} from "../../services/auth.service";
-import {AuthTwoService} from "../../module-auth/auth-two.service";
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "../../module-auth/auth.service";
 
 @Component({
   selector: 'app-my-account-navbar',
@@ -10,7 +7,8 @@ import {AuthTwoService} from "../../module-auth/auth-two.service";
 })
 export class MyAccountNavbarComponent implements OnInit {
 
-  constructor(private _authService: AuthTwoService) { }
+  constructor(private _authService: AuthService) {
+  }
 
   ngOnInit(): void {
   }

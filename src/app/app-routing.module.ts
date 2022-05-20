@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ProductDetailsComponent} from './product/product-details/product-details.component';
 import {ShopComponent} from './shop/shop.component';
-import {CanAuthenticationGuard} from './app-auth.guard';
 import {ContentComponent} from "./content/content.component";
 import {MyAccountBaseComponent} from "./my-account/my-account-base/my-account-base.component";
 import {MyAccountOrdersComponent} from "./my-account/my-account-orders/my-account-orders.component";
@@ -12,13 +11,7 @@ import {MyAccountMembershipComponent} from "./my-account/my-account-membership/m
 import {FaqComponent} from "./faq/faq.component";
 import {ContactComponent} from "./contact/contact.component";
 import {AboutComponent} from "./about/about.component";
-import {AdminBaseComponent} from "./module-admin/base/base.component";
-import {ProductCreationComponent} from "./module-admin/product-creation/product-creation.component";
-import {ProductsComponent} from "./module-admin/products/products.component";
-import {UsersComponent} from "./module-admin/users/users.component";
-import {UserComponent} from "./module-admin/user/user.component";
-import {BookingsComponent} from "./module-admin/bookings/bookings.component";
-import {BookingComponent} from "./module-admin/booking/booking.component";
+import {CanAuthenticationGuard} from "./module-auth/app-auth.guard";
 
 const routes: Routes = [
   {

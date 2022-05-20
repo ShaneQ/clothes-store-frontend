@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppService} from '../../services/app.service';
-import {KeycloakService} from 'keycloak-angular';
-import {environment} from "../../../environments/environment";
+import {AuthService} from "../../module-auth/auth.service";
 
 @Component({
   selector: 'app-admin-navbar',
@@ -12,11 +11,11 @@ export class AdminNavbarComponent implements OnInit {
 
 
   constructor(
-    private _service: AppService, private _keycloak: KeycloakService){}
+    private _service: AppService, private _authService: AuthService) {
+  }
 
   logout() {
-    console.log('Logged Out');
-    this._keycloak.logout(environment.baseUrl);
+    this._authService.logout();
   }
 
   ngOnInit(): void {

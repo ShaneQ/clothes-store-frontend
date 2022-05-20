@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AppService} from '../services/app.service';
 import {NavbarService} from "../services/navbar.service";
-import {AuthTwoService} from "../module-auth/auth-two.service";
+import {AuthService} from "../module-auth/auth.service";
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   public isAdmin: boolean;
 
   constructor(
-    private _service: AppService, private _authService: AuthTwoService, private _navBarService: NavbarService){}
+    private _service: AppService, private _authService: AuthService, private _navBarService: NavbarService){}
 
   logout() {
     this._authService.logout()

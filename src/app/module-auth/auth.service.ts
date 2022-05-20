@@ -5,7 +5,7 @@ import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthTwoService {
+export class AuthService {
 
   constructor(private keycloakService: KeycloakService) {
   }

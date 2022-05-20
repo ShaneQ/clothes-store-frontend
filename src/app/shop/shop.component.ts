@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {KeycloakService} from "keycloak-angular";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-shop',
@@ -8,7 +7,8 @@ import {KeycloakService} from "keycloak-angular";
 })
 export class ShopComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     console.log("SHOP PAGE ON INIT")

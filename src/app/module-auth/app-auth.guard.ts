@@ -5,7 +5,6 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
-import {AuthService} from "./services/auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +12,7 @@ import {AuthService} from "./services/auth.service";
 export class CanAuthenticationGuard extends KeycloakAuthGuard {
   constructor(
     protected readonly router: Router,
-    protected readonly keycloak: KeycloakService,
-    protected readonly auth: AuthService
+    protected readonly keycloak: KeycloakService
   ) {
     super(router, keycloak);
   }
@@ -28,8 +26,6 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard {
       await this.keycloak.login({ scope:"scc_user",
         redirectUri: window.location.origin + state.url
       });
-    }else{
-      this.auth.setLogin()
     }
 
     // Get the roles required from the route.

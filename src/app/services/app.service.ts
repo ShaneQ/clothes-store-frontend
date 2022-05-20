@@ -10,8 +10,8 @@ import {environment} from "../../environments/environment";
 import {BookingRequest} from "../model/bookingRequest";
 import {PersonalInfo} from "../model/personalInfo";
 import {UserInfo} from "../model/userInfo";
-import {AuthService} from "./auth.service";
 import {throwError} from "rxjs";
+import {AuthService} from "../module-auth/auth.service";
 
 export class Foo {
   constructor(
@@ -26,7 +26,7 @@ export class AppService {
 
   constructor(
     private _http: HttpClient,
-    private _router: Router, private _authService : AuthService) {
+    private _router: Router, private _authService: AuthService) {
   }
 
   getResource(resourceUrl): Observable<any> {
@@ -77,8 +77,8 @@ export class AppService {
   }
 
   logout(): void {
-    Cookie.delete('access_token');
-    this._authService.logout(this.baseUri)
+    //Cookie.delete('access_token');
+    this._authService.logout()
   }
 
   getBookingsResource(resourceUrl: string) {

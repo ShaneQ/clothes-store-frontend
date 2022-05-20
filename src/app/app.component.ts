@@ -1,9 +1,7 @@
 import {Component} from '@angular/core';
 import {AppService} from './services/app.service';
-import {AuthService} from "./services/auth.service";
 import {NavbarService} from "./services/navbar.service";
-import {environment} from "../environments/environment";
-import {AuthTwoService} from "./module-auth/auth-two.service";
+import {AuthService} from "./module-auth/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -18,11 +16,13 @@ export class AppComponent {
   public isRegistrationPage: boolean;
 
   constructor(
-    private _service: AppService, private _authService: AuthTwoService, private _navBarService: NavbarService){}
+    private _service: AppService, private _authService: AuthService, private _navBarService: NavbarService) {
+  }
 
   logout() {
     this._authService.logout();
   }
+
   ngOnDestroy(): void {
     this._navBarService.navbarEvent.unsubscribe()
   }
@@ -33,8 +33,8 @@ export class AppComponent {
 
   }
 
-  sortEvents(data){
-    if(data.toString() === "REGISTRATION"){
+  sortEvents(data) {
+    if (data.toString() === "REGISTRATION") {
       this.isRegistrationPage = true
     }
   }
