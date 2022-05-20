@@ -4,5 +4,5 @@ export class UserInfo {
     public firstName: string,
     public lastName: string,
     public email: string
-  ) { }
+  ) {}
 }

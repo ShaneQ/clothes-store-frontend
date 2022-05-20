@@ -11,8 +11,7 @@ export class PersonalInfo {
   public phone: string;
   public dateOfBirth: Date;
   public status: string;
-  public membership: number
+  public membership: number;
   public startDate: Date;
   public endDate: Date;
-
 }

@@ -1,32 +1,29 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {AdminAppService} from './admin-app.service';
-import {Product} from './model/product';
-import {environment} from "../../environments/environment";
-import {HttpParams} from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AdminAppService } from './admin-app.service';
+import { Product } from './model/product';
+import { environment } from '../../environments/environment';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
   private productUrl = environment.resourceUrl + 'public/product';
   private adminProductUrl = environment.resourceUrl + 'admin/product';
 
-  constructor(private _service: AdminAppService) {
-  }
+  constructor(private _service: AdminAppService) {}
 
   loadProducts(): Observable<Product[]> {
     return this._service.getProductsResource(this.productUrl);
-
   }
 
   createProduct(product: Product): Observable<any> {
-    return this._service.postProductResource(product, this.adminProductUrl)
+    return this._service.postProductResource(product, this.adminProductUrl);
   }
 
   updateProduct(product: Product): Observable<any> {
-    return this._service.putProductResource(product, this.adminProductUrl)
+    return this._service.putProductResource(product, this.adminProductUrl);
   }
 
   getProduct(productId): Observable<Product> {
@@ -34,19 +31,31 @@ export class ProductService {
   }
 
   hide(productId: number): Observable<any> {
-    return this._service.putProductHideChangeResource(this.adminProductUrl + '/hide/' + productId)
+    return this._service.putProductHideChangeResource(
+      this.adminProductUrl + '/hide/' + productId
+    );
   }
 
   unhide(productId: number): Observable<any> {
-    return this._service.putProductHideChangeResource(this.adminProductUrl + '/unhide/' + productId)
+    return this._service.putProductHideChangeResource(
+      this.adminProductUrl + '/unhide/' + productId
+    );
   }
 
   delete(productId: number): Observable<any> {
-    return this._service.deleteProductResource(this.adminProductUrl + '/' + productId)
+    return this._service.deleteProductResource(
+      this.adminProductUrl + '/' + productId
+    );
   }
 
-  filterProducts(filterBySizes: string, filterByColors: string, filterBySeason: string, filterByCategory: string, filterByName: string): Observable<Product[]> {
-    let url = this.productUrl + "/query"
+  filterProducts(
+    filterBySizes: string,
+    filterByColors: string,
+    filterBySeason: string,
+    filterByCategory: string,
+    filterByName: string
+  ): Observable<Product[]> {
+    let url = this.productUrl + '/query';
     let params = new HttpParams();
     if (filterBySizes != null && filterBySizes != '') {
       params = params.set('filterBySize', filterBySizes);
@@ -66,14 +75,17 @@ export class ProductService {
       params = params.set('filterByName', filterByName);
     }
     return this._service.getFilteredProductResource(url, params);
-
   }
 
   findInventory() {
-    return this._service.getInventoryResource(this.adminProductUrl + '/inventory');
+    return this._service.getInventoryResource(
+      this.adminProductUrl + '/inventory'
+    );
   }
 
   updateInventoryStatus(value, id: number, productId: number) {
-    this._service.updateInventoryStatus(this.adminProductUrl + "/" + productId + '/inventory/' + id + "/" + value)
+    this._service.updateInventoryStatus(
+      this.adminProductUrl + '/' + productId + '/inventory/' + id + '/' + value
+    );
   }
 }

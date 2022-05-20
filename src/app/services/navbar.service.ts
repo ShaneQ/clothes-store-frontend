@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
+import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NavbarService {
+  navbarEvent = new Subject();
 
-  navbarEvent = new Subject()
-
-  getButtonClicked(){
-    return this.navbarEvent.asObservable()
+  getButtonClicked() {
+    return this.navbarEvent.asObservable();
   }
 }

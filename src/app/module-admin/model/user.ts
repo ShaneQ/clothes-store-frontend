@@ -10,11 +10,10 @@ export class User {
   public eirCode: string;
   public phone: string;
   public dateOfBirth: Date;
-  public status: string
-  public membership: number
-  public startDate: Date
-  public endDate: Date
+  public status: string;
+  public membership: number;
+  public startDate: Date;
+  public endDate: Date;
   public bookingAllowanceMonthly: number;
   public bookingAllowanceMonthlyRemaining: number;
-
 }

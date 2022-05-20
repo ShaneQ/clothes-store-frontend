@@ -19,7 +19,6 @@
   }
 }
 
-
 // Sizes
 
 .btn-lg {
@@ -41,7 +40,6 @@
   padding: $btn-padding-y-xxs $btn-padding-x-xs;
   font-size: $btn-font-size-xxs;
 }
-
 
 // Contextual classes
 
@@ -99,13 +97,11 @@
   }
 
   &[data-toggle="button"] {
-
     &.active {
       color: $primary;
     }
   }
 }
-
 
 // Outline
 
@@ -140,7 +136,6 @@
   }
 }
 
-
 // Circle
 
 .btn-circle {
@@ -168,13 +163,11 @@
   width: $btn-height-lg;
 }
 
-
 // Underline
 
 .btn-underline {
   border-width: 0 0 $border-width 0;
 }
-
 
 // Arrows
 
@@ -185,13 +178,12 @@
 }
 
 .btn:hover > .fe-arrow-right {
-  transform: translateX(.25rem);
+  transform: translateX(0.25rem);
 }
 
 .btn:hover > .fe-arrow-left {
-  transform: translateX(-.25rem);
+  transform: translateX(-0.25rem);
 }
-
 
 // Brand
 
@@ -209,7 +201,6 @@
   }
 }
 
-
 // Hover
 
 .btn-hover {
@@ -221,7 +212,7 @@
 }
 
 .btn-hover::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

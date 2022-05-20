@@ -1,15 +1,12 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
-import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
-import {initializeKeycloak} from "./keycloak-init.factory";
-import {CanAuthenticationGuard} from "./app-auth.guard";
-import {AuthService} from "./auth.service";
-
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { initializeKeycloak } from './keycloak-init.factory';
+import { CanAuthenticationGuard } from './app-auth.guard';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [],
-  imports: [
-    KeycloakAngularModule
-  ],
+  imports: [KeycloakAngularModule],
   providers: [
     {
       provide: APP_INITIALIZER,
@@ -18,8 +15,7 @@ import {AuthService} from "./auth.service";
       deps: [KeycloakService],
     },
     AuthService,
-    CanAuthenticationGuard
+    CanAuthenticationGuard,
   ],
 })
-export class AuthModule {
-}
+export class AuthModule {}

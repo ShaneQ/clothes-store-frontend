@@ -3,50 +3,49 @@
 // Theme module
 //
 
-'use strict';
+"use strict";
 
-(function() {
+(function () {
   var maps = document.querySelectorAll('[data-toggle="map"]');
 
   if (maps) {
-    [].forEach.call(maps, function(el) {
-
+    [].forEach.call(maps, function (el) {
       // Get map data
-      var zoom = parseInt(el.getAttribute('data-zoom'));
-      var markers = JSON.parse(el.getAttribute('data-markers'));
+      var zoom = parseInt(el.getAttribute("data-zoom"));
+      var markers = JSON.parse(el.getAttribute("data-markers"));
 
       var center = {
         lat: markers[0].position[0],
-        lng: markers[0].position[1]
+        lng: markers[0].position[1],
       };
 
       // Init map
       var map = new google.maps.Map(el, {
         center: center,
         zoom: zoom,
-        disableDefaultUI: true
+        disableDefaultUI: true,
       });
 
       // Get bounds
       var bounds = new google.maps.LatLngBounds();
 
       // Create markers
-      markers.forEach(function(item, i) {
+      markers.forEach(function (item, i) {
         var position = {
           lat: item.position[0],
-          lng: item.position[1]
+          lng: item.position[1],
         };
 
         var infowindow = new google.maps.InfoWindow({
-          content: item.info
+          content: item.info,
         });
 
         var marker = new google.maps.Marker({
           position: position,
-          map: map
+          map: map,
         });
 
-        marker.addListener('click', function() {
+        marker.addListener("click", function () {
           infowindow.open(map, marker);
         });
 
@@ -60,5 +59,4 @@
       }
     });
   }
-
 })();

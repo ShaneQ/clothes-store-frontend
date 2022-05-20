@@ -3,4 +3,4 @@
 // Theme JavaScript
 //
 
-'use strict';
+"use strict";

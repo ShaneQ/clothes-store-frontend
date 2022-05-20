@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   Router,
-  RouterStateSnapshot
+  RouterStateSnapshot,
 } from '@angular/router';
 import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CanAuthenticationGuard extends KeycloakAuthGuard {
   constructor(
@@ -23,8 +23,9 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard {
   ) {
     // Force the user to log in if currently unauthenticated.
     if (!this.authenticated) {
-      await this.keycloak.login({ scope:"scc_user",
-        redirectUri: window.location.origin + state.url
+      await this.keycloak.login({
+        scope: 'scc_user',
+        redirectUri: window.location.origin + state.url,
       });
     }
 
@@ -32,6 +33,8 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard {
     const requiredRoles = route.data.roles;
 
     // Allow the user to to proceed if no additional roles are required to access the route.
+    console.log("Required Roles" + requiredRoles);
+    console.log("Existing roles" + this.roles)
     if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
       return true;
     }

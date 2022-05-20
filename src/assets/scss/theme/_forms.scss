@@ -11,7 +11,6 @@
   }
 }
 
-
 // Group
 
 .form-group-overflow {
@@ -19,21 +18,25 @@
   overflow: hidden;
 }
 
-
-// Sizing 
+// Sizing
 
 .form-control-xs {
-  height: calc(#{$input-font-size-xs} * #{$line-height-base} + #{$input-padding-y-xs} * 2 + #{$input-border-width * 2});
+  height: calc(
+    #{$input-font-size-xs} * #{$line-height-base} + #{$input-padding-y-xs} * 2 +
+      #{$input-border-width * 2}
+  );
   padding: $input-padding-y-xs $input-padding-x-xs;
   font-size: $input-font-size-xs;
 }
 
 .form-control-xxs {
-  height: calc(#{$input-font-size-xxs} * #{$line-height-base} + #{$input-padding-y-xxs} * 2 + #{$input-border-width * 2});
+  height: calc(
+    #{$input-font-size-xxs} * #{$line-height-base} + #{$input-padding-y-xxs} * 2 +
+      #{$input-border-width * 2}
+  );
   padding: $input-padding-y-xxs $input-padding-x-xxs;
   font-size: $input-font-size-xxs;
 }
-
 
 // Colors
 
@@ -59,7 +62,7 @@
   color: $white;
 
   &::placeholder {
-    color: fade-out($white, .25);
+    color: fade-out($white, 0.25);
   }
 
   @include hover-focus {
@@ -67,11 +70,10 @@
     border-color: $white;
     color: $white;
   }
-
 }
 
 .form-control-dark {
-  background-color: fade-out($dark, .6);
+  background-color: fade-out($dark, 0.6);
   border-color: transparent;
   color: $white;
 
@@ -80,12 +82,11 @@
   }
 
   @include hover-focus {
-    background-color: fade-out($dark, .6);
+    background-color: fade-out($dark, 0.6);
     border-color: transparent;
     color: $white;
   }
 }
-
 
 // Underline
 

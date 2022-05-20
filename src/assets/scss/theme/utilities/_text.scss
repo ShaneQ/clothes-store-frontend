@@ -53,7 +53,6 @@
 }
 
 @include media-breakpoint-down(sm) {
-
   .font-size-h1 {
     font-size: $h1-font-size-sm !important;
   }
@@ -75,7 +74,6 @@
   }
 }
 
-
 // Letter spacing
 
 .letter-spacing-lg {
@@ -85,7 +83,6 @@
 .letter-spacing-xl {
   letter-spacing: $letter-spacing-xl !important;
 }
-
 
 // Text color
 
@@ -130,19 +127,16 @@
 }
 
 .text-body[href] {
-
   @include hover-focus {
     color: $gray-700 !important;
   }
 }
 
 .text-muted[href] {
-
   @include hover-focus {
     color: $gray-500 !important;
   }
 }
-
 
 // Text decoration
 
@@ -151,7 +145,6 @@
 }
 
 a.text-decoration-underline {
-
   @include hover-focus {
     text-decoration: none !important;
   }
@@ -161,13 +154,11 @@ a.text-decoration-underline {
   text-decoration: line-through !important;
 }
 
-
 // Style
 
 .font-style-normal {
   font-style: normal !important;
 }
-
 
 // Line height
 

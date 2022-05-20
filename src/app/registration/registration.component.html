@@ -1,7 +1,8 @@
 <div *ngIf="!this.isRegistered">
   <div class="container pr-10 pl-10 py-10">
-  <app-my-account-personal-info [isRegistrationPage]="true"
-                                (registrationSuccessful)="registered($event)"></app-my-account-personal-info>
+    <app-my-account-personal-info
+      [isRegistrationPage]="true"
+      (registrationSuccessful)="registered($event)"
+    ></app-my-account-personal-info>
   </div>
 </div>
-

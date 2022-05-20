@@ -1,4 +1,3 @@
-
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
@@ -8,7 +7,6 @@ body {
   padding-bottom: 3rem;
   color: #5a5a5a;
 }
-
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -35,7 +33,6 @@ body {
   height: 32rem;
 }
 
-
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
@@ -48,10 +45,9 @@ body {
   font-weight: 400;
 }
 .marketing .col-lg-4 p {
-  margin-right: .75rem;
-  margin-left: .75rem;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
 }
-
 
 /* Featurettes
 ------------------------- */
@@ -64,9 +60,8 @@ body {
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
-  letter-spacing: -.05rem;
+  letter-spacing: -0.05rem;
 }
-
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
@@ -88,9 +83,9 @@ body {
   .featurette-heading {
     margin-top: 7rem;
   }
-}/*
+} /*
 @import "node_modules/bootstrap/scss/bootstrap";
-@import "node_modules/bootstrap/scss/mixins/breakpoints";*//*
+@import "node_modules/bootstrap/scss/mixins/breakpoints";*/ /*
 .card-columns {
 
   @include media-breakpoint-only(xs) {

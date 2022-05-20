@@ -1,17 +1,16 @@
 <div class="container">
   <div class="row mb-5">
     <div class="col-6 mt-10">
-
-      <div><label>First Name:</label>{{user.firstName}}</div>
-      <div><label>Last Name:</label>{{user.lastName}}</div>
-      <div><label>Phone:</label>{{user.phone}}</div>
-      <div><label>Email:</label>{{user.email}}</div>
-      <div><label>Address Line 1:</label>{{user.addressLineOne}}</div>
-      <div><label>Address Line 2:</label>{{user.addressLineTwo}}</div>
-      <div><label>City:</label>{{user.city}}</div>
-      <div><label>Country:</label>{{user.country}}</div>
-      <div><label>Eircode:</label>{{user.eirCode}}</div>
-      <div><label>DOB:</label>{{user.dateOfBirth | date:'dd/MM/yyyy'}}</div>
+      <div><label>First Name:</label>{{ user.firstName }}</div>
+      <div><label>Last Name:</label>{{ user.lastName }}</div>
+      <div><label>Phone:</label>{{ user.phone }}</div>
+      <div><label>Email:</label>{{ user.email }}</div>
+      <div><label>Address Line 1:</label>{{ user.addressLineOne }}</div>
+      <div><label>Address Line 2:</label>{{ user.addressLineTwo }}</div>
+      <div><label>City:</label>{{ user.city }}</div>
+      <div><label>Country:</label>{{ user.country }}</div>
+      <div><label>Eircode:</label>{{ user.eirCode }}</div>
+      <div><label>DOB:</label>{{ user.dateOfBirth | date: "dd/MM/yyyy" }}</div>
     </div>
 
     <div class="col-6">
@@ -20,27 +19,34 @@
         <div class="row">
           <div class="form-group col-6">
             <label for="membership">Type:</label>
-            <select class="custom-select form-control" formControlName="membership" id="membership">
+            <select
+              class="custom-select form-control"
+              formControlName="membership"
+              id="membership"
+            >
               <option *ngFor="let type of membershipTypes" [value]="type.value">
-                {{type.name}}
+                {{ type.name }}
               </option>
             </select>
           </div>
           <div class="form-group col-6">
             <label for="status">Status:</label>
-            <select class="custom-select form-control" formControlName="status" id="status">
+            <select
+              class="custom-select form-control"
+              formControlName="status"
+              id="status"
+            >
               <option *ngFor="let status of status" [value]="status.value">
-                {{status.name}}
+                {{ status.name }}
               </option>
             </select>
           </div>
         </div>
         <div class="container">
-
           <div class="form-row">
             <div class="col-6">
-              <div class=" theme-default">
-                <div class="row ">
+              <div class="theme-default">
+                <div class="row">
                   <div class="form-group">
                     <label>Start Date</label>
                     <input
@@ -49,18 +55,21 @@
                       placeholder="Start Date"
                       class="form-control border-dark"
                       bsDatepicker
-                      [bsConfig]="{ isAnimated: true, containerClass : 'theme-default'}"
+                      [bsConfig]="{
+                        isAnimated: true,
+                        containerClass: 'theme-default'
+                      }"
                       [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
                       [minDate]="minDate"
                       [maxDate]="maxDate"
-                    >
+                    />
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-6">
-              <div class=" theme-default">
-                <div class="row ">
+              <div class="theme-default">
+                <div class="row">
                   <div class="form-group">
                     <label>End Date</label>
 
@@ -70,10 +79,14 @@
                       placeholder="End Date"
                       class="form-control border-dark"
                       bsDatepicker
-                      [bsConfig]="{ isAnimated: true, containerClass : 'theme-default', dateInputFormat: 'DD/MM/YYYY'}"
+                      [bsConfig]="{
+                        isAnimated: true,
+                        containerClass: 'theme-default',
+                        dateInputFormat: 'DD/MM/YYYY'
+                      }"
                       [minDate]="minDate"
                       [maxDate]="maxDate"
-                    >
+                    />
                   </div>
                 </div>
               </div>
@@ -83,24 +96,21 @@
         <div class="row">
           <div class="col-6">
             <label>Booking Allowance</label>
-            <h6>{{this.user.bookingAllowanceMonthly}}</h6>
+            <h6>{{ this.user.bookingAllowanceMonthly }}</h6>
           </div>
           <div class="col-6">
             <label>Bookings Available</label>
-            <h6>{{this.user.bookingAllowanceMonthlyRemaining}}</h6>
+            <h6>{{ this.user.bookingAllowanceMonthlyRemaining }}</h6>
           </div>
         </div>
         <div class="row">
           <button type="submit" class="btn btn-success">Update</button>
         </div>
       </form>
-
     </div>
-
   </div>
 </div>
 <div class="container">
   <h3>Booking history</h3>
 </div>
 <app-bookings [userId]="user.id"></app-bookings>
-

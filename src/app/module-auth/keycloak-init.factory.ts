@@ -1,19 +1,16 @@
-import { KeycloakService} from "keycloak-angular";
-import {environment} from "../../environments/environment";
+import { KeycloakService } from 'keycloak-angular';
+import { environment } from '../../environments/environment';
 
-export function initializeKeycloak(
-  keycloak: KeycloakService
-) {
+export function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
         url: environment.authUrl,
         realm: 'secondClosetClub',
-        clientId: 'frontEnd'
+        clientId: 'frontEnd',
       },
       initOptions: {
-        onLoad: 'check-sso',
-        enableLogging: true
-      }
+        onLoad: 'check-sso'
+      },
     });
 }

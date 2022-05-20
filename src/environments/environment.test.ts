@@ -1,10 +1,12 @@
-
 export const environment = {
   production: false,
   assets: {
-    dotaImages: 'https://cdn-keycloak-angular.herokuapp.com/assets/images/dota-heroes/'
+    dotaImages:
+      'https://cdn-keycloak-angular.herokuapp.com/assets/images/dota-heroes/',
   },
-  resourceUrl: 'http://ec2-34-245-218-150.eu-west-1.compute.amazonaws.com:8084/resource-server/api/',
+  resourceUrl:
+    'http://ec2-34-245-218-150.eu-west-1.compute.amazonaws.com:8084/resource-server/api/',
   baseUrl: 'http://localhost:8089/',
-  authUrl: 'http://ec2-34-245-218-150.eu-west-1.compute.amazonaws.com:8083/auth'
+  authUrl:
+    'http://ec2-34-245-218-150.eu-west-1.compute.amazonaws.com:8083/auth',
 };

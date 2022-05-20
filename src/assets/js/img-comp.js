@@ -2,25 +2,24 @@
 // img-comp.js
 //
 
-'use strict';
+"use strict";
 
-(function() {
-  var input = document.querySelectorAll('.img-comp-input');
+(function () {
+  var input = document.querySelectorAll(".img-comp-input");
 
   function comp(el) {
-    var front = el.parentElement.querySelector('.img-comp-front');
-    var handle = el.parentElement.querySelector('.img-comp-handle');
+    var front = el.parentElement.querySelector(".img-comp-front");
+    var handle = el.parentElement.querySelector(".img-comp-handle");
 
-    front.style.maxWidth = el.value + '%';
-    handle.style.left = el.value + '%';
+    front.style.maxWidth = el.value + "%";
+    handle.style.left = el.value + "%";
   }
 
-  [].forEach.call(input, function(el) {
-    'input change'.split(' ').forEach(function(event) {
-      el.addEventListener(event, function() {
+  [].forEach.call(input, function (el) {
+    "input change".split(" ").forEach(function (event) {
+      el.addEventListener(event, function () {
         comp(el);
-      })
+      });
     });
   });
-
 })();

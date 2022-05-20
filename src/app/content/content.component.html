@@ -1,95 +1,98 @@
 <!-- WELCOME -->
-<section class="py-14" id="welcome" data-jarallax data-speed=".8"
-         [ngStyle]="{'backgroundImage':'url(assets/img/custom/cover-22.jpg)'}">
+<section
+  class="py-14"
+  id="welcome"
+  data-jarallax
+  data-speed=".8"
+  [ngStyle]="{ backgroundImage: 'url(assets/img/custom/cover-22.jpg)' }"
+>
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-7 col-lg-8 text-white">
-
         <!-- Heading -->
-        <h1 class="display-10">
-          Get a bigger wardrobe spending less
-        </h1>
+        <h1 class="display-10">Get a bigger wardrobe spending less</h1>
 
         <!-- Button -->
         <a href="#!" (click)="register()" class="btn btn-primary">
           Join the club
         </a>
-
       </div>
     </div>
   </div>
 </section>
 
 <!-- BEST SELLERS -->
-<section class="pt-12 pb-10 " id="products" href="#products">
+<section class="pt-12 pb-10" id="products" href="#products">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-
         <!-- Preheading -->
-        <h6 class="heading-xxs mb-3 text-gray-400">
-          PRODUCTS
-        </h6>
+        <h6 class="heading-xxs mb-3 text-gray-400">PRODUCTS</h6>
 
         <!-- Heading -->
         <h2 class="text-center">What will you find in our closet?</h2>
 
         <!-- Subheading -->
         <p class="mb-10 text-gray-500">
-          We want to give you the opportunity of playing with diferent styles and experiment the fun side of fashion
-          without worrying about the price.
-          Your second closet adapts to multiple occasions, from work to holiday without forgetting quality and
-          comfort.</p>
-        <carousel [itemsPerSlide]="itemsPerSlide"
-                  [singleSlideOffset]="singleSlideOffset"
-                  [interval]="0"
-                  [noWrap]="noWrap">
-          <slide *ngFor="let product of products$| async let index=index">
-            <img class="img-carousel" [src]="product.imgCover.url" style="display: block; width: 100%;">
+          We want to give you the opportunity of playing with diferent styles
+          and experiment the fun side of fashion without worrying about the
+          price. Your second closet adapts to multiple occasions, from work to
+          holiday without forgetting quality and comfort.
+        </p>
+        <carousel
+          [itemsPerSlide]="itemsPerSlide"
+          [singleSlideOffset]="singleSlideOffset"
+          [interval]="0"
+          [noWrap]="noWrap"
+        >
+          <slide *ngFor="let product of products$ | async; let index = index">
+            <img
+              class="img-carousel"
+              [src]="product.imgCover.url"
+              style="display: block; width: 100%"
+            />
             <div class="carousel-caption">
-              <h4>{{product.name}}</h4>
+              <h4>{{ product.name }}</h4>
             </div>
           </slide>
         </carousel>
       </div>
     </div>
-
   </div>
-
 </section>
 
 <!-- ABOUT -->
-<section class="py-12" id="about" data-jarallax data-speed=".8"
-         style="background-image: url(../../assets/img/custom/cover-about.jpg);">
+<section
+  class="py-12"
+  id="about"
+  data-jarallax
+  data-speed=".8"
+  style="background-image: url(../../assets/img/custom/cover-about.jpg)"
+>
   <div class="container">
     <div class="row justify-content-end">
       <div class="col-12 col-md-7 col-lg-5">
-
         <!-- Card -->
         <div class="card">
           <div class="card-body p-10">
-
             <!-- Heading -->
             <h3 class="mb-6">About the club</h3>
 
             <!-- Text -->
             <p class="text-muted">
-              The Second Closet Club is a shared wardrobe service that helps you enjoy more of the fashion world without
-              cluttering your house.
-              <br>
-              The Second Closet Club is a shared wardrobe service that helps you to enjoy more of the fashion world
-              spending less and without cluttering your house.Our inventory is carefully selected so you can stay
-              fashionable knowing someone is looking after the the quality and environment impact of what you use.
+              The Second Closet Club is a shared wardrobe service that helps you
+              enjoy more of the fashion world without cluttering your house.
+              <br />
+              The Second Closet Club is a shared wardrobe service that helps you
+              to enjoy more of the fashion world spending less and without
+              cluttering your house.Our inventory is carefully selected so you
+              can stay fashionable knowing someone is looking after the the
+              quality and environment impact of what you use.
             </p>
 
-            <a class="link-underline"  routerLink="/about">
-              Discover more
-            </a>
-
-
+            <a class="link-underline" routerLink="/about"> Discover more </a>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -100,77 +103,58 @@
 <section class="py-12" style="background-color: #b8ae9f" id="howItWorks">
   <div class="container">
     <div class="row pb-5">
-
       <div class="col-12">
-
         <!-- Heading -->
-        <h6 class="mb-0 text-center" style="color: #797979">
-          How It Works
-        </h6>
-
+        <h6 class="mb-0 text-center" style="color: #797979">How It Works</h6>
       </div>
     </div>
     <div class="row">
-
       <div class="col-12">
-
         <!-- Heading -->
-        <h2 class="mb-10 text-center text-white">
-          LOVE ... WEAR ... RETURN
-        </h2>
-
+        <h2 class="mb-10 text-center text-white">LOVE ... WEAR ... RETURN</h2>
       </div>
     </div>
     <div class="row pb-10">
       <div class="col-lg-4 text-center">
-
         <!-- Card -->
         <div class="card bg-none mb-7 mb-md-0">
-
           <!-- Icon -->
-          <div class="card-img-top position-relative mx-auto" style="max-width: 120px;">
-
-
+          <div
+            class="card-img-top position-relative mx-auto"
+            style="max-width: 120px"
+          >
             <!-- Feather Icon-->
             <i-feather name="heart" class="big text-white"></i-feather>
-
-
           </div>
 
           <!-- Body -->
           <div class="card-body text-center">
-
             <!-- Heading -->
             <h6 class="mb-4 text-white">
               Join the club choosing your membership
             </h6>
 
             <!-- Text -->
-            <p class="mb-0 " style="color: #797979">
+            <p class="mb-0" style="color: #797979">
               Choose the amount of pieces you want to rent per week.
             </p>
-
           </div>
-
         </div>
-
       </div>
       <div class="col-lg-4 text-center">
-
         <!-- Card -->
         <div class="card bg-none mb-7 mb-md-0">
-
           <!-- Icon -->
-          <div class="card-img-top position-relative mx-auto" style="max-width: 120px;">
-
+          <div
+            class="card-img-top position-relative mx-auto"
+            style="max-width: 120px"
+          >
             <!-- Feather Icon-->
             <i-feather name="calendar" class="big text-white"></i-feather>
-
           </div>
 
           <!-- Body -->
           <div class="card-body text-center">
-
             <!-- Heading -->
             <h6 class="mb-4 text-white pl-8 pr-8">
               Choose what you want to wear
@@ -180,46 +164,35 @@
             <p class="mb-0" style="color: #797979">
               Book your favorites online.
             </p>
-
           </div>
-
         </div>
-
       </div>
-      <div class="col-lg-4  text-center">
-
+      <div class="col-lg-4 text-center">
         <!-- Card -->
         <div class="card bg-none mb-7 mb-md-0">
-
           <!-- Icon -->
-          <div class="card-img-top position-relative mx-auto" style="max-width: 120px;">
-
-
+          <div
+            class="card-img-top position-relative mx-auto"
+            style="max-width: 120px"
+          >
             <!-- Feather Icon-->
             <i-feather name="corner-left-up" class="big text-white"></i-feather>
-
           </div>
 
           <!-- Body -->
           <div class="card-body text-center">
-
             <!-- Heading -->
             <h6 class="mb-4 text-white pl-8 pr-8">
               Enjoy your new look them return
             </h6>
 
             <!-- Text -->
-            <p class="mb-0 " style="color: #797979">
-              Don’t worry about washing.
-              We will take care of it!
+            <p class="mb-0" style="color: #797979">
+              Don’t worry about washing. We will take care of it!
             </p>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   </div>
 </section>
@@ -228,50 +201,56 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-8 col-xl-7 text-center">
-
         <!-- Preheading -->
-        <h6 class="heading-xxs mb-3 text-gray-400">
-          Before & after
-        </h6>
+        <h6 class="heading-xxs mb-3 text-gray-400">Before & after</h6>
 
         <!-- Heading -->
         <h2 class="mb-4">Dont waste your money and space</h2>
 
         <!-- Subheading -->
         <p class="mb-10 text-gray-500">
-          We all have those pieces that were worn once (or never) piling up in the wardrobe.Optimize you wardrobe. You
-          don’t need to buy everything you want to wear.
+          We all have those pieces that were worn once (or never) piling up in
+          the wardrobe.Optimize you wardrobe. You don’t need to buy everything
+          you want to wear.
         </p>
-
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-12 col-lg-10">
-
         <!-- Card -->
         <div class="card">
-
           <!-- Badge -->
-          <div class="badge badge-white card-badge card-badge-left text-uppercase">
+          <div
+            class="badge badge-white card-badge card-badge-left text-uppercase"
+          >
             Before
           </div>
 
           <!-- Badge -->
-          <div class="badge badge-white card-badge card-badge-right text-uppercase">
+          <div
+            class="badge badge-white card-badge card-badge-right text-uppercase"
+          >
             After
           </div>
 
           <!-- Comparision -->
           <div class="img-comp">
-
             <!-- Back -->
             <div class="img-comp-back">
-              <img src="../../assets/img/custom/before.jpg" alt="..." class="img-comp-img">
+              <img
+                src="../../assets/img/custom/before.jpg"
+                alt="..."
+                class="img-comp-img"
+              />
             </div>
 
             <!-- Front -->
             <div class="img-comp-front">
-              <img src="../../assets/img/custom/after.jpg" alt="..." class="img-comp-img">
+              <img
+                src="../../assets/img/custom/after.jpg"
+                alt="..."
+                class="img-comp-img"
+              />
             </div>
 
             <!-- Handle -->
@@ -281,11 +260,9 @@
             </div>
 
             <!-- Input -->
-            <input class="img-comp-input" type="range">
-
+            <input class="img-comp-input" type="range" />
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -296,84 +273,63 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-
         <!-- Preheading -->
-        <h6 class="heading-xxs mb-3 text-gray-400">
-          Membership
-        </h6>
+        <h6 class="heading-xxs mb-3 text-gray-400">Membership</h6>
 
         <!-- Heading -->
         <h2 class="mb-10">Plans that fit to your wardrobe</h2>
-
       </div>
     </div>
     <div class="row">
       <div class="col-lg-2"></div>
       <div class="col-12 col-lg-4">
-
         <!-- Card -->
         <div class="card card-lg shadow mb-7 mb-lg-0">
-
           <!-- Context -->
           <div class="card-body border-bottom text-center">
-
             <!-- Subheading -->
             <h5>Casual</h5>
 
             <!-- Heading -->
-            <h2 class="mb-0 font-weight-bolder text-primary">
-              €65.00
-            </h2>
-            <p class="text-primary">
-              3 months membership
-            </p>
-
+            <h2 class="mb-0 font-weight-bolder text-primary">€65.00</h2>
+            <p class="text-primary">3 months membership</p>
           </div>
           <div class="card-body">
-
             <!-- Text -->
             <p class="text-muted">
-              Rent ONE PIECE, enjoy it, mix and match with your wardrobe and then come back for a new piece.
+              Rent ONE PIECE, enjoy it, mix and match with your wardrobe and
+              then come back for a new piece.
             </p>
 
             <!-- List -->
             <ul class="list-styled mb-8">
               <li class="list-styled-item">
-                <i class="fe fe-check mr-2 text-primary"></i>Keep it for up to 7 days.
+                <i class="fe fe-check mr-2 text-primary"></i>Keep it for up to 7
+                days.
               </li>
               <li class="list-styled-item">
                 <i class="fe fe-check mr-2 text-primary"></i>Free laundry
               </li>
               <li class="list-styled-item">
-                <i class="fe fe-check mr-2 text-primary"></i>Book up to 4 pieces every month.
+                <i class="fe fe-check mr-2 text-primary"></i>Book up to 4 pieces
+                every month.
               </li>
             </ul>
-
           </div>
-
         </div>
-
       </div>
       <div class="col-12 col-lg-4">
-
         <!-- Card -->
         <div class="card card-lg shadow">
           <div class="card-body border-bottom text-center">
-
             <!-- Subheading -->
             <h5>Chic</h5>
 
             <!-- Heading -->
-            <h2 class="mb-0 font-weight-bolder">
-              €120.00
-            </h2>
-            <p>
-              3 months membership
-            </p>
-
+            <h2 class="mb-0 font-weight-bolder">€120.00</h2>
+            <p>3 months membership</p>
           </div>
           <div class="card-body pb-9">
-
             <!-- Text -->
             <p class="text-muted">
               Never get bored of your wardrobe. Rent up to TWO PIECES at a time.
@@ -382,32 +338,30 @@
             <!-- List -->
             <ul class="list-styled mb-8">
               <li class="list-styled-item">
-                <i class="fe fe-check mr-2 text-primary"></i>Keep it for up to 7 days
+                <i class="fe fe-check mr-2 text-primary"></i>Keep it for up to 7
+                days
               </li>
               <li class="list-styled-item">
                 <i class="fe fe-check mr-2 text-primary"></i>Free laundry
               </li>
               <li class="list-styled-item">
-                <i class="fe fe-check mr-2 text-primary"></i>Book up to 8 pieces every month
+                <i class="fe fe-check mr-2 text-primary"></i>Book up to 8 pieces
+                every month
               </li>
             </ul>
-
           </div>
         </div>
-
       </div>
       <div class="col-lg-2"></div>
     </div>
   </div>
 </section>
 
-
 <!-- GET STARTED -->
 <section class="pt-12 pb-6" id="getStarted">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-
         <!-- Heading -->
         <h2 class="mb-8">Want to join the club?</h2>
 
@@ -415,41 +369,50 @@
         <a href="#!" class="btn btn-primary mb-10" (click)="register()">
           Get your membership!
         </a>
-
       </div>
     </div>
   </div>
   <div class="container-fluid">
     <div class="row align-items-end">
       <div class="col">
-
         <!-- Image -->
-        <img src="../../assets/img/custom/product-105.jpg" alt="..." class="img-fluid">
-
+        <img
+          src="../../assets/img/custom/product-105.jpg"
+          alt="..."
+          class="img-fluid"
+        />
       </div>
       <div class="col d-none d-md-block">
-
         <!-- Image -->
-        <img src="../../assets/img/custom/product-106.jpg" alt="..." class="img-fluid">
-
+        <img
+          src="../../assets/img/custom/product-106.jpg"
+          alt="..."
+          class="img-fluid"
+        />
       </div>
       <div class="col">
-
         <!-- Image -->
-        <img src="../../assets/img/custom/product-107.jpg" alt="..." class="img-fluid">
-
+        <img
+          src="../../assets/img/custom/product-107.jpg"
+          alt="..."
+          class="img-fluid"
+        />
       </div>
       <div class="col d-none d-md-block">
-
         <!-- Image -->
-        <img src="../../assets/img/custom/product-108.jpg" alt="..." class="img-fluid">
-
+        <img
+          src="../../assets/img/custom/product-108.jpg"
+          alt="..."
+          class="img-fluid"
+        />
       </div>
       <div class="col">
-
         <!-- Image -->
-        <img src="../../assets/img/custom/product-109.jpg" alt="..." class="img-fluid">
-
+        <img
+          src="../../assets/img/custom/product-109.jpg"
+          alt="..."
+          class="img-fluid"
+        />
       </div>
     </div>
   </div>

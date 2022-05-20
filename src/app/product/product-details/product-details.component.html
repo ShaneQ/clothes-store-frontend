@@ -7,8 +7,10 @@
         <div class="col-12">
           <div class="row">
             <div class="col-12 col-md-6">
-              <app-product-carousel [imagesAgain]="product.images"
-                                    [coverImage]="product.imgCover"></app-product-carousel>
+              <app-product-carousel
+                [imagesAgain]="product.images"
+                [coverImage]="product.imgCover"
+              ></app-product-carousel>
 
               <!--
                             &lt;!&ndash; Card &ndash;&gt;
@@ -78,10 +80,8 @@
 
                             </div>
               -->
-
             </div>
             <div class="col-12 col-md-6 pl-lg-10">
-
               <!--              &lt;!&ndash; Header &ndash;&gt;
                             <div class="row mb-1">
                               <div class="col">
@@ -93,75 +93,92 @@
                             </div>-->
 
               <!-- Heading -->
-              <h3 class="mb-2">{{product.name}}</h3>
+              <h3 class="mb-2">{{ product.name }}</h3>
 
               <!-- Description -->
-              <p class="mb-2 text-muted">{{product.quickDesc}}</p>
+              <p class="mb-2 text-muted">{{ product.quickDesc }}</p>
 
-              <br/>
+              <br />
               <!-- Form -->
               <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                   <label>Size:</label>
                   <!-- Radio -->
                   <div class="mb-2">
-
-                    <div *ngFor="let size of product.sizes"
-                         class="custom-control custom-control-inline custom-control-size mb-2">
-                      <input type="radio" name="size" formControlName="size" class="custom-control-input form-control"
-                             id="{{'sizeRadio'+size.id}}" value="{{size.id}}" checked data-toggle="form-caption">
-                      <label class="custom-control-label"
-                             for="{{'sizeRadio'+size.id}}">{{sizes[size.id_size.valueOf()].name}}</label>
+                    <div
+                      *ngFor="let size of product.sizes"
+                      class="custom-control custom-control-inline custom-control-size mb-2"
+                    >
+                      <input
+                        type="radio"
+                        name="size"
+                        formControlName="size"
+                        class="custom-control-input form-control"
+                        id="{{ 'sizeRadio' + size.id }}"
+                        value="{{ size.id }}"
+                        checked
+                        data-toggle="form-caption"
+                      />
+                      <label
+                        class="custom-control-label"
+                        for="{{ 'sizeRadio' + size.id }}"
+                        >{{ sizes[size.id_size.valueOf()].name }}</label
+                      >
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
-
                   <div class="form-row">
                     <div class="col-6">
-                      <div class=" theme-default">
-                            <input
-                              formControlName="orderDate"
-                              type="text"
-                              placeholder="Pickup Date"
-                              class="form-control border-dark text-body"
-                              bsDatepicker
-                              [bsConfig]="{ isAnimated: true, containerClass : 'theme-default', dateInputFormat: 'DD/MM/YYYY' }"
-                              [minDate]="minDate"
-                              [maxDate]="maxDate">
+                      <div class="theme-default">
+                        <input
+                          formControlName="orderDate"
+                          type="text"
+                          placeholder="Pickup Date"
+                          class="form-control border-dark text-body"
+                          bsDatepicker
+                          [bsConfig]="{
+                            isAnimated: true,
+                            containerClass: 'theme-default',
+                            dateInputFormat: 'DD/MM/YYYY'
+                          }"
+                          [minDate]="minDate"
+                          [maxDate]="maxDate"
+                        />
                       </div>
                     </div>
                     <div class="col-6">
-                        <label class="sr-only" for="paymentMonth">Month</label>
-                        <select class="custom-select border-dark text-body" id="paymentMonth" required
-                                formControlName="dispatch">
-                          <option selected disabled value="">Collection Time</option>
-                          <option>8am to 9am</option>
-                          <option>1pm to 2pm</option>
-                          <option>6pm to 7pm</option>
-                        </select>
+                      <label class="sr-only" for="paymentMonth">Month</label>
+                      <select
+                        class="custom-select border-dark text-body"
+                        id="paymentMonth"
+                        required
+                        formControlName="dispatch"
+                      >
+                        <option selected disabled value="">
+                          Collection Time
+                        </option>
+                        <option>8am to 9am</option>
+                        <option>1pm to 2pm</option>
+                        <option>6pm to 7pm</option>
+                      </select>
                     </div>
                   </div>
                 </div>
 
                 <div *ngIf="submitted && orderForm.invalid" class="mb-3">
                   <div *ngIf="orderForm.controls['orderDate'].invalid">
-                    <div class="col-6 form-row ">
-                      Please select pickup date
-                    </div>
+                    <div class="col-6 form-row">Please select pickup date</div>
                   </div>
                   <div *ngIf="orderForm.controls['dispatch'].invalid">
-                    <div class="col-6 form-row ">
+                    <div class="col-6 form-row">
                       Please select a pickup time
                     </div>
                   </div>
                   <div *ngIf="orderForm.controls['size'].invalid">
-                    <div class="col-6 form-row ">
-                      Please select a size
-                    </div>
+                    <div class="col-6 form-row">Please select a size</div>
                   </div>
-
                 </div>
                 <div class="form-row mb-7">
                   <!--                    <div class="col-12 col-lg-auto">
@@ -171,30 +188,38 @@
                                         </button>
                                       </div>-->
 
-                  <div class="col-6 ">
-
+                  <div class="col-6">
                     <!-- Submit -->
                     <div *ngIf="hasActiveMembership">
-                      <button type="submit" class="btn btn-block btn-dark mb-2" [disabled]="this.isMemberInfoBtnVis"
-                              data-toggle="modal" href="#modalMemberSlowDown">
+                      <button
+                        type="submit"
+                        class="btn btn-block btn-dark mb-2"
+                        [disabled]="this.isMemberInfoBtnVis"
+                        data-toggle="modal"
+                        href="#modalMemberSlowDown"
+                      >
                         Book it <i class="fe fe-shopping-cart ml-2"></i>
                       </button>
                     </div>
                     <div *ngIf="!hasActiveMembership && isLoggedIn">
-                      <p>Please contact management if you wish to become an active member</p>
+                      <p>
+                        Please contact management if you wish to become an
+                        active member
+                      </p>
                     </div>
                     <div *ngIf="!isLoggedIn">
-                      <button type="button" class="btn btn-block btn-danger mb-2" data-toggle="modal"
-                              (click)="register()">
+                      <button
+                        type="button"
+                        class="btn btn-block btn-danger mb-2"
+                        data-toggle="modal"
+                        (click)="register()"
+                      >
                         SIGN UP
                       </button>
                     </div>
-
-
                   </div>
                 </div>
               </form>
-
             </div>
           </div>
         </div>
@@ -207,9 +232,10 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-
           <!-- Nav -->
-          <div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
+          <div
+            class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom"
+          >
             <a class="nav-link active" data-toggle="tab" href="#descriptionTab">
               Description
             </a>
@@ -228,22 +254,18 @@
                 <div class="col-12 col-lg-10 col-xl-8">
                   <div class="row">
                     <div class="col-12">
-
                       <!-- Text -->
                       <p class="text-gray-500">
-                        {{product.description}}
+                        {{ product.description }}
                       </p>
-
                     </div>
                     <div class="col-12 col-md-6">
-
                       <!-- List -->
                       <ul class="list list-unstyled mb-0">
                         <li>
-                          <strong>Material</strong>:{{product.material}}
+                          <strong>Material</strong>:{{ product.material }}
                         </li>
                       </ul>
-
                     </div>
                   </div>
                 </div>
@@ -254,7 +276,6 @@
                 <div class="col-12 col-lg-10 col-xl-8">
                   <div class="row">
                     <div class="col-12 col-md-6">
-
                       <!-- Text -->
                       <p class="mb-4">
                         <strong>Fitting information:</strong>
@@ -262,24 +283,21 @@
 
                       <!-- Text -->
                       <p class="text-gray-500">
-                        {{product.fittingInfo}}
+                        {{ product.fittingInfo }}
                       </p>
-
                     </div>
                     <div class="col-12 col-md-6">
-
                       <!-- Text -->
                       <p class="mb-4">
                         <strong>Model measurements:</strong>
                       </p>
                       <!-- List -->
                       <ul class="list-unstyled text-gray-500">
-                        <li>Height: {{product.measurements.length}} cm</li>
-                        <li>Bust/Chest: {{product.measurements.chest}} cm</li>
-                        <li>Hips: {{product.measurements.hips}} cm</li>
-                        <li>Waist: {{product.measurements.waist}} cm</li>
+                        <li>Height: {{ product.measurements.length }} cm</li>
+                        <li>Bust/Chest: {{ product.measurements.chest }} cm</li>
+                        <li>Hips: {{ product.measurements.hips }} cm</li>
+                        <li>Waist: {{ product.measurements.waist }} cm</li>
                       </ul>
-
                     </div>
                   </div>
                 </div>
@@ -290,27 +308,19 @@
                 <div class="col-12 col-lg-10 col-xl-8">
                   <div class="row">
                     <div class="col-12 col-md-6">
-
-
                       <!-- Text -->
                       <p class="text-gray-500">
-                        {{product.washInfo}}
+                        {{ product.washInfo }}
                       </p>
-
                     </div>
-                    <div class="col-12 col-md-6">
-
-                    </div>
+                    <div class="col-12 col-md-6"></div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
     </div>
   </section>
 </div>
-

@@ -1,17 +1,15 @@
-
-
-.side-by-side{
-  display:flex;
+.side-by-side {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-fieldset.group  {
+fieldset.group {
   margin: 0;
   padding: 0;
   margin-bottom: 1.25em;
-  padding: .125em;
+  padding: 0.125em;
 }
 
 fieldset.group legend {
@@ -23,8 +21,7 @@ fieldset.group legend {
   color: black;
 }
 
-
-ul.checkbox  {
+ul.checkbox {
   margin: 0;
   padding: 0;
   margin-left: 20px;
@@ -32,20 +29,20 @@ ul.checkbox  {
 }
 
 ul.checkbox li input {
-  margin-right: .25em;
+  margin-right: 0.25em;
 }
 
 ul.checkbox li {
   border: 1px transparent solid;
-  display:inline-block;
-  width:12em;
+  display: inline-block;
+  width: 12em;
 }
 
 ul.checkbox li label {
   margin-left: 10px;
 }
 ul.checkbox li:hover,
-ul.checkbox li.focus  {
+ul.checkbox li.focus {
   background-color: lightyellow;
   border: 1px gray solid;
   width: 12em;

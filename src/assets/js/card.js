@@ -2,55 +2,53 @@
 // variations.scss
 //
 
-'use strict';
+"use strict";
 
-(function() {
-
+(function () {
   var $toggle = $('[data-toggle="card-collapse"]');
-  var $collapse = $('.card-collapse');
+  var $collapse = $(".card-collapse");
 
   $toggle.on({
-    'mouseenter': function() {
+    mouseenter: function () {
       var $this = $(this);
-      var $collapse = $this.find('.card-collapse');
+      var $collapse = $this.find(".card-collapse");
 
-      $collapse.collapse('show');
+      $collapse.collapse("show");
     },
-    'mouseleave': function() {
+    mouseleave: function () {
       var $this = $(this);
-      var $collapse = $this.find('.card-collapse');
-      var isCollapsing = $collapse.hasClass('collapsing');
+      var $collapse = $this.find(".card-collapse");
+      var isCollapsing = $collapse.hasClass("collapsing");
 
       if (isCollapsing) {
-        setTimeout(function() {
-          $collapse.collapse('hide');
+        setTimeout(function () {
+          $collapse.collapse("hide");
         }, 350);
       } else {
-        $collapse.collapse('hide');
+        $collapse.collapse("hide");
       }
-    }
+    },
   });
 
   $collapse.on({
-    'show.bs.collapse': function() {
+    "show.bs.collapse": function () {
       var $this = $(this);
-      var $parent = $this.closest('.card-collapse-parent');
+      var $parent = $this.closest(".card-collapse-parent");
       var collapseHeight = $this.outerHeight(true);
 
       $parent.css({
-        '-webkit-transform': 'translateY(-' + collapseHeight + 'px)',
-        'transform': 'translateY(-' + collapseHeight + 'px)'
+        "-webkit-transform": "translateY(-" + collapseHeight + "px)",
+        transform: "translateY(-" + collapseHeight + "px)",
       });
     },
-    'hide.bs.collapse': function() {
+    "hide.bs.collapse": function () {
       var $this = $(this);
-      var $parent = $this.closest('.card-collapse-parent');
+      var $parent = $this.closest(".card-collapse-parent");
 
       $parent.css({
-        '-webkit-transform': '',
-        'transform': ''
+        "-webkit-transform": "",
+        transform: "",
       });
-    }
+    },
   });
-
 })();

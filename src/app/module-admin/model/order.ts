@@ -1,5 +1,4 @@
-
-import {Product} from './product';
+import { Product } from './product';
 
 export class Order {
   public id: number;
@@ -8,5 +7,5 @@ export class Order {
   public selectedSize: string;
   public rentalType: string;
 
-  constructor( public product: Product, public member: boolean) { }
+  constructor(public product: Product, public member: boolean) {}
 }

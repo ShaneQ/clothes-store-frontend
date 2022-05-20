@@ -5,10 +5,8 @@
 // Responsive widths
 
 @each $breakpoint, $value in $grid-breakpoints {
-
   @include media-breakpoint-up($breakpoint) {
-
-    // Additive 
+    // Additive
 
     .border-#{$breakpoint} {
       border: $border-width solid $border-color !important;
@@ -54,13 +52,11 @@
   }
 }
 
-
 // Colors
 
 .border-gray-700 {
   border-color: $gray-700 !important;
 }
-
 
 // Widths
 

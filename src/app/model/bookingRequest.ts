@@ -1,6 +1,6 @@
-import {Product} from './product';
-import {Image} from "./image";
-import {Size} from "./size";
+import { Product } from './product';
+import { Image } from './image';
+import { Size } from './size';
 
 export class BookingRequest {
   public id: number;
@@ -14,5 +14,4 @@ export class BookingRequest {
   public productSize: Size;
   public status: string;
   public coverImg: Image;
-
 }

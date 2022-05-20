@@ -2,8 +2,8 @@
 // popover.js
 //
 
-'use strict';
+"use strict";
 
-$(function() {
+$(function () {
   $('[data-toggle="popover"]').popover();
 });

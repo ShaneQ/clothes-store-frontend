@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {AppService} from "../../services/app.service";
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-admin-header',
   templateUrl: './admin-header.component.html',
   styleUrls: ['./admin-header.component.scss'],
-  providers: [AppService]
+  providers: [AppService],
 })
 export class AdminHeaderComponent implements OnInit {
-
   public isLoggedIn = false;
 
-  constructor(
-    private _service: AppService){}
+  constructor(private _service: AppService) {}
 
   logout() {
     console.log('Logged Out');
@@ -24,5 +22,4 @@ export class AdminHeaderComponent implements OnInit {
     const bool = this._service.checkCredentials();
     console.log(bool);
   }
-
 }

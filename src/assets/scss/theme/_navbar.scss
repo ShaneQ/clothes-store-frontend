@@ -12,7 +12,6 @@
   }
 }
 
-
 // Nav
 
 .navbar-nav .nav-link {
@@ -21,7 +20,6 @@
   box-shadow: none;
 }
 
-
 // Dropdown
 
 .navbar-nav .dropdown-menu [class*="container"] {
@@ -29,13 +27,12 @@
 }
 
 .navbar-nav > .dropdown.position-static > .dropdown-menu::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 100%;
   height: calc(#{$navbar-padding-y} + #{$border-width});
   width: 100%;
 }
-
 
 // Shopping cart
 
@@ -62,7 +59,6 @@
   }
 }
 
-
 // Topbar
 
 .navbar-topbar {
@@ -79,7 +75,6 @@
   }
 }
 
-
 // Fashion
 
 .navbar-fashion {
@@ -88,7 +83,6 @@
 }
 
 .navbar-fashion .navbar-form {
-
   @include media-breakpoint-up(sm) {
     min-width: $navbar-fashion-form-width;
   }
@@ -133,13 +127,11 @@
 }
 
 .navbar-fashion .navbar-collapse {
-
   @include media-breakpoint-down(xs) {
     margin-left: -$grid-gutter-width / 2;
     margin-right: -$grid-gutter-width / 2;
   }
 }
-
 
 // Boxed
 
@@ -163,18 +155,15 @@
   border: 0;
 }
 
-
 // Responsive
 
 @each $breakpoint, $value in $grid-breakpoints {
-
   // Collapse
 
   .navbar.navbar-expand-#{$breakpoint} {
     @media (max-width: $value - 1px) {
-
       .navbar-collapse::before {
-        content: '';
+        content: "";
         display: block;
         margin-top: $navbar-collapse-margin-top;
       }
@@ -212,7 +201,10 @@
         padding-bottom: $grid-gutter-width / 2;
       }
 
-      .navbar-collapse .dropdown:not(.position-static) .dropdown-menu .card-body {
+      .navbar-collapse
+        .dropdown:not(.position-static)
+        .dropdown-menu
+        .card-body {
         padding: $grid-gutter-width / 2;
       }
 
@@ -222,7 +214,7 @@
         background-color: $gray-800;
 
         &::after {
-          content: '';
+          content: "";
           display: block;
           margin-top: $navbar-collapse-margin-top;
         }
@@ -233,7 +225,11 @@
         color: $white;
       }
 
-      &.navbar-fashion.bg-dark .navbar-collapse .dropdown-menu .card .list-styled-link {
+      &.navbar-fashion.bg-dark
+        .navbar-collapse
+        .dropdown-menu
+        .card
+        .list-styled-link {
         color: $navbar-fashion-dark-color;
 
         &.active {
@@ -252,15 +248,12 @@
       &.navbar-boxed .dropdown-collapse .card {
         box-shadow: $box-shadow-border-inset !important;
       }
-
     }
   }
 
   .navbar:not(.navbar-vertical).navbar-expand-#{$breakpoint} {
     @include media-breakpoint-up(#{$breakpoint}) {
-
       .navbar-nav {
-
         &:first-child {
           margin-left: -$nav-link-padding-x;
         }
@@ -295,7 +288,7 @@
         flex-direction: column;
 
         > * {
-          min-width: 100%
+          min-width: 100%;
         }
       }
 
@@ -317,12 +310,10 @@
   }
 }
 
-
-// Toggle dropdowns on hover 
+// Toggle dropdowns on hover
 
 @if $enable-hover-up {
   @include media-breakpoint-up($enable-hover-up) {
-
     .navbar-nav .dropdown > .dropdown-menu,
     .navbar-nav .dropright > .dropdown-menu {
       display: block !important;
@@ -333,11 +324,11 @@
 
     .navbar-nav .dropdown > .dropdown-menu {
       left: 50%;
-      transform: translate(-50%, .5rem);
+      transform: translate(-50%, 0.5rem);
     }
 
     .navbar-nav .dropright > .dropdown-menu {
-      transform: translateY(.5rem);
+      transform: translateY(0.5rem);
     }
 
     .navbar-nav .hovered > .dropdown-menu {
@@ -362,15 +353,12 @@
     .navbar-nav .dropright.show > .dropdown-menu {
       transform: translateY(0);
     }
-
   }
 }
-
 
 // Sticky
 
 @supports (position: sticky) {
-
   .navbar.sticky-left {
     position: sticky;
     top: 0;

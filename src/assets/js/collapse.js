@@ -2,17 +2,17 @@
 // collapse.js
 //
 
-'use strict';
+"use strict";
 
-(function() {
+(function () {
   var $toggle = $('[data-toggle="collapse"][data-action]');
 
-  $toggle.on('click', function(e) {
+  $toggle.on("click", function (e) {
     e.stopPropagation();
 
     var $this = $(this);
-    var action = $this.data('action');
-    var target = $this.data('target');
+    var action = $this.data("action");
+    var target = $this.data("target");
     var $target = $(target);
 
     $target.collapse(action);

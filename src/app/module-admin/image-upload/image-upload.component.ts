@@ -1,15 +1,14 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {ImageService} from "../image.service";
-import {HttpEventType, HttpResponse} from "@angular/common/http";
-import {Image} from "../model/image";
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ImageService } from '../image.service';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Image } from '../model/image';
 
 @Component({
   selector: 'app-image-upload',
   templateUrl: './image-upload.component.html',
-  providers: [ImageService]
+  providers: [ImageService],
 })
 export class ImageUploadComponent {
-
   @Output('image')
   imageEmitter = new EventEmitter<Image>();
 
@@ -19,8 +18,8 @@ export class ImageUploadComponent {
   progress: { percentage: number } = { percentage: 0 };
   selectedFile = null;
   changeImage = false;
-  constructor(private uploadService: ImageService){}
-  downloadFile(){
+  constructor(private uploadService: ImageService) {}
+  downloadFile() {
     const link = document.createElement('a');
     link.setAttribute('target', '_blank');
     link.setAttribute('href', '_File_Saved_Path');
@@ -38,21 +37,22 @@ export class ImageUploadComponent {
   upload() {
     this.progress.percentage = 0;
     this.currentFileUpload = this.selectedFiles.item(0);
-    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+    this.uploadService
+      .pushFileToStorage(this.currentFileUpload)
+      .subscribe((event) => {
         if (event.type === HttpEventType.UploadProgress) {
-          this.progress.percentage = Math.round(100 * event.loaded / event.total);
+          this.progress.percentage = Math.round(
+            (100 * event.loaded) / event.total
+          );
         } else if (event instanceof HttpResponse) {
           var json = JSON.parse(event.body.toString());
 
-          this.imageEmitter.emit(new Image(json.id, json.url))
-
+          this.imageEmitter.emit(new Image(json.id, json.url));
         }
         this.selectedFiles = undefined;
-      }
-    );
+      });
   }
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
-
 }

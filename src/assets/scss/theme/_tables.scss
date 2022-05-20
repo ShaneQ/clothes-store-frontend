@@ -16,13 +16,12 @@
   font-weight: $font-weight-bold;
 }
 
-.table tbody td, .table tbody th {
-
+.table tbody td,
+.table tbody th {
   @if $enable-transitions {
     transition: $transition-base;
   }
 }
-
 
 // Sizing
 

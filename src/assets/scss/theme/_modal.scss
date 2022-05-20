@@ -8,20 +8,17 @@
   flex-shrink: 0;
 }
 
-
 // Body
 
 .modal-body {
   flex-grow: 0;
 }
 
-
 // Header
 
 .modal-header {
   padding: $modal-header-padding-y $modal-header-padding-x;
 }
-
 
 // Footer
 
@@ -30,7 +27,6 @@
   padding: $modal-footer-padding-y $modal-footer-padding-x;
   border-width: 0;
 }
-
 
 // Modal dialog vertical
 //
@@ -54,7 +50,6 @@
 .modal.show .modal-dialog-vertical {
   transform: translateX(0);
 }
-
 
 // Positioning
 

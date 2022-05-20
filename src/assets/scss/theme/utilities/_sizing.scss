@@ -15,7 +15,7 @@
 }
 
 @each $breakpoint, $value in $grid-breakpoints {
-  @if $breakpoint !='xs' {
+  @if $breakpoint != "xs" {
     @include media-breakpoint-up(#{$breakpoint}) {
       @each $size, $sizeValue in $sizes {
         .w-#{$breakpoint}-#{$size} {
@@ -37,7 +37,6 @@
     }
   }
 }
-
 
 // Viewport units
 

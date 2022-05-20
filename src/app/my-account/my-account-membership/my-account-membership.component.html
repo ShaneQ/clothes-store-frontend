@@ -1,92 +1,73 @@
 <div class="card card-lg mb-5 border">
   <div class="card-body pb-0">
-
     <!-- Info -->
     <div class="card card-sm">
       <div class="card-body bg-light">
         <div class="row">
           <div class="col-6 col-lg-4">
-
             <!-- Heading -->
             <h6 class="heading-xxxs text-muted">MEMBERSHIP</h6>
 
             <!-- Text -->
             <p class="mb-lg-0 font-size-sm font-weight-bold">
-              {{memberships[this.personalInfo.membership]}}
+              {{ memberships[this.personalInfo.membership] }}
             </p>
-
           </div>
           <div class="col-6 col-lg-4">
-
             <!-- Heading -->
             <h6 class="heading-xxxs text-muted">MONTH ALLOWANCE</h6>
 
             <!-- Text -->
             <p class="mb-lg-0 font-size-sm font-weight-bold">
-              {{membershipsAllowance[this.personalInfo.membership] }}
+              {{ membershipsAllowance[this.personalInfo.membership] }}
             </p>
-
           </div>
 
           <div class="col-6 col-lg-4">
-
             <!-- Heading -->
             <h6 class="heading-xxxs text-muted">BOOKINGS AVAILABLE</h6>
 
             <!-- Text -->
-            <p class="mb-0 font-size-sm font-weight-bold">
-              COMING SOON
-            </p>
-
+            <p class="mb-0 font-size-sm font-weight-bold">COMING SOON</p>
           </div>
         </div>
       </div>
     </div>
-
   </div>
   <div class="card-body pb-8">
-
     <!-- Info -->
     <div class="card card-sm">
       <div class="card-body bg-light">
         <div class="row">
           <div class="col-6 col-lg-4">
-
             <!-- Heading -->
             <h6 class="heading-xxxs text-muted">START DATE:</h6>
 
             <!-- Text -->
             <p class="mb-lg-0 font-size-sm font-weight-bold">
-              {{personalInfo.startDate}}
+              {{ personalInfo.startDate }}
             </p>
-
           </div>
           <div class="col-6 col-lg-4">
-
             <!-- Heading -->
             <h6 class="heading-xxxs text-muted">END DATE:</h6>
 
             <!-- Text -->
             <p class="mb-lg-0 font-size-sm font-weight-bold">
-              {{personalInfo.endDate}}
+              {{ personalInfo.endDate }}
             </p>
-
           </div>
           <div class="col-6 col-lg-4">
-
             <!-- Heading -->
             <h6 class="heading-xxxs text-muted">MEMBERSHIP STATUS:</h6>
 
             <!-- Text -->
             <p class="mb-0 font-size-sm font-weight-bold">
-              {{this.personalInfo.status}}
+              {{ this.personalInfo.status }}
             </p>
-
           </div>
         </div>
       </div>
     </div>
-
   </div>
-
 </div>

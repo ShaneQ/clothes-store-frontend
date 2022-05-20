@@ -2,17 +2,17 @@
 // vote.js
 //
 
-'use strict';
+"use strict";
 
-(function() {
+(function () {
   var $toggle = $('[data-toggle="vote"]');
 
-  $toggle.on('click', function(e) {
+  $toggle.on("click", function (e) {
     e.preventDefault();
 
     var $this = $(this);
-    var count = $this.attr('data-count');
+    var count = $this.attr("data-count");
 
-    $this.attr('data-count', ++count);
+    $this.attr("data-count", ++count);
   });
 })();

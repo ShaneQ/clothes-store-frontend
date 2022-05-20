@@ -1,84 +1,69 @@
 <div class="card card-lg mb-5 border">
   <div class="card-body pb-0">
-
     <!-- Info -->
     <div class="card card-sm">
       <div class="card-body bg-light">
         <div class="row">
           <div class="col-6 col-lg-4">
-
             <!-- Heading -->
             <h6 class="heading-xxxs text-muted">ORDER No:</h6>
 
             <!-- Text -->
             <p class="mb-lg-0 font-size-sm font-weight-bold">
-              {{item.id}}
+              {{ item.id }}
             </p>
-
           </div>
           <div class="col-6 col-lg-4">
-
             <!-- Heading -->
             <h6 class="heading-xxxs text-muted">PICKUP DATE:</h6>
 
             <!-- Text -->
             <p class="mb-lg-0 font-size-sm font-weight-bold">
-              {{item.startDate | date:'dd/MM/yyyy'}}
+              {{ item.startDate | date: "dd/MM/yyyy" }}
             </p>
-
           </div>
           <div class="col-6 col-lg-4">
-
             <!-- Heading -->
             <h6 class="heading-xxxs text-muted">COLLECTION PLACE:</h6>
 
             <!-- Text -->
             <p class="mb-0 font-size-sm font-weight-bold">
-              {{item.collectionPlace}}
+              {{ item.collectionPlace }}
             </p>
-
           </div>
         </div>
       </div>
     </div>
-
   </div>
   <div class="card-footer">
     <div class="row align-items-center">
       <div class="col-12 col-lg-4">
         <div class="form-row mb-4 mb-lg-0">
           <div class="col-3">
-
             <!-- Image -->
-            <a target="_blank" href="{{item.coverImg.url}}">
-              <img src="{{item.coverImg.url}}" style="width:100px">
+            <a target="_blank" href="{{ item.coverImg.url }}">
+              <img src="{{ item.coverImg.url }}" style="width: 100px" />
             </a>
-
           </div>
         </div>
       </div>
       <div class="col-12 col-lg-8">
         <div class="form-row">
           <div class="col-lg-6 col-sm-12">
-
             <!-- Button -->
             <label>RETURN DATE:</label>
             <div class="btn btn-sm btn-block btn-outline-dark">
-              {{item.returnDate| date:'dd/MM/yyyy'}}
+              {{ item.returnDate | date: "dd/MM/yyyy" }}
             </div>
-
           </div>
           <div class="col-lg-6 col-sm-12">
-
             <!-- Button -->
             <label>STATUS:</label>
             <div class="btn btn-sm btn-block btn-outline-dark">
-              {{convertStatusToReadable(item.status)}}
+              {{ convertStatusToReadable(item.status) }}
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   </div>

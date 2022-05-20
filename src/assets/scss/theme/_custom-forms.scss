@@ -10,8 +10,11 @@
   color: $custom-control-label-color;
   cursor: pointer;
 
-  &::before, &::after {
-    top: calc((1em * #{$line-height-base} - #{$custom-control-indicator-size}) / 2);
+  &::before,
+  &::after {
+    top: calc(
+      (1em * #{$line-height-base} - #{$custom-control-indicator-size}) / 2
+    );
   }
 }
 
@@ -23,14 +26,14 @@
   text-decoration: line-through;
 }
 
-
 // Checkbox, radio
 
 .custom-checkbox .custom-control-label,
 .custom-radio .custom-control-label {
   padding-left: $custom-control-indicator-size + $custom-control-gutter;
 
-  &::before, &::after {
+  &::before,
+  &::after {
     left: 0;
   }
 
@@ -41,15 +44,17 @@
   }
 }
 
-
 // Colors
 
 .custom-control-color .custom-control-label {
   padding-left: $custom-control-color-indicator-size + $custom-control-gutter;
 
-  &::before, &::after {
+  &::before,
+  &::after {
     left: 0;
-    top: calc((1em * #{$line-height-base} - #{$custom-control-color-indicator-size}) / 2);
+    top: calc(
+      (1em * #{$line-height-base} - #{$custom-control-color-indicator-size}) / 2
+    );
     width: $custom-control-color-indicator-size;
     height: $custom-control-color-indicator-size;
     border-radius: 50%;
@@ -68,13 +73,12 @@
 }
 
 .custom-control-color .custom-control-input:checked ~ .custom-control-label {
-
   &::before {
     background-color: currentColor;
   }
 
   &::after {
-    background-color: fade-out(black, .95);
+    background-color: fade-out(black, 0.95);
     background-image: $custom-checkbox-indicator-icon-checked;
   }
 }
@@ -88,22 +92,20 @@
   }
 }
 
-
 // Text
 
 .custom-control-text .custom-control-label {
-
-  &::before, &::after {
+  &::before,
+  &::after {
     display: none;
   }
 }
-
 
 // Image
 
 .custom-control-img .custom-control-label {
   width: $custom-control-img-size;
-  opacity: .8;
+  opacity: 0.8;
 
   &::before {
     display: none;
@@ -127,7 +129,6 @@
   }
 }
 
-
 // Size
 
 .custom-control-size .custom-control-label {
@@ -150,24 +151,23 @@
   background-color: $light;
 }
 
-
-
 // Select
 
 .custom-select-xs {
   height: $btn-height-xs;
-  padding: $input-padding-y-xs $input-padding-x-xs + $custom-select-indicator-padding $input-padding-y-xs $input-padding-x-xs;
+  padding: $input-padding-y-xs $input-padding-x-xs +
+    $custom-select-indicator-padding $input-padding-y-xs $input-padding-x-xs;
   font-size: $input-font-size-xs;
   background: $custom-select-background-xs;
 }
 
 .custom-select-xxs {
   height: $btn-height-xxs;
-  padding: $input-padding-y-xxs $input-padding-x-xxs + $custom-select-indicator-padding $input-padding-y-xxs $input-padding-x-xxs;
+  padding: $input-padding-y-xxs $input-padding-x-xxs +
+    $custom-select-indicator-padding $input-padding-y-xxs $input-padding-x-xxs;
   font-size: $input-font-size-xxs;
   background: $custom-select-background-xxs;
 }
-
 
 // Switch
 
@@ -181,21 +181,24 @@
   }
 
   &::after {
-    top: add(($font-size-base * $line-height-base - $custom-switch-indicator-size) / 2, $custom-control-indicator-border-width * 2);
+    top: add(
+      ($font-size-base * $line-height-base - $custom-switch-indicator-size) / 2,
+      $custom-control-indicator-border-width * 2
+    );
     left: ($custom-control-indicator-size - $custom-switch-indicator-size) / 2;
     background-color: $primary;
   }
 }
 
 .custom-switch .custom-control-input:focus ~ .custom-control-label {
-
   &::before {
     border-color: $primary;
   }
 }
 
-.custom-switch .custom-control-input:active:not(:checked):not(:disabled) ~ .custom-control-label {
-
+.custom-switch
+  .custom-control-input:active:not(:checked):not(:disabled)
+  ~ .custom-control-label {
   &::before {
     border-color: $primary;
     background-color: transparent;
@@ -203,7 +206,6 @@
 }
 
 .custom-switch .custom-control-input:checked ~ .custom-control-label {
-
   &::before {
     border-color: $primary;
     background-color: $primary;

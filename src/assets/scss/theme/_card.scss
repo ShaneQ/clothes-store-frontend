@@ -6,7 +6,6 @@
   flex-shrink: 0;
 }
 
-
 // Sizing
 
 .card .card-footer {
@@ -28,20 +27,17 @@
   padding: $card-spacer-x-sm;
 }
 
-
 // Body
 
 .card-body {
   flex: 0 0 auto;
 }
 
-
 // Footer
 
 .card-footer {
   background-color: transparent;
 }
-
 
 // Overlay
 
@@ -73,13 +69,11 @@ a.card-img-overlay {
   opacity: 1;
 }
 
-
 // Image
 
 .card-img {
   position: relative;
 }
-
 
 // Image hover
 
@@ -111,7 +105,6 @@ a.card-img-overlay {
   opacity: 0;
 }
 
-
 // Background
 
 .card-bg {
@@ -131,7 +124,7 @@ a.card-img-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(100% + .25rem);
+  width: calc(100% + 0.25rem);
   height: 100%;
 
   @if $enable-transitions {
@@ -141,9 +134,8 @@ a.card-img-overlay {
 }
 
 .card:hover > .card-bg > .card-bg-img {
-  transform: translateX(-.25rem);
+  transform: translateX(-0.25rem);
 }
-
 
 // Circle
 
@@ -185,7 +177,6 @@ a.card-img-overlay {
   right: 0;
 }
 
-
 // Badge
 
 .card-badge {
@@ -201,7 +192,6 @@ a.card-img-overlay {
 .card-badge-right {
   right: 0;
 }
-
 
 // Price
 
@@ -226,7 +216,6 @@ a.card-img-overlay {
 .card-price-right + .card-badge-right {
   top: 3.75rem;
 }
-
 
 // Actions
 
@@ -263,14 +252,13 @@ a.card-img-overlay {
 }
 
 .card-actions .card-action + .card-action {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .card-img:hover .card-actions .card-action {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 // Action
 
@@ -288,7 +276,6 @@ a.card-img-overlay {
   right: $card-extras-spacer;
 }
 
-
 // Button
 
 .card-btn {
@@ -305,7 +292,6 @@ a.card-img-overlay {
   opacity: 1;
 }
 
-
 // Collapse
 
 .card-collapse {
@@ -316,5 +302,5 @@ a.card-img-overlay {
 
 .card-collapse-parent {
   position: relative;
-  transition: transform .35s ease, -webkit-transform .35s ease; // equal to collapse transition
+  transition: transform 0.35s ease, -webkit-transform 0.35s ease; // equal to collapse transition
 }

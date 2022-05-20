@@ -1,10 +1,9 @@
-import {EventEmitter, Injectable, Output} from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SearchProductsService {
-
   @Output() sizeFilterClickedEvent = new EventEmitter<string>();
 
   sizeClicked(value: string) {
@@ -23,7 +22,6 @@ export class SearchProductsService {
     this.colorFilterClickedEvent.emit(value);
   }
 
-
   @Output() showResultsClickEvent = new EventEmitter<string>();
 
   showResults() {
@@ -32,13 +30,11 @@ export class SearchProductsService {
 
   @Output() seasonFilterClickedEvent = new EventEmitter<string>();
 
-
   seasonClicked(value: string) {
     this.seasonFilterClickedEvent.emit(value);
   }
 
   @Output() categoryFilterClickedEvent = new EventEmitter<string>();
-
 
   categoryClicked(value: string) {
     this.categoryFilterClickedEvent.emit(value);

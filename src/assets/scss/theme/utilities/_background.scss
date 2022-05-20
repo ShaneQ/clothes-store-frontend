@@ -10,7 +10,6 @@
   }
 }
 
-
 // Sizing
 
 .bg-cover {
@@ -19,7 +18,7 @@
   background-size: cover !important;
 
   &.bg-hover:hover {
-    background-position: calc(50% - .75rem) center !important;
+    background-position: calc(50% - 0.75rem) center !important;
   }
 }
 
@@ -35,13 +34,11 @@
   background-size: auto 100% !important;
 }
 
-
 // Positioning
 
 .bg-left {
   background-position: center left !important;
 }
-
 
 // Clip content
 
@@ -49,25 +46,23 @@
   background-clip: content-box !important;
 }
 
-
 // Images
 
 .bg-pattern {
   background-image: url(../img/patterns/pattern-1.svg) !important;
 }
 
-
 // Colors
 
 .bg-white-90 {
-  background-color: fade-out($white, .1) !important;
+  background-color: fade-out($white, 0.1) !important;
 }
 
 .bg-dark-0 {
   background-color: fade-out($dark, 1) !important;
 
   &.bg-hover:hover {
-    background-color: fade-out($dark, .9) !important;
+    background-color: fade-out($dark, 0.9) !important;
   }
 }
 
@@ -75,7 +70,7 @@
   background-color: fade-out($dark, 0.95) !important;
 
   &.bg-hover:hover {
-    background-color: fade-out($dark, .85) !important;
+    background-color: fade-out($dark, 0.85) !important;
   }
 }
 
@@ -91,16 +86,13 @@
   background-color: fade-out($dark, 0.6) !important;
 }
 
-
 // Soft colors
 
 @each $color, $value in $theme-colors {
-
   .bg-#{$color}-soft {
     background-color: tint($value, 90%) !important;
   }
 }
-
 
 // None
 

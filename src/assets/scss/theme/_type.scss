@@ -6,60 +6,60 @@
 
 @font-face {
   font-family: "Jost";
-  src:
-    url(src/assets/fonts/jost/Jost-400-Book.woff2) format("woff2"),
+  src: url(src/assets/fonts/jost/Jost-400-Book.woff2) format("woff2"),
     url(src/assets/fonts/jost/Jost-400-Book.woff) format("woff"),
-    url(src/assets/fonts/jost/Jost-400-Book.ttf) format("truetype")
+    url(src/assets/fonts/jost/Jost-400-Book.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Jost";
   font-style: italic;
-  src:
-    url(src/assets/fonts/jost/Jost-400-BookItalic.woff2) format("woff2"),
+  src: url(src/assets/fonts/jost/Jost-400-BookItalic.woff2) format("woff2"),
     url(src/assets/fonts/jost/Jost-400-BookItalic.woff) format("woff"),
-    url(src/assets/fonts/jost/Jost-400-BookItalic.ttf) format("truetype")
+    url(src/assets/fonts/jost/Jost-400-BookItalic.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Jost";
   font-weight: 500;
-  src:
-    url(src/assets/fonts/jost/Jost-500-Medium.woff2) format("woff2"),
+  src: url(src/assets/fonts/jost/Jost-500-Medium.woff2) format("woff2"),
     url(src/assets/fonts/jost/Jost-500-Medium.woff) format("woff"),
-    url(src/assets/fonts/jost/Jost-500-Medium.ttf) format("truetype")
+    url(src/assets/fonts/jost/Jost-500-Medium.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Jost";
   font-weight: 600;
-  src:
-    url(src/assets/fonts/jost/Jost-600-Semi.woff2) format("woff2"),
+  src: url(src/assets/fonts/jost/Jost-600-Semi.woff2) format("woff2"),
     url(src/assets/fonts/jost/Jost-600-Semi.woff) format("woff"),
-    url(src/assets/fonts/jost/Jost-600-Semi.ttf) format("truetype")
+    url(src/assets/fonts/jost/Jost-600-Semi.ttf) format("truetype");
 }
-
 
 // Responsive sizing
 
 @include media-breakpoint-down(sm) {
-  h1, .h1 {
+  h1,
+  .h1 {
     font-size: $h1-font-size-sm;
   }
 
-  h2, .h2 {
+  h2,
+  .h2 {
     font-size: $h2-font-size-sm;
   }
 
-  h3, .h3 {
+  h3,
+  .h3 {
     font-size: $h3-font-size-sm;
   }
 
-  h4, .h4 {
+  h4,
+  .h4 {
     font-size: $h4-font-size-sm;
   }
 
-  h5, .h5 {
+  h5,
+  .h5 {
     font-size: $h5-font-size-sm;
   }
 
@@ -71,7 +71,6 @@
     font-size: $display4-size-sm;
   }
 }
-
 
 // Heading
 
@@ -89,20 +88,17 @@
   text-transform: uppercase;
 }
 
-
 // Small
 
 small {
   font-weight: inherit;
 }
 
-
 // Strong
 
 strong {
   font-weight: $font-weight-bold;
 }
-
 
 // Blockquote
 
@@ -139,7 +135,6 @@ strong {
   }
 }
 
-
 // List
 
 .list-styled {
@@ -164,7 +159,6 @@ strong {
   }
 }
 
-
 // Links
 
 .link-underline {
@@ -176,7 +170,7 @@ strong {
   color: $link-underline-color;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -197,9 +191,10 @@ strong {
   }
 }
 
-
 // Lists
 
-ol, ul, dl {
+ol,
+ul,
+dl {
   margin-bottom: $spacer;
 }

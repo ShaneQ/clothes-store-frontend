@@ -18,7 +18,6 @@
   }
 }
 
-
 // Offset
 
 @for $i from 1 through $grid-columns {
@@ -28,7 +27,7 @@
 }
 
 @each $breakpoint, $value in $grid-breakpoints {
-  @if $breakpoint !='xs' {
+  @if $breakpoint != "xs" {
     @include media-breakpoint-up(#{$breakpoint}) {
       @for $i from 1 through $grid-columns {
         .offset-#{$breakpoint}-n#{$i} {

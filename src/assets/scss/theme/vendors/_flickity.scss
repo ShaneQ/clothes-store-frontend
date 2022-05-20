@@ -6,35 +6,33 @@
   cursor: auto !important;
 }
 
-
 // Responsive initialization
 //
 // Requires "watchCSS" to be "true"
 
 .flickity::after {
   display: none;
-  content: 'flickity';
+  content: "flickity";
 }
 
 .flickity-none::after {
   display: none;
-  content: '';
+  content: "";
 }
 
 @each $breakpoint, $value in $grid-breakpoints {
-  @if $breakpoint !='xs' {
+  @if $breakpoint != "xs" {
     @include media-breakpoint-up(#{$breakpoint}) {
       .flickity-#{$breakpoint}::after {
-        content: 'flickity';
+        content: "flickity";
       }
 
       .flickity-#{$breakpoint}-none::after {
-        content: '';
+        content: "";
       }
     }
   }
 }
-
 
 // Page dots
 
@@ -45,8 +43,8 @@
 }
 
 .flickity-page-dots .dot {
-  width: .5rem;
-  height: .5rem;
+  width: 0.5rem;
+  height: 0.5rem;
   margin-left: 3px;
   margin-right: 3px;
   background-color: $gray-200;
@@ -65,7 +63,6 @@
   }
 }
 
-
 // Progress
 
 .flickity-page-dots-progress .flickity-page-dots {
@@ -80,16 +77,15 @@
 
 .flickity-page-dots-progress .flickity-page-dots .dot {
   flex: 1;
-  height: .25rem;
+  height: 0.25rem;
   margin: 0;
   border-radius: 0;
   background-color: $primary;
 
-  &.is-selected~.dot {
+  &.is-selected ~ .dot {
     background-color: $gray-100;
   }
 }
-
 
 // Inner
 
@@ -97,7 +93,6 @@
   position: absolute;
   bottom: 1.5rem;
 }
-
 
 // Buttons
 
@@ -132,7 +127,7 @@
   line-height: 1;
 }
 
-.flickity-button>svg {
+.flickity-button > svg {
   display: none;
 }
 
@@ -152,7 +147,6 @@
   content: "\e930";
 }
 
-
 // Large
 
 .flickity-buttons-lg .flickity-button {
@@ -169,13 +163,11 @@
   font-size: $h3-font-size;
 }
 
-
 // Offset
 
 .flickity-buttons-offset .flickity-button {
   transform: translateY(-125%);
 }
-
 
 // Left bottom
 
@@ -193,11 +185,10 @@
   left: 42px;
 }
 
-
 // Nav
 
-.flickity-nav .flickity-slider>* {
-  opacity: .8;
+.flickity-nav .flickity-slider > * {
+  opacity: 0.8;
 }
 
 .flickity-nav .is-nav-selected {
@@ -216,14 +207,12 @@
   }
 }
 
-
 // No gutters fix
 
-.row.no-gutters>.flickity-viewport>.flickity-slider>[class*="col"] {
+.row.no-gutters > .flickity-viewport > .flickity-slider > [class*="col"] {
   padding-left: 0;
   padding-right: 0;
 }
-
 
 // Vertical
 //
@@ -243,16 +232,14 @@
   transform: none !important;
 }
 
-.flickity-vertical .flickity-slider>* {
+.flickity-vertical .flickity-slider > * {
   position: relative !important;
   left: 0 !important;
 }
 
-
 // Light
 
 .flickity-light .flickity-button {
-
   @include hover-focus-active {
     color: $white;
   }

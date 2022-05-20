@@ -6,7 +6,6 @@
   flex-shrink: 0; // IE fix
 }
 
-
 // Sizing
 
 .list-group-lg .list-group-item {
@@ -16,7 +15,6 @@
 .list-group-sm .list-group-item {
   padding: $list-group-item-padding-y-sm $list-group-item-padding-x-sm;
 }
-
 
 // Flush
 
@@ -28,11 +26,9 @@
   border-top: $list-group-border-width solid $list-group-border-color;
 }
 
-
 // Flush y
 
 .list-group-flush-y .list-group-item {
-
   &:first-child {
     padding-top: 0;
     border-top: none;
@@ -44,7 +40,6 @@
   }
 }
 
-
 // Flush x
 
 .list-group-flush-x .list-group-item {
@@ -53,7 +48,6 @@
   border-left: none;
   border-right: none;
 }
-
 
 // Strong
 

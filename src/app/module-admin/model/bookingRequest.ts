@@ -1,4 +1,4 @@
-import {Size} from "./size";
+import { Size } from './size';
 
 export class BookingRequest {
   public id: number;
@@ -11,5 +11,4 @@ export class BookingRequest {
   public status: string;
   public userId: string;
   public userName: string;
-
 }

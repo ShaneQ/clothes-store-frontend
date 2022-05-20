@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../environments/environment";
-import {AdminAppService} from "./admin-app.service";
-import {Observable} from "rxjs";
-import {HttpEvent, HttpRequest} from "@angular/common/http";
+import { environment } from '../../environments/environment';
+import { AdminAppService } from './admin-app.service';
+import { Observable } from 'rxjs';
+import { HttpEvent, HttpRequest } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ImageService {
+  private imageUrl = environment.resourceUrl + 'admin/image';
 
-  private imageUrl = environment.resourceUrl +'admin/image';
+  constructor(private _service: AdminAppService) {}
 
-  constructor(private _service: AdminAppService) { }
-
-  addImage(formData: FormData): Observable<any>{
-    return this._service.postImageResource(formData, this.imageUrl)
+  addImage(formData: FormData): Observable<any> {
+    return this._service.postImageResource(formData, this.imageUrl);
   }
 
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-    return this._service.pushFileToStorage(file, this.imageUrl)
+    return this._service.pushFileToStorage(file, this.imageUrl);
   }
 }

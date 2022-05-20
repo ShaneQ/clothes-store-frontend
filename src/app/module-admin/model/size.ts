@@ -4,5 +4,5 @@ export class Size {
     public id_size: number,
     public name: string,
     public status: string
-  ) { }
+  ) {}
 }

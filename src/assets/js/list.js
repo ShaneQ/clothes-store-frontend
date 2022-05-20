@@ -2,18 +2,17 @@
 // list.js
 //
 
-'use strict';
+"use strict";
 
-(function() {
+(function () {
   var $toggle = $('[data-toggle="lists"]');
 
-  $toggle.each(function() {
+  $toggle.each(function () {
     var $this = $(this);
-    var options = $this.data('options');
+    var options = $this.data("options");
 
-    if (typeof List !== 'undefined') {
+    if (typeof List !== "undefined") {
       new List($this.get(0), options);
     }
   });
-
 })();

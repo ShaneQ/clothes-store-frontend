@@ -2,13 +2,13 @@
 // form.js
 //
 
-'use strict';
+"use strict";
 
-(function() {
+(function () {
   var toggle = document.querySelectorAll('[data-toggle="form-caption"]');
 
-  [].forEach.call(toggle, function(el) {
-    el.addEventListener('change', function() {
+  [].forEach.call(toggle, function (el) {
+    el.addEventListener("change", function () {
       var target = document.querySelector(el.dataset.target);
       var value = el.value;
 

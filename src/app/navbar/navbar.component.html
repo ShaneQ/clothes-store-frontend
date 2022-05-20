@@ -2,41 +2,73 @@
   <app-admin-navbar></app-admin-navbar>
 </div>
 
-<nav *ngIf="!this.isAdmin" class="navbar navbar-expand-xl navbar-light bg-white border-bottom">
+<nav
+  *ngIf="!this.isAdmin"
+  class="navbar navbar-expand-xl navbar-light bg-white border-bottom"
+>
   <div class="container">
-
     <!-- Brand -->
-    <img src="assets/img/custom/logo.jpg" alt="logo" class="img-fluid img-logo">
-
+    <img
+      src="assets/img/custom/logo.jpg"
+      alt="logo"
+      class="img-fluid img-logo"
+    />
 
     <!-- Toggler -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLandingCollapse" aria-controls="navbarLandingCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarLandingCollapse"
+      aria-controls="navbarLandingCollapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Collapse -->
     <div class="collapse navbar-collapse" id="navbarLandingCollapse">
-
       <!-- Nav -->
       <ul class="navbar-nav ml-xl-auto">
         <li class="nav-item">
-          <a class="nav-link " routerLink="/" data-toggle="smooth-scroll">Home</a>
+          <a class="nav-link" routerLink="/" data-toggle="smooth-scroll"
+            >Home</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/shop" routerLinkActive="active" href="#">Browser</a>
+          <a
+            class="nav-link"
+            routerLink="/shop"
+            routerLinkActive="active"
+            href="#"
+            >Browser</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/about" routerLinkActive="active" data-toggle="smooth-scroll">How it Works</a>
+          <a
+            class="nav-link"
+            routerLink="/about"
+            routerLinkActive="active"
+            data-toggle="smooth-scroll"
+            >How it Works</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/faq" routerLinkActive="active">FAQs</a>
+          <a class="nav-link" routerLink="/faq" routerLinkActive="active"
+            >FAQs</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active"
+            >Contact</a
+          >
         </li>
         <div *ngIf="isLoggedIn && !isRegistrationPage">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/account" routerLinkActive="active" >My Account</a>
+            <a class="nav-link" routerLink="/account" routerLinkActive="active"
+              >My Account</a
+            >
           </li>
         </div>
         <div *ngIf="isLoggedIn">
@@ -46,13 +78,12 @@
         </div>
         <div *ngIf="!isRegistrationPage && !isLoggedIn">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/browser" routerLinkActive="active"  >Sign in</a>
+            <a class="nav-link" routerLink="/browser" routerLinkActive="active"
+              >Sign in</a
+            >
           </li>
         </div>
-
       </ul>
-
     </div>
-
   </div>
 </nav>

@@ -1,6 +1,6 @@
-import {Image} from './image';
-import {ProductMeasurement} from './productMeasurement';
-import {Size} from "./size";
+import { Image } from './image';
+import { ProductMeasurement } from './productMeasurement';
+import { Size } from './size';
 
 export class Product {
   constructor(
@@ -16,5 +16,5 @@ export class Product {
     public imgCover: Image,
     public images: Image[],
     public sizes: Size[]
-  ) { }
+  ) {}
 }

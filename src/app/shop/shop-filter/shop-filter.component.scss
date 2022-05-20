@@ -3,9 +3,13 @@
   overflow: hidden;
 }
 
-
 .grid-pearl {
-  background-image: radial-gradient(circle at 30% 30%, #fff 8%, #f3ece3 48%, #e7e0d7 61%);
+  background-image: radial-gradient(
+    circle at 30% 30%,
+    #fff 8%,
+    #f3ece3 48%,
+    #e7e0d7 61%
+  );
   border: 1px solid #ddd;
 }
 
@@ -24,7 +28,6 @@
 .grid-brown {
   color: #5b250c;
 }
-
 
 .grid-grey {
   color: grey;
@@ -61,4 +64,3 @@
 .grid-silver {
   color: silver;
 }
-
