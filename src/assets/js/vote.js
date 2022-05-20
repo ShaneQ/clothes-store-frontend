@@ -5,7 +5,7 @@
 "use strict";
 
 (function () {
-  var $toggle = $('[data-toggle="vote"]');
+  var $toggle = $('[data-bs-toggle="vote"]');
 
   $toggle.on("click", function (e) {
     e.preventDefault();

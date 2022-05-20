@@ -5,5 +5,5 @@
 "use strict";
 
 $(function () {
-  $('[data-toggle="popover"]').popover();
+  $('[data-bs-toggle="popover"]').popover();
 });

@@ -6,7 +6,7 @@
   height: $btn-height;
   white-space: nowrap;
 
-  &[data-toggle="button"] {
+  &[data-bs-toggle="button"] {
     cursor: pointer;
   }
 }
@@ -63,7 +63,7 @@
     color: $white;
   }
 
-  &[data-toggle="button"] {
+  &[data-bs-toggle="button"] {
     @include hover-focus {
       color: $white;
     }
@@ -96,7 +96,7 @@
     color: $primary;
   }
 
-  &[data-toggle="button"] {
+  &[data-bs-toggle="button"] {
     &.active {
       color: $primary;
     }

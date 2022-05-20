@@ -5,7 +5,7 @@
 "use strict";
 
 (function () {
-  var toggle = document.querySelectorAll('[data-toggle="form-caption"]');
+  var toggle = document.querySelectorAll('[data-bs-toggle="form-caption"]');
 
   [].forEach.call(toggle, function (el) {
     el.addEventListener("change", function () {

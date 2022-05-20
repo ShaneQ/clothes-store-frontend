@@ -5,7 +5,7 @@
 "use strict";
 
 (function () {
-  var $toggle = $('[data-toggle="collapse"][data-action]');
+  var $toggle = $('[data-bs-toggle="collapse"][data-action]');
 
   $toggle.on("click", function (e) {
     e.stopPropagation();

@@ -5,7 +5,7 @@
 "use strict";
 
 (function () {
-  var $toggle = $('[data-toggle="lists"]');
+  var $toggle = $('[data-bs-toggle="lists"]');
 
   $toggle.each(function () {
     var $this = $(this);

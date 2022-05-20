@@ -5,7 +5,7 @@
 "use strict";
 
 (function () {
-  var $toggle = $('.collapse[data-toggle="simplebar"]');
+  var $toggle = $('.collapse[data-bs-toggle="simplebar"]');
 
   $toggle.on({
     "shown.bs.collapse": function () {

@@ -40,14 +40,14 @@ export class PersonalInfoService {
   hasUserRegistered() {
     return this._service.hasUserRegistered(
       environment.resourceUrl + 'registration/personal/exists'
-    )
+    );
   }
-  isUserRegistered(){
+  isUserRegistered() {
     let check = false;
     this.hasUserRegistered().subscribe(
-      () => check = true,
-      (err) => check = false
+      () => (check = true),
+      (err) => (check = false)
     );
-    return check
+    return check;
   }
 }

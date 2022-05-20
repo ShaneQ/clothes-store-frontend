@@ -10,7 +10,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
         clientId: 'frontEnd',
       },
       initOptions: {
-        onLoad: 'check-sso'
+        onLoad: 'check-sso',
       },
     });
 }

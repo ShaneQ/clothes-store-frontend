@@ -33,8 +33,8 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard {
     const requiredRoles = route.data.roles;
 
     // Allow the user to to proceed if no additional roles are required to access the route.
-    console.log("Required Roles" + requiredRoles);
-    console.log("Existing roles" + this.roles)
+    console.log('Required Roles' + requiredRoles);
+    console.log('Existing roles' + this.roles);
     if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
       return true;
     }

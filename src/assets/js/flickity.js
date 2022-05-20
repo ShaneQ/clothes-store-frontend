@@ -16,7 +16,7 @@
 
   // Toggle
 
-  var $toggle = $('[data-toggle="flickity"]');
+  var $toggle = $('[data-bs-toggle="flickity"]');
 
   $toggle.on("click", function () {
     var $this = $(this);

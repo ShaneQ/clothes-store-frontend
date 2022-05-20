@@ -7,13 +7,15 @@
 (function () {
   var $dropright = $(".dropright");
   var $dropdownMenu = $(".dropdown-menu");
-  var $collapseToggle = $('[data-toggle="collapse"]');
+  var $collapseToggle = $('[data-bs-toggle="collapse"]');
 
   var $navbarCollapse = $(".navbar-collapse");
   var $navbarDropdown = $(".navbar .dropdown");
-  var $navbarSmoothToggle = $('.navbar .nav-link[data-toggle="smooth-scroll"]');
+  var $navbarSmoothToggle = $(
+    '.navbar .nav-link[data-bs-toggle="smooth-scroll"]'
+  );
   var $navbarDroprightToggle = $(
-    '.navbar .dropdown-menu .dropright [data-toggle="dropdown"]'
+    '.navbar .dropdown-menu .dropright [data-bs-toggle="dropdown"]'
   );
 
   $navbarDroprightToggle.on("click", function (e) {

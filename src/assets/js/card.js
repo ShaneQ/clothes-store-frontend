@@ -5,7 +5,7 @@
 "use strict";
 
 (function () {
-  var $toggle = $('[data-toggle="card-collapse"]');
+  var $toggle = $('[data-bs-toggle="card-collapse"]');
   var $collapse = $(".card-collapse");
 
   $toggle.on({

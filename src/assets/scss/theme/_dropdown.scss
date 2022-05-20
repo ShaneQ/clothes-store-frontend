@@ -69,7 +69,7 @@
   content: "\e930";
 }
 
-.dropdown-toggle[data-toggle="collapse"] {
+.dropdown-toggle[data-bs-toggle="collapse"] {
   &::after {
     @if $enable-transitions {
       transition: $transition-base;
@@ -79,7 +79,7 @@
   }
 }
 
-.dropdown-toggle[data-toggle="collapse"][aria-expanded="true"] {
+.dropdown-toggle[data-bs-toggle="collapse"][aria-expanded="true"] {
   &::after {
     transform: rotate(180deg);
   }

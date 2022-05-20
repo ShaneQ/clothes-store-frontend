@@ -6,7 +6,7 @@
 "use strict";
 
 (function () {
-  var maps = document.querySelectorAll('[data-toggle="map"]');
+  var maps = document.querySelectorAll('[data-bs-toggle="map"]');
 
   if (maps) {
     [].forEach.call(maps, function (el) {

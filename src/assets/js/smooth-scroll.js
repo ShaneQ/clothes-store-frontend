@@ -5,7 +5,7 @@
 "use strict";
 
 (function () {
-  var toggle = '[data-toggle="smooth-scroll"]';
+  var toggle = '[data-bs-toggle="smooth-scroll"]';
   var offset = 0;
 
   function init(toggle) {

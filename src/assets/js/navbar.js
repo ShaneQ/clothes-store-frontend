@@ -11,7 +11,7 @@
   $navbarDropdown.on("mouseenter mouseleave", function (e) {
     if (!$navbarCollapse.hasClass("show")) {
       var $this = $(this);
-      var $toggle = $this.find('[data-toggle="dropdown"]');
+      var $toggle = $this.find('[data-bs-toggle="dropdown"]');
 
       if (e.type === "mouseenter") {
         $this.addClass("hovered");
