@@ -6,7 +6,7 @@ import {BookingRequest} from "../../model/bookingRequest";
   templateUrl: './my-account-order.component.html',
   styleUrls: ['./my-account-order.component.scss']
 })
-export class MyAccountOrderComponent implements OnInit {
+export class MyAccountOrderComponent {
 
   @Input()
   item: BookingRequest;
@@ -15,9 +15,6 @@ export class MyAccountOrderComponent implements OnInit {
   itemEmitted = new EventEmitter<BookingRequest>();
 
   constructor() {
-  }
-
-  ngOnInit(): void {
   }
 
   public convertStatusToReadable(str) {

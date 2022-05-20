@@ -7,7 +7,7 @@ import {AuthService} from "../../module-auth/auth.service";
   templateUrl: './admin-navbar.component.html',
   providers: [AppService]
 })
-export class AdminNavbarComponent implements OnInit {
+export class AdminNavbarComponent {
 
 
   constructor(
@@ -16,8 +16,5 @@ export class AdminNavbarComponent implements OnInit {
 
   logout() {
     this._authService.logout();
-  }
-
-  ngOnInit(): void {
   }
 }

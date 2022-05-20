@@ -48,7 +48,6 @@ const routes: Routes = [
     path: 'product/:productId',
     component: ProductDetailsComponent,
   },
-
   {
     path: 'account',
     component: MyAccountBaseComponent,

@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './shop-load-more.component.html',
   styleUrls: ['./shop-load-more.component.scss']
 })
-export class ShopLoadMoreComponent implements OnInit {
+export class ShopLoadMoreComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

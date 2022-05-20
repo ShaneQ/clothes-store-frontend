@@ -9,13 +9,10 @@ import {AppService} from '../services/app.service';
 
 })
 
-export class HomeComponent implements OnInit{
+export class HomeComponent {
 
 
   constructor() {
-  }
-
-  ngOnInit() {
   }
 
 }

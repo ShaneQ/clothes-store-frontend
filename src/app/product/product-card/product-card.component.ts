@@ -5,7 +5,7 @@ import {Product} from '../../model/product';
   selector: 'app-product-card',
   templateUrl: './product-card.component.html'
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent {
 
   @Input()
   product: Product;
@@ -16,8 +16,5 @@ export class ProductCardComponent implements OnInit {
   public defaultImageUrl = 'assets/img/products/product-6.jpg';
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

@@ -15,18 +15,14 @@ export class NavbarComponent implements OnInit {
   public isAdmin: boolean;
 
   constructor(
-    private _service: AppService, private _authService: AuthService, private _navBarService: NavbarService){}
+    private _service: AppService, private _authService: AuthService){}
 
   logout() {
     this._authService.logout()
   }
-  ngOnDestroy(): void {
-    this._navBarService.navbarEvent.unsubscribe()
-  }
 
   ngOnInit(): void {
     this.isRegistrationPage = false
-    this._navBarService.navbarEvent.subscribe(data => this.sortEvents(data))
     this._authService.isLoggedIn().then(result => this.isLoggedIn = result);
     this.isAdmin = this._authService.getUserRoles().includes("scc_admin_role")
   }

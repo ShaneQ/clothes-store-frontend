@@ -4,11 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-my-account-base',
   templateUrl: './my-account-base.component.html'
 })
-export class MyAccountBaseComponent implements OnInit {
+export class MyAccountBaseComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

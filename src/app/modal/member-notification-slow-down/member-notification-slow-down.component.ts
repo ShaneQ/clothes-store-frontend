@@ -4,11 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-member-notification-slow-down',
   templateUrl: './member-notification-slow-down.component.html'
 })
-export class MemberNotificationSlowDownComponent implements OnInit {
+export class MemberNotificationSlowDownComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

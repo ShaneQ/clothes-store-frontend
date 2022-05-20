@@ -4,11 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-faq',
   templateUrl: './faq.component.html'
 })
-export class FaqComponent implements OnInit {
+export class FaqComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
