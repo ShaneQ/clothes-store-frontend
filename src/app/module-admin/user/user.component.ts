@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../model/user';
-import { UsersService } from '../users.service';
+import { UsersService } from '../services/users.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserSettings } from '../model/userSettings';
 
@@ -42,7 +42,7 @@ export class UserComponent implements OnInit {
     return [
       { name: 'Activated', value: 'ACTIVATED' },
       { name: 'Deactivated', value: 'DEACTIVATED' },
-      { name: 'Bocked', value: 'BLOCKED' },
+      { name: 'Blocked', value: 'BLOCKED' },
       { name: 'Requested', value: 'REQUESTED' },
     ];
   }

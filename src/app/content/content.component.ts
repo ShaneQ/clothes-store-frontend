@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Product } from '../model/product';
-import { ScriptService } from '../services/script.service';
-import { KeycloakService } from 'keycloak-angular';
-import { ProductService } from '../services/product.service';
-import { environment } from '../../environments/environment';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Product} from '../model/product';
+import {ScriptService} from '../services/script.service';
+import {KeycloakService} from 'keycloak-angular';
+import {ProductService} from '../services/product.service';
+import {environment} from '../../environments/environment';
+import SwiperCore, {Navigation, Pagination, Scrollbar, SwiperOptions} from "swiper";
+
+SwiperCore.use([Navigation, Pagination, Scrollbar]);
 
 @Component({
   selector: 'app-content',
@@ -13,10 +16,26 @@ import { environment } from '../../environments/environment';
   providers: [ScriptService, ProductService],
 })
 export class ContentComponent implements OnInit {
+  config: SwiperOptions = {
+    navigation: true,
+    pagination: {clickable: true},
+    scrollbar: {draggable: true},
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+      },
+      640: {
+        slidesPerView: 3,
+      },
+      990: {
+        slidesPerView: 4,
+      },
+      1200: {
+        slidesPerView: 5,
+      }
+    }
+  };
   public products$: Observable<Product[]>;
-  displayAmount: number;
-  itemsPerSlide = 3;
-  singleSlideOffset = true;
   noWrap = true;
 
   private baseUrl: string = environment.baseUrl;
@@ -26,10 +45,14 @@ export class ContentComponent implements OnInit {
     private _script: ScriptService,
     private _keycloak: KeycloakService,
     private _dataService: ProductService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.getProducts();
+    this._script.load("imgcomp").then(data => {
+      console.log('script loaded ', data);
+    }).catch(error => console.log(error));
   }
 
   getProducts() {
@@ -41,6 +64,6 @@ export class ContentComponent implements OnInit {
     if (newLocation === this.baseUrl) {
       newLocation = this.baseUrl + '/browser';
     }
-    this._keycloak.register({ redirectUri: newLocation });
+    this._keycloak.register({redirectUri: newLocation});
   }
 }

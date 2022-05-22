@@ -1,0 +1,20 @@
+.google-maps-iframe{
+  width:600px;
+  height:450px;
+}
+
+@media (max-width: 500px) {
+  .google-maps-iframe{
+    width:300px;
+    height:200px;
+  }
+
+}
+
+@media (min-width:500px) and (max-width: 950px) {
+  .google-maps-iframe{
+    width:450px;
+    height:300px;
+  }
+
+}

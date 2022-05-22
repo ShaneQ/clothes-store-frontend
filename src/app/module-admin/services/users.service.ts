@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AdminAppService } from './admin-app.service';
-import { User } from './model/user';
+import { User } from '../model/user';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { UserSettings } from './model/userSettings';
+import { environment } from '../../../environments/environment';
+import { UserSettings } from '../model/userSettings';
 
 @Injectable({
   providedIn: 'root',

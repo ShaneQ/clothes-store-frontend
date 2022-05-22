@@ -10,13 +10,13 @@ import {
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { Product } from './model/product';
+import { Product } from '../model/product';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
-import { User } from './model/user';
-import { BookingRequest } from './model/bookingRequest';
-import { UserSettings } from './model/userSettings';
-import { Inventory } from './model/inventory';
+import { environment } from '../../../environments/environment';
+import { User } from '../model/user';
+import { BookingRequest } from '../model/bookingRequest';
+import { UserSettings } from '../model/userSettings';
+import { Inventory } from '../model/inventory';
 
 @Injectable()
 export class AdminAppService {

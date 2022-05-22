@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NavbarService } from '../services/navbar.service';
-import { AuthService } from '../module-auth/auth.service';
-import { Router } from '@angular/router';
-import { UsersService } from '../module-admin/users.service';
-import { PersonalInfoService } from '../services/personal-info.service';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../module-auth/auth.service';
+import {Router} from '@angular/router';
+import {PersonalInfoService} from '../services/personal-info.service';
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +14,8 @@ export class RegistrationComponent implements OnInit {
     private _authService: AuthService,
     private _router: Router,
     private _users: PersonalInfoService
-  ) {}
+  ) {
+  }
 
   registered(event: boolean) {
     this._router.navigate(['/browser']).then();

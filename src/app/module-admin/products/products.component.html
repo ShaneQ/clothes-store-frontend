@@ -1,58 +1,76 @@
 <div class="container mb-10">
   <div *ngIf="this.inventory?.length > 0" class="container py-10">
+    <div class="d-flex flex-row-reverse ">
+      <label>
+        Status:
+        <input type="text" class="custom-input-datatable" (ngModelChange)="this.filterByStatus()" [(ngModel)]="this.status" [ngModelOptions]="{standalone: true}">
+      </label>
+    </div>
+
     <table
       datatable
       [dtOptions]="dtOptions"
       class="row-border hover text-center"
     >
       <thead>
-        <tr>
-          <th>Thumb</th>
-          <th>Name</th>
-          <th>Code</th>
-          <th>Size</th>
-          <th>Colour</th>
-          <th>Retail</th>
-          <th>Status</th>
-          <th>View</th>
-        </tr>
+      <tr>
+        <th>Thumb</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Size</th>
+        <th>Colour</th>
+        <th>Retail</th>
+        <th>Status</th>
+        <th style="display:none;">Status</th>
+        <th>View</th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of inventory">
-          <td>
-            <a target="_blank" href="{{ item.product.imgCover.url }}">
-              <img src="{{ item.product.imgCover.url }}" style="width: 150px" />
-            </a>
-          </td>
-          <td>{{ item.product.name }}</td>
-          <td>{{ item.product.id }}</td>
-          <td>{{ sizes[item.id_size].name }}</td>
-          <td>{{ colors[item.product.color].name }}</td>
-          <td>€{{ item.product.retailPrice }}</td>
-          <td>
-            <select
-              class="form-control"
-              id="DropdownOptions"
-              (change)="updateStatus($event, item.id, item.product.id)"
+      <tr *ngFor="let item of inventory">
+        <td>
+          <img src="{{ item.product.imgCover.url }}" style="width: 100px; height: 100px"/>
+        </td>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.id }}</td>
+        <td>{{ sizes[item.id_size].name }}</td>
+        <td>{{ colors[item.product.color].name }}</td>
+        <td>€{{ item.product.retailPrice }}</td>
+        <td>
+          <select
+            class="form-control"
+            id="DropdownOptions"
+            (change)="updateStatus($event, item.id, item.product.id)"
+          >
+            <option
+              *ngFor="let statusName of inventoryStatus"
+              [selected]="statusName === item.status"
+              [value]="statusName"
             >
-              <option
-                *ngFor="let statusName of inventoryStatus"
-                [selected]="statusName === item.status"
-                [value]="statusName"
-              >
-                {{ statusName }}
-              </option>
-            </select>
-          </td>
-          <td>
+              {{ statusName }}
+            </option>
+          </select>
+        <td style="display:none;">
+        {{item.status}}        </td>
+
+        <td>
+          <div class="btn-group">
             <button
-              class="btn btn-success btn-xxs"
+              class="btn btn-outline-success btn-xxs"
               [routerLink]="['/admin/product', item.id]"
             >
               View
             </button>
-          </td>
-        </tr>
+            <button
+              class="btn btn-outline-warning btn-xxs"
+              [routerLink]="['/admin/product/update', item.id]"
+            >
+              Edit
+            </button>
+
+          </div>
+
+        </td>
+      </tr>
       </tbody>
     </table>
   </div>

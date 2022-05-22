@@ -4103,6 +4103,11 @@ input[type="button"].btn-block {
   padding-right: 0;
   padding-left: 0;
 }
+
+.navbar-nav .nav-link . {
+  padding-right: 0;
+  padding-left: 0;
+}
 .navbar-nav .dropdown-menu {
   position: static;
   float: none;
@@ -4121,7 +4126,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-toggler {
-  padding: 0.25rem 0;
+  padding: 0.25rem 2rem 0.25rem 0;
   font-size: 0.9375rem;
   line-height: 1;
   background-color: transparent;
@@ -14257,7 +14262,7 @@ a.card-img-overlay:hover {
   flex-direction: column;
 }
 .navbar-vertical.navbar-expand-xs .navbar-nav .nav-link {
-  padding-left: 0;
+  padding-left: 1rem;
   padding-right: 0;
 }
 .navbar-vertical.navbar-expand-xs .navbar-nav .nav-link.active::before {

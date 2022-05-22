@@ -1,0 +1,21 @@
+<swiper
+  [config]="config"
+  *ngIf="coverImage"
+>
+  <ng-template swiperSlide >
+    <div>
+      <img
+        [src]="coverImage.url"
+        alt="Random first slide"
+      />
+    </div>
+  </ng-template>
+  <ng-template *ngFor="let img of imagesAgain" swiperSlide>
+    <div >
+      <img
+        [src]="img.url"
+        alt="Random second slide"
+      />
+    </div>
+  </ng-template>
+</swiper>

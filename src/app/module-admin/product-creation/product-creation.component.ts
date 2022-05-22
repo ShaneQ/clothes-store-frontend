@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Product } from '../model/product';
-import { ProductService } from '../product.service';
+import { ProductService } from '../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Size } from '../model/size';

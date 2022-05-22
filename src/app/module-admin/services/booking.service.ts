@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { AdminAppService } from './admin-app.service';
 import { Observable } from 'rxjs';
-import { BookingRequest } from './model/bookingRequest';
+import { BookingRequest } from '../model/bookingRequest';
 
 @Injectable({
   providedIn: 'root',

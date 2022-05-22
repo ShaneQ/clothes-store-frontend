@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { SearchProductsService } from '../../services/search-products.service';
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {SearchProductsService} from '../../services/search-products.service';
 
 @Component({
   selector: 'app-shop-filter',
@@ -10,49 +10,57 @@ import { SearchProductsService } from '../../services/search-products.service';
 export class ShopFilterComponent implements OnInit {
   searchForm: FormGroup;
   sizes: Array<any> = [
-    { name: 'XS', value: '2' },
-    { name: 'S', value: '3' },
-    { name: 'M', value: '4' },
-    { name: 'L', value: '5' },
-    { name: 'XL', value: '6' },
-    { name: 'One Size', value: '1' },
+    {name: 'XS', value: '2'},
+    {name: 'S', value: '3'},
+    {name: 'M', value: '4'},
+    {name: 'L', value: '5'},
+    {name: 'XL', value: '6'},
+    {name: 'One Size', value: '1'},
   ];
   seasons: Array<any> = [
-    { name: 'Winter', value: 1 },
-    { name: 'Summer', value: 2 },
-    { name: 'Spring & Fall', value: 3 },
+    {name: 'Winter', value: 1},
+    {name: 'Summer', value: 2},
+    {name: 'Spring & Fall', value: 3},
   ];
   colors: Array<any> = [
-    { name: 'black', value: 1, code: 'something' },
-    { name: 'white', value: 2 },
-    { name: 'grey', value: 3 },
-    { name: 'cream', value: 4 },
-    { name: 'brown', value: 5 },
-    { name: 'red', value: 6 },
-    { name: 'orange', value: 7 },
-    { name: 'yellow', value: 8 },
-    { name: 'green', value: 9 },
-    { name: 'blue', value: 10 },
-    { name: 'purple', value: 11 },
-    { name: 'pink', value: 12 },
-    { name: 'gold', value: 13 },
-    { name: 'silver', value: 14 },
-    { name: 'print', value: 15 },
+    {name: 'black', value: 1, code: 'something'},
+    {name: 'white', value: 2},
+    {name: 'grey', value: 3},
+    {name: 'cream', value: 4},
+    {name: 'brown', value: 5},
+    {name: 'red', value: 6},
+    {name: 'orange', value: 7},
+    {name: 'yellow', value: 8},
+    {name: 'green', value: 9},
+    {name: 'blue', value: 10},
+    {name: 'purple', value: 11},
+    {name: 'pink', value: 12},
+    {name: 'gold', value: 13},
+    {name: 'silver', value: 14},
+    {name: 'print', value: 15},
   ];
   categories: Array<any> = [
-    { name: 'Dresses', value: 1 },
-    { name: 'Tops', value: 2 },
-    { name: 'Pants', value: 3 },
-    { name: 'Skirts', value: 4 },
-    { name: 'Jumpsuits & Rompers', value: 5 },
-    { name: 'Jackets & Coats', value: 6 },
-    { name: 'Bags', value: 7 },
+    {name: 'Dresses', value: 1},
+    {name: 'Tops', value: 2},
+    {name: 'Pants', value: 3},
+    {name: 'Skirts', value: 4},
+    {name: 'Jumpsuits & Rompers', value: 5},
+    {name: 'Jackets & Coats', value: 6},
+    {name: 'Bags', value: 7},
   ];
+  isCollapsed: boolean = false;
+  isTrue: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private _searchService: SearchProductsService
-  ) {}
+  ) {
+  }
+
+  collapseSeason() {
+    console.log(this.isTrue + " isTrue");
+    this.isTrue = false
+  }
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
@@ -65,6 +73,7 @@ export class ShopFilterComponent implements OnInit {
 
   filterProducts() {
     this._searchService.showResults();
+    this.collapseSeason()
   }
 
   sizeChange(e) {
@@ -108,7 +117,7 @@ export class ShopFilterComponent implements OnInit {
     this._searchService.showResults();
   }
 
-  clearCategorys() {
+  clearCategories() {
     const checkArray: FormArray = this.searchForm.get(
       'categories'
     ) as FormArray;

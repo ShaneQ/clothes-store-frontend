@@ -4,7 +4,7 @@
 
 <nav
   *ngIf="!this.isAdmin"
-  class="navbar navbar-expand-lg navbar-light bg-white border-bottom"
+  class="navbar navbar-expand-md navbar-light bg-white border-bottom"
 >
   <div class="container">
     <!-- Brand -->
@@ -12,6 +12,7 @@
       src="assets/img/custom/logo.jpg"
       alt="logo"
       class="img-fluid img-logo"
+      [routerLink]="['/']"
     />
 
     <!-- Toggler -->
@@ -32,7 +33,7 @@
       <!-- Nav -->
       <ul class="navbar-nav ml-xl-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" data-bs-toggle="smooth-scroll"
+          <a class="nav-link" routerLink="/" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
             >Home</a
           >
         </li>
@@ -41,7 +42,7 @@
             class="nav-link"
             routerLink="/shop"
             routerLinkActive="active"
-            href="#"
+            data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
             >Browser</a
           >
         </li>
@@ -50,23 +51,23 @@
             class="nav-link"
             routerLink="/about"
             routerLinkActive="active"
-            data-bs-toggle="smooth-scroll"
+            data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
             >How it Works</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/faq" routerLinkActive="active"
+          <a class="nav-link" routerLink="/faq" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
             >FAQs</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contact" routerLinkActive="active"
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
             >Contact</a
           >
         </li>
         <div *ngIf="isLoggedIn && !isRegistrationPage">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/account" routerLinkActive="active"
+            <a class="nav-link" routerLink="/account" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
               >My Account</a
             >
           </li>
@@ -78,9 +79,8 @@
         </div>
         <div *ngIf="!isRegistrationPage && !isLoggedIn">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/browser" routerLinkActive="active"
-              >Sign in</a
-            >
+            <a class="nav-link" routerLink="/browser" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+              >Sign in</a>
           </li>
         </div>
       </ul>

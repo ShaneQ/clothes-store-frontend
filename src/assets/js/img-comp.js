@@ -3,7 +3,6 @@
 //
 
 "use strict";
-
 (function () {
   var input = document.querySelectorAll(".img-comp-input");
 

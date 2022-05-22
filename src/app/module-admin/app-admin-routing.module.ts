@@ -1,24 +1,26 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AdminBaseComponent } from './base/base.component';
-import { ProductCreationComponent } from './product-creation/product-creation.component';
-import { ProductsComponent } from './products/products.component';
-import { UsersComponent } from './users/users.component';
-import { UserComponent } from './user/user.component';
-import { BookingsComponent } from './bookings/bookings.component';
-import { BookingComponent } from './booking/booking.component';
-import { CanAuthenticationGuard } from '../module-auth/app-auth.guard';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AdminBaseComponent} from './base/base.component';
+import {ProductCreationComponent} from './product-creation/product-creation.component';
+import {ProductsComponent} from './products/products.component';
+import {UsersComponent} from './users/users.component';
+import {UserComponent} from './user/user.component';
+import {BookingsComponent} from './bookings/bookings.component';
+import {BookingComponent} from './booking/booking.component';
+import {CanAuthenticationGuard} from '../module-auth/app-auth.guard';
+import {CanAuthenticationAdminGuard} from "../module-auth/app-admin-auth.guard";
+import {ProductDetailsAdminComponent} from "./product-details-admin/product-details-admin.component";
 
 const routes: Routes = [
   {
     path: 'admin',
     component: AdminBaseComponent,
-    canActivate: [CanAuthenticationGuard],
-    data: { roles: ['scc_admin_role'] },
+    canActivate: [CanAuthenticationAdminGuard],
+    data: {roles: ['scc_admin_role']},
     children: [
       {
         path: '',
-        redirectTo: 'users',
+        redirectTo: 'bookings',
         pathMatch: 'full',
       },
       {
@@ -26,8 +28,12 @@ const routes: Routes = [
         component: ProductCreationComponent,
       },
       {
-        path: 'product/:productId',
+        path: 'product/update/:productId',
         component: ProductCreationComponent,
+      },
+      {
+        path: 'product/:productId',
+        component: ProductDetailsAdminComponent,
       },
       {
         path: 'inventory',
@@ -63,4 +69,5 @@ const routes: Routes = [
   exports: [],
   providers: [CanAuthenticationGuard],
 })
-export class AppAdminRoutingModule {}
+export class AppAdminRoutingModule {
+}

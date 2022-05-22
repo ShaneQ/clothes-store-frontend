@@ -9,7 +9,7 @@ import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
 @Injectable({
   providedIn: 'root',
 })
-export class CanAuthenticationGuard extends KeycloakAuthGuard {
+export class CanAuthenticationAdminGuard extends KeycloakAuthGuard {
   constructor(
     protected readonly router: Router,
     protected readonly keycloak: KeycloakService
@@ -35,9 +35,6 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard {
     // Allow the user to to proceed if no additional roles are required to access the route.
     console.log('Required Roles' + requiredRoles);
     console.log('Existing roles' + this.roles);
-    if(this.roles.includes("scc_admin_role")){
-      this.router.navigate(['admin/']).then()
-    }
     if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
       return true;
     }

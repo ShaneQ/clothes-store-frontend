@@ -39,13 +39,9 @@
           price. Your second closet adapts to multiple occasions, from work to
           holiday without forgetting quality and comfort.
         </p>
-        <carousel
-          [itemsPerSlide]="itemsPerSlide"
-          [singleSlideOffset]="singleSlideOffset"
-          [interval]="0"
-          [noWrap]="noWrap"
-        >
-          <slide *ngFor="let product of products$ | async; let index = index">
+
+        <swiper [config]="config" class="mySwiper">
+          <ng-template *ngFor="let product of products$ | async; let index = index" swiperSlide>
             <img
               class="img-carousel"
               [src]="product.imgCover.url"
@@ -54,8 +50,8 @@
             <div class="carousel-caption">
               <h4>{{ product.name }}</h4>
             </div>
-          </slide>
-        </carousel>
+          </ng-template>
+        </swiper>
       </div>
     </div>
   </div>
@@ -82,7 +78,7 @@
             <p class="text-muted">
               The Second Closet Club is a shared wardrobe service that helps you
               enjoy more of the fashion world without cluttering your house.
-              <br />
+              <br/>
               The Second Closet Club is a shared wardrobe service that helps you
               to enjoy more of the fashion world spending less and without
               cluttering your house.Our inventory is carefully selected so you
@@ -260,7 +256,7 @@
             </div>
 
             <!-- Input -->
-            <input class="img-comp-input" type="range" />
+            <input class="img-comp-input" type="range"/>
           </div>
         </div>
       </div>

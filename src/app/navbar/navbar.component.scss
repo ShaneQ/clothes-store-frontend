@@ -1,0 +1,12 @@
+.img-logo{
+  margin-left: 0rem;
+}
+
+@media (max-width: 450px) {
+  .img-logo{
+    margin-left: 1rem;
+  }
+  .nav-link{
+    padding-left: 1rem;
+  }
+}

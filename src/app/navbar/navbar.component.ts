@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { AppService } from '../services/app.service';
-import { NavbarService } from '../services/navbar.service';
-import { AuthService } from '../module-auth/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {AppService} from '../services/app.service';
+import {AuthService} from '../module-auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   providers: [AppService],
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
   public isLoggedIn: boolean;
@@ -16,7 +16,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private _service: AppService,
     private _authService: AuthService
-  ) {}
+  ) {
+  }
 
   logout() {
     this._authService.logout();

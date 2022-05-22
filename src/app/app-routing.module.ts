@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { ProductDetailsComponent } from './module-product/product-details/product-details.component';
 import { ShopComponent } from './shop/shop.component';
 import { ContentComponent } from './content/content.component';
 import { MyAccountBaseComponent } from './my-account/my-account-base/my-account-base.component';

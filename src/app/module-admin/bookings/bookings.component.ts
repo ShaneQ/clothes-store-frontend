@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BookingRequest } from '../model/bookingRequest';
-import { BookingService } from '../booking.service';
-import { ProductService } from '../product.service';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {BookingRequest} from '../model/bookingRequest';
+import {BookingService} from '../services/booking.service';
+import {ProductService} from '../services/product.service';
+import {DataTableDirective} from "angular-datatables";
 
 export enum Status {
   WAITING_COLLECTION,
@@ -23,10 +24,13 @@ export namespace Status {
   providers: [BookingService, ProductService],
 })
 export class BookingsComponent implements OnInit {
-  title = 'datatables';
+
+  @ViewChild(DataTableDirective, {static: false})
+  datatableElement: DataTableDirective;
+
   dtOptions: DataTables.Settings = {};
-  posts;
   status = Status;
+  bookingStatus: string;
   public bookings: BookingRequest[];
 
   @Input()
@@ -36,42 +40,54 @@ export class BookingsComponent implements OnInit {
   productId: number;
 
   sizes: Array<any> = [
-    { name: 'One Size', value: 1 },
-    { name: 'XS', value: 2 },
-    { name: 'S', value: 3 },
-    { name: 'M', value: 4 },
-    { name: 'L', value: 5 },
-    { name: 'XL', value: 6 },
+    {name: 'One Size', value: 1},
+    {name: 'XS', value: 2},
+    {name: 'S', value: 3},
+    {name: 'M', value: 4},
+    {name: 'L', value: 5},
+    {name: 'XL', value: 6},
   ];
 
   constructor(
     private _service: BookingService,
     private _productService: ProductService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 15,
       processing: true,
     };
     if (this.userId!!) {
       this._service
-        .getBookingsForUser(this.userId)
-        .subscribe((data) => (this.bookings = data));
+      .getBookingsForUser(this.userId)
+      .subscribe((data) => (this.bookings = data));
     } else if (this.productId!!) {
       this._service
-        .getBookingsForProduct(this.productId)
-        .subscribe((data) => (this.bookings = data));
+      .getBookingsForProduct(this.productId)
+      .subscribe((data) => (this.bookings = data));
     } else {
       this._service.getBookings().subscribe((data) => (this.bookings = data));
     }
+    $.fn['dataTable'].ext.search.push((settings, data, dataIndex) => {
+      const status = data[1]; // use data for the id column
+      const inventoryStatus = data[2]; // use data for the id column
+
+      if (this.bookingStatus == null) {
+        return true
+      } else if (status != null && status?.toUpperCase().includes(this.bookingStatus.toUpperCase())) {
+        return true;
+      } else if (inventoryStatus != null && inventoryStatus?.toUpperCase().includes(this.bookingStatus.toUpperCase())) {
+        return true;
+      }
+
+      return false;
+    });
   }
 
   updateStatus(event: any, id: number) {
-    console.log('UPDATING STATUS');
     this._service.updateBookingStatus(event.target.value, id);
-    console.log('UPDATED STATUS');
   }
 
   updateInventoryStatus(event: any, id: number, productId: number) {
@@ -90,4 +106,10 @@ export class BookingsComponent implements OnInit {
     'WASH',
     'DEACTIVATED',
   ];
+
+  filterByStatus(): void {
+    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      dtInstance.draw();
+    });
+  }
 }

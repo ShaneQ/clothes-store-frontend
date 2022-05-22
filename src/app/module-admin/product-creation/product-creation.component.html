@@ -1,17 +1,14 @@
 <div *ngIf="this.update">
-  <div *ngIf="this.productId">
-    <app-bookings productId="{{ this.product.id }}"></app-bookings>
-  </div>
   <div class="container py-5 pt-10">
     <div class="row">
       <div class="col-6">
         <div *ngIf="this.hidden">
-          <button class="btn btn-danger center" (click)="showProduct()">
-            Unhide
+          <button class="btn btn-success center" (click)="showProduct()">
+            Show
           </button>
         </div>
         <div *ngIf="this.hidden === false">
-          <button class="btn btn-danger center" (click)="hideProduct()">
+          <button class="btn btn-success center" (click)="hideProduct()">
             Hide
           </button>
         </div>
