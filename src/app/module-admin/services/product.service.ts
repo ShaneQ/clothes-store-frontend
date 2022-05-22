@@ -15,7 +15,7 @@ export class ProductService {
   constructor(private _service: AdminAppService) {}
 
   loadProducts(): Observable<Product[]> {
-    return this._service.getProductsResource(this.productUrl);
+    return this._service.getProductsResource(this.adminProductUrl+"/inventory");
   }
 
   createProduct(product: Product): Observable<any> {
