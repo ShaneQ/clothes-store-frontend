@@ -1,4 +1,18 @@
 /* stylelint-disable selector-list-comma-newline-after */
+.content-img-fluid {
+  background-image: url(../../assets/img/custom/cover-22.jpg);
+  background-repeat:no-repeat;
+  background-color: #cbced3;
+  background-position: center;
+}
+
+@media (max-width: 450px) {
+  .content-img-fluid {
+    background-image: url(../../assets/img/custom/cover-23-mobile.png);
+    background-repeat:no-repeat;
+    background-size:contain;
+  }
+}
 
 .big {
   height: 100px;
