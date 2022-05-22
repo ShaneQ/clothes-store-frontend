@@ -3,6 +3,10 @@
   overflow: hidden;
 }
 
+.dropdown-menu-color {
+  max-height: 300px;
+  overflow-y: scroll;
+}
 .grid-pearl {
   background-image: radial-gradient(
     circle at 30% 30%,

@@ -165,7 +165,7 @@
                 for="colorFour"
               ></label>
             </div>
-            <br />
+            <br/>
             <div
               class="custom-control custom-control-color custom-control-inline mb-3"
             >
@@ -305,20 +305,82 @@
       <div class="col-12">
         <!-- Filters -->
         <div class="btn-group-justified btn-group-expand-lg mb-10" role="group">
+          <!--
+                    <div class="btn-group dropdown">
+                      &lt;!&ndash; Toggle &ndash;&gt;
+                      <button
+                        class="btn btn-sm btn-block btn-outline-border dropdown-toggle"
+                        id="dropdownMenuCategories"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="outside"
+                        aria-expanded="false"
+                      >
+                        Category
+                      </button>
+
+                      &lt;!&ndash; Menu &ndash;&gt;
+                      <form class="dropdown-menu">
+                        <div class="card">
+                          <div class="card-body">
+                            &lt;!&ndash; Form group &ndash;&gt;
+                            <div
+                              class="form-group-overflow"
+                              aria-labelledby="dropdownMenuCategories"
+                            >
+                              <div
+                                *ngFor="let data of categories; let i = index"
+                                class="custom-control custom-checkbox mb-3"
+                              >
+                                <input
+                                  [value]="data.value"
+                                  class="custom-control-input"
+                                  [id]="'category-' + data.value"
+                                  (change)="categoryChange($event)"
+                                  type="checkbox"
+                                />
+                                <label
+                                  class="custom-control-label"
+                                  [for]="'category-' + data.value"
+                                >
+                                  {{ data.name }}
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-footer d-flex flex-nowrap border-top">
+                            &lt;!&ndash; Buttons &ndash;&gt;
+                            <button
+                              class="btn btn-outline-dark btn-sm"
+                              type="submit"
+                              (click)="this.clearCategories()"
+                              data-bs-toggle="dropdown"
+                            >
+                              Clear
+                            </button>
+                            <button
+                              class="btn btn-dark btn-sm ml-2"
+                              type="submit"
+                              (click)="this.filterProducts()"
+                              data-bs-toggle="dropdown"
+                            >
+                              Show Results
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+          -->
           <div class="btn-group dropdown">
-            <!-- Toggle -->
+
             <button
               class="btn btn-sm btn-block btn-outline-border dropdown-toggle"
-              id="dropdownMenuCategories"
-              data-bs-toggle="dropdown"
+              type="button" data-bs-toggle="collapse" data-bs-target="#filterCategoryContent"
               data-bs-auto-close="outside"
-              aria-expanded="false"
+              aria-controls="filterCategoryContent" aria-expanded="false" aria-label="Toggle navigation"
             >
               Category
             </button>
-
-            <!-- Menu -->
-            <form class="dropdown-menu">
+            <form class="collapse dropdown-collapse dropdown-menu" id="filterCategoryContent">
               <div class="card">
                 <div class="card-body">
                   <!-- Form group -->
@@ -348,10 +410,9 @@
                 </div>
                 <div class="card-footer d-flex flex-nowrap border-top">
                   <!-- Buttons -->
-                  <button
-                    class="btn btn-outline-dark btn-sm"
-                    type="reset"
-                    (click)="this.clearCategories()"
+                  <button class="btn btn-outline-dark btn-sm" type="reset" (click)="this.clearCategories()"
+                          data-bs-toggle="collapse"
+                          data-bs-target=".dropdown-collapse.show"
                   >
                     Clear
                   </button>
@@ -359,6 +420,8 @@
                     class="btn btn-dark btn-sm ml-2"
                     type="button"
                     (click)="this.filterProducts()"
+                    data-bs-toggle="collapse"
+                    data-bs-target=".dropdown-collapse.show"
                   >
                     Show Results
                   </button>
@@ -366,20 +429,18 @@
               </div>
             </form>
           </div>
+
           <div class="btn-group dropdown">
-            <!-- Toggle -->
+
             <button
               class="btn btn-sm btn-block btn-outline-border dropdown-toggle"
-              id="dropdownMenuSeasons"
-              data-bs-toggle="dropdown"
+              type="button" data-bs-toggle="collapse" data-bs-target="#filterSeasonContent"
               data-bs-auto-close="outside"
-              aria-expanded="false"
+              aria-controls="filterSeasonContent" aria-expanded="false" aria-label="Toggle navigation"
             >
               Season
             </button>
-
-            <!-- Menu -->
-            <form class="dropdown-menu">
+            <form class="collapse dropdown-collapse dropdown-menu" id="filterSeasonContent">
               <div class="card">
                 <div class="card-body">
                   <!-- Form group -->
@@ -409,13 +470,18 @@
                 </div>
                 <div class="card-footer d-flex flex-nowrap border-top">
                   <!-- Buttons -->
-                  <button class="btn btn-outline-dark btn-sm" type="reset">
+                  <button class="btn btn-outline-dark btn-sm" type="reset" (click)="this.clearSeasons()"
+                          data-bs-toggle="collapse"
+                          data-bs-target=".dropdown-collapse.show"
+                  >
                     Clear
                   </button>
                   <button
                     class="btn btn-dark btn-sm ml-2"
                     type="button"
                     (click)="this.filterProducts()"
+                    data-bs-toggle="collapse"
+                    data-bs-target=".dropdown-collapse.show"
                   >
                     Show Results
                   </button>
@@ -424,24 +490,22 @@
             </form>
           </div>
           <div class="btn-group dropdown">
-            <!-- Toggle -->
+
             <button
               class="btn btn-sm btn-block btn-outline-border dropdown-toggle"
-              id="dropdownMenuSizes"
-              data-bs-toggle="dropdown"
+              type="button" data-bs-toggle="collapse" data-bs-target="#filterSizeContent"
               data-bs-auto-close="outside"
-              aria-expanded="false"
+              aria-controls="filterSizeContent" aria-expanded="false" aria-label="Toggle navigation"
             >
               Size
             </button>
-
-            <!-- Menu -->
-            <form class="dropdown-menu">
+            <form class="collapse dropdown-collapse dropdown-menu" id="filterSizeContent">
               <div class="card">
                 <div class="card-body">
+                  <!-- Form group -->
                   <div
                     class="form-group-overflow"
-                    aria-labelledby="dropdownMenuSizes"
+                    aria-labelledby="dropdownMenuSeasons"
                   >
                     <div
                       *ngFor="let data of sizes; let i = index"
@@ -449,14 +513,14 @@
                     >
                       <input
                         [value]="data.value"
-                        class="custom-control-input form-control"
-                        [id]="'size' + data.value"
+                        class="custom-control-input"
+                        [id]="'size-' + data.value"
                         (change)="sizeChange($event)"
                         type="checkbox"
                       />
                       <label
                         class="custom-control-label"
-                        [for]="'size' + data.value"
+                        [for]="'size-' + data.value"
                       >
                         {{ data.name }}
                       </label>
@@ -465,13 +529,18 @@
                 </div>
                 <div class="card-footer d-flex flex-nowrap border-top">
                   <!-- Buttons -->
-                  <button class="btn btn-outline-dark btn-sm" type="reset">
+                  <button class="btn btn-outline-dark btn-sm" type="reset" (click)="this.clearSizes()"
+                          data-bs-toggle="collapse"
+                          data-bs-target=".dropdown-collapse.show"
+                  >
                     Clear
                   </button>
                   <button
                     class="btn btn-dark btn-sm ml-2"
                     type="button"
                     (click)="this.filterProducts()"
+                    data-bs-toggle="collapse"
+                    data-bs-target=".dropdown-collapse.show"
                   >
                     Show Results
                   </button>
@@ -480,19 +549,16 @@
             </form>
           </div>
           <div class="btn-group dropdown">
-            <!-- Toggle -->
+
             <button
               class="btn btn-sm btn-block btn-outline-border dropdown-toggle"
-              id="dropdownMenuColors"
-              data-bs-toggle="dropdown"
+              type="button" data-bs-toggle="collapse" data-bs-target="#filterColorContent"
               data-bs-auto-close="outside"
-              aria-expanded="false"
+              aria-controls="filterColorContent" aria-expanded="false" aria-label="Toggle navigation"
             >
               Color
             </button>
-
-            <!-- Menu -->
-            <form class="dropdown-menu">
+            <form class="collapse dropdown-collapse dropdown-menu dropdown-menu-color" id="filterColorContent">
               <div class="card">
                 <div class="card-body">
                   <!-- Form group -->
@@ -523,13 +589,18 @@
                 </div>
                 <div class="card-footer d-flex flex-nowrap border-top">
                   <!-- Buttons -->
-                  <button class="btn btn-outline-dark btn-sm" type="reset">
+                  <button class="btn btn-outline-dark btn-sm" type="reset" (click)="this.clearColors()"
+                          data-bs-toggle="collapse"
+                          data-bs-target=".dropdown-collapse.show"
+                  >
                     Clear
                   </button>
                   <button
                     class="btn btn-dark btn-sm ml-2"
                     type="button"
                     (click)="this.filterProducts()"
+                    data-bs-toggle="collapse"
+                    data-bs-target=".dropdown-collapse.show"
                   >
                     Show Results
                   </button>
@@ -537,174 +608,6 @@
               </div>
             </form>
           </div>
-          <!--
-          <div class="btn-group dropdown">
-
-            &lt;!&ndash; Toggle &ndash;&gt;
-            <button class="btn btn-sm btn-block btn-outline-border dropdown-toggle" data-bs-toggle="dropdown"
-                    data-display="static">
-              Brand
-            </button>
-
-            &lt;!&ndash; Menu &ndash;&gt;
-            <form class="dropdown-menu">
-              <div class="card">
-                <div class="card-body">
-
-                  &lt;!&ndash; Search &ndash;&gt;
-                  <div data-bs-toggle="lists" data-options='{"valueNames": ["name"]}'>
-
-                    &lt;!&ndash; Input group &ndash;&gt;
-                    <div class="input-group input-group-merge mb-6">
-                      <input class="form-control form-control-xs search" type="search" placeholder="Search Brand">
-
-                      &lt;!&ndash; Button &ndash;&gt;
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-border btn-xs">
-                          <i class="fe fe-search"></i>
-                        </button>
-                      </div>
-
-                    </div>
-
-                    &lt;!&ndash; Form group &ndash;&gt;
-                    <div class="form-group-overflow" id="brandGroup">
-                      <div class="list">
-                        <div class="custom-control custom-checkbox mb-3">
-                          <input class="custom-control-input" id="brandOne" type="checkbox">
-                          <label class="custom-control-label name" for="brandOne">
-                            Dsquared2
-                          </label>
-                        </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                          <input class="custom-control-input" id="brandTwo" type="checkbox" disabled>
-                          <label class="custom-control-label name" for="brandTwo">
-                            Alexander McQueen
-                          </label>
-                        </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                          <input class="custom-control-input" id="brandThree" type="checkbox">
-                          <label class="custom-control-label name" for="brandThree">
-                            Balenciaga
-                          </label>
-                        </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                          <input class="custom-control-input" id="brandFour" type="checkbox">
-                          <label class="custom-control-label name" for="brandFour">
-                            Adidas
-                          </label>
-                        </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                          <input class="custom-control-input" id="brandFive" type="checkbox">
-                          <label class="custom-control-label name" for="brandFive">
-                            Balmain
-                          </label>
-                        </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                          <input class="custom-control-input" id="brandSix" type="checkbox">
-                          <label class="custom-control-label name" for="brandSix">
-                            Burberry
-                          </label>
-                        </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                          <input class="custom-control-input" id="brandSeven" type="checkbox">
-                          <label class="custom-control-label name" for="brandSeven">
-                            Chloé
-                          </label>
-                        </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                          <input class="custom-control-input" id="brandEight" type="checkbox">
-                          <label class="custom-control-label name" for="brandEight">
-                            Kenzo
-                          </label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                          <input class="custom-control-input" id="brandNine" type="checkbox">
-                          <label class="custom-control-label name" for="brandNine">
-                            Givenchy
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-                <div class="card-footer d-flex flex-nowrap border-top">
-
-                  &lt;!&ndash; Buttons &ndash;&gt;
-                  <button class="btn btn-outline-dark btn-sm" type="reset">
-                    Clear
-                  </button>
-                  <button class="btn btn-dark btn-sm ml-2" type="submit">
-                    Show Results
-                  </button>
-
-                </div>
-              </div>
-            </form>
-
-          </div>
--->
-          <!--
-          <div class="btn-group dropdown">
-
-            &lt;!&ndash; Toggle &ndash;&gt;
-            <button class="btn btn-sm btn-block btn-outline-border dropdown-toggle" data-bs-toggle="dropdown"
-                    data-display="static">
-              Price
-            </button>
-
-            &lt;!&ndash; Menu &ndash;&gt;
-            <form class="dropdown-menu">
-              <div class="card">
-                <div class="card-body">
-
-                  &lt;!&ndash; Form group &ndash;&gt;
-                  <div class="form-group-overflow">
-                    <div class="custom-control custom-checkbox mb-3">
-                      <input class="custom-control-input" id="priceOne" type="checkbox">
-                      <label class="custom-control-label" for="priceOne">
-                        $10.00 - $49.00
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox mb-3">
-                      <input class="custom-control-input" id="priceTwo" type="checkbox">
-                      <label class="custom-control-label" for="priceTwo">
-                        $50.00 - $99.00
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox mb-3">
-                      <input class="custom-control-input" id="priceThree" type="checkbox">
-                      <label class="custom-control-label" for="priceThree">
-                        $100.00 - $199.00
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" id="priceFour" type="checkbox">
-                      <label class="custom-control-label" for="priceFour">
-                        $200.00 and Up
-                      </label>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="card-footer d-flex flex-nowrap border-top">
-
-                  &lt;!&ndash; Buttons &ndash;&gt;
-                  <button class="btn btn-outline-dark btn-sm" type="reset">
-                    Clear
-                  </button>
-                  <button class="btn btn-dark btn-sm ml-2" type="submit">
-                    Show Results
-                  </button>
-
-                </div>
-              </div>
-            </form>
-
-          </div>
--->
         </div>
       </div>
     </div>
