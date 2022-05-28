@@ -15,7 +15,6 @@ import {CanAuthenticationGuard} from './module-auth/app-auth.guard';
 import {RegistrationSuccessComponent} from "./registration-success/registration-success.component";
 import {CanRegisterAuthenticationGuard} from "./module-auth/app-registration-auth.guard";
 import {Role} from "./module-auth/roles";
-import {NoPageFoundComponent} from "./no-page-found/no-page-found.component";
 
 const routes: Routes = [
   {
@@ -42,7 +41,7 @@ const routes: Routes = [
     path: 'browser',
     canActivate: [CanAuthenticationGuard],
     component: ShopComponent,
-    data: { roles: [Role[Role.scc_user_role]] },
+    data: {roles: [Role[Role.scc_user_role]]},
   },
   {
     path: 'product/:productId',
@@ -63,7 +62,7 @@ const routes: Routes = [
     path: 'account',
     component: MyAccountBaseComponent,
     canActivate: [CanAuthenticationGuard],
-    data: { roles: [Role[Role.scc_user_role]] },
+    data: {roles: [Role[Role.scc_user_role]]},
     children: [
       {
         path: '',
@@ -84,14 +83,14 @@ const routes: Routes = [
         component: MyAccountMembershipComponent,
       },
     ],
-  },
-  { path: '**', pathMatch: 'full',
-    component: NoPageFoundComponent },
+  }
 ];
+
 @NgModule({
   declarations: [],
   imports: [RouterModule.forRoot(routes as Routes)],
   exports: [],
   providers: [CanAuthenticationGuard],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
