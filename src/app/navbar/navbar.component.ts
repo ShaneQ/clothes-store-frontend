@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AppService} from '../services/app.service';
 import {AuthService} from '../module-auth/auth.service';
+import {Role} from "../module-auth/roles";
 
 @Component({
   selector: 'app-navbar',
@@ -26,7 +27,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.isRegistrationPage = false;
     this._authService.isLoggedIn().then((result) => (this.isLoggedIn = result));
-    this.isAdmin = this._authService.getUserRoles().includes('scc_admin_role');
+    this.isAdmin = this._authService.getUserRoles().includes(Role[Role.scc_admin_role]);
   }
 
   sortEvents(data) {

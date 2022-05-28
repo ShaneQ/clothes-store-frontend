@@ -9,7 +9,7 @@ import { PersonalInfo } from '../../model/personalInfo';
   providers: [PersonalInfoService],
 })
 export class MyAccountMembershipComponent implements OnInit {
-  public personalInfo: PersonalInfo;
+  personalInfo: PersonalInfo;
 
   constructor(private _app: PersonalInfoService) {}
 

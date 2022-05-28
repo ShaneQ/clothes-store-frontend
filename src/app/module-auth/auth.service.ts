@@ -16,6 +16,10 @@ export class AuthService {
     return this.keycloakService.isLoggedIn();
   }
 
+  refreshAfterRolesChange(){
+    window.location.reload();
+  }
+
   register() {
     let newLocation = window.location.href;
     if (newLocation === environment.baseUrl) {

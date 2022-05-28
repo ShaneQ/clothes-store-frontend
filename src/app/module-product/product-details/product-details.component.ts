@@ -8,6 +8,7 @@ import { BookingSummaryComponent } from '../../modal/booking-summary/booking-sum
 import { BookingRequest } from '../../model/bookingRequest';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../module-auth/auth.service';
+import {Role} from "../../module-auth/roles";
 
 @Component({
   selector: 'app-product-details',
@@ -57,23 +58,17 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this._authService.isLoggedIn().then((data) => (this.isLoggedIn = data));
+    this._authService.isLoggedIn().then(data => this.isLoggedIn = data);
 
     this.hasActiveMembership = this._authService
       .getUserRoles()
-      .includes('scc_active_membership');
+      .includes(Role[Role.scc_active_membership]);
 
     const productId = this._route.snapshot.paramMap.get('productId');
     this.product = await this._app.getProduct(productId).toPromise();
     this.remainingBookings = 0;
     this.order = new BookingRequest();
     this.order.product = this.product;
-  }
-
-  onMembershipClick(setting) {
-    if (!this.member) {
-      this.isMemberInfoBtnVis = setting;
-    }
   }
 
   onSubmit() {

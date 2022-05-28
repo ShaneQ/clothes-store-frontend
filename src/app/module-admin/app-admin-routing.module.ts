@@ -10,13 +10,14 @@ import {BookingComponent} from './booking/booking.component';
 import {CanAuthenticationGuard} from '../module-auth/app-auth.guard';
 import {CanAuthenticationAdminGuard} from "../module-auth/app-admin-auth.guard";
 import {ProductDetailsAdminComponent} from "./product-details-admin/product-details-admin.component";
+import {Role} from "../module-auth/roles";
 
 const routes: Routes = [
   {
     path: 'admin',
     component: AdminBaseComponent,
     canActivate: [CanAuthenticationAdminGuard],
-    data: {roles: ['scc_admin_role']},
+    data: {roles: [Role[Role.scc_admin_role]]},
     children: [
       {
         path: '',

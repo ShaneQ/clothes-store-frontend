@@ -1,26 +1,26 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ProductDetailsComponent } from './module-product/product-details/product-details.component';
-import { ShopComponent } from './shop/shop.component';
-import { ContentComponent } from './content/content.component';
-import { MyAccountBaseComponent } from './my-account/my-account-base/my-account-base.component';
-import { MyAccountOrdersComponent } from './my-account/my-account-orders/my-account-orders.component';
-import { MyAccountPersonalInfoComponent } from './my-account/my-account-personal-info/my-account-personal-info.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { MyAccountMembershipComponent } from './my-account/my-account-membership/my-account-membership.component';
-import { FaqComponent } from './faq/faq.component';
-import { ContactComponent } from './contact/contact.component';
-import { AboutComponent } from './about/about.component';
-import { CanAuthenticationGuard } from './module-auth/app-auth.guard';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {ProductDetailsComponent} from './module-product/product-details/product-details.component';
+import {ShopComponent} from './shop/shop.component';
+import {ContentComponent} from './content/content.component';
+import {MyAccountBaseComponent} from './my-account/my-account-base/my-account-base.component';
+import {MyAccountOrdersComponent} from './my-account/my-account-orders/my-account-orders.component';
+import {MyAccountPersonalInfoComponent} from './my-account/my-account-personal-info/my-account-personal-info.component';
+import {RegistrationComponent} from './registration/registration.component';
+import {MyAccountMembershipComponent} from './my-account/my-account-membership/my-account-membership.component';
+import {FaqComponent} from './faq/faq.component';
+import {ContactComponent} from './contact/contact.component';
+import {AboutComponent} from './about/about.component';
+import {CanAuthenticationGuard} from './module-auth/app-auth.guard';
+import {RegistrationSuccessComponent} from "./registration-success/registration-success.component";
+import {CanRegisterAuthenticationGuard} from "./module-auth/app-registration-auth.guard";
+import {Role} from "./module-auth/roles";
+import {NoPageFoundComponent} from "./no-page-found/no-page-found.component";
 
 const routes: Routes = [
   {
     path: '',
     component: ContentComponent,
-  },
-  {
-    path: 'registration-part-2',
-    component: RegistrationComponent,
   },
   {
     path: 'shop',
@@ -42,7 +42,7 @@ const routes: Routes = [
     path: 'browser',
     canActivate: [CanAuthenticationGuard],
     component: ShopComponent,
-    data: { roles: ['scc_user_role'] },
+    data: { roles: [Role[Role.scc_user_role]] },
   },
   {
     path: 'product/:productId',
@@ -51,12 +51,19 @@ const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationComponent,
+    canActivate: [CanRegisterAuthenticationGuard],
+
+  },
+  {
+    path: 'registration-success',
+    component: RegistrationSuccessComponent,
+    canActivate: [CanRegisterAuthenticationGuard],
   },
   {
     path: 'account',
     component: MyAccountBaseComponent,
     canActivate: [CanAuthenticationGuard],
-    data: { roles: ['scc_user_role'] },
+    data: { roles: [Role[Role.scc_user_role]] },
     children: [
       {
         path: '',
@@ -78,6 +85,8 @@ const routes: Routes = [
       },
     ],
   },
+  { path: '**', pathMatch: 'full',
+    component: NoPageFoundComponent },
 ];
 @NgModule({
   declarations: [],

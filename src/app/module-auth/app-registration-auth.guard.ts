@@ -5,11 +5,12 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
+import {Role} from "./roles";
 
 @Injectable({
   providedIn: 'root',
 })
-export class CanAuthenticationAdminGuard extends KeycloakAuthGuard {
+export class CanRegisterAuthenticationGuard extends KeycloakAuthGuard {
   constructor(
     protected readonly router: Router,
     protected readonly keycloak: KeycloakService
@@ -28,15 +29,10 @@ export class CanAuthenticationAdminGuard extends KeycloakAuthGuard {
         redirectUri: window.location.origin + state.url,
       });
     }
-
-    // Get the roles required from the route.
-    const requiredRoles = route.data.roles;
-    // Allow the user to to proceed if no additional roles are required to access the route.
-    if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
-      return true;
+    if(this.roles.includes(Role[Role.scc_user_role]) || this.roles.includes(Role[Role.scc_admin_role])) {
+      this.router.navigate(["/browser"]).then();
     }
+    return true
 
-    // Allow the user to proceed if all the required roles are present.
-    return requiredRoles.every((role) => this.roles.includes(role));
   }
 }

@@ -1,12 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PersonalInfoService } from '../../services/personal-info.service';
-import { PersonalInfo } from '../../model/personalInfo';
-import { Observable } from 'rxjs';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { UserInfo } from '../../model/userInfo';
-import { HttpErrorResponse } from '@angular/common/http';
-import { AuthService } from '../../module-auth/auth.service';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {PersonalInfoService} from '../../services/personal-info.service';
+import {PersonalInfo} from '../../model/personalInfo';
+import {Observable} from 'rxjs';
+import {NgxSpinnerService} from 'ngx-spinner';
+import {UserInfo} from '../../model/userInfo';
+import {HttpErrorResponse} from '@angular/common/http';
+import {AuthService} from '../../module-auth/auth.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-my-account-personal-info',
@@ -25,18 +26,22 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   @Output('registrationSuccessful')
   public registrationSuccessful = new EventEmitter<boolean>();
   public created: boolean;
+  public maxFieldLengthOne = 70;
+  public maxFieldLengthTwo = 45;
 
   constructor(
     private fb: FormBuilder,
     private _app: PersonalInfoService,
     private spinner: NgxSpinnerService,
-    private _authService: AuthService
-  ) {}
+    private _authService: AuthService,
+    private _router: Router
+  ) {
+  }
 
   ngOnInit(): void {
-    this.spinner.show();
+    this.spinner.show().then();
     this.minDate = new Date('January 1, 1970 01:15:00');
-    this.maxDate = new Date('January 1, 2000 01:15:00');
+    this.maxDate = new Date('January 1, 2005 01:15:00');
     this.submitted = false;
     this.saved = false;
     if (!this.isRegistrationPage) {
@@ -56,8 +61,8 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       this._authService.logout();
     } else if (err.status === 404) {
       this._app
-        .getKeycloakUserInfo()
-        .subscribe((data) => this.initializeEmptyForm(data));
+      .getKeycloakUserInfo()
+      .subscribe((data) => this.initializeEmptyForm(data));
       setTimeout(() => {
         /** spinner ends after 5 seconds */
         this.spinner.hide();
@@ -66,40 +71,86 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   }
 
   initializeEmptyForm(keycloakInfo: UserInfo) {
+    const date = new Date(1990, 1, 1);
     if (keycloakInfo) this.created = false;
     this.personalInfoForm = this.fb.group({
       id: [],
-      firstName: [keycloakInfo?.firstName, [Validators.required]],
-      lastName: [keycloakInfo?.lastName, [Validators.required]],
-      email: [keycloakInfo?.email, [Validators.required]],
-      country: ['Testing', [Validators.required]],
-      addressLineOne: ['Testing', [Validators.required]],
-      addressLineTwo: ['Testing', [Validators.required]],
-      city: ['Testing', [Validators.required]],
-      eirCode: ['Testing', [Validators.required]],
-      phone: ['0851231234', [Validators.required]],
-      dateOfBirth: ['01/01/1990', Validators.required],
+      firstName: this.getFirstNameControl(keycloakInfo?.firstName),
+      lastName: this.getLastNameControl(keycloakInfo?.lastName),
+      email: this.getEmailControl(keycloakInfo?.email),
+      country: this.getCountryControl('Testing'),
+      addressLineOne: this.getAddressLineOneControl('Testing'),
+      addressLineTwo: this.getAddressLineTwoControl('Testing'),
+      city: this.getCityControl('Testing'),
+      eirCode: this.getEirCodeControl('Testing'),
+      phone: this.getPhoneControl('0851231234'),
+      dateOfBirth: this.getDOBControl(date),
       membership: [],
     });
   }
 
+  getEirCodeControl(str: string) {
+    return new FormControl(str, [Validators.required, Validators.maxLength(20)]);
+  }
+
+  getDOBControl(date: Date) {
+    return new FormControl(date, [Validators.required]);
+  }
+
+  getPhoneControl(str: string) {
+    return new FormControl(str, [Validators.required, Validators.minLength(10),
+      Validators.maxLength(10), Validators.pattern('^[0-9]{10}')]);
+  }
+
+  getCityControl(str: string) {
+    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
+  }
+
+  getAddressLineOneControl(str: string) {
+    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
+  }
+
+  getAddressLineTwoControl(str: string) {
+    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
+  }
+
+  getCountryControl(str: string) {
+    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
+  }
+
+  getEmailControl(str: string) {
+    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
+  }
+
+  getFirstNameControl(str: string) {
+    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthTwo)])
+  }
+
+  getLastNameControl(str: string) {
+    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthTwo)])
+  }
+
+  getMembershipControl(num: number) {
+    return new FormControl(num, [Validators.required])
+  }
+
   initializeFilledForm(data: PersonalInfo) {
     this.created = true;
-    var date = new Date(data.dateOfBirth);
+    const date = new Date(data.dateOfBirth);
 
     this.personalInfoForm = this.fb.group({
       id: [data.id],
-      firstName: [data.firstName, [Validators.required]],
-      lastName: [data.lastName, [Validators.required]],
-      email: [data.email, [Validators.required]],
-      country: [data.country, [Validators.required]],
-      addressLineOne: [data.addressLineOne, [Validators.required]],
-      addressLineTwo: [data.addressLineTwo, [Validators.required]],
-      city: [data.city, [Validators.required]],
-      eirCode: [data.eirCode, [Validators.required]],
-      phone: [data.phone, [Validators.required]],
-      dateOfBirth: [date, Validators.required],
-      membership: [1],
+      firstName: this.getFirstNameControl(data.firstName),
+      lastName: this.getLastNameControl(data.lastName),
+      email: this.getEmailControl(data.email),
+      country: this.getCountryControl(data.country),
+      addressLineOne: this.getAddressLineOneControl(data.country),
+      addressLineTwo: this.getAddressLineTwoControl(data.country),
+      city: this.getCityControl(data.city),
+      eirCode: this.getEirCodeControl(data.eirCode),
+      phone: this.getPhoneControl(data.phone),
+      dateOfBirth: this.getDOBControl(date),
+      membership: this.getMembershipControl(data.membership)
     });
   }
 
@@ -118,19 +169,21 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       let info: PersonalInfo;
       info = this.personalInfoForm.value;
       this._app
-        .createPersonalInfo(info)
-        .subscribe((data) => this.registrationSuccessful.emit(true));
+      .createPersonalInfo(info)
+      .subscribe((data) => {
+        this.registrationSuccessful.emit(true);
+      });
     } else {
       let info: PersonalInfo;
       info = this.personalInfoForm.value;
       if (this.personalInfoForm.get('id').value) {
         this._app
-          .updatePersonalInfo(info)
-          .subscribe((data) => (this.saved = true));
+        .updatePersonalInfo(info)
+        .subscribe((data) => (this.saved = true));
       } else {
         this._app
-          .createPersonalInfo(info)
-          .subscribe((data) => (this.saved = true));
+        .createPersonalInfo(info)
+        .subscribe((data) => (this.saved = true));
       }
     }
   }
@@ -148,7 +201,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       setTimeout(() => {
         /** spinner ends after 5 seconds */
         this.spinner.hide();
-      }, 2000);
+      }, 1500);
     }
   }
 }

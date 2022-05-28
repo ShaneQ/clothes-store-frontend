@@ -18,11 +18,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   registered(event: boolean) {
-    this._router.navigate(['/browser']).then();
-  }
-
-  logout() {
-    this._authService.logout();
+    this._router.navigate(['/registration-success']).then();
   }
 
   ngOnInit(): void {

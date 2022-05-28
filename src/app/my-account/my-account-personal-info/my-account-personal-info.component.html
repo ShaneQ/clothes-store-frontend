@@ -30,6 +30,7 @@
 
         <div *ngIf="submitted && f.firstName.errors" class="text-danger">
           <div *ngIf="f.firstName.errors.required"><small>Required</small></div>
+          <div *ngIf="f.firstName.errors.maxlength"><small>Max characters for field is {{f.firstName.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
@@ -60,6 +61,7 @@
         </div>
         <div *ngIf="submitted && f.lastName.errors" class="text-danger">
           <div *ngIf="f.lastName.errors.required"><small>Required</small></div>
+          <div *ngIf="f.lastName.errors.maxlength"><small>Max characters for field is {{f.lastName.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
@@ -92,6 +94,7 @@
         </div>
         <div *ngIf="submitted && f.email.errors" class="text-danger">
           <div *ngIf="f.email.errors.required"><small>Required</small></div>
+          <div *ngIf="f.email.errors.maxlength"><small>Max characters for field is {{f.email.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
@@ -111,6 +114,7 @@
         />
         <div *ngIf="submitted && f.country.errors" class="text-danger">
           <div *ngIf="f.country.errors.required"><small>Required</small></div>
+          <div *ngIf="f.country.errors.maxlength"><small>Max characters for field is {{f.country.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
@@ -131,6 +135,7 @@
           <div *ngIf="f.addressLineOne.errors.required">
             <small>Required</small>
           </div>
+          <div *ngIf="f.addressLineOne.errors.maxlength"><small>Max characters for field is {{f.addressLineOne.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
@@ -151,6 +156,7 @@
           <div *ngIf="f.addressLineTwo.errors.required">
             <small>Required</small>
           </div>
+          <div *ngIf="f.addressLineTwo.errors.maxlength"><small>Max characters for field is {{f.addressLineTwo.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
@@ -170,6 +176,7 @@
         />
         <div *ngIf="submitted && f.city.errors" class="text-danger">
           <div *ngIf="f.city.errors.required"><small>Required</small></div>
+          <div *ngIf="f.city.errors.maxlength"><small>Max characters for field is {{f.city.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
@@ -186,6 +193,7 @@
         />
         <div *ngIf="submitted && f.eirCode.errors" class="text-danger">
           <div *ngIf="f.eirCode.errors.required"><small>Required</small></div>
+          <div *ngIf="f.eirCode.errors.maxlength"><small>Max characters for field is {{f.eirCode.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
@@ -204,6 +212,7 @@
         />
         <div *ngIf="submitted && f.phone.errors" class="text-danger">
           <div *ngIf="f.phone.errors.required"><small>Required</small></div>
+          <div *ngIf="f.phone.errors.maxlength || f.phone.errors.minlength ||f.phone.errors.pattern"><small>This needs to be 10 digits</small></div>
         </div>
       </div>
     </div>
@@ -221,14 +230,16 @@
             type="text"
             class="form-control"
             bsDatepicker
-            [bsConfig]="{ isAnimated: true, containerClass: 'theme-default' }"
-            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+            [bsConfig]="{ isAnimated: true, containerClass: 'theme-default', dateInputFormat: 'DD/MM/YYYY' }"
             [minDate]="minDate"
             [maxDate]="maxDate"
           />
           <div *ngIf="submitted && f.dateOfBirth.errors" class="text-danger">
             <div *ngIf="f.dateOfBirth.errors.required">
               <small>Required</small>
+            </div>
+            <div *ngIf="f.dateOfBirth.errors.bsDate.invalid">
+              <small>Valid date required</small>
             </div>
           </div>
         </div>

@@ -44,7 +44,7 @@ import {AuthModule} from './module-auth/auth.module';
 import {AdminModule} from './module-admin/admin-module';
 import {ProductModule} from "./module-product/product.module";
 import {SwiperModule} from "swiper/angular";
-import {ServiceInfoComponent} from './module-admin/service-info/service-info.component';
+import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +75,7 @@ import {ServiceInfoComponent} from './module-admin/service-info/service-info.com
     FaqComponent,
     ContactComponent,
     AboutComponent,
-    ServiceInfoComponent
+    RegistrationSuccessComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <div class="card card-lg mb-5 border">
   <div class="card-body pb-0">
     <!-- Info -->
-    <div class="card card-sm">
+    <div class="card card-sm" *ngIf="!!this.personalInfo">
       <div class="card-body bg-light">
         <div class="row">
           <div class="col-6 col-lg-4">
@@ -44,18 +44,29 @@
             <h6 class="heading-xxxs text-muted">START DATE:</h6>
 
             <!-- Text -->
-            <p class="mb-lg-0 font-size-sm font-weight-bold">
-              {{ personalInfo.startDate }}
-            </p>
+            <div class="mb-lg-0 font-size-sm font-weight-bold">
+              <p *ngIf="!!this.personalInfo.startDate">
+                {{ personalInfo.startDate }}
+              </p>
+              <p *ngIf="!!this.personalInfo.startDate === false">
+                TBD
+              </p>
+            </div>
+
           </div>
           <div class="col-6 col-lg-4">
             <!-- Heading -->
             <h6 class="heading-xxxs text-muted">END DATE:</h6>
 
             <!-- Text -->
-            <p class="mb-lg-0 font-size-sm font-weight-bold">
-              {{ personalInfo.endDate }}
-            </p>
+            <div class="mb-lg-0 font-size-sm font-weight-bold">
+              <p *ngIf="!!this.personalInfo.startDate">
+                {{ personalInfo.endDate }}
+              </p>
+              <p *ngIf="!!this.personalInfo.endDate === false">
+                TBD
+              </p>
+            </div>
           </div>
           <div class="col-6 col-lg-4">
             <!-- Heading -->
