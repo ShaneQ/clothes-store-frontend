@@ -1,6 +1,5 @@
 import { KeycloakService } from 'keycloak-angular';
 import { environment } from '../../environments/environment';
-
 export function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
@@ -12,5 +11,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
       initOptions: {
         onLoad: 'check-sso',
       },
-    });
+      enableBearerInterceptor: true,
+      bearerExcludedUrls: ['/assets', '/clients/public']
+    })
 }

@@ -49,17 +49,12 @@ export class AppService {
       .catch((e: any) => Observable.throw(this.errorHandler(e)));
   }
 
-  getProductsResource(resourceUrl): Observable<Product[]> {
+  getPublicProductsResource(resourceUrl): Observable<Product[]> {
     let headers: HttpHeaders;
-    /*    headers = new HttpHeaders({
-          'Access-Control-Allow-Origin': '*',
-          'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-          Authorization: 'Bearer ' + Cookie.get('access_token')
-        });*/
     return this._http.get<Product[]>(resourceUrl, { headers });
   }
 
-  getProductResource(resourceUrl): Observable<Product> {
+  getPublicProductResource(resourceUrl): Observable<Product> {
     let headers: HttpHeaders;
     headers = new HttpHeaders({
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
@@ -143,17 +138,7 @@ export class AppService {
     });
     return this._http
       .get<any>(url, { headers })
-      .catch((e: any) => throwError(e));
-  }
-
-  errorHandler(error: any): void {
-    if (error.status === 0) {
-      console.log('SHOULD I LOG OUT');
-      //this.logout()
-    } else if (error.status === 404) {
-    } else {
-      console.log(error);
-    }
+    .catch((e: any) => Observable.throw(this.errorHandler(e)));
   }
 
   getFilteredProductResource(
@@ -169,5 +154,14 @@ export class AppService {
     return this._http
       .get<Product[]>(url, options)
       .catch((e: any) => Observable.throw(this.errorHandler(e)));
+  }
+
+  errorHandler(error: any): void {
+    console.log("REST error", error);
+    if (error.status === 0) {
+      this._authService.redirectToLogin();
+    } else if (error.status === 401) {
+      this._authService.redirectToLogin();
+    }
   }
 }

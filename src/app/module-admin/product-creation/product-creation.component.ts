@@ -43,7 +43,10 @@ export class ProductCreationComponent implements OnInit {
     this.product$ = this._app.getProduct(productId);
     if (productId) {
       this.productId = +productId;
-      this.product$.subscribe((data) => this.populateForm(data));
+      this.product$.subscribe((data) => {
+        this.populateForm(data)
+        this.hidden = data.hidden
+      });
     } else {
       this.initializeEmptyForm();
     }

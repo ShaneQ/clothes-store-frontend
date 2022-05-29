@@ -1,29 +1,25 @@
-import { Injectable } from '@angular/core';
-import { Cookie } from 'ng2-cookies';
-import {
-  HttpClient,
-  HttpEvent,
-  HttpHeaders,
-  HttpParams,
-  HttpRequest,
-} from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {Cookie} from 'ng2-cookies';
+import {HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpRequest,} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { Product } from '../model/product';
-import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
-import { User } from '../model/user';
-import { BookingRequest } from '../model/bookingRequest';
-import { UserSettings } from '../model/userSettings';
-import { Inventory } from '../model/inventory';
+import {Product} from '../model/product';
+import {Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
+import {User} from '../model/user';
+import {BookingRequest} from '../model/bookingRequest';
+import {UserSettings} from '../model/userSettings';
+import {Inventory} from '../model/inventory';
+import {AuthService} from "../../module-auth/auth.service";
 
 @Injectable()
 export class AdminAppService {
   public redirectUri = environment.baseUrl + '/loading';
   public baseUri = environment.baseUrl;
 
-  constructor(private _http: HttpClient, private _router: Router) {}
+  constructor(private _http: HttpClient, private _router: Router, private _authService: AuthService) {
+  }
 
   getResource(resourceUrl): Observable<any> {
     let headers: HttpHeaders;
@@ -32,10 +28,8 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-      .get(resourceUrl, { headers })
-      .catch((error: any) =>
-        Observable.throw(error.json().error || 'Server error')
-      );
+    .get(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+
   }
 
   getProductsResource(resourceUrl): Observable<Product[]> {
@@ -45,10 +39,8 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-      .get<Product[]>(resourceUrl, { headers })
-      .catch((error: any) =>
-        Observable.throw(error.json().error || 'Server error')
-      );
+    .get<Product[]>(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+
   }
 
   postProductResource(product: Product, resourceUrl): Observable<any> {
@@ -59,7 +51,8 @@ export class AdminAppService {
     });
     const body = JSON.stringify(product);
 
-    return this._http.post<any>(resourceUrl, body, { headers: headers });
+    return this._http.post<any>(resourceUrl, body, {headers: headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+
   }
 
   postImageResource(formData: FormData, resourceUrl): Observable<any> {
@@ -69,7 +62,7 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
 
-    return this._http.post<any>(resourceUrl, formData, { headers: headers });
+    return this._http.post<any>(resourceUrl, formData, {headers: headers});
   }
 
   pushFileToStorage(file: File, resourceUrl): Observable<HttpEvent<{}>> {
@@ -95,7 +88,8 @@ export class AdminAppService {
     });
     const body = JSON.stringify(product);
 
-    return this._http.put<any>(resourceUrl, body, { headers: headers });
+    return this._http.put<any>(resourceUrl, body, {headers: headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+
   }
 
   getProductResource(resourceUrl): Observable<Product> {
@@ -105,10 +99,8 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-      .get<Product>(resourceUrl, { headers })
-      .catch((error: any) =>
-        Observable.throw(error.json().error || 'Server error')
-      );
+    .get<Product>(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+
   }
 
   getUsersResource(resourceUrl): Observable<User[]> {
@@ -118,10 +110,9 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-      .get<User[]>(resourceUrl, { headers })
-      .catch((error: any) =>
-        Observable.throw(error.json().error || 'Server error')
-      );
+    .get<User[]>(resourceUrl, {headers})
+    .catch((e: any) => Observable.throw(this.errorHandler(e)));
+
   }
 
   getBookingsResource(resourceUrl): Observable<BookingRequest[]> {
@@ -131,10 +122,9 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-      .get<BookingRequest[]>(resourceUrl, { headers })
-      .catch((error: any) =>
-        Observable.throw(error.json().error || 'Server error')
-      );
+    .get<BookingRequest[]>(resourceUrl, {headers})
+    .catch((e: any) => Observable.throw(this.errorHandler(e)));
+
   }
 
   updateBookingStatus(resourceUrl) {
@@ -144,8 +134,10 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     this._http
-      .post<any>(resourceUrl, {}, { headers: headers })
-      .subscribe((event) => {});
+    .post<any>(resourceUrl, {}, {headers: headers})
+    .catch((e: any) => Observable.throw(this.errorHandler(e)))
+    .subscribe((event) => {
+    });
   }
 
   getUserResource(resourceUrl): Observable<User> {
@@ -155,10 +147,9 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-      .get<User>(resourceUrl, { headers })
-      .catch((error: any) =>
-        Observable.throw(error.json().error || 'Server error')
-      );
+    .get<User>(resourceUrl, {headers})
+    .catch((e: any) => Observable.throw(this.errorHandler(e)));
+
   }
 
   deleteProductResource(resourceUrl): Observable<any> {
@@ -167,7 +158,8 @@ export class AdminAppService {
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
-    return this._http.delete(resourceUrl, { headers });
+    return this._http.delete(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    ;
   }
 
   putProductHideChangeResource(resourceUrl): Observable<any> {
@@ -177,7 +169,8 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
 
-    return this._http.put(resourceUrl, { headers });
+    return this._http.put(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    ;
   }
 
   checkCredentials(): boolean {
@@ -200,7 +193,8 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
 
-    return this._http.put(resourceUrl, { headers });
+    return this._http.put(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    ;
   }
 
   getFilteredProductResource(
@@ -211,19 +205,10 @@ export class AdminAppService {
     headers = new HttpHeaders({
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
     });
-    const options = { params: myparams, headers: headers };
+    const options = {params: myparams, headers: headers};
     return this._http
-      .get<Product[]>(url, options)
-      .catch((e: any) => Observable.throw(this.errorHandler(e)));
-  }
-
-  errorHandler(error: any): void {
-    if (error.status === 0) {
-      console.log('SHOULD I LOG OUT');
-    } else if (error.status === 404) {
-    } else {
-      console.log(error);
-    }
+    .get<Product[]>(url, options)
+    .catch((e: any) => Observable.throw(this.errorHandler(e)));
   }
 
   deactivateUser(resourceUrl): Observable<any> {
@@ -233,7 +218,8 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
 
-    return this._http.put(resourceUrl, { headers });
+    return this._http.put(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    ;
   }
 
   updateSettings(resourceUrl: string, settings: UserSettings) {
@@ -244,7 +230,8 @@ export class AdminAppService {
     });
     const body = JSON.stringify(settings);
 
-    return this._http.put<any>(resourceUrl, body, { headers: headers });
+    return this._http.put<any>(resourceUrl, body, {headers: headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    ;
   }
 
   getInventoryResource(resourceUrl: string): Observable<Inventory[]> {
@@ -254,10 +241,8 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-      .get<Inventory[]>(resourceUrl, { headers })
-      .catch((error: any) =>
-        Observable.throw(error.json().error || 'Server error')
-      );
+    .get<Inventory[]>(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+
   }
 
   updateInventoryStatus(resourceUrl) {
@@ -267,7 +252,18 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     this._http
-      .post<any>(resourceUrl, {}, { headers: headers })
-      .subscribe((event) => {});
+    .post<any>(resourceUrl, {}, {headers: headers})
+    .catch((e: any) => Observable.throw(this.errorHandler(e)))
+    .subscribe((event) => {
+    });
+  }
+
+  errorHandler(error: any): void {
+    console.log("REST error", error);
+    if (error.status === 0) {
+      this._authService.redirectToLogin();
+    } else if (error.status === 401) {
+      this._authService.redirectToLogin();
+    }
   }
 }

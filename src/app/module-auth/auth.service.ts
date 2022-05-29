@@ -31,4 +31,11 @@ export class AuthService {
   logout() {
     this.keycloakService.logout(environment.baseUrl).then();
   }
+
+  redirectToLogin() {
+    this.keycloakService.login({
+      scope: 'scc_user',
+      redirectUri: window.location.origin
+    });
+  }
 }

@@ -14,7 +14,7 @@ export class ProductService {
   constructor(private _service: AppService) {}
 
   loadProducts(): Observable<Product[]> {
-    return this._service.getProductsResource(this.privateUrl);
+    return this._service.getPublicProductsResource(this.privateUrl);
   }
 
   filterProducts(
@@ -43,6 +43,6 @@ export class ProductService {
   }
 
   getProduct(productId): Observable<Product> {
-    return this._service.getProductResource(this.privateUrl + '/' + productId);
+    return this._service.getPublicProductResource(this.privateUrl + '/' + productId);
   }
 }
