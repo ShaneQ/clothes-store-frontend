@@ -33,7 +33,7 @@ export class PersonalInfoService {
   updatePersonalInfo(personalInfo: PersonalInfo): Observable<any> {
     return this._service.putPersonalInfoResource(
       personalInfo,
-      this.privateUrl + '/' + personalInfo.id
+      this.privateUrl+"/"
     );
   }
 

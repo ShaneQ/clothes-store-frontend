@@ -233,9 +233,8 @@ export class ProductCreationComponent implements OnInit {
   getSeasons() {
     return [
       { name: 'Winter', id: '1' },
-      { name: 'Spring', id: '2' },
-      { name: 'Fall', id: '3' },
-      { name: 'Summer', id: '4' },
+      { name: 'Summer', id: '2' },
+      { name: 'Spring & Fall', id: '3' }
     ];
   }
   public colors = [
