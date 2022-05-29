@@ -157,11 +157,10 @@
                         formControlName="dispatch"
                       >
                         <option selected disabled value="">
-                          Collection Time
+                          Collection
                         </option>
-                        <option>8am to 9am</option>
-                        <option>1pm to 2pm</option>
-                        <option>6pm to 7pm</option>
+                        <option>Smithfield</option>
+                        <option>Bragadeiros</option>
                       </select>
                     </div>
                   </div>
@@ -257,20 +256,21 @@
               <div class="row justify-content-center py-9">
                 <div class="col-12 col-lg-10 col-xl-8">
                   <div class="row">
-                    <div class="col-12">
                       <!-- Text -->
                       <p class="text-gray-500">
                         {{ product.description }}
                       </p>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <strong>Material</strong>:{{ product.material }}
+
                     </div>
-                    <div class="col-12 col-md-6">
-                      <!-- List -->
-                      <ul class="list list-unstyled mb-0">
-                        <li>
-                          <strong>Material</strong>:{{ product.material }}
-                        </li>
-                      </ul>
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <strong>Retail Price</strong>: € {{ product.retailPrice }}
+
                     </div>
+                    <!-- List -->
                   </div>
                 </div>
               </div>

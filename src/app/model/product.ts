@@ -6,6 +6,7 @@ export class Product {
   constructor(
     public id: number,
     public name: string,
+    public retailPrice: string,
     public quickDesc: string,
     public material: string,
     public fittingInfo: string,

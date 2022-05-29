@@ -42,11 +42,9 @@
             </select>
           </div>
         </div>
-        <div class="container">
-          <div class="form-row">
+        <div class="form-row">
             <div class="col-6">
               <div class="theme-default">
-                <div class="row">
                   <div class="form-group">
                     <label>Start Date</label>
                     <input
@@ -55,21 +53,16 @@
                       placeholder="Start Date"
                       class="form-control border-dark"
                       bsDatepicker
-                      [bsConfig]="{
-                        isAnimated: true,
-                        containerClass: 'theme-default'
-                      }"
-                      [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+                      [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', isAnimated: true,
+                        containerClass: 'theme-default' }"
                       [minDate]="minDate"
                       [maxDate]="maxDate"
                     />
                   </div>
-                </div>
               </div>
             </div>
             <div class="col-6">
               <div class="theme-default">
-                <div class="row">
                   <div class="form-group">
                     <label>End Date</label>
 
@@ -88,24 +81,25 @@
                       [maxDate]="maxDate"
                     />
                   </div>
-                </div>
               </div>
             </div>
-          </div>
         </div>
-        <div class="row">
+        <div class="row text-center">
           <div class="col-6">
             <label>Booking Allowance</label>
             <h6>{{ this.user.bookingAllowanceMonthly }}</h6>
           </div>
           <div class="col-6">
             <label>Bookings Available</label>
-            <h6>{{ this.user.bookingAllowanceMonthlyRemaining }}</h6>
+            <h6 >{{ this.user.bookingAllowanceMonthlyRemaining }}</h6>
           </div>
         </div>
-        <div class="row">
-          <button type="submit" class="btn btn-success">Update</button>
+        <div class="container">
+          <div class="row">
+            <button type="submit" class="btn btn-success">Update</button>
+          </div>
         </div>
+
       </form>
     </div>
   </div>
