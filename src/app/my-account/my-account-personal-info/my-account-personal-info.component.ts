@@ -8,7 +8,7 @@ import {UserInfo} from '../../model/userInfo';
 import {HttpErrorResponse} from '@angular/common/http';
 import {AuthService} from '../../module-auth/auth.service';
 import {Router} from "@angular/router";
-import {ToastService} from "../../toast.service";
+import {ToastService} from "../../services/toast.service";
 
 @Component({
   selector: 'app-my-account-personal-info',
