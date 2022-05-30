@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {SearchProductsService} from '../../services/search-products.service';
+import {colours, productCategories, seasons, sizes} from "../../model/arrays";
 
 @Component({
   selector: 'app-shop-filter',
@@ -9,45 +10,6 @@ import {SearchProductsService} from '../../services/search-products.service';
 })
 export class ShopFilterComponent implements OnInit {
   searchForm: FormGroup;
-  sizes: Array<any> = [
-    {name: 'XS', value: '2'},
-    {name: 'S', value: '3'},
-    {name: 'M', value: '4'},
-    {name: 'L', value: '5'},
-    {name: 'XL', value: '6'},
-    {name: 'One Size', value: '1'},
-  ];
-  seasons: Array<any> = [
-    {name: 'Winter', value: 1},
-    {name: 'Summer', value: 2},
-    {name: 'Spring & Fall', value: 3},
-  ];
-  colors: Array<any> = [
-    {name: 'black', value: 1, code: 'something'},
-    {name: 'white', value: 2},
-    {name: 'grey', value: 3},
-    {name: 'cream', value: 4},
-    {name: 'brown', value: 5},
-    {name: 'red', value: 6},
-    {name: 'orange', value: 7},
-    {name: 'yellow', value: 8},
-    {name: 'green', value: 9},
-    {name: 'blue', value: 10},
-    {name: 'purple', value: 11},
-    {name: 'pink', value: 12},
-    {name: 'gold', value: 13},
-    {name: 'silver', value: 14},
-    {name: 'print', value: 15},
-  ];
-  categories: Array<any> = [
-    {name: 'Dresses', value: 1},
-    {name: 'Tops', value: 2},
-    {name: 'Pants', value: 3},
-    {name: 'Skirts', value: 4},
-    {name: 'Jumpsuits & Rompers', value: 5},
-    {name: 'Jackets & Coats', value: 6},
-    {name: 'Bags', value: 7},
-  ];
   isCollapsed: boolean = false;
   isTrue: boolean = false;
 
@@ -138,6 +100,22 @@ export class ShopFilterComponent implements OnInit {
     checkArray.clear();
     this._searchService.sizeClicked('');
     this._searchService.showResults();
+  }
+
+  public getSizes(){
+    return sizes;
+  }
+
+  public getSeasons(){
+    return seasons;
+  }
+
+  public getColours(){
+    return colours;
+  }
+
+  getProductCategories(){
+    return productCategories
   }
 
   updateArray(e, checkArray: FormArray) {

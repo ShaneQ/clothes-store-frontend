@@ -22,11 +22,11 @@
   </div>
 </div>
 <form [formGroup]="productForm" (ngSubmit)="submit()">
-  <input type="hidden" id="id" formControlName="id" />
+  <input type="hidden" id="id" formControlName="id"/>
   <div class="container py-5">
     <div class="row">
       <div class="form-group">
-        <input type="hidden" formControlName="ignore" />
+        <input type="hidden" formControlName="ignore"/>
       </div>
       <div class="form-group col-3">
         <label for="name">Name</label>
@@ -36,6 +36,10 @@
           id="name"
           formControlName="name"
         />
+        <div *ngIf="submitted && f.name.errors" class="text-danger">
+          <div *ngIf="f.name.errors.required"><small>Required</small></div>
+          <div *ngIf="f.name.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        </div>
       </div>
       <div class="form-group col-3">
         <label for="fittingInfo">Fitting Info</label>
@@ -45,6 +49,10 @@
           id="fittingInfo"
           formControlName="fittingInfo"
         />
+        <div *ngIf="submitted && f.fittingInfo.errors" class="text-danger">
+          <div *ngIf="f.fittingInfo.errors.required"><small>Required</small></div>
+          <div *ngIf="f.fittingInfo.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        </div>
       </div>
       <div class="form-group col-3">
         <label for="material">Material</label>
@@ -54,6 +62,10 @@
           id="material"
           formControlName="material"
         />
+        <div *ngIf="submitted && f.material.errors" class="text-danger">
+          <div *ngIf="f.material.errors.required"><small>Required</small></div>
+          <div *ngIf="f.material.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        </div>
       </div>
       <div class="form-group col-3">
         <label for="retailPrice">Retail Price</label>
@@ -63,6 +75,10 @@
           id="retailPrice"
           formControlName="retailPrice"
         />
+        <div *ngIf="submitted && f.retailPrice.errors" class="text-danger">
+          <div *ngIf="f.retailPrice.errors.required"><small>Required</small></div>
+          <div *ngIf="f.retailPrice.errors.pattern"><small>This can only be digits and '.' upto 10</small></div>
+        </div>
       </div>
       <div class="form-group col-3">
         <label for="brand">Brand</label>
@@ -72,6 +88,10 @@
           id="brand"
           formControlName="brand"
         />
+        <div *ngIf="submitted && f.brand.errors" class="text-danger">
+          <div *ngIf="f.brand.errors.required"><small>Required</small></div>
+          <div *ngIf="f.brand.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        </div>
       </div>
     </div>
   </div>
@@ -86,6 +106,10 @@
           formControlName="quickDesc"
           cols="50"
         ></textarea>
+        <div *ngIf="submitted && f.quickDesc.errors" class="text-danger">
+          <div *ngIf="f.quickDesc.errors.required"><small>Required</small></div>
+          <div *ngIf="f.quickDesc.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        </div>
       </div>
       <div class="form-group col-4">
         <label for="description">Description</label>
@@ -96,6 +120,10 @@
           rows="4"
           cols="50"
         ></textarea>
+        <div *ngIf="submitted && f.description.errors" class="text-danger">
+          <div *ngIf="f.description.errors.required"><small>Required</small></div>
+          <div *ngIf="f.description.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        </div>
       </div>
       <div class="form-group col-4">
         <label for="washInfo">Wash Info</label>
@@ -107,6 +135,10 @@
           rows="4"
           cols="50"
         ></textarea>
+        <div *ngIf="submitted && f.washInfo.errors" class="text-danger">
+          <div *ngIf="f.washInfo.errors.required"><small>Required</small></div>
+          <div *ngIf="f.washInfo.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        </div>
       </div>
     </div>
   </div>
@@ -126,6 +158,9 @@
             {{ category.name }}
           </option>
         </select>
+        <div *ngIf="submitted && f.productCategory.errors" class="text-danger">
+          <div *ngIf="f.productCategory.errors.required"><small>Required</small></div>
+        </div>
       </div>
       <div class="col-4">
         <label for="color">Color:</label>
@@ -134,10 +169,13 @@
           formControlName="color"
           id="color"
         >
-          <option *ngFor="let color of colors" [value]="color.id">
+          <option *ngFor="let color of getColours()" [value]="color.id">
             {{ color.name }}
           </option>
         </select>
+        <div *ngIf="submitted && f.color.errors" class="text-danger">
+          <div *ngIf="f.color.errors.required"><small>Required</small></div>
+        </div>
       </div>
       <div class="col-4">
         <label for="season">Season:</label>
@@ -150,6 +188,9 @@
             {{ season.name }}
           </option>
         </select>
+        <div *ngIf="submitted && f.season.errors" class="text-danger">
+          <div *ngIf="f.season.errors.required"><small>Required</small></div>
+        </div>
       </div>
     </div>
   </div>
@@ -167,6 +208,10 @@
           formControlName="chest"
         />
       </div>
+      <div *ngIf="submitted && a.chest.errors" class="text-danger">
+        <div *ngIf="a.chest.errors.required"><small>Required</small></div>
+        <div *ngIf="a.chest.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+      </div>
       <div class="col-6">
         <label for="hips">Hips</label>
         <input
@@ -176,6 +221,10 @@
           class="form-control"
           formControlName="hips"
         />
+        <div *ngIf="submitted && a.hips.errors" class="text-danger">
+          <div *ngIf="a.hips.errors.required"><small>Required</small></div>
+          <div *ngIf="a.hips.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        </div>
       </div>
       <div class="col-6">
         <label for="waist">Waist</label>
@@ -186,6 +235,10 @@
           class="form-control"
           formControlName="waist"
         />
+        <div *ngIf="submitted && a.waist.errors" class="text-danger">
+          <div *ngIf=" a.waist.errors.required"><small>Required</small></div>
+          <div *ngIf=" a.waist.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        </div>
       </div>
       <div class="col-6">
         <label for="length">Length</label>
@@ -196,6 +249,10 @@
           class="form-control"
           formControlName="length"
         />
+        <div *ngIf="submitted &&  a.length.errors" class="text-danger">
+          <div *ngIf="a.length.errors.required"><small>Required</small></div>
+          <div *ngIf="a.length.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        </div>
       </div>
     </div>
   </div>
@@ -210,6 +267,9 @@
         formControlName="url"
         required
       />
+      <div *ngIf="submitted && b.url.errors" class="text-danger">
+        <div *ngIf="b.url.errors.required"><small>Required</small></div>
+      </div>
       <app-image-upload (image)="onImageAdded($event)"></app-image-upload>
     </div>
   </div>
@@ -247,13 +307,13 @@
     <div class="row">
       <div class="form-group" formGroupName="sizes">
         <ul class="checkbox">
-          <div *ngFor="let data of sizes; let i = index">
+          <div *ngFor="let data of getSizes(); let i = index">
             <li>
               <label>
                 <input
                   type="checkbox"
-                  [value]="data.value"
-                  formControlName="size{{ data.value }}"
+                  [value]="data.id"
+                  formControlName="size{{ data.id }}"
                 />
 
                 {{ data.name }}
@@ -270,8 +330,8 @@
     </div>
     <div class="row">
       <label>Yes?</label>
-      <input formControlName="dryClean" id="dryClean" type="checkbox" />
-      <br />
+      <input formControlName="dryClean" id="dryClean" type="checkbox"/>
+      <br/>
     </div>
   </div>
   <div class="container py-5">

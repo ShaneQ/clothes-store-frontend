@@ -40,7 +40,8 @@ export class CanAuthenticationGuard extends KeycloakAuthGuard {
     if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
       return true;
     }
-    if(this.roles.length === 2 && this.roles.includes("manage-account-links") && this.roles.includes("manage-account")){
+    console.log(this.roles)
+    if(this.roles.length === 3 && this.roles.includes("manage-account-links") && this.roles.includes("manage-account") && this.roles.includes("offline_access")){
       this.router.navigate(['/registration']).then()
     }
 

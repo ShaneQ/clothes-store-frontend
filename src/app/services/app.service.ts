@@ -137,9 +137,7 @@ export class AppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-      .get<any>(url, { headers })
-    .catch((e: any) => Observable.throw(this.errorHandler(e)));
-  }
+      .get<any>(url, { headers })}
 
   getFilteredProductResource(
     url: string,

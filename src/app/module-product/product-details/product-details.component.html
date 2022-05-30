@@ -115,14 +115,13 @@
                         formControlName="size"
                         class="custom-control-input form-control"
                         id="{{ 'sizeRadio' + size.id }}"
-                        value="{{ size.id }}"
-                        checked
-                        data-bs-toggle="form-caption"
+                        [value]="size.id"
+
                       />
                       <label
                         class="custom-control-label"
                         for="{{ 'sizeRadio' + size.id }}"
-                        >{{ sizes[size.id_size.valueOf()].name }}</label
+                        >{{ getSizes()[size.id_size.valueOf()-1].name }}</label
                       >
                     </div>
                   </div>

@@ -37,7 +37,7 @@
       <td>
         <a [routerLink]="['/admin/product', booking.productId]">{{ booking.productName }}</a>
       </td>
-      <td>{{ sizes[booking.productSize.id_size].name }}</td>
+      <td>{{ getSizes()[booking.productSize.id_size].name }}</td>
       <td>{{ booking.startDate | date: "dd/MM/yyyy" }}</td>
       <td>{{ booking.collectionPlace }}</td>
       <td>{{ booking.returnDate | date: "dd/MM/yyyy" }}</td>
@@ -68,7 +68,7 @@
             "
         >
           <option
-            *ngFor="let statusName of inventoryStatus"
+            *ngFor="let statusName of getInventoryStatus()"
             [selected]="statusName === booking.productSize.status"
             [value]="statusName"
           >

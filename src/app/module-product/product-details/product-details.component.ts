@@ -9,6 +9,7 @@ import { BookingRequest } from '../../model/bookingRequest';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../module-auth/auth.service';
 import {Role} from "../../module-auth/roles";
+import {colours, productCategories, seasons, sizes} from "../../model/arrays";
 
 @Component({
   selector: 'app-product-details',
@@ -33,7 +34,6 @@ export class ProductDetailsComponent implements OnInit {
   public productCategories = [];
   public colors = [];
   public seasons = [];
-
   constructor(
     private _router: Router,
     private _route: ActivatedRoute,
@@ -57,6 +57,10 @@ export class ProductDetailsComponent implements OnInit {
     this.seasons = this.getSeasons();
   }
 
+  public setSize(value :number){
+    this.orderForm.get('size').setValue(value);
+  }
+
   async ngOnInit(): Promise<void> {
     this._authService.isLoggedIn().then(data => this.isLoggedIn = data);
 
@@ -66,6 +70,9 @@ export class ProductDetailsComponent implements OnInit {
 
     const productId = this._route.snapshot.paramMap.get('productId');
     this.product = await this._app.getProduct(productId).toPromise();
+    if(this.product.sizes.length == 1){
+      this.setSize(this.product.sizes[0].id)
+    }
     this.remainingBookings = 0;
     this.order = new BookingRequest();
     this.order.product = this.product;
@@ -82,7 +89,7 @@ export class ProductDetailsComponent implements OnInit {
       (size) => size.id == this.orderForm.value.size
     )[0];
     this.order.productSize = size;
-    this.order.sizeName = this.sizes[size.id_size].name;
+    this.order.sizeName = this.getSizes()[size.id_size-1].name;
     this.order.startDate = this.orderForm.value.orderDate;
     this.order.rentalType = this.orderForm.value.rental;
     this.order.collectionPlace = this.orderForm.value.dispatch;
@@ -95,53 +102,20 @@ export class ProductDetailsComponent implements OnInit {
     return this.orderForm.controls;
   }
 
-  sizes: Array<any> = [
-    { name: 'One Size', value: '1' },
-    { name: 'XS', value: '2' },
-    { name: 'S', value: '3' },
-    { name: 'M', value: '4' },
-    { name: 'L', value: '5' },
-    { name: 'XL', value: '6' },
-  ];
+  getSizes(){
+    return sizes;
+  }
 
   getProductCategories() {
-    return [
-      { name: 'Dresses', id: '1' },
-      { name: 'Tops', id: '2' },
-      { name: 'Pants', id: '3' },
-      { name: 'Skirts', id: '4' },
-      { name: 'Jumpsuits & Rompers', id: '5' },
-      { name: 'Jackets & Coats', id: '6' },
-      { name: 'Bags', id: '7' },
-    ];
+    return productCategories
   }
 
   getSeasons() {
-    return [
-      { name: 'Winter', id: '1' },
-      { name: 'Summer', id: '2' },
-      { name: 'Spring & Fall', id: '3' }
-    ];
+    return seasons;
   }
 
   getColors() {
-    return [
-      { name: 'black', id: 1 },
-      { name: 'white', id: 2 },
-      { name: 'grey', id: 3 },
-      { name: 'cream', id: 4 },
-      { name: 'brown', id: 5 },
-      { name: 'red', id: 6 },
-      { name: 'orange', id: 7 },
-      { name: 'yellow', id: 8 },
-      { name: 'green', id: 9 },
-      { name: 'blue', id: 10 },
-      { name: 'purple', id: 11 },
-      { name: 'pink', id: 12 },
-      { name: 'gold', id: 13 },
-      { name: 'silver', id: 14 },
-      { name: 'print', id: 15 },
-    ];
+    return colours
   }
 
   register() {

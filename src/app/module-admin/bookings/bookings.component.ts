@@ -3,6 +3,7 @@ import {BookingRequest} from '../model/bookingRequest';
 import {BookingService} from '../services/booking.service';
 import {ProductService} from '../services/product.service';
 import {DataTableDirective} from "angular-datatables";
+import {inventoryStatus, sizes} from "../../model/arrays";
 
 export enum Status {
   WAITING_COLLECTION,
@@ -39,19 +40,14 @@ export class BookingsComponent implements OnInit {
   @Input()
   productId: number;
 
-  sizes: Array<any> = [
-    {name: 'One Size', value: 1},
-    {name: 'XS', value: 2},
-    {name: 'S', value: 3},
-    {name: 'M', value: 4},
-    {name: 'L', value: 5},
-    {name: 'XL', value: 6},
-  ];
-
   constructor(
     private _service: BookingService,
     private _productService: ProductService
   ) {
+  }
+
+  public getSizes() {
+    return sizes;
   }
 
   ngOnInit(): void {
@@ -98,14 +94,10 @@ export class BookingsComponent implements OnInit {
     );
   }
 
-  public inventoryStatus = [
-    'BOOKED',
-    'IN_USE',
-    'WAITING_RETURN',
-    'STORED',
-    'WASH',
-    'DEACTIVATED',
-  ];
+
+  public getInventoryStatus(){
+    return inventoryStatus
+  }
 
   filterByStatus(): void {
     this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {

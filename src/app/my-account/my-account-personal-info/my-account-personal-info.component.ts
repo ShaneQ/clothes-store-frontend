@@ -8,11 +8,12 @@ import {UserInfo} from '../../model/userInfo';
 import {HttpErrorResponse} from '@angular/common/http';
 import {AuthService} from '../../module-auth/auth.service';
 import {Router} from "@angular/router";
+import {ToastService} from "../../toast.service";
 
 @Component({
   selector: 'app-my-account-personal-info',
   templateUrl: './my-account-personal-info.component.html',
-  providers: [PersonalInfoService],
+  providers: [PersonalInfoService, ToastService],
 })
 export class MyAccountPersonalInfoComponent implements OnInit {
   public personalInfo$: Observable<PersonalInfo>;
@@ -34,7 +35,8 @@ export class MyAccountPersonalInfoComponent implements OnInit {
     private _app: PersonalInfoService,
     private spinner: NgxSpinnerService,
     private _authService: AuthService,
-    private _router: Router
+    private _router: Router,
+    private _toastService: ToastService
   ) {
   }
 
@@ -172,6 +174,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       .createPersonalInfo(info)
       .subscribe((data) => {
         this.registrationSuccessful.emit(true);
+        this._toastService.show('I am a success toast', { classname: 'bg-success text-light', delay: 10000 });
       });
     } else {
       let info: PersonalInfo;

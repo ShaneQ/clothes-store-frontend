@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Size } from '../model/size';
 import type { Image } from '../model/image';
+import {productCategories, seasons, colours, sizes} from "../../model/arrays";
 
 @Component({
   selector: 'app-product-creation',
@@ -38,17 +39,37 @@ export class ProductCreationComponent implements OnInit {
     protected router: Router
   ) {}
 
+  get f() {
+    return this.productForm.controls;
+  }
+  get a(){
+    return ((this.productForm.get('measurements') as FormGroup).controls)
+  }
+  get b(){
+    return ((this.productForm.get('imgCover') as FormGroup).controls)
+  }
+
+  public findInvalidControls() {
+    const invalid = [];
+    const controls = this.productForm.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        invalid.push(name);
+      }
+    }
+    return invalid;
+  }
+
   ngOnInit(): void {
     const productId = this._route.snapshot.paramMap.get('productId');
     this.product$ = this._app.getProduct(productId);
+    this.initializeEmptyForm();
     if (productId) {
       this.productId = +productId;
       this.product$.subscribe((data) => {
         this.populateForm(data)
         this.hidden = data.hidden
       });
-    } else {
-      this.initializeEmptyForm();
     }
   }
 
@@ -66,6 +87,57 @@ export class ProductCreationComponent implements OnInit {
       .subscribe((data) => this.router.navigate(['base/shop']));
   }
 
+  getNameControl(value :string) : FormControl{
+    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getQuickDescriptionControl(value :string) : FormControl{
+    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getDescriptionControl(value :string) : FormControl{
+    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getFittingInfoControl(value :string) : FormControl{
+    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getWashInfoControl(value :string) : FormControl{
+    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getMaterialControl(value :string) : FormControl{
+    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getBrandControl(value :string) : FormControl{
+    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getDryCleanControl(value :boolean) : FormControl{
+    return new FormControl(value, [Validators.required])
+  }
+  getProductCategoryControl(value : number){
+    return new FormControl(value, [Validators.required])
+  }
+  getSeasonControl(value : number){
+    return new FormControl(value, [Validators.required])
+  }
+  getColorControl(value : number){
+    return new FormControl(value, [Validators.required])
+  }
+  getMeasurementChestControl(value :string) : FormControl{
+      return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getMeasurementHipsControl(value :string) : FormControl{
+    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getMeasurementWaistControl(value :string) : FormControl{
+    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getMeasurementLengthControl(value :string) : FormControl{
+    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+  }
+  getRetailPriceControl(value: number){
+    return new FormControl(value, [Validators.required, Validators.pattern(/^[0-9.]/)])
+  }
+  getImageUrlControl(value: string){
+    return new FormControl(value, [Validators.required, Validators.maxLength(150)])
+  }
   private populateForm(product: Product) {
     this.product = product;
     this.update = true;
@@ -73,28 +145,28 @@ export class ProductCreationComponent implements OnInit {
     this.seasons = this.getSeasons();
     this.productForm = this.fb.group({
       ignore: [],
-      id: [product.id],
-      name: [product.name, [Validators.required]],
-      quickDesc: [product.quickDesc, [Validators.required]],
-      description: [product.description, [Validators.required]],
-      fittingInfo: [product.fittingInfo, [Validators.required]],
-      washInfo: [product.washInfo, [Validators.required]],
-      material: [product.material, [Validators.required]],
-      brand: [product.brand, Validators.required],
+      id: new FormControl(product.id, [Validators.required]),
+      name: this.getNameControl(product.name),
+      quickDesc: this.getQuickDescriptionControl(product.quickDesc),
+      description: this.getDescriptionControl(product.description),
+      fittingInfo: this.getFittingInfoControl(product.fittingInfo),
+      washInfo: this.getWashInfoControl(product.washInfo),
+      material: this.getMaterialControl(product.material),
+      brand: this.getBrandControl(product.brand),
       imgCover: this.fb.group({
-        url: product.imgCover.url,
+        url: this.getImageUrlControl(product.imgCover.url),
         id: product.imgCover.id,
       }),
-      dryClean: product.dryClean,
-      productCategory: [product.productCategory],
-      color: [product.color],
-      season: [product.season],
-      retailPrice: [product.retailPrice, [Validators.required]],
+      dryClean: this.getDryCleanControl(product.dryClean),
+      productCategory: this.getProductCategoryControl(product.productCategory),
+      color: this.getColorControl(product.color),
+      season: this.getSeasonControl(product.season),
+      retailPrice: this.getRetailPriceControl(product.retailPrice),
       measurements: this.fb.group({
-        chest: [product.measurements.chest, [Validators.required]],
-        hips: [product.measurements.hips, [Validators.required]],
-        waist: [product.measurements.waist, [Validators.required]],
-        length: [product.measurements.length, [Validators.required]],
+        chest: this.getMeasurementChestControl(product.measurements.chest),
+        hips: this.getMeasurementHipsControl(product.measurements.hips),
+        waist: this.getMeasurementWaistControl(product.measurements.waist),
+        length: this.getMeasurementLengthControl(product.measurements.length),
       }),
       sizes: this.fb.group({
         size1: [product.sizes.filter((size) => size.id_size == 1).length == 1],
@@ -113,28 +185,27 @@ export class ProductCreationComponent implements OnInit {
     this.productForm = this.fb.group({
       id: [],
       ignore: [],
-      name: ['Testing', [Validators.required]],
-      quickDesc: ['Testing', [Validators.required]],
-      description: ['Testing', [Validators.required]],
-      fittingInfo: ['Testing', [Validators.required]],
-      washInfo: ['Testing', [Validators.required]],
-      material: ['Testing', [Validators.required]],
-      brand: ['Some Brand', Validators.required],
+      name: this.getNameControl('Testing'),
+      quickDesc: this.getQuickDescriptionControl('Testing'),
+      description: this.getDescriptionControl('Testing'),
+      fittingInfo: this.getFittingInfoControl('Testing'),
+      washInfo: this.getWashInfoControl('Testing'),
+      material: this.getMaterialControl('Testing'),
+      brand: this.getBrandControl('Some Brand'),
       imgCover: this.fb.group({
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1kUVuAjGZ8a6N1Tz9m0i0zKXVkk0CTJnJslJu6Z3Pk17XqOdSyQ&s',
+        url: this.getImageUrlControl(''),
         id: [],
       }),
-      dryClean: false,
-      productCategory: [1],
-      color: [1],
-      season: [1],
-      retailPrice: [0, [Validators.required]],
+      dryClean: this.getDryCleanControl(false),
+      productCategory: this.getProductCategoryControl(1),
+      color: this.getColorControl(1),
+      season: this.getSeasonControl(1),
+      retailPrice: this.getRetailPriceControl(0),
       measurements: this.fb.group({
-        id: [],
-        chest: [0, [Validators.required]],
-        hips: [0, [Validators.required]],
-        waist: [0, [Validators.required]],
-        length: [0, [Validators.required]],
+        chest: this.getMeasurementChestControl("1"),
+        hips: this.getMeasurementHipsControl("1"),
+        waist: this.getMeasurementWaistControl("1"),
+        length: this.getMeasurementLengthControl("1"),
       }),
       sizes: this.fb.group({
         size1: [false],
@@ -155,6 +226,7 @@ export class ProductCreationComponent implements OnInit {
     let f = this.productForm.value as Product;
     let sizes = this.convertSizes(this.productForm.value.sizes);
     if (this.productForm.invalid || sizes.length == 0 || f.images.length == 0) {
+      console.log(this.findInvalidControls());
       console.log('Invalid form :' + this.productForm.invalid);
       console.log('Sizes Length ' + sizes.length);
       console.log('Images length :' + f.images.length);
@@ -213,50 +285,20 @@ export class ProductCreationComponent implements OnInit {
     this.images.removeAt(i);
   }
 
-  sizes: Array<any> = [
-    { name: 'One Size', value: 1 },
-    { name: 'XS', value: 2 },
-    { name: 'S', value: 3 },
-    { name: 'M', value: 4 },
-    { name: 'L', value: 5 },
-    { name: 'XL', value: 6 },
-  ];
+  getSizes(){
+    return sizes;
+  }
 
   getProductCategories() {
-    return [
-      { name: 'Dresses', id: 1 },
-      { name: 'Tops', id: 2 },
-      { name: 'Pants', id: 3 },
-      { name: 'Skirts', id: 4 },
-      { name: 'Jumpsuits & Rompers', id: 5 },
-      { name: 'Jackets & Coats', id: 6 },
-      { name: 'Bags', id: 7 },
-    ];
+    return productCategories;
   }
   getSeasons() {
-    return [
-      { name: 'Winter', id: '1' },
-      { name: 'Summer', id: '2' },
-      { name: 'Spring & Fall', id: '3' }
-    ];
+    return seasons;
   }
-  public colors = [
-    { name: 'black', id: 1 },
-    { name: 'white', id: 2 },
-    { name: 'grey', id: 3 },
-    { name: 'cream', id: 4 },
-    { name: 'brown', id: 5 },
-    { name: 'red', id: 6 },
-    { name: 'orange', id: 7 },
-    { name: 'yellow', id: 8 },
-    { name: 'green', id: 9 },
-    { name: 'blue', id: 10 },
-    { name: 'purple', id: 11 },
-    { name: 'pink', id: 12 },
-    { name: 'gold', id: 13 },
-    { name: 'silver', id: 14 },
-    { name: 'print', id: 15 },
-  ];
+
+  getColours(){
+    return colours;
+  }
 
   private addSize(
     selectedSize: boolean,

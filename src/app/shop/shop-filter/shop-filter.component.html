@@ -389,19 +389,19 @@
                     aria-labelledby="dropdownMenuCategories"
                   >
                     <div
-                      *ngFor="let data of categories; let i = index"
+                      *ngFor="let data of getProductCategories()"
                       class="custom-control custom-checkbox mb-3"
                     >
                       <input
-                        [value]="data.value"
+                        [value]="data.id"
                         class="custom-control-input"
-                        [id]="'category-' + data.value"
+                        [id]="'category-' + data.id"
                         (change)="categoryChange($event)"
                         type="checkbox"
                       />
                       <label
                         class="custom-control-label"
-                        [for]="'category-' + data.value"
+                        [for]="'category-' + data.id"
                       >
                         {{ data.name }}
                       </label>
@@ -449,19 +449,19 @@
                     aria-labelledby="dropdownMenuSeasons"
                   >
                     <div
-                      *ngFor="let data of seasons; let i = index"
+                      *ngFor="let data of getSeasons()"
                       class="custom-control custom-checkbox mb-3"
                     >
                       <input
-                        [value]="data.value"
+                        [value]="data.id"
                         class="custom-control-input"
-                        [id]="'season-' + data.value"
+                        [id]="'season-' + data.id"
                         (change)="seasonChange($event)"
                         type="checkbox"
                       />
                       <label
                         class="custom-control-label"
-                        [for]="'season-' + data.value"
+                        [for]="'season-' + data.id"
                       >
                         {{ data.name }}
                       </label>
@@ -508,19 +508,19 @@
                     aria-labelledby="dropdownMenuSeasons"
                   >
                     <div
-                      *ngFor="let data of sizes; let i = index"
+                      *ngFor="let data of getSizes()"
                       class="custom-control custom-control-inline custom-control-size mb-2"
                     >
                       <input
-                        [value]="data.value"
+                        [value]="data.id"
                         class="custom-control-input"
-                        [id]="'size-' + data.value"
+                        [id]="'size-' + data.id"
                         (change)="sizeChange($event)"
                         type="checkbox"
                       />
                       <label
                         class="custom-control-label"
-                        [for]="'size-' + data.value"
+                        [for]="'size-' + data.id"
                       >
                         {{ data.name }}
                       </label>
@@ -567,20 +567,20 @@
                     aria-labelledby="dropdownMenuColors"
                   >
                     <div
-                      *ngFor="let data of colors; let i = index"
+                      *ngFor="let data of getColours()"
                       class="custom-control custom-control-color mb-3"
                     >
                       <input
-                        [value]="data.value"
+                        [value]="data.id"
                         class="custom-control-input form-control"
-                        [id]="'color' + data.value"
+                        [id]="'color' + data.id"
                         (change)="this.colourChange($event)"
                         type="checkbox"
                       />
                       <label
                         class="custom-control-label"
                         [ngClass]="'grid-' + data.name"
-                        [for]="'color' + data.value"
+                        [for]="'color' + data.id"
                       >
                         <span class="text-body"> {{ data.name }}</span>
                       </label>

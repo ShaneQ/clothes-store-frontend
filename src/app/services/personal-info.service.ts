@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { AppService } from './app.service';
-import { Observable } from 'rxjs/Observable';
-import { PersonalInfo } from '../model/personalInfo';
-import { UserInfo } from '../model/userInfo';
+import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
+import {AppService} from './app.service';
+import {Observable} from 'rxjs/Observable';
+import {PersonalInfo} from '../model/personalInfo';
+import {UserInfo} from '../model/userInfo';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,8 @@ export class PersonalInfoService {
   private privateUrl = environment.resourceUrl + 'private/personal';
   private registrationUrl = environment.resourceUrl + 'registration/personal';
 
-  constructor(private _service: AppService) {}
+  constructor(private _service: AppService) {
+  }
 
   getKeycloakUserInfo(): Observable<UserInfo> {
     return this._service.getUserInfo(
@@ -30,10 +31,11 @@ export class PersonalInfoService {
       this.registrationUrl
     );
   }
+
   updatePersonalInfo(personalInfo: PersonalInfo): Observable<any> {
     return this._service.putPersonalInfoResource(
       personalInfo,
-      this.privateUrl+"/"
+      this.privateUrl + "/"
     );
   }
 
@@ -42,6 +44,7 @@ export class PersonalInfoService {
       environment.resourceUrl + 'registration/personal/exists'
     );
   }
+
   isUserRegistered() {
     let check = false;
     this.hasUserRegistered().subscribe(
