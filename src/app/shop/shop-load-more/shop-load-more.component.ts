@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Product} from "../../model/product";
 
 @Component({
   selector: 'app-shop-load-more',
@@ -7,4 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopLoadMoreComponent {
   constructor() {}
+  @Output('increaseDisplay')
+  eventEmitter = new EventEmitter();
+
+  increaseDisplay(){
+    this.eventEmitter.emit(null);
+  }
 }

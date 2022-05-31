@@ -19,7 +19,6 @@ export class ProductListComponent implements OnInit {
   private filterByColor: string;
   private filterBySeason: string;
   private filterByCategory: string;
-
   productCount: number;
 
   @Input()
@@ -32,7 +31,7 @@ export class ProductListComponent implements OnInit {
   ) {
     this.productCount = 0;
     if (!this.displayAmount) {
-      this.displayAmount = 50;
+      this.displayAmount = 12;
     }
   }
 
