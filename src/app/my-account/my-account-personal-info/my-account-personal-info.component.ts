@@ -105,7 +105,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   }
 
   getCityControl(str: string) {
-    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
+    return new FormControl({value:"Dublin", disabled: true}, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
   }
 
   getAddressLineOneControl(str: string) {
@@ -117,19 +117,19 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   }
 
   getCountryControl(str: string) {
-    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
+    return new FormControl({value:"Ireland", disabled: true}, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
   }
 
   getEmailControl(str: string) {
-    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
+    return new FormControl({value:str, disabled: true}, [Validators.required, Validators.maxLength(this.maxFieldLengthOne)])
   }
 
   getFirstNameControl(str: string) {
-    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthTwo)])
+    return new FormControl({value:str, disabled: true}, [Validators.required, Validators.maxLength(this.maxFieldLengthTwo)])
   }
 
   getLastNameControl(str: string) {
-    return new FormControl(str, [Validators.required, Validators.maxLength(this.maxFieldLengthTwo)])
+    return new FormControl({value:str, disabled: true}, [Validators.required, Validators.maxLength(this.maxFieldLengthTwo)])
   }
 
   getMembershipControl(num: number) {
