@@ -169,7 +169,8 @@ export class MyAccountPersonalInfoComponent implements OnInit {
 
     if (this.isRegistrationPage) {
       let info: PersonalInfo;
-      info = this.personalInfoForm.value;
+      info = this.personalInfoForm.getRawValue();
+      console.log(info)
       this._app
       .createPersonalInfo(info)
       .subscribe((data) => {
