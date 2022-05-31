@@ -43,7 +43,10 @@ export class ProductDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _authService: AuthService
   ) {
-    this.minDate = new Date();
+    const today =  new Date();
+    const tomorrow =  new Date(today.setDate(today.getDate() + 1));
+
+    this.minDate = new Date(tomorrow.setDate(tomorrow.getDate() + 1));
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
     this.maxDate.setDate(this.maxDate.getDate() + 180);
