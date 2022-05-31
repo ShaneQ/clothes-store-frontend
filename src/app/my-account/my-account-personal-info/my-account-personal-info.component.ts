@@ -179,7 +179,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       });
     } else {
       let info: PersonalInfo;
-      info = this.personalInfoForm.value;
+      info = this.personalInfoForm.getRawValue();
       if (this.personalInfoForm.get('id').value) {
         this._app
         .updatePersonalInfo(info)
