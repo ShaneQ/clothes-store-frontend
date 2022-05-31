@@ -66,7 +66,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(routes as Routes)],
+  imports: [RouterModule.forRoot(routes as Routes, {scrollPositionRestoration: 'enabled'})],
   exports: [],
   providers: [CanAuthenticationGuard],
 })

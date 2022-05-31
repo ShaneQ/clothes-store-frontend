@@ -40,15 +40,12 @@
         </p>
 
         <swiper [config]="config" class="mySwiper">
-          <ng-template *ngFor="let product of products$ | async; let index = index" swiperSlide>
+          <ng-template *ngFor="let product of products$ | async | slice:0:10 ; let index = index" swiperSlide>
             <img
               class="img-carousel"
               [src]="product.imgCover.url"
               style="display: block; width: 100%"
             />
-            <div class="carousel-caption">
-              <h4>{{ product.name }}</h4>
-            </div>
           </ng-template>
         </swiper>
       </div>
@@ -62,7 +59,7 @@
   id="about"
   data-jarallax
   data-speed=".8"
-  style="background-image: url(../../assets/img/custom/cover-about.jpg)"
+  style="background-image: url(../../assets/img/custom/cover-about.jpg);     background-repeat:no-repeat;   background-position: center;"
 >
   <div class="container">
     <div class="row justify-content-end">
@@ -78,9 +75,7 @@
               The Second Closet Club is a shared wardrobe service that helps you
               enjoy more of the fashion world without cluttering your house.
               <br/>
-              The Second Closet Club is a shared wardrobe service that helps you
-              to enjoy more of the fashion world spending less and without
-              cluttering your house.Our inventory is carefully selected so you
+              Our inventory is carefully selected so you
               can stay fashionable knowing someone is looking after the the
               quality and environment impact of what you use.
             </p>
@@ -233,7 +228,7 @@
             <!-- Back -->
             <div class="img-comp-back">
               <img
-                src="../../assets/img/custom/before.jpg"
+                src="../../assets/img/custom/after.jpg"
                 alt="..."
                 class="img-comp-img"
               />
@@ -242,7 +237,7 @@
             <!-- Front -->
             <div class="img-comp-front">
               <img
-                src="../../assets/img/custom/after.jpg"
+                src="../../assets/img/custom/before.jpg"
                 alt="..."
                 class="img-comp-img"
               />

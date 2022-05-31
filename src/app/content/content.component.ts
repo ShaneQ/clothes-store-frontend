@@ -20,6 +20,7 @@ export class ContentComponent implements OnInit {
     navigation: true,
     pagination: {clickable: true},
     scrollbar: {draggable: true},
+    spaceBetween: 25,
     breakpoints: {
       320: {
         slidesPerView: 1,

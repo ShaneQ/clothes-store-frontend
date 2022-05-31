@@ -1,9 +1,12 @@
 /* stylelint-disable selector-list-comma-newline-after */
 .content-img-fluid {
-  background-image: url(../../assets/img/custom/cover-22.jpg);
+  background-image: url(../../assets/img/custom/cover-BGclean.jpg);
   background-repeat:no-repeat;
-  background-color: #cbced3;
+  background-color: #ffffff;
   background-position: center;
+  padding-bottom: 150px !important;
+  padding-top: 150px !important;
+
 }
 
 @media (max-width: 450px) {
