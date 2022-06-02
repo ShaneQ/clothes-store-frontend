@@ -32,9 +32,8 @@ export class UsersService {
     );
   }
 
-  updateSettings(id: number, settings: UserSettings) {
+  updateSettings(id: number, settings: UserSettings): Observable<any> {
     return this._service
       .updateSettings(this.adminUrl + '/users/user/' + id, settings)
-      .subscribe();
   }
 }

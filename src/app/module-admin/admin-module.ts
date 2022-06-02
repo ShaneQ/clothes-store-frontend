@@ -21,6 +21,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppAdminRoutingModule} from './app-admin-routing.module';
 import {ProductDetailsAdminComponent} from './product-details-admin/product-details-admin.component';
 import {ProductModule} from "../module-product/product.module";
+import {ModuleCommonModule} from "../module-common/module-common.module";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {ProductModule} from "../module-product/product.module";
     DataTablesModule,
     AppAdminRoutingModule,
     ProductModule,
-    FormsModule
+    FormsModule,
+    ModuleCommonModule.forRoot()
   ],
 })
 export class AdminModule {

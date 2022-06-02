@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../model/user';
-import { UsersService } from '../services/users.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserSettings } from '../model/userSettings';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../model/user';
+import {UsersService} from '../services/users.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserSettings} from '../model/userSettings';
+import {ToastService} from "../../module-common/toast.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-user',
@@ -22,7 +24,8 @@ export class UserComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute,
     private _userService: UsersService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private _toastService: ToastService
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -33,17 +36,17 @@ export class UserComponent implements OnInit {
 
   getMembershipTypes(): Array<any> {
     return [
-      { name: 'Chic', value: 1 },
-      { name: 'Casual', value: 2 },
+      {name: 'Chic', value: 1},
+      {name: 'Casual', value: 2},
     ];
   }
 
   getStatus(): Array<any> {
     return [
-      { name: 'Activated', value: 'ACTIVATED' },
-      { name: 'Deactivated', value: 'DEACTIVATED' },
-      { name: 'Blocked', value: 'BLOCKED' },
-      { name: 'Requested', value: 'REQUESTED' },
+      {name: 'Activated', value: 'ACTIVATED'},
+      {name: 'Deactivated', value: 'DEACTIVATED'},
+      {name: 'Blocked', value: 'BLOCKED'},
+      {name: 'Requested', value: 'REQUESTED'},
     ];
   }
 
@@ -84,6 +87,16 @@ export class UserComponent implements OnInit {
     if (new Date(f.endDate).toLocaleDateString() !== 'Invalid Date') {
       f.endDate = new Date(f.endDate).toLocaleDateString('en-GB');
     }
-    this._userService.updateSettings(this.user.id, f);
+    this._userService.updateSettings(this.user.id, f)
+    .catch(error => Observable.throw(this.showUpdateErrorMessage()))
+    .subscribe(data => this.showUpdateSuccessMessage())
+  }
+
+  showUpdateSuccessMessage() {
+    this._toastService.showSuccess("User updated successfully")
+  }
+
+  showUpdateErrorMessage() {
+    this._toastService.showError("User update error occurred")
   }
 }

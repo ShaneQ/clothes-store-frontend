@@ -83,8 +83,8 @@ export class ProductService {
     );
   }
 
-  updateInventoryStatus(value, inventoryId: number, productId: number) {
-    this._service.updateInventoryStatus(
+  updateInventoryStatus(value, inventoryId: number, productId: number) :Observable<any>{
+    return this._service.updateInventoryStatus(
       this.adminProductUrl + '/' + productId + '/inventory/' + inventoryId + '/' + value
     );
   }

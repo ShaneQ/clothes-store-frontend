@@ -127,17 +127,15 @@ export class AdminAppService {
 
   }
 
-  updateBookingStatus(resourceUrl) {
+  updateBookingStatus(resourceUrl): Observable<any> {
     let headers: HttpHeaders;
     headers = new HttpHeaders({
       'content-type': 'application/json',
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
-    this._http
+    return this._http
     .post<any>(resourceUrl, {}, {headers: headers})
-    .catch((e: any) => Observable.throw(this.errorHandler(e)))
-    .subscribe((event) => {
-    });
+    .catch((e: any) => Observable.throw(this.errorHandler(e)));
   }
 
   getUserResource(resourceUrl): Observable<User> {
@@ -222,7 +220,7 @@ export class AdminAppService {
     ;
   }
 
-  updateSettings(resourceUrl: string, settings: UserSettings) {
+  updateSettings(resourceUrl: string, settings: UserSettings): Observable<any> {
     let headers: HttpHeaders;
     headers = new HttpHeaders({
       'content-type': 'application/json',
@@ -245,17 +243,15 @@ export class AdminAppService {
 
   }
 
-  updateInventoryStatus(resourceUrl) {
+  updateInventoryStatus(resourceUrl): Observable<any> {
     let headers: HttpHeaders;
     headers = new HttpHeaders({
       'content-type': 'application/json',
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
-    this._http
+    return this._http
     .post<any>(resourceUrl, {}, {headers: headers})
     .catch((e: any) => Observable.throw(this.errorHandler(e)))
-    .subscribe((event) => {
-    });
   }
 
   errorHandler(error: any): void {

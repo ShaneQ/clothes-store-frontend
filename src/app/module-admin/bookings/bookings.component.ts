@@ -4,6 +4,8 @@ import {BookingService} from '../services/booking.service';
 import {ProductService} from '../services/product.service';
 import {DataTableDirective} from "angular-datatables";
 import {inventoryStatus, sizes} from "../../model/arrays";
+import {ToastService} from "../../module-common/toast.service";
+import {Observable} from "rxjs/Observable";
 
 export enum Status {
   WAITING_COLLECTION,
@@ -42,7 +44,8 @@ export class BookingsComponent implements OnInit {
 
   constructor(
     private _service: BookingService,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _toastService: ToastService
   ) {
   }
 
@@ -54,6 +57,7 @@ export class BookingsComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       processing: true,
+      order: [[ 0, 'des' ]]
     };
     if (this.userId!!) {
       this._service
@@ -83,7 +87,9 @@ export class BookingsComponent implements OnInit {
   }
 
   updateStatus(event: any, id: number) {
-    this._service.updateBookingStatus(event.target.value, id);
+    this._service.updateBookingStatus(event.target.value, id)
+    .catch((e: any) => Observable.call(this.showInventoryStatusErrorMessage()))
+    .subscribe(data => this.showBookingStatusSuccessMessage());
   }
 
   updateInventoryStatus(event: any, inventoryId: number, productId: number) {
@@ -91,11 +97,14 @@ export class BookingsComponent implements OnInit {
       event.target.value,
       inventoryId,
       productId
-    );
+    ).catch((e: any) => Observable.call(this.showBookingStatusErrorMessage()))
+    .subscribe(data => {
+      this.showInventoryStatusSuccessMessage()
+    });
   }
 
 
-  public getInventoryStatus(){
+  public getInventoryStatus() {
     return inventoryStatus
   }
 
@@ -103,5 +112,21 @@ export class BookingsComponent implements OnInit {
     this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
       dtInstance.draw();
     });
+  }
+
+  showBookingStatusSuccessMessage() {
+    this._toastService.showSuccess("Booking Status updated successfully")
+  }
+
+  showBookingStatusErrorMessage() {
+    this._toastService.showError("Booking Status update error occurred")
+  }
+
+  showInventoryStatusSuccessMessage() {
+    this._toastService.showSuccess("Inventory Status updated successfully")
+  }
+
+  showInventoryStatusErrorMessage() {
+    this._toastService.showError("Inventory Status update error occurred")
   }
 }

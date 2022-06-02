@@ -20,6 +20,7 @@ export class UsersComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       processing: true,
+      order: [[ 0, 'des' ]]
     };
     this._service.getUsers().subscribe((data) => (this.users = data));
   }

@@ -14,6 +14,7 @@ export class User {
   public membership: number;
   public startDate: Date;
   public endDate: Date;
+  public createdAt: Date;
   public bookingAllowanceMonthly: number;
   public bookingAllowanceMonthlyRemaining: number;
 }

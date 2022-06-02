@@ -28,8 +28,8 @@ export class BookingService {
     );
   }
 
-  updateBookingStatus(value: string, id: number) {
-    this._service.updateBookingStatus(
+  updateBookingStatus(value: string, id: number): Observable<any> {
+    return this._service.updateBookingStatus(
       this.adminUrl + '/booking/' + id + '/status/' + value
     );
   }

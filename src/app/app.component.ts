@@ -1,6 +1,6 @@
 import {Component, TemplateRef} from '@angular/core';
 import { AppService } from './services/app.service';
-import {ToastService} from "./services/toast.service";
+import {ToastService} from "./module-common/toast.service";
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { Location, PopStateEvent } from "@angular/common";
 
@@ -14,7 +14,7 @@ export class AppComponent {
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
 
-  constructor(private router: Router, private location: Location, public toastService: ToastService) { }
+  constructor(private router: Router, private location: Location, private _toastService : ToastService) { }
 
   ngOnInit() {
     this.location.subscribe((ev:PopStateEvent) => {
@@ -33,7 +33,4 @@ export class AppComponent {
       }
     });
   }
-
-  isTemplate(toast) { return toast.textOrTpl instanceof TemplateRef; }
-
 }

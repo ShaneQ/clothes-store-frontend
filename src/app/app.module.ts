@@ -44,7 +44,8 @@ import {AuthModule} from './module-auth/auth.module';
 import {AdminModule} from './module-admin/admin-module';
 import {ProductModule} from "./module-product/product.module";
 import {SwiperModule} from "swiper/angular";
-import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
+import {RegistrationSuccessComponent} from './registration-success/registration-success.component';
+import {ModuleCommonModule} from "./module-common/module-common.module";
 
 @NgModule({
   declarations: [
@@ -96,9 +97,9 @@ import { RegistrationSuccessComponent } from './registration-success/registratio
     AuthModule,
     AdminModule,
     ProductModule,
-    SwiperModule
+    SwiperModule,
+    ModuleCommonModule
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {

@@ -8,7 +8,7 @@ import {UserInfo} from '../../model/userInfo';
 import {HttpErrorResponse} from '@angular/common/http';
 import {AuthService} from '../../module-auth/auth.service';
 import {Router} from "@angular/router";
-import {ToastService} from "../../services/toast.service";
+import {ToastService} from "../../module-common/toast.service";
 
 @Component({
   selector: 'app-my-account-personal-info',
@@ -170,12 +170,11 @@ export class MyAccountPersonalInfoComponent implements OnInit {
     if (this.isRegistrationPage) {
       let info: PersonalInfo;
       info = this.personalInfoForm.getRawValue();
-      console.log(info)
       this._app
       .createPersonalInfo(info)
       .subscribe((data) => {
         this.registrationSuccessful.emit(true);
-        this._toastService.show('I am a success toast', { classname: 'bg-success text-light', delay: 10000 });
+        this.showSuccessMessage();
       });
     } else {
       let info: PersonalInfo;
@@ -183,7 +182,10 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       if (this.personalInfoForm.get('id').value) {
         this._app
         .updatePersonalInfo(info)
-        .subscribe((data) => (this.saved = true));
+        .subscribe((data) => {
+          this.saved = true;
+          this.showSuccessMessage();
+        });
       } else {
         this._app
         .createPersonalInfo(info)
@@ -207,5 +209,8 @@ export class MyAccountPersonalInfoComponent implements OnInit {
         this.spinner.hide();
       }, 1500);
     }
+  }
+  showSuccessMessage() {
+    this._toastService.showSuccess("Personal Details updated successfully!")
   }
 }
