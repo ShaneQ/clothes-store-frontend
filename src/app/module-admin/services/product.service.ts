@@ -83,9 +83,9 @@ export class ProductService {
     );
   }
 
-  updateInventoryStatus(value, id: number, productId: number) {
+  updateInventoryStatus(value, inventoryId: number, productId: number) {
     this._service.updateInventoryStatus(
-      this.adminProductUrl + '/' + productId + '/inventory/' + id + '/' + value
+      this.adminProductUrl + '/' + productId + '/inventory/' + inventoryId + '/' + value
     );
   }
 }

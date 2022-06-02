@@ -86,10 +86,10 @@ export class BookingsComponent implements OnInit {
     this._service.updateBookingStatus(event.target.value, id);
   }
 
-  updateInventoryStatus(event: any, id: number, productId: number) {
+  updateInventoryStatus(event: any, inventoryId: number, productId: number) {
     this._productService.updateInventoryStatus(
       event.target.value,
-      id,
+      inventoryId,
       productId
     );
   }
