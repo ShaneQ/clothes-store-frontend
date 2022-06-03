@@ -304,7 +304,7 @@
     <div class="row">
       <div class="col-12">
         <!-- Filters -->
-        <div class="btn-group-justified btn-group-expand-lg mb-10" role="group">
+        <div class="btn-group-justified btn-group-expand-lg mb-10" role="group" id="myGroup">
           <!--
                     <div class="btn-group dropdown">
                       &lt;!&ndash; Toggle &ndash;&gt;
@@ -374,13 +374,14 @@
 
             <button
               class="btn btn-sm btn-block btn-outline-border dropdown-toggle"
-              type="button" data-bs-toggle="collapse" data-bs-target="#filterCategoryContent"
-              data-bs-auto-close="outside"
-              aria-controls="filterCategoryContent" aria-expanded="false" aria-label="Toggle navigation"
+              type="button" data-bs-target="#filterCategoryContent" data-parent="#myGroup"
+              data-bs-auto-close="outside" data-bs-toggle="dropdown"
+              aria-controls="filterCategoryContent" aria-label="Toggle navigation"
+              [attr.aria-expanded]="!isCategoryCollapsed" (click)="toggelCollapse(1)"
             >
               Category
             </button>
-            <form class="collapse dropdown-collapse dropdown-menu" id="filterCategoryContent">
+            <form class="collapse dropdown-collapse dropdown-menu" id="filterCategoryContent" [ngbCollapse]="isCategoryCollapsed">
               <div class="card">
                 <div class="card-body">
                   <!-- Form group -->
@@ -434,13 +435,15 @@
 
             <button
               class="btn btn-sm btn-block btn-outline-border dropdown-toggle"
-              type="button" data-bs-toggle="collapse" data-bs-target="#filterSeasonContent"
-              data-bs-auto-close="outside"
-              aria-controls="filterSeasonContent" aria-expanded="false" aria-label="Toggle navigation"
+              type="button" data-bs-target="#filterSeasonContent" data-parent="#myGroup"
+              data-bs-auto-close="outside" data-bs-toggle="dropdown"
+              aria-controls="filterSeasonContent" aria-label="Toggle navigation"
+              [attr.aria-expanded]="!isSeasonCollapsed" (click)="toggelCollapse(2)"
+
             >
               Season
             </button>
-            <form class="collapse dropdown-collapse dropdown-menu" id="filterSeasonContent">
+            <form class="collapse dropdown-collapse dropdown-menu" id="filterSeasonContent" [ngbCollapse]="isSeasonCollapsed">
               <div class="card">
                 <div class="card-body">
                   <!-- Form group -->
@@ -493,13 +496,14 @@
 
             <button
               class="btn btn-sm btn-block btn-outline-border dropdown-toggle"
-              type="button" data-bs-toggle="collapse" data-bs-target="#filterSizeContent"
-              data-bs-auto-close="outside"
-              aria-controls="filterSizeContent" aria-expanded="false" aria-label="Toggle navigation"
+              type="button" data-bs-target="#filterSizeContent" data-parent="#myGroup"
+              data-bs-auto-close="outside" data-bs-toggle="dropdown"
+              aria-controls="filterSizeContent" aria-label="Toggle navigation"
+              [attr.aria-expanded]="!isSizeCollapsed" (click)="toggelCollapse(3)"
             >
               Size
             </button>
-            <form class="collapse dropdown-collapse dropdown-menu" id="filterSizeContent">
+            <form class="collapse dropdown-collapse dropdown-menu" id="filterSizeContent" [ngbCollapse]="isSizeCollapsed">
               <div class="card">
                 <div class="card-body">
                   <!-- Form group -->
@@ -552,23 +556,25 @@
 
             <button
               class="btn btn-sm btn-block btn-outline-border dropdown-toggle"
-              type="button" data-bs-toggle="collapse" data-bs-target="#filterColorContent"
-              data-bs-auto-close="outside"
-              aria-controls="filterColorContent" aria-expanded="false" aria-label="Toggle navigation"
+              type="button"  data-bs-target="#filterColorContent" data-parent="#myGroup"
+              data-bs-auto-close="outside" data-bs-toggle="dropdown"
+              aria-controls="filterColorContent" aria-label="Toggle navigation"
+              [attr.aria-expanded]="!isColorCollapsed" (click)="toggelCollapse(4)"
+
             >
               Color
             </button>
-            <form class="collapse dropdown-collapse dropdown-menu dropdown-menu-color" id="filterColorContent">
+            <form class="collapse dropdown-collapse dropdown-menu dropdown-menu-color" id="filterColorContent" [ngbCollapse]="isColorCollapsed">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body pb-2">
                   <!-- Form group -->
                   <div
-                    class="form-group-overflow"
+                    class="form-group-overflow row"
                     aria-labelledby="dropdownMenuColors"
                   >
                     <div
                       *ngFor="let data of getColours()"
-                      class="custom-control custom-control-color mb-3"
+                      class="custom-control custom-control-color mb-3 col-6"
                     >
                       <input
                         [value]="data.id"

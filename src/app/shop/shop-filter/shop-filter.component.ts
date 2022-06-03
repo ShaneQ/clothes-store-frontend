@@ -10,8 +10,11 @@ import {colours, productCategories, seasons, sizes} from "../../model/arrays";
 })
 export class ShopFilterComponent implements OnInit {
   searchForm: FormGroup;
-  isCollapsed: boolean = false;
+  isSizeCollapsed: boolean = true;
   isTrue: boolean = false;
+  isSeasonCollapsed: boolean = true;
+  isCategoryCollapsed: boolean = true;
+  isColorCollapsed: boolean = true;
 
   constructor(
     private fb: FormBuilder,
@@ -35,7 +38,7 @@ export class ShopFilterComponent implements OnInit {
 
   filterProducts() {
     this._searchService.showResults();
-    this.collapseSeason()
+    this.toggelCollapse(0)
   }
 
   sizeChange(e) {
@@ -131,5 +134,39 @@ export class ShopFilterComponent implements OnInit {
         i++;
       });
     }
+  }
+
+  toggelCollapse(number: number) {
+    if(number === 0){
+      this.isCategoryCollapsed = true;
+      this.isColorCollapsed = true;
+      this.isSizeCollapsed = true;
+      this.isSeasonCollapsed = true;
+    }
+    if(number === 1){
+      this.isCategoryCollapsed = !this.isCategoryCollapsed;
+      this.isColorCollapsed = true;
+      this.isSizeCollapsed = true;
+      this.isSeasonCollapsed = true;
+    }
+    if(number === 2){
+      this.isSeasonCollapsed = !this.isSeasonCollapsed;
+      this.isColorCollapsed = true;
+      this.isSizeCollapsed = true;
+      this.isCategoryCollapsed = true;
+    }
+    if(number === 3){
+      this.isSizeCollapsed = !this.isSizeCollapsed;
+      this.isColorCollapsed = true;
+      this.isSeasonCollapsed = true;
+      this.isCategoryCollapsed = true;
+    }
+    if(number === 4){
+      this.isColorCollapsed = !this.isColorCollapsed;
+      this.isSeasonCollapsed = true;
+      this.isSizeCollapsed = true;
+      this.isCategoryCollapsed = true;
+    }
+
   }
 }

@@ -35,9 +35,7 @@ export var colours: Array<any> = [
   { name: 'blue', id: 10 },
   { name: 'purple', id: 11 },
   { name: 'pink', id: 12 },
-  { name: 'gold', id: 13 },
-  { name: 'silver', id: 14 },
-  { name: 'print', id: 15 },
+  { name: 'print', id: 15 }
 ];
 
 export var inventoryStatus = [
