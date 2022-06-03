@@ -1,90 +1,110 @@
 <div *ngIf="this.isAdmin">
   <app-admin-navbar></app-admin-navbar>
 </div>
+<ng-template [ngIf]="!this.isAdmin">
 
-<nav
-  *ngIf="!this.isAdmin"
-  class="navbar navbar-expand-md navbar-light bg-white border-bottom"
->
-  <div class="container">
-    <!-- Brand -->
-    <img
-      src="assets/img/custom/logo.jpg"
-      alt="logo"
-      class="img-fluid img-logo"
-      [routerLink]="['/']"
-    />
+  <nav
+    class="navbar navbar-expand-md navbar-light bg-white border-bottom"
+  >
+    <div class="container">
+      <!-- Brand -->
+      <img
+        src="assets/img/custom/logo.jpg"
+        alt="logo"
+        class="img-fluid img-logo"
+        [routerLink]="['/']"
+      />
 
-    <!-- Toggler -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarLandingCollapse"
-      aria-controls="navbarLandingCollapse"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <!-- Toggler -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarLandingCollapse"
+        aria-controls="navbarLandingCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <!-- Collapse -->
-    <div class="collapse navbar-collapse" id="navbarLandingCollapse">
-      <!-- Nav -->
-      <ul class="navbar-nav ml-xl-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-            >Home</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/shop"
-            routerLinkActive="active"
-            data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-            >Browser</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/about"
-            routerLinkActive="active"
-            data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-            >How it Works</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/faq" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-            >FAQs</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/contact" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-            >Contact</a
-          >
-        </li>
-        <div *ngIf="isLoggedIn && !isRegistrationPage">
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="navbarLandingCollapse">
+        <!-- Nav -->
+        <ul class="navbar-nav ml-xl-auto">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/account" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-              >My Account</a
+            <a class="nav-link" routerLink="/" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+            >Home</a
             >
           </li>
-        </div>
-        <div *ngIf="isLoggedIn">
           <li class="nav-item">
-            <a class="nav-link" (click)="logout()">Logout</a>
+            <a
+              class="nav-link"
+              routerLink="/shop"
+              routerLinkActive="active"
+              data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+            >Browser</a
+            >
           </li>
-        </div>
-        <div *ngIf="!isRegistrationPage && !isLoggedIn">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/browser" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+            <a
+              class="nav-link"
+              routerLink="/about"
+              routerLinkActive="active"
+              data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+            >How it Works</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/faq" routerLinkActive="active" data-bs-toggle="collapse"
+               data-bs-target=".navbar-collapse.show"
+            >FAQs</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact" routerLinkActive="active" data-bs-toggle="collapse"
+               data-bs-target=".navbar-collapse.show"
+            >Contact</a
+            >
+          </li>
+          <div *ngIf="isLoggedIn && !isRegistrationPage">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/account" routerLinkActive="active" data-bs-toggle="collapse"
+                 data-bs-target=".navbar-collapse.show"
+              >My Account</a
+              >
+            </li>
+          </div>
+          <div *ngIf="isLoggedIn">
+            <li class="nav-item">
+              <a class="nav-link" (click)="logout()">Logout</a>
+            </li>
+          </div>
+          <div *ngIf="!isRegistrationPage && !isLoggedIn">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/browser" routerLinkActive="active" data-bs-toggle="collapse"
+                 data-bs-target=".navbar-collapse.show"
               >Sign in</a>
-          </li>
-        </div>
-      </ul>
+            </li>
+          </div>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+  <ng-template [ngIf]="isLoggedIn && !isAdmin && this.userStatus != ''">
+    <div *ngIf="this.userStatus === 'DEACTIVATED'"
+         style="font-size:14px;height: 25px;background-color: #D9D9D9; text-align: center">Oh no! Your subscription is
+      expired. Renew your membership to enjoy more of your second wardrobe.
+    </div>
+    <div *ngIf="this.userStatus == 'BLOCKED'"
+         style="font-size:14px;height: 25px;background-color: #FF6F61; text-align: center; color:white"> Something is
+      wrong with your account! Contact us to re-gain access to your second wardrobe.
+    </div>
+    <div *ngIf="this.userStatus == 'REQUESTED'"
+         style="font-size:14px;height: 25px;background-color: #15A7D6; text-align: center; color:white"> We have
+      received your membership request! We will get in touch soon with details of how to activate it.
+    </div>
+  </ng-template>
+</ng-template>
+
 <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
