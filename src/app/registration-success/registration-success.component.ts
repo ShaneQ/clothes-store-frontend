@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from "../module-auth/auth.service";
 
 @Component({
   selector: 'app-registration-success',
   templateUrl: './registration-success.component.html'
 })
-export class RegistrationSuccessComponent implements OnInit {
+export class RegistrationSuccessComponent {
 
-  constructor(private _auth : AuthService) { }
-
-  ngOnInit(): void {
+  constructor(private _auth: AuthService) {
   }
 
   refreshRoles() {

@@ -24,7 +24,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
   public saved: boolean;
   @Input()
   public isRegistrationPage: boolean;
-  @Output('registrationSuccessful')
+  @Output()
   public registrationSuccessful = new EventEmitter<boolean>();
   public created: boolean;
   public maxFieldLengthOne = 70;

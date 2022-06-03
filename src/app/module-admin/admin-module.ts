@@ -22,6 +22,7 @@ import {AppAdminRoutingModule} from './app-admin-routing.module';
 import {ProductDetailsAdminComponent} from './product-details-admin/product-details-admin.component';
 import {ProductModule} from "../module-product/product.module";
 import {ModuleCommonModule} from "../module-common/module-common.module";
+import {ServiceInfoComponent} from "./service-info/service-info.component";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {ModuleCommonModule} from "../module-common/module-common.module";
     ProductsComponent,
     UserComponent,
     UsersComponent,
-    ProductDetailsAdminComponent
+    ProductDetailsAdminComponent,
+    ServiceInfoComponent
   ],
   exports: [AdminNavbarComponent],
   imports: [

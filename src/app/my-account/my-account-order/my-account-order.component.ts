@@ -10,8 +10,8 @@ export class MyAccountOrderComponent {
   @Input()
   item: BookingRequest;
 
-  @Output('itemSelected')
-  itemEmitted = new EventEmitter<BookingRequest>();
+  @Output()
+  itemSelected = new EventEmitter<BookingRequest>();
 
   constructor() {}
 

@@ -9,8 +9,8 @@ import {Image} from '../model/image';
   providers: [ImageService],
 })
 export class ImageUploadComponent {
-  @Output('image')
-  imageEmitter = new EventEmitter<Image>();
+  @Output()
+  private image = new EventEmitter<Image>();
 
   title = 'File-Upload-Save';
   selectedFiles: FileList;
@@ -53,7 +53,7 @@ export class ImageUploadComponent {
       } else if (event instanceof HttpResponse) {
         var json = JSON.parse(event.body.toString());
 
-        this.imageEmitter.emit(new Image(json.id, json.url));
+        this.image.emit(new Image(json.id, json.url));
       }
       this.selectedFiles = undefined;
     });

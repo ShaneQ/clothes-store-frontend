@@ -1,4 +1,4 @@
-import {Component, TemplateRef} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import { AppService } from './services/app.service';
 import {ToastService} from "./module-common/toast.service";
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
@@ -9,7 +9,7 @@ import { Location, PopStateEvent } from "@angular/common";
   templateUrl: './app.component.html',
   providers: [AppService, ToastService],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];

@@ -91,16 +91,16 @@
       </div>
     </div>
   </nav>
-  <ng-template [ngIf]="isLoggedIn && !isAdmin && this.userStatus != ''">
+  <ng-template [ngIf]="isLoggedIn && !isAdmin && this.userStatus !== ''">
     <div *ngIf="this.userStatus === 'DEACTIVATED'"
          style="font-size:14px;height: 25px;background-color: #D9D9D9; text-align: center">Oh no! Your subscription is
       expired. Renew your membership to enjoy more of your second wardrobe.
     </div>
-    <div *ngIf="this.userStatus == 'BLOCKED'"
+    <div *ngIf="this.userStatus === 'BLOCKED'"
          style="font-size:14px;height: 25px;background-color: #FF6F61; text-align: center; color:white"> Something is
       wrong with your account! Contact us to re-gain access to your second wardrobe.
     </div>
-    <div *ngIf="this.userStatus == 'REQUESTED'"
+    <div *ngIf="this.userStatus === 'REQUESTED'"
          style="font-size:14px;height: 25px;background-color: #15A7D6; text-align: center; color:white"> We have
       received your membership request! We will get in touch soon with details of how to activate it.
     </div>

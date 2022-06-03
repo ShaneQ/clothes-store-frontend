@@ -11,6 +11,7 @@ import {CanAuthenticationGuard} from '../module-auth/app-auth.guard';
 import {CanAuthenticationAdminGuard} from "../module-auth/app-admin-auth.guard";
 import {ProductDetailsAdminComponent} from "./product-details-admin/product-details-admin.component";
 import {Role} from "../module-auth/roles";
+import {ServiceInfoComponent} from "./service-info/service-info.component";
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
       {
         path: 'products',
         component: ProductsComponent,
+      },
+      {
+        path: 'BE/INFO',
+        component: ServiceInfoComponent,
       },
     ],
   },

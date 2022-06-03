@@ -9,8 +9,8 @@ export class ProductCardComponent {
   @Input()
   product: Product;
 
-  @Output('productSelected')
-  productEmitter = new EventEmitter<Product>();
+  @Output()
+  productSelected = new EventEmitter<Product>();
 
   public defaultImageUrl = 'assets/img/products/product-6.jpg';
 

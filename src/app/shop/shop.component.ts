@@ -4,12 +4,9 @@ import {Component, OnInit} from '@angular/core';
   selector: 'app-shop',
   templateUrl: './shop.component.html'
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent {
 
   constructor() {
-  }
-
-  ngOnInit(): void {
   }
 
 }
