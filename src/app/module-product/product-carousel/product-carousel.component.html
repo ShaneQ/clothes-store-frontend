@@ -4,7 +4,7 @@
 >
   <ng-template swiperSlide >
     <div>
-      <img
+      <img style=" width: 100%;height: auto;"
         [src]="coverImage.url"
         alt="Random first slide"
       />
@@ -12,7 +12,7 @@
   </ng-template>
   <ng-template *ngFor="let img of imagesAgain" swiperSlide>
     <div >
-      <img
+      <img style=" width: 100%;height: auto;"
         [src]="img.url"
         alt="Random second slide"
       />

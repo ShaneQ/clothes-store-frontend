@@ -42,9 +42,8 @@
         <swiper [config]="config" class="mySwiper">
           <ng-template *ngFor="let product of products$ | async | slice:0:10 ; let index = index" swiperSlide>
             <img
-              class="img-carousel"
+              style="width: 100%"
               [src]="product.imgCover.url"
-              style="display: block; width: 100%"
               [routerLink]="['/product', product.id]"
             />
           </ng-template>

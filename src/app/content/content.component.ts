@@ -23,16 +23,16 @@ export class ContentComponent implements OnInit {
     spaceBetween: 25,
     breakpoints: {
       320: {
-        slidesPerView: 1,
+        slidesPerView: 1
       },
       640: {
-        slidesPerView: 3,
+        slidesPerView: 3
       },
       990: {
-        slidesPerView: 4,
+        slidesPerView: 4
       },
       1200: {
-        slidesPerView: 5,
+        slidesPerView: 5
       }
     }
   };

@@ -8,12 +8,24 @@
   padding-top: 150px !important;
 
 }
-
+.swiper-container {
+  width:100%;
+  height:auto;
+}
+.swiper-slide {
+  width:auto;
+  height:auto;
+}
+.swiper-container img {
+  width:100%;
+  height:auto;
+}
 @media (max-width: 450px) {
   .content-img-fluid {
     background-image: url(../../assets/img/custom/cover-23-mobile.png);
     background-repeat:no-repeat;
   }
+
 }
 
 .big {
@@ -161,12 +173,8 @@ body {
 }
 
 .img-carousel {
-  max-height: 300px !important;
-  min-width: 100%;
-  max-width: 100%;
   object-fit: cover;
   object-position: center; // You can change this to bottom, right or left depending
-  height: 300px;
   // on the position you want.
 }
 
