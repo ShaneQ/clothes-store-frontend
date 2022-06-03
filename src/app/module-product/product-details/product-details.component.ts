@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ScriptService } from '../../services/script.service';
-import { ProductService } from '../../services/product.service';
-import { Product } from '../../model/product';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BookingSummaryComponent } from '../../modal/booking-summary/booking-summary.component';
-import { BookingRequest } from '../../model/bookingRequest';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../module-auth/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ScriptService} from '../../services/script.service';
+import {ProductService} from '../../services/product.service';
+import {Product} from '../../model/product';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {BookingSummaryComponent} from '../../modal/booking-summary/booking-summary.component';
+import {BookingRequest} from '../../model/bookingRequest';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../module-auth/auth.service';
 import {Role} from "../../module-auth/roles";
 import {colours, productCategories, seasons, sizes} from "../../model/arrays";
+import {NotFoundError} from "../../errors/not-found-error";
 
 @Component({
   selector: 'app-product-details',
@@ -34,6 +35,7 @@ export class ProductDetailsComponent implements OnInit {
   public productCategories = [];
   public colors = [];
   public seasons = [];
+
   constructor(
     private _router: Router,
     private _route: ActivatedRoute,
@@ -43,8 +45,8 @@ export class ProductDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _authService: AuthService
   ) {
-    const today =  new Date();
-    const tomorrow =  new Date(today.setDate(today.getDate() + 1));
+    const today = new Date();
+    const tomorrow = new Date(today.setDate(today.getDate() + 1));
 
     this.minDate = new Date(tomorrow.setDate(tomorrow.getDate() + 1));
     this.maxDate = new Date();
@@ -60,7 +62,7 @@ export class ProductDetailsComponent implements OnInit {
     this.seasons = this.getSeasons();
   }
 
-  public setSize(value :number){
+  public setSize(value: number) {
     this.orderForm.get('size').setValue(value);
   }
 
@@ -68,14 +70,23 @@ export class ProductDetailsComponent implements OnInit {
     this._authService.isLoggedIn().then(data => this.isLoggedIn = data);
 
     this.hasActiveMembership = this._authService
-      .getUserRoles()
-      .includes(Role[Role.scc_active_membership]);
+    .getUserRoles()
+    .includes(Role[Role.scc_active_membership]);
 
     const productId = this._route.snapshot.paramMap.get('productId');
-    this.product = await this._app.getProduct(productId).toPromise();
-    if(this.product.sizes.length == 1){
-      this.setSize(this.product.sizes[0].id)
-    }
+    this._app.getProduct(productId).subscribe(
+      (data => {
+        this.product = data
+        if (this.product.sizes.length == 1) {
+          this.setSize(this.product.sizes[0].id)
+        }
+      }),
+      ((err: Error) => {
+        if (err instanceof NotFoundError) {
+          this._router.navigate(["404"])
+        }
+      }));
+
     this.remainingBookings = 0;
     this.order = new BookingRequest();
     this.order.product = this.product;
@@ -92,7 +103,7 @@ export class ProductDetailsComponent implements OnInit {
       (size) => size.id == this.orderForm.value.size
     )[0];
     this.order.productSize = size;
-    this.order.sizeName = this.getSizes()[size.id_size-1].name;
+    this.order.sizeName = this.getSizes()[size.id_size - 1].name;
     this.order.startDate = this.orderForm.value.orderDate;
     this.order.rentalType = this.orderForm.value.rental;
     this.order.collectionPlace = this.orderForm.value.dispatch;
@@ -105,7 +116,7 @@ export class ProductDetailsComponent implements OnInit {
     return this.orderForm.controls;
   }
 
-  getSizes(){
+  getSizes() {
     return sizes;
   }
 

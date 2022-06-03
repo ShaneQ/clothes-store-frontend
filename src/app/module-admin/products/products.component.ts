@@ -47,8 +47,9 @@ export class ProductsComponent implements OnInit {
 
   updateStatus(event: any, id: number, productId: number) {
     this._service.updateInventoryStatus(event.target.value, id, productId)
-    .catch(error=> Observable.throw(this.showInventoryStatusErrorMessage()))
-    .subscribe(data => this.showInventoryStatusSuccessMessage())
+    .subscribe(data => this.showInventoryStatusSuccessMessage(), error => {
+      this.showInventoryStatusErrorMessage();
+    })
   }
 
   public getInventoryStatus(){

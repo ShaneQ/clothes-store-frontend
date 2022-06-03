@@ -21,8 +21,8 @@ export class PersonalInfoService {
     );
   }
 
-  getPersonalInfo(): Observable<PersonalInfo> {
-    return this._service.getPersonalInfo(this.privateUrl);
+  getPersonalInfo(fromPublic: boolean = false): Observable<PersonalInfo> {
+    return this._service.getPersonalInfo(this.privateUrl, fromPublic);
   }
 
   createPersonalInfo(personalInfo: PersonalInfo): Observable<any> {

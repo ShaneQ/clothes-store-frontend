@@ -1,84 +1,86 @@
-<div class="card card-lg mb-5 border">
-  <div class="card-body pb-0">
-    <!-- Info -->
-    <div class="card card-sm" *ngIf="!!this.personalInfo">
-      <div class="card-body bg-light">
-        <div class="row">
-          <div class="col-6 col-lg-4">
-            <!-- Heading -->
-            <h6 class="heading-xxxs text-muted">MEMBERSHIP</h6>
+<ng-template [ngIf]="!!this.personalInfo">
+  <div class="card card-lg mb-5 border">
+    <div class="card-body pb-0">
+      <!-- Info -->
+      <div class="card card-sm" *ngIf="!!this.personalInfo">
+        <div class="card-body bg-light">
+          <div class="row">
+            <div class="col-6 col-lg-4">
+              <!-- Heading -->
+              <h6 class="heading-xxxs text-muted">MEMBERSHIP</h6>
 
-            <!-- Text -->
-            <p class="mb-lg-0 font-size-sm font-weight-bold">
-              {{ memberships[this.personalInfo.membership] }}
-            </p>
+              <!-- Text -->
+              <p class="mb-lg-0 font-size-sm font-weight-bold">
+                {{ memberships[this.personalInfo.membership] }}
+              </p>
+            </div>
+            <div class="col-6 col-lg-4">
+              <!-- Heading -->
+              <h6 class="heading-xxxs text-muted">MONTH ALLOWANCE</h6>
+
+              <!-- Text -->
+              <p class="mb-lg-0 font-size-sm font-weight-bold">
+                {{ membershipsAllowance[this.personalInfo.membership] }}
+              </p>
+            </div>
+
+            <div class="col-6 col-lg-4">
+              <!-- Heading -->
+              <h6 class="heading-xxxs text-muted">BOOKINGS AVAILABLE</h6>
+
+              <!-- Text -->
+              <p class="mb-0 font-size-sm font-weight-bold">COMING SOON</p>
+            </div>
           </div>
-          <div class="col-6 col-lg-4">
-            <!-- Heading -->
-            <h6 class="heading-xxxs text-muted">MONTH ALLOWANCE</h6>
+        </div>
+      </div>
+    </div>
+    <div class="card-body pb-8">
+      <!-- Info -->
+      <div class="card card-sm">
+        <div class="card-body bg-light">
+          <div class="row">
+            <div class="col-6 col-lg-4">
+              <!-- Heading -->
+              <h6 class="heading-xxxs text-muted">START DATE:</h6>
 
-            <!-- Text -->
-            <p class="mb-lg-0 font-size-sm font-weight-bold">
-              {{ membershipsAllowance[this.personalInfo.membership] }}
-            </p>
-          </div>
+              <!-- Text -->
+              <div class="mb-lg-0 font-size-sm font-weight-bold">
+                <p *ngIf="this.personalInfo.startDate">
+                  {{ personalInfo.startDate }}
+                </p>
+                <p *ngIf="!!this.personalInfo.startDate === false">
+                  TBD
+                </p>
+              </div>
 
-          <div class="col-6 col-lg-4">
-            <!-- Heading -->
-            <h6 class="heading-xxxs text-muted">BOOKINGS AVAILABLE</h6>
+            </div>
+            <div class="col-6 col-lg-4">
+              <!-- Heading -->
+              <h6 class="heading-xxxs text-muted">END DATE:</h6>
 
-            <!-- Text -->
-            <p class="mb-0 font-size-sm font-weight-bold">COMING SOON</p>
+              <!-- Text -->
+              <div class="mb-lg-0 font-size-sm font-weight-bold">
+                <p *ngIf="!!this.personalInfo.startDate">
+                  {{ personalInfo.endDate }}
+                </p>
+                <p *ngIf="!!this.personalInfo.endDate === false">
+                  TBD
+                </p>
+              </div>
+            </div>
+            <div class="col-6 col-lg-4">
+              <!-- Heading -->
+              <h6 class="heading-xxxs text-muted">MEMBERSHIP STATUS:</h6>
+
+              <!-- Text -->
+              <p class="mb-0 font-size-sm font-weight-bold">
+                {{ this.personalInfo.status }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="card-body pb-8">
-    <!-- Info -->
-    <div class="card card-sm">
-      <div class="card-body bg-light">
-        <div class="row">
-          <div class="col-6 col-lg-4">
-            <!-- Heading -->
-            <h6 class="heading-xxxs text-muted">START DATE:</h6>
-
-            <!-- Text -->
-            <div class="mb-lg-0 font-size-sm font-weight-bold">
-              <p *ngIf="!!this.personalInfo.startDate">
-                {{ personalInfo.startDate }}
-              </p>
-              <p *ngIf="!!this.personalInfo.startDate === false">
-                TBD
-              </p>
-            </div>
-
-          </div>
-          <div class="col-6 col-lg-4">
-            <!-- Heading -->
-            <h6 class="heading-xxxs text-muted">END DATE:</h6>
-
-            <!-- Text -->
-            <div class="mb-lg-0 font-size-sm font-weight-bold">
-              <p *ngIf="!!this.personalInfo.startDate">
-                {{ personalInfo.endDate }}
-              </p>
-              <p *ngIf="!!this.personalInfo.endDate === false">
-                TBD
-              </p>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4">
-            <!-- Heading -->
-            <h6 class="heading-xxxs text-muted">MEMBERSHIP STATUS:</h6>
-
-            <!-- Text -->
-            <p class="mb-0 font-size-sm font-weight-bold">
-              {{ this.personalInfo.status }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</ng-template>

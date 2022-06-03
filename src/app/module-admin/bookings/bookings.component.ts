@@ -88,8 +88,9 @@ export class BookingsComponent implements OnInit {
 
   updateStatus(event: any, id: number) {
     this._service.updateBookingStatus(event.target.value, id)
-    .catch((e: any) => Observable.call(this.showInventoryStatusErrorMessage()))
-    .subscribe(data => this.showBookingStatusSuccessMessage());
+    .subscribe(data => this.showBookingStatusSuccessMessage(), error => {
+      this.showInventoryStatusErrorMessage();
+      });
   }
 
   updateInventoryStatus(event: any, inventoryId: number, productId: number) {
@@ -97,9 +98,10 @@ export class BookingsComponent implements OnInit {
       event.target.value,
       inventoryId,
       productId
-    ).catch((e: any) => Observable.call(this.showBookingStatusErrorMessage()))
-    .subscribe(data => {
+    ).subscribe(data => {
       this.showInventoryStatusSuccessMessage()
+    }, error => {
+      this.showBookingStatusErrorMessage()
     });
   }
 

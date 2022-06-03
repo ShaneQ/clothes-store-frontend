@@ -5,7 +5,6 @@ import {UsersService} from '../services/users.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserSettings} from '../model/userSettings';
 import {ToastService} from "../../module-common/toast.service";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-user',
@@ -88,8 +87,9 @@ export class UserComponent implements OnInit {
       f.endDate = new Date(f.endDate).toLocaleDateString('en-GB');
     }
     this._userService.updateSettings(this.user.id, f)
-    .catch(error => Observable.throw(this.showUpdateErrorMessage()))
-    .subscribe(data => this.showUpdateSuccessMessage())
+    .subscribe(data => this.showUpdateSuccessMessage(), error => {
+      this.showUpdateErrorMessage()
+    })
   }
 
   showUpdateSuccessMessage() {

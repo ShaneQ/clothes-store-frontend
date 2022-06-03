@@ -12,6 +12,9 @@ import {BookingRequest} from '../model/bookingRequest';
 import {UserSettings} from '../model/userSettings';
 import {Inventory} from '../model/inventory';
 import {AuthService} from "../../module-auth/auth.service";
+import {throwError} from "rxjs";
+import {NotAuthenticatedError} from "../../errors/not-authenticated-error";
+import {NotFoundError} from "../../errors/not-found-error";
 
 @Injectable()
 export class AdminAppService {
@@ -28,7 +31,7 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-    .get(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    .get(resourceUrl, {headers}).catch((e: any) => this.errorHandler(e));
 
   }
 
@@ -39,7 +42,7 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-    .get<Product[]>(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    .get<Product[]>(resourceUrl, {headers}).catch((e: any) => this.errorHandler(e));
 
   }
 
@@ -51,7 +54,7 @@ export class AdminAppService {
     });
     const body = JSON.stringify(product);
 
-    return this._http.post<any>(resourceUrl, body, {headers: headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    return this._http.post<any>(resourceUrl, body, {headers: headers}).catch((e: any) => this.errorHandler(e));
 
   }
 
@@ -88,7 +91,7 @@ export class AdminAppService {
     });
     const body = JSON.stringify(product);
 
-    return this._http.put<any>(resourceUrl, body, {headers: headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    return this._http.put<any>(resourceUrl, body, {headers: headers}).catch((e: any) => this.errorHandler(e));
 
   }
 
@@ -99,7 +102,7 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-    .get<Product>(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    .get<Product>(resourceUrl, {headers}).catch((e: any) => this.errorHandler(e));
 
   }
 
@@ -111,7 +114,7 @@ export class AdminAppService {
     });
     return this._http
     .get<User[]>(resourceUrl, {headers})
-    .catch((e: any) => Observable.throw(this.errorHandler(e)));
+    .catch((e: any) => this.errorHandler(e));
 
   }
 
@@ -123,7 +126,7 @@ export class AdminAppService {
     });
     return this._http
     .get<BookingRequest[]>(resourceUrl, {headers})
-    .catch((e: any) => Observable.throw(this.errorHandler(e)));
+    .catch((e: any) => this.errorHandler(e));
 
   }
 
@@ -135,7 +138,7 @@ export class AdminAppService {
     });
     return this._http
     .post<any>(resourceUrl, {}, {headers: headers})
-    .catch((e: any) => Observable.throw(this.errorHandler(e)));
+    .catch((e: any) => this.errorHandler(e));
   }
 
   getUserResource(resourceUrl): Observable<User> {
@@ -146,7 +149,7 @@ export class AdminAppService {
     });
     return this._http
     .get<User>(resourceUrl, {headers})
-    .catch((e: any) => Observable.throw(this.errorHandler(e)));
+    .catch((e: any) => this.errorHandler(e));
 
   }
 
@@ -156,7 +159,7 @@ export class AdminAppService {
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
-    return this._http.delete(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    return this._http.delete(resourceUrl, {headers}).catch((e: any) => this.errorHandler(e));
     ;
   }
 
@@ -167,7 +170,7 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
 
-    return this._http.put(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    return this._http.put(resourceUrl, {headers}).catch((e: any) => this.errorHandler(e));
     ;
   }
 
@@ -191,7 +194,7 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
 
-    return this._http.put(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    return this._http.put(resourceUrl, {headers}).catch((e: any) => this.errorHandler(e));
     ;
   }
 
@@ -206,7 +209,7 @@ export class AdminAppService {
     const options = {params: myparams, headers: headers};
     return this._http
     .get<Product[]>(url, options)
-    .catch((e: any) => Observable.throw(this.errorHandler(e)));
+    .catch((e: any) => this.errorHandler(e));
   }
 
   deactivateUser(resourceUrl): Observable<any> {
@@ -216,7 +219,7 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
 
-    return this._http.put(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    return this._http.put(resourceUrl, {headers}).catch((e: any) => this.errorHandler(e));
     ;
   }
 
@@ -228,7 +231,7 @@ export class AdminAppService {
     });
     const body = JSON.stringify(settings);
 
-    return this._http.put<any>(resourceUrl, body, {headers: headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    return this._http.put<any>(resourceUrl, body, {headers: headers}).catch((e: any) => this.errorHandler(e));
     ;
   }
 
@@ -239,7 +242,7 @@ export class AdminAppService {
       Authorization: 'Bearer ' + Cookie.get('access_token'),
     });
     return this._http
-    .get<Inventory[]>(resourceUrl, {headers}).catch((e: any) => Observable.throw(this.errorHandler(e)));
+    .get<Inventory[]>(resourceUrl, {headers}).catch((e: any) => this.errorHandler(e));
 
   }
 
@@ -251,15 +254,18 @@ export class AdminAppService {
     });
     return this._http
     .post<any>(resourceUrl, {}, {headers: headers})
-    .catch((e: any) => Observable.throw(this.errorHandler(e)))
+    .catch((e: any) => this.errorHandler(e))
   }
 
-  errorHandler(error: any): void {
-    console.log("REST error", error);
-    if (error.status === 0) {
+  errorHandler(error: any, fromPublic: boolean = false):Observable<any> {
+    if (error.status === 0 && !fromPublic) {
       this._authService.redirectToLogin();
-    } else if (error.status === 401) {
+      return throwError(new NotAuthenticatedError(error));
+    } else if (error.status === 401  && !fromPublic) {
       this._authService.redirectToLogin();
+      return throwError(new NotAuthenticatedError(error));
+    } else if (error.status === 404){
+      return throwError(new NotFoundError(error));
     }
   }
 }

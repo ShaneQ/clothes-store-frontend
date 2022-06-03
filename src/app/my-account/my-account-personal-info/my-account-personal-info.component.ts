@@ -13,7 +13,7 @@ import {ToastService} from "../../module-common/toast.service";
 @Component({
   selector: 'app-my-account-personal-info',
   templateUrl: './my-account-personal-info.component.html',
-  providers: [PersonalInfoService, ToastService],
+  providers: [PersonalInfoService],
 })
 export class MyAccountPersonalInfoComponent implements OnInit {
   public personalInfo$: Observable<PersonalInfo>;
@@ -185,6 +185,9 @@ export class MyAccountPersonalInfoComponent implements OnInit {
         .subscribe((data) => {
           this.saved = true;
           this.showSuccessMessage();
+          this._router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+            this._router.navigate(['account/personal']);
+          });
         });
       } else {
         this._app
@@ -211,6 +214,7 @@ export class MyAccountPersonalInfoComponent implements OnInit {
     }
   }
   showSuccessMessage() {
+    console.log("SHOULD SHOW TOASTER")
     this._toastService.showSuccess("Personal Details updated successfully!")
   }
 }

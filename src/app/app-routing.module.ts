@@ -15,6 +15,7 @@ import {CanAuthenticationGuard} from './module-auth/app-auth.guard';
 import {RegistrationSuccessComponent} from "./registration-success/registration-success.component";
 import {CanRegisterAuthenticationGuard} from "./module-auth/app-registration-auth.guard";
 import {Role} from "./module-auth/roles";
+import {NoPageFoundComponent} from "./no-page-found/no-page-found.component";
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
     canActivate: [CanRegisterAuthenticationGuard],
   },
   {
+    path: '404',
+    component:NoPageFoundComponent
+  },
+  {
     path: 'account',
     component: MyAccountBaseComponent,
     canActivate: [CanAuthenticationGuard],
@@ -83,7 +88,11 @@ const routes: Routes = [
         component: MyAccountMembershipComponent,
       },
     ],
-  }
+  },
+
+  //Wild Card Route for 404 request
+  { path: '**', pathMatch: 'full',
+    component: NoPageFoundComponent },
 ];
 
 @NgModule({

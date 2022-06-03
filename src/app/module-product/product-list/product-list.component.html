@@ -1,0 +1,18 @@
+<div class="row">
+  <div
+    *ngFor="let product of products; let i = index"
+    class="col-12 col-md-4 col-lg-3"
+  >
+    <div *ngIf="i < this.displayAmount">
+      <app-product-card
+        [product]="product"
+      ></app-product-card>
+    </div>
+  </div>
+</div>
+<ng-template [ngIf]="!!this.products && this.products.length === 0">
+  <p style="text-align: center">No Products Found</p>
+</ng-template>
+<div *ngIf="!!this.products && this.displayAmount< products.length" class="container pb-10">
+  <app-shop-load-more (increaseDisplay)="this.increaseDisplay()"></app-shop-load-more>
+</div>

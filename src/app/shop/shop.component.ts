@@ -1,21 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-shop',
-  templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss'],
+  templateUrl: './shop.component.html'
 })
 export class ShopComponent implements OnInit {
-  displayAmount: number;
-  constructor() {}
+
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.displayAmount = 12;
-    console.log('SHOP PAGE ON INIT');
   }
 
-  increaseDisplay(){
-    console.log("LOADING MORE")
-    this.displayAmount = this.displayAmount +12;
-  }
 }

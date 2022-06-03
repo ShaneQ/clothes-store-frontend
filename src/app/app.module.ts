@@ -2,9 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {HomeComponent} from './home/home.component';
-import {ProductListComponent} from './product/product-list/product-list.component';
-import {ProductCardComponent} from './product/product-card/product-card.component';
+import {ProductListComponent} from './module-product/product-list/product-list.component';
+import {ProductCardComponent} from './module-product/product-card/product-card.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {BaseComponent} from './base/base.component';
@@ -12,7 +11,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {FooterComponent} from './footer/footer.component';
 import {NoPageFoundComponent} from './no-page-found/no-page-found.component';
 import {NavbarComponent} from './navbar/navbar.component';
-import {ShopCategoriesComponent} from './shop/shop-categories/shop-categories.component';
 import {ShopLoadMoreComponent} from './shop/shop-load-more/shop-load-more.component';
 import {ShopComponent} from './shop/shop.component';
 import {ShopFilterComponent} from './shop/shop-filter/shop-filter.component';
@@ -50,16 +48,13 @@ import {ModuleCommonModule} from "./module-common/module-common.module";
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     ProductListComponent,
     ProductCardComponent,
-    HomeComponent,
     BaseComponent,
     FooterComponent,
     NoPageFoundComponent,
     NavbarComponent,
     HeadComponent,
-    ShopCategoriesComponent,
     ShopLoadMoreComponent,
     ShopComponent,
     ShopFilterComponent,
@@ -82,7 +77,6 @@ import {ModuleCommonModule} from "./module-common/module-common.module";
     BrowserModule,
     HttpClientModule,
     NgxGalleryModule,
-    AppRoutingModule,
     RouterModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
@@ -98,7 +92,8 @@ import {ModuleCommonModule} from "./module-common/module-common.module";
     AdminModule,
     ProductModule,
     SwiperModule,
-    ModuleCommonModule
+    ModuleCommonModule.forRoot(),
+    AppRoutingModule
   ],
   bootstrap: [AppComponent],
 })

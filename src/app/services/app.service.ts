@@ -12,6 +12,8 @@ import { PersonalInfo } from '../model/personalInfo';
 import { UserInfo } from '../model/userInfo';
 import { throwError } from 'rxjs';
 import { AuthService } from '../module-auth/auth.service';
+import {NotAuthenticatedError} from "../errors/not-authenticated-error";
+import {NotFoundError} from "../errors/not-found-error";
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +35,7 @@ export class AppService {
     });
     return this._http
       .get(resourceUrl, { headers })
-      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+      .catch((e: any) => this.errorHandler(e));
   }
 
   postBookingResource(request: BookingRequest, resourceUrl): Observable<any> {
@@ -46,7 +48,7 @@ export class AppService {
 
     return this._http
       .post<any>(resourceUrl, body, { headers: headers })
-      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+      .catch((e: any) => this.errorHandler(e));
   }
 
   getPublicProductsResource(resourceUrl): Observable<Product[]> {
@@ -61,7 +63,7 @@ export class AppService {
     });
     return this._http
       .get<Product>(resourceUrl, { headers })
-      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+      .catch((e: any) =>this.errorHandler(e));
   }
 
   checkCredentials(): boolean {
@@ -81,10 +83,10 @@ export class AppService {
     });
     return this._http
       .get<BookingRequest[]>(resourceUrl, { headers })
-      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+      .catch((e: any) => this.errorHandler(e));
   }
 
-  getPersonalInfo(resourceUrl: string): Observable<PersonalInfo> {
+  getPersonalInfo(resourceUrl: string, fromPublic:boolean): Observable<PersonalInfo> {
     let headers: HttpHeaders;
     headers = new HttpHeaders({
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
@@ -92,7 +94,7 @@ export class AppService {
     });
     return this._http
       .get<PersonalInfo>(resourceUrl, { headers })
-      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+      .catch((e: any) => this.errorHandler(e, fromPublic));
   }
 
   postPersonalInfoResource(personalInfo: PersonalInfo, privateUrl: string) {
@@ -104,7 +106,7 @@ export class AppService {
     const body = JSON.stringify(personalInfo);
     return this._http
       .post<any>(privateUrl, body, { headers: headers })
-      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+      .catch((e: any) => this.errorHandler(e));
   }
 
   putPersonalInfoResource(personalInfo: PersonalInfo, privateUrl: string) {
@@ -116,7 +118,7 @@ export class AppService {
     const body = JSON.stringify(personalInfo);
     return this._http
       .put<any>(privateUrl, body, { headers: headers })
-      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+      .catch((e: any) => this.errorHandler(e));
   }
 
   getUserInfo(url: string): Observable<UserInfo> {
@@ -127,7 +129,7 @@ export class AppService {
     });
     return this._http
       .get<UserInfo>(url, { headers })
-      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+      .catch((e: any) => this.errorHandler(e));
   }
 
   hasUserRegistered(url: string): Observable<any> {
@@ -151,15 +153,18 @@ export class AppService {
     console.log(myparams);
     return this._http
       .get<Product[]>(url, options)
-      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+      .catch((e: any) => this.errorHandler(e));
   }
 
-  errorHandler(error: any): void {
-    console.log("REST error", error);
-    if (error.status === 0) {
+  errorHandler(error: any, fromPublic: boolean = false):Observable<any> {
+    if (error.status === 0 && !fromPublic) {
       this._authService.redirectToLogin();
-    } else if (error.status === 401) {
+      return throwError(new NotAuthenticatedError(error));
+    } else if (error.status === 401  && !fromPublic) {
       this._authService.redirectToLogin();
+      return throwError(new NotAuthenticatedError(error));
+    } else if (error.status === 404){
+      return throwError(new NotFoundError(error));
     }
   }
 }

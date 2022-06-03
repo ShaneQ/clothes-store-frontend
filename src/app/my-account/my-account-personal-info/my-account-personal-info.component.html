@@ -295,10 +295,7 @@
     </div>
     <div *ngIf="!this.isRegistrationPage" class="col-12">
       <!-- Button -->
-      <button class="btn btn-dark" type="submit">Save Changes</button>
-      <div *ngIf="this.saved" class="text-success">
-        <div><small>Changes Saved</small></div>
-      </div>
+      <button class="btn btn-dark" type="submit"  [disabled]="!(personalInfoForm.valid && personalInfoForm.dirty)">Save Changes</button>
     </div>
   </div>
 </form>
