@@ -1,1 +1,3 @@
-<p>service-info works!</p>
+<ng-template [ngIf]="!!this.serviceInfo">
+  <pre><div class="container mt-10 mb-10">{{this.serviceInfo | json}}</div></pre>
+</ng-template>

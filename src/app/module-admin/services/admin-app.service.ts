@@ -257,6 +257,16 @@ export class AdminAppService {
     .catch((e: any) => this.errorHandler(e))
   }
 
+  getServiceInfo(resourceUrl: string): Observable<any>{
+    let headers: HttpHeaders;
+    headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      Authorization: 'Bearer ' + Cookie.get('access_token'),
+    });
+    return this._http
+    .get<Inventory[]>(resourceUrl, {headers}).catch((e: any) => this.errorHandler(e));
+  }
+
   errorHandler(error: any, fromPublic: boolean = false):Observable<any> {
     if (error.status === 0 && !fromPublic) {
       this._authService.redirectToLogin();

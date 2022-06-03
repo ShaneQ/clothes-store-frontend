@@ -54,7 +54,7 @@ const routes: Routes = [
         component: BookingsComponent,
       },
       {
-        path: 'booing/:bookingId',
+        path: 'booking/:bookingId',
         component: BookingComponent,
       },
       {
@@ -62,7 +62,7 @@ const routes: Routes = [
         component: ProductsComponent,
       },
       {
-        path: 'BE/INFO',
+        path: 'BE/info',
         component: ServiceInfoComponent,
       },
     ],
