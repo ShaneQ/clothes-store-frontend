@@ -103,6 +103,7 @@ export class ProductDetailsComponent implements OnInit {
       (size) => size.id == this.orderForm.value.size
     )[0];
     this.order.productSize = size;
+    this.order.product = this.product
     this.order.sizeName = this.getSizes()[size.id_size - 1].name;
     this.order.startDate = this.orderForm.value.orderDate;
     this.order.rentalType = this.orderForm.value.rental;
