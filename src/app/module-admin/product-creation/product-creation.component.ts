@@ -78,7 +78,7 @@ export class ProductCreationComponent implements OnInit {
   }
 
   showProduct() {
-    this._app.unhide(this.productId).subscribe((data) => (this.hidden = false));
+    this._app.show(this.productId).subscribe((data) => (this.hidden = false));
   }
 
   deleteProduct() {

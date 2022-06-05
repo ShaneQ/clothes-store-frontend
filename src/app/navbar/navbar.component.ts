@@ -30,13 +30,13 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.isRegistrationPage = false;
+    this.isAdmin = this._authService.getUserRoles().includes(Role[Role.scc_admin_role]);
     this._authService.isLoggedIn().then((result) => {
       this.isLoggedIn = result;
-      if(this.isLoggedIn){
+      if(this.isLoggedIn && !this.isAdmin){
         this._userService.getPersonalInfo(true).subscribe(data => this.userStatus = data.status)
       }
     });
-    this.isAdmin = this._authService.getUserRoles().includes(Role[Role.scc_admin_role]);
   }
 
   sortEvents(data) {

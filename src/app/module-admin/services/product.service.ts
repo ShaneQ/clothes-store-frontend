@@ -36,9 +36,9 @@ export class ProductService {
     );
   }
 
-  unhide(productId: number): Observable<any> {
+  show(productId: number): Observable<any> {
     return this._service.putProductHideChangeResource(
-      this.adminProductUrl + '/unhide/' + productId
+      this.adminProductUrl + '/show/' + productId
     );
   }
 
