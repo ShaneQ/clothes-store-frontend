@@ -94,19 +94,19 @@ export class ProductCreationComponent implements OnInit {
     return new FormControl(value, [Validators.required, Validators.maxLength(250)])
   }
   getDescriptionControl(value :string) : FormControl{
-    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+    return new FormControl(value, [Validators.required, Validators.maxLength(500)])
   }
   getFittingInfoControl(value :string) : FormControl{
-    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+    return new FormControl(value, [Validators.required, Validators.maxLength(500)])
   }
   getWashInfoControl(value :string) : FormControl{
     return new FormControl(value, [Validators.required, Validators.maxLength(250)])
   }
   getMaterialControl(value :string) : FormControl{
-    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+    return new FormControl(value, [Validators.required, Validators.maxLength(500)])
   }
   getBrandControl(value :string) : FormControl{
-    return new FormControl(value, [Validators.required, Validators.maxLength(250)])
+    return new FormControl(value, [Validators.required, Validators.maxLength(500)])
   }
   getDryCleanControl(value :boolean) : FormControl{
     return new FormControl(value, [Validators.required])

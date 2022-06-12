@@ -38,7 +38,7 @@
         />
         <div *ngIf="submitted && f.name.errors" class="text-danger">
           <div *ngIf="f.name.errors.required"><small>Required</small></div>
-          <div *ngIf="f.name.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+          <div *ngIf="f.name.errors.maxlength"><small>Max characters for field is {{f.name.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
       <div class="form-group col-3">
@@ -51,7 +51,7 @@
         />
         <div *ngIf="submitted && f.fittingInfo.errors" class="text-danger">
           <div *ngIf="f.fittingInfo.errors.required"><small>Required</small></div>
-          <div *ngIf="f.fittingInfo.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+          <div *ngIf="f.fittingInfo.errors.maxlength"><small>Max characters for field is {{f.fittingInfo.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
       <div class="form-group col-3">
@@ -64,7 +64,7 @@
         />
         <div *ngIf="submitted && f.material.errors" class="text-danger">
           <div *ngIf="f.material.errors.required"><small>Required</small></div>
-          <div *ngIf="f.material.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+          <div *ngIf="f.material.errors.maxlength"><small>Max characters for field is {{f.material.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
       <div class="form-group col-3">
@@ -90,7 +90,7 @@
         />
         <div *ngIf="submitted && f.brand.errors" class="text-danger">
           <div *ngIf="f.brand.errors.required"><small>Required</small></div>
-          <div *ngIf="f.brand.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+          <div *ngIf="f.brand.errors.maxlength"><small>Max characters for field is {{f.brand.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@
         ></textarea>
         <div *ngIf="submitted && f.quickDesc.errors" class="text-danger">
           <div *ngIf="f.quickDesc.errors.required"><small>Required</small></div>
-          <div *ngIf="f.quickDesc.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+          <div *ngIf="f.quickDesc.errors.maxlength"><small>Max characters for field is {{f.quickDesc.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
       <div class="form-group col-4">
@@ -122,7 +122,7 @@
         ></textarea>
         <div *ngIf="submitted && f.description.errors" class="text-danger">
           <div *ngIf="f.description.errors.required"><small>Required</small></div>
-          <div *ngIf="f.description.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+          <div *ngIf="f.description.errors.maxlength"><small>Max characters for field is {{f.description.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
       <div class="form-group col-4">
@@ -137,7 +137,7 @@
         ></textarea>
         <div *ngIf="submitted && f.washInfo.errors" class="text-danger">
           <div *ngIf="f.washInfo.errors.required"><small>Required</small></div>
-          <div *ngIf="f.washInfo.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+          <div *ngIf="f.washInfo.errors.maxlength"><small>Max characters for field is {{f.washInfo.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
@@ -210,7 +210,7 @@
       </div>
       <div *ngIf="submitted && a.chest.errors" class="text-danger">
         <div *ngIf="a.chest.errors.required"><small>Required</small></div>
-        <div *ngIf="a.chest.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+        <div *ngIf="a.chest.errors.maxlength"><small>Max characters for field is {{a.chest.errors.maxlength.requiredLength}}</small></div>
       </div>
       <div class="col-6">
         <label for="hips">Hips</label>
@@ -223,7 +223,7 @@
         />
         <div *ngIf="submitted && a.hips.errors" class="text-danger">
           <div *ngIf="a.hips.errors.required"><small>Required</small></div>
-          <div *ngIf="a.hips.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+          <div *ngIf="a.hips.errors.maxlength"><small>Max characters for field is {{a.hips.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
       <div class="col-6">
@@ -236,8 +236,8 @@
           formControlName="waist"
         />
         <div *ngIf="submitted && a.waist.errors" class="text-danger">
-          <div *ngIf=" a.waist.errors.required"><small>Required</small></div>
-          <div *ngIf=" a.waist.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+          <div *ngIf="a.waist.errors.required"><small>Required</small></div>
+          <div *ngIf="a.waist.errors.maxlength"><small>Max characters for field is {{a.waist.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
       <div class="col-6">
@@ -251,7 +251,7 @@
         />
         <div *ngIf="submitted &&  a.length.errors" class="text-danger">
           <div *ngIf="a.length.errors.required"><small>Required</small></div>
-          <div *ngIf="a.length.errors.maxlength"><small>This can be a maximum of 500 characters</small></div>
+          <div *ngIf="a.length.errors.maxlength"><small>Max characters for field is {{a.length.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
