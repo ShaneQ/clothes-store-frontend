@@ -31,7 +31,6 @@ export class ProductCreationComponent implements OnInit {
   public hidden: boolean = false;
   public update: boolean = false;
   public productId: number;
-  public created: boolean;
   constructor(
     private fb: FormBuilder,
     private _app: ProductService,
@@ -199,8 +198,8 @@ export class ProductCreationComponent implements OnInit {
       dryClean: this.getDryCleanControl(false),
       productCategory: this.getProductCategoryControl(1),
       color: this.getColorControl(1),
-      season: this.getSeasonControl(1),
-      retailPrice: this.getRetailPriceControl(0),
+      season: this.getSeasonControl(2),
+      retailPrice: this.getRetailPriceControl(null),
       measurements: this.fb.group({
         chest: this.getMeasurementChestControl("-"),
         hips: this.getMeasurementHipsControl("-"),
@@ -257,7 +256,7 @@ export class ProductCreationComponent implements OnInit {
       this._app.updateProduct(product).subscribe((data) => (this.saved = true));
     } else {
       this._app.createProduct(product).subscribe((data) => {
-        this.created = true;
+        this.router.navigate(['admin/product/update/'+data])
       });
     }
   }
