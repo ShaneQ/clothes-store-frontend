@@ -1,7 +1,7 @@
 <!-- Card -->
 <div class="card mb-7">
   <!-- Image -->
-  <div class="card-img" href="" [routerLink]="['/product', product.id]">
+  <a class="card-img" href="" [routerLink]="['/product', product.id]">
     <!-- Image -->
     <img
       class="card-img-top"
@@ -15,7 +15,7 @@
       *ngIf="!product.imgCover"
       alt="Product Image Default"
     />
-  </div>
+  </a>
 
   <div class="card-body px-0">
     <!--    &lt;!&ndash; Category &ndash;&gt;
