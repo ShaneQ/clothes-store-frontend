@@ -28,7 +28,7 @@
       <div class="form-group">
         <input type="hidden" formControlName="ignore"/>
       </div>
-      <div class="form-group col-3">
+      <div class="form-group col-4">
         <label for="name">Name</label>
         <input
           type="text"
@@ -41,33 +41,7 @@
           <div *ngIf="f.name.errors.maxlength"><small>Max characters for field is {{f.name.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
-      <div class="form-group col-3">
-        <label for="fittingInfo">Fitting Info</label>
-        <input
-          type="text"
-          class="form-control"
-          id="fittingInfo"
-          formControlName="fittingInfo"
-        />
-        <div *ngIf="submitted && f.fittingInfo.errors" class="text-danger">
-          <div *ngIf="f.fittingInfo.errors.required"><small>Required</small></div>
-          <div *ngIf="f.fittingInfo.errors.maxlength"><small>Max characters for field is {{f.fittingInfo.errors.maxlength.requiredLength}}</small></div>
-        </div>
-      </div>
-      <div class="form-group col-3">
-        <label for="material">Material</label>
-        <input
-          type="text"
-          class="form-control"
-          id="material"
-          formControlName="material"
-        />
-        <div *ngIf="submitted && f.material.errors" class="text-danger">
-          <div *ngIf="f.material.errors.required"><small>Required</small></div>
-          <div *ngIf="f.material.errors.maxlength"><small>Max characters for field is {{f.material.errors.maxlength.requiredLength}}</small></div>
-        </div>
-      </div>
-      <div class="form-group col-3">
+      <div class="form-group col-4">
         <label for="retailPrice">Retail Price</label>
         <input
           type="number"
@@ -80,7 +54,7 @@
           <div *ngIf="f.retailPrice.errors.pattern"><small>This can only be digits and '.' upto 10</small></div>
         </div>
       </div>
-      <div class="form-group col-3">
+      <div class="form-group col-4">
         <label for="brand">Brand</label>
         <input
           type="text"
@@ -91,6 +65,38 @@
         <div *ngIf="submitted && f.brand.errors" class="text-danger">
           <div *ngIf="f.brand.errors.required"><small>Required</small></div>
           <div *ngIf="f.brand.errors.maxlength"><small>Max characters for field is {{f.brand.errors.maxlength.requiredLength}}</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container py-5">
+    <div class="row">
+      <div class="form-group col-6">
+        <label for="fittingInfo">Fitting Info</label>
+        <textarea
+          rows="2"
+          cols="50"
+          class="form-control"
+          id="fittingInfo"
+          formControlName="fittingInfo"
+        ></textarea>
+        <div *ngIf="submitted && f.fittingInfo.errors" class="text-danger">
+          <div *ngIf="f.fittingInfo.errors.required"><small>Required</small></div>
+          <div *ngIf="f.fittingInfo.errors.maxlength"><small>Max characters for field is {{f.fittingInfo.errors.maxlength.requiredLength}}</small></div>
+        </div>
+      </div>
+      <div class="form-group col-6">
+        <label for="material">Material</label>
+        <textarea
+          rows="2"
+          cols="50"
+          class="form-control"
+          id="material"
+          formControlName="material"
+        ></textarea>
+        <div *ngIf="submitted && f.material.errors" class="text-danger">
+          <div *ngIf="f.material.errors.required"><small>Required</small></div>
+          <div *ngIf="f.material.errors.maxlength"><small>Max characters for field is {{f.material.errors.maxlength.requiredLength}}</small></div>
         </div>
       </div>
     </div>
