@@ -80,14 +80,14 @@ export class MyAccountPersonalInfoComponent implements OnInit {
       firstName: this.getFirstNameControl(keycloakInfo?.firstName),
       lastName: this.getLastNameControl(keycloakInfo?.lastName),
       email: this.getEmailControl(keycloakInfo?.email),
-      country: this.getCountryControl('Testing'),
-      addressLineOne: this.getAddressLineOneControl('Testing'),
-      addressLineTwo: this.getAddressLineTwoControl('Testing'),
-      city: this.getCityControl('Testing'),
-      eirCode: this.getEirCodeControl('Testing'),
-      phone: this.getPhoneControl('0851231234'),
-      dateOfBirth: this.getDOBControl(date),
-      membership: [],
+      country: this.getCountryControl(''),
+      addressLineOne: this.getAddressLineOneControl(''),
+      addressLineTwo: this.getAddressLineTwoControl(''),
+      city: this.getCityControl(''),
+      eirCode: this.getEirCodeControl(''),
+      phone: this.getPhoneControl(''),
+      dateOfBirth: this.getDOBControl(null),
+      membership: this.getMembershipControl(null),
     });
   }
 

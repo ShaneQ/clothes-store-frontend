@@ -238,7 +238,7 @@
             <div *ngIf="f.dateOfBirth.errors.required">
               <small>Required</small>
             </div>
-            <div *ngIf="f.dateOfBirth.errors.bsDate.invalid">
+            <div *ngIf="f.dateOfBirth.errors.bsDate != null && f.dateOfBirth.errors.bsDate.invalid">
               <small>Valid date required</small>
             </div>
           </div>
@@ -247,8 +247,13 @@
     </div>
 
     <div *ngIf="this.isRegistrationPage" class="container pb-5">
-      <p>Select membership (value corresponds to 3 months membership)</p>
-      <div class="row">
+      <p class="mb-0">Select membership (value corresponds to 3 months membership)</p>
+      <div *ngIf="submitted && f.membership.errors" class="text-danger">
+        <div *ngIf="f.membership.errors.required">
+          <small>Required</small>
+        </div>
+      </div>
+      <div class="row mt-6">
         <div class="col-6">
           <div class="input-group">
             <div class="input-group-text">
@@ -256,11 +261,10 @@
                 ><input
                   type="radio"
                   style="color: black"
-                  name="membership"
                   value="1"
                   formControlName="membership"
                 />
-                Casual - €80.00</label
+                Casual - €65.00</label
               >
               <div class="ml-10">
                 <p class="m-0" style="color: black">One piece at a time</p>
@@ -279,7 +283,7 @@
                   value="2"
                   formControlName="membership"
                 />
-                Chic - €150.00</label
+                Chic - €120.00</label
               >
               <div class="ml-10" style="color: black">
                 <p class="m-0" style="color: black">Two pieces at a time</p>
