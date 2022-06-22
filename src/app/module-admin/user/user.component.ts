@@ -5,6 +5,7 @@ import {UsersService} from '../services/users.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserSettings} from '../model/userSettings';
 import {ToastService} from "../../module-common/toast.service";
+import {memberships} from "../../model/arrays";
 
 @Component({
   selector: 'app-user',
@@ -34,10 +35,7 @@ export class UserComponent implements OnInit {
   }
 
   getMembershipTypes(): Array<any> {
-    return [
-      {name: 'Chic', value: 1},
-      {name: 'Casual', value: 2},
-    ];
+    return memberships;
   }
 
   getStatus(): Array<any> {

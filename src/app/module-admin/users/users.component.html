@@ -1,35 +1,35 @@
 <div *ngIf="this.users?.length > 0" class="container py-10">
   <table datatable [dtOptions]="dtOptions" class="row-border hover">
     <thead>
-      <tr>
-        <th style="display:none;">Id</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>email</th>
-        <th>Phone Number</th>
-        <th>Status</th>
-        <th>Membership</th>
-        <th>Activities</th>
-      </tr>
+    <tr>
+      <th style="display:none;">Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>email</th>
+      <th>Phone Number</th>
+      <th>Status</th>
+      <th>Membership</th>
+      <th>Activities</th>
+    </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
-        <td style="display:none;">{{ user.createdAt }}</td>
-        <td>{{ user.firstName }}</td>
-        <td>{{ user.lastName }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.phone }}</td>
-        <td>{{ user.status }}</td>
-        <td>{{ this.memberships[user.membership] }}</td>
-        <td>
-          <button
-            class="btn btn-success btn-xxs"
-            [routerLink]="['/admin/user', user.id]"
-          >
-            View
-          </button>
-        </td>
-      </tr>
+    <tr *ngFor="let user of users">
+      <td style="display:none;">{{ user.createdAt }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.status }}</td>
+      <td>{{ this.memberships[user.membership - 1].name }}</td>
+      <td>
+        <button
+          class="btn btn-success btn-xxs"
+          [routerLink]="['/admin/user', user.id]"
+        >
+          View
+        </button>
+      </td>
+    </tr>
     </tbody>
   </table>
 </div>
