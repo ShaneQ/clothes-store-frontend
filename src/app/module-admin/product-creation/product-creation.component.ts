@@ -83,7 +83,7 @@ export class ProductCreationComponent implements OnInit {
   deleteProduct() {
     this._app
       .delete(this.productId)
-      .subscribe((data) => this.router.navigate(['base/shop']));
+      .subscribe(() => this.router.navigate(['admin/inventory']));
   }
 
   getNameControl(value :string) : FormControl{
