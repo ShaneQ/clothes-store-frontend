@@ -13,7 +13,9 @@ export var productCategories: Array<any> = [
   {name: 'Pants', id: 3},
   {name: 'Skirts', id: 4},
   {name: 'Jumpsuits & Rompers', id: 5},
-  {name: 'Jackets & Coats', id: 6}
+  {name: 'Jackets & Coats', id: 6},
+  {name: 'Outfit', id: 7}
+
 ];
 
 export var seasons: Array<any> = [
