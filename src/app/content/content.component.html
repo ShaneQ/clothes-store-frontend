@@ -6,17 +6,28 @@
   data-speed=".8"
 >
   <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-7 col-lg-8 text-white">
-        <!-- Heading -->
-        <h1 class="display-10">Get a bigger wardrobe spending less</h1>
-
-        <!-- Button -->
-        <a href="#!" (click)="register()" class="btn btn-primary">
-          Join the club
-        </a>
+    <!-- Heading -->
+    <div class="row justify-content-md-center">
+      <div class="col-12">
+        <h1 class="text-white text-center" style="font-size: xxx-large">LOVE :: WEAR :: RETURN :: REPEAT</h1>
       </div>
     </div>
+    <div class="row justify-content-md-center">
+      <div class="col-8">
+        <p class="text-lg-center text-white" style="font-size: x-large">
+          The 2nd Closet Club is a shared wardrobe in Ireland that will have your back on every occasion. Join the
+          circular economy and rent instead of buying.
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <div class="text-white">
+          <a href="#!" (click)="register()" class="btn btn-primary">I want to join</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -26,18 +37,32 @@
     <div class="row">
       <div class="col-12 text-center">
         <!-- Preheading -->
-        <h6 class="heading-xxs mb-3 text-gray-400">PRODUCTS</h6>
+        <h6 class="heading-xxs mb-3 text-gray-400">OUR CLOSET</h6>
 
         <!-- Heading -->
-        <h2 class="text-center">What will you find in our closet?</h2>
+        <div class="row">
+          <div class="col-2">
+
+          </div>
+          <div class="col-8">
+            <h2 class="text-center">A wardrobe curated for you to feel good every day.</h2>
+
+          </div>
+        </div>
 
         <!-- Subheading -->
-        <p class="mb-10 text-gray-500">
-          We want to give you the opportunity of playing with diferent styles
-          and experiment the fun side of fashion without worrying about the
-          price. Your second closet adapts to multiple occasions, from work to
-          holiday without forgetting quality and comfort.
-        </p>
+        <div class="row">
+          <div class="col-2">
+
+          </div>
+          <div class="col-8">
+            <p class="mb-10 text-gray-500">
+              Rent something to impress in an interview, on a date, or at your friend's birthday party.
+              Get your holiday suitcase with us and be ready for your social media pictures and summer memories.
+            </p>
+          </div>
+        </div>
+
 
         <swiper [config]="config" class="mySwiper">
           <ng-template *ngFor="let product of products$ | async | slice:0:10 ; let index = index" swiperSlide>
@@ -48,39 +73,13 @@
             />
           </ng-template>
         </swiper>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section
-  class="py-12"
-  id="about"
-  data-jarallax
-  data-speed=".8"
-  style="background-image: url(../../assets/img/homepage/cover-about.jpg);     background-repeat:no-repeat;   background-position: center;"
->
-  <div class="container">
-    <div class="row justify-content-end">
-      <div class="col-12 col-md-7 col-lg-5">
-        <!-- Card -->
-        <div class="card">
-          <div class="card-body p-10">
-            <!-- Heading -->
-            <h3 class="mb-6">About the club</h3>
-
-            <!-- Text -->
-            <p class="text-muted">
-              The Second Closet Club is a shared wardrobe service that helps you
-              enjoy more of the fashion world without cluttering your house.
-              <br/>
-              Our inventory is carefully selected so you
-              can stay fashionable knowing someone is looking after the
-              quality and environment impact of what you use.
-            </p>
-
-            <a class="link-underline" routerLink="/about"> Discover more </a>
+        <div class="row">
+          <div class="col-5">
+          </div>
+          <div class="col-2">
+            <div class="btn-sm btn-dark">Shop</div>
+          </div>
+          <div class="col-5">
           </div>
         </div>
       </div>
@@ -90,22 +89,16 @@
 
 <!-- HOW IT WORKS -->
 <section class="pt-6 pb-6"></section>
-<section class="py-12" style="background-color: #b8ae9f" id="howItWorks">
-  <div class="container">
-    <div class="row pb-5">
+<section class="py-12 " id="howItWorks">
+  <div class="container text-white">
+    <div class="row pb-8">
       <div class="col-12">
         <!-- Heading -->
-        <h6 class="mb-0 text-center" style="color: #797979">How It Works</h6>
+        <h6 class="mb-0 text-center">How It Works</h6>
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
-        <!-- Heading -->
-        <h2 class="mb-10 text-center text-white">LOVE ... WEAR ... RETURN</h2>
-      </div>
-    </div>
-    <div class="row pb-10">
-      <div class="col-lg-4 text-center">
+      <div class="col-lg-3 text-center">
         <!-- Card -->
         <div class="card bg-none mb-7 mb-md-0">
           <!-- Icon -->
@@ -121,17 +114,17 @@
           <div class="card-body text-center">
             <!-- Heading -->
             <h6 class="mb-4 text-white">
-              Join the club choosing your membership
+              Join the club
             </h6>
 
             <!-- Text -->
-            <p class="mb-0" style="color: #797979">
-              Choose the amount of pieces you want to rent per week.
+            <p class="mb-0" >
+              Make your account and browse our shop to book what you love.
             </p>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 text-center">
+      <div class="col-lg-3 text-center">
         <!-- Card -->
         <div class="card bg-none mb-7 mb-md-0">
           <!-- Icon -->
@@ -147,17 +140,18 @@
           <div class="card-body text-center">
             <!-- Heading -->
             <h6 class="mb-4 text-white pl-8 pr-8">
-              Choose what you want to wear
+              Book what you love
             </h6>
 
             <!-- Text -->
-            <p class="mb-0" style="color: #797979">
-              Book your favorites online.
+            <p class="mb-0" >
+              You will receive your order by post in our reusable package
+              ( keep it for return ;)
             </p>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 text-center">
+      <div class="col-lg-3 text-center">
         <!-- Card -->
         <div class="card bg-none mb-7 mb-md-0">
           <!-- Icon -->
@@ -166,28 +160,123 @@
             style="max-width: 120px"
           >
             <!-- Feather Icon-->
-            <i-feather name="corner-left-up" class="big text-white"></i-feather>
+            <i-feather name="repeat" class="big text-white"></i-feather>
           </div>
 
           <!-- Body -->
           <div class="card-body text-center">
             <!-- Heading -->
             <h6 class="mb-4 text-white pl-8 pr-8">
-              Enjoy your new look them return
+              Return and Repeat
             </h6>
 
             <!-- Text -->
-            <p class="mb-0" style="color: #797979">
-              Don’t worry about washing. We will take care of it!
+            <p class="mb-0" >
+              Return the clothes in 20 days. Don’t worry about cleaning, we will take care of it!
             </p>
           </div>
         </div>
+      </div>
+      <div class="col-lg-3 text-center">
+        <!-- Card -->
+        <div class="card bg-none mb-7 mb-md-0">
+          <!-- Icon -->
+          <div
+            class="card-img-top position-relative mx-auto"
+            style="max-width: 120px"
+          >
+            <!-- Feather Icon-->
+            <i-feather name="briefcase" class="big text-white"></i-feather>
+          </div>
+
+          <!-- Body -->
+          <div class="card-body text-center">
+            <!-- Heading -->
+            <h6 class="mb-4 text-white pl-8 pr-8">
+              Going on holiday?
+            </h6>
+
+            <!-- Text -->
+            <p class="mb-0" >
+              We have a special Holiday Suitcase service to make you ready for any destination.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="py-12" id = possibilities>
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-12 col-md-6 col-lg-5 order-md-1">
+
+        <!-- Preheading -->
+        <h6 class="heading-xxs mb-3 text-gray-400">
+          WHY SHOULD I JOIN THE CLUB?
+        </h6>
+
+        <!-- Heading -->
+        <h2 class="mb-7">Your possibilities multiply when you share.</h2>
+
+        <!-- Text -->
+        <p class="fs-lg text-muted">
+          Experiment with combining our carefully curated inventory with what you have at home and open your possibilities of combinations without buying more stuff.
+          You can also share your ideas and explorations in our club meetings where you can see what’s new in the closet, learn more about fashion, have a good time with friends, and meet other fashion lovers.
+        </p>
+        <div class="row pt-8">
+          <div class="col-7">
+          </div>
+          <div class="col-5">
+            <a class="text-right text-decoration-underline text-muted">
+              More about the club
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-12 col-md-6 order-md-2 text-end">
+
+        <!-- Image -->
+        <img src="../../assets/img/main_v2/Why_small.jpg" alt="..." class="img-fluid w-50">
+
+        <!-- Image -->
+        <div class="text-start mt-n13 mt-lg-n15 mb-10 mb-md-0">
+          <img src="../../assets/img/main_v2/why_big.jpg" alt="..." class="img-fluid w-75">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<section id="survey">
+  <div class="container bg-primary bg-pattern py-14 text-white">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <h2>What would you like to see in our wardrobe?
+          </h2>
+        <!-- Text -->
+        <p class="fs-5 lh-base text-center mb-0">
+          We have created a quick survey to understand more about how to build the best wardrobe for you.
+          Could you help us answer it? It’s only 10 min.
+        </p>
+
+
+      </div>
+    </div>
+    <div class="row justify-content-center pt-8">
+      <div class="col-12 text-center">
+        <a>Answer the survey</a>
+        <i-feather name="arrow-right" class="small text-white"></i-feather>
+
       </div>
     </div>
   </div>
 </section>
 <!-- BEST PICKS -->
-<section class="pt-12 pb-12">
+<section class="pt-14 pb-12">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-8 col-xl-7 text-center">
@@ -195,13 +284,12 @@
         <h6 class="heading-xxs mb-3 text-gray-400">Before & after</h6>
 
         <!-- Heading -->
-        <h2 class="mb-4">Dont waste your money and space</h2>
+        <h2 class="mb-4">How is your wardrobe looking?</h2>
 
         <!-- Subheading -->
         <p class="mb-10 text-gray-500">
-          We all have those pieces that were worn once (or never) piling up in
-          the wardrobe.Optimize you wardrobe. You don’t need to buy everything
-          you want to wear.
+          Do you see clothes that were used only once (or never) piling up on the back next to ones that don’t fit your body or lifestyle anymore?
+          Optimize your space! Invest in your favorites and basic everyday wear, and leave all the rest with us.
         </p>
       </div>
     </div>
@@ -253,6 +341,22 @@
             <input class="img-comp-input" type="range"/>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="subscribe" class="container py-12">
+  <div class="row justify-content-md-center">
+    <div class="col-12 text-center">
+      <h2>Subscribe to receive club updates!</h2>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <div class="input-group input-group-lg">
+
+        <input type="text" placeholder="Enter email*" style="width: 350px">
+        <div class="btn btn-danger">Subscribe</div>
       </div>
     </div>
   </div>
@@ -351,19 +455,7 @@
 
 <!-- GET STARTED -->
 <section class="pt-12 pb-6" id="getStarted">
-<!--  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center">
-        &lt;!&ndash; Heading &ndash;&gt;
-        <h2 class="mb-8">Want to join the club?</h2>
 
-        &lt;!&ndash; Button &ndash;&gt;
-        <a href="#!" class="btn btn-primary mb-10" (click)="register()">
-          Get your membership!
-        </a>
-      </div>
-    </div>
-  </div>-->
   <div class="container-fluid">
     <div class="row align-items-end">
       <div class="col">

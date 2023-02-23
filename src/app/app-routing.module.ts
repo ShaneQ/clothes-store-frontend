@@ -23,6 +23,10 @@ const routes: Routes = [
     component: ContentComponent,
   },
   {
+    path: 'home',
+    component: ContentComponent,
+  },
+  {
     path: 'shop',
     component: ShopComponent,
   },

@@ -1,12 +1,15 @@
 /* stylelint-disable selector-list-comma-newline-after */
 .content-img-fluid {
-  background-image: url(../../assets/img/homepage/cover-BGclean.jpg);
+  background-image: url(../../assets/img/main_v2/MainBanner_1cut.jpg);
   background-repeat:no-repeat;
   background-color: #ffffff;
   background-position: center;
   padding-bottom: 150px !important;
   padding-top: 150px !important;
+}
 
+#howItWorks {
+  background-image: url(../../assets/img/main_v2/BG4.jpg);
 }
 .swiper-container {
   width:100%;

@@ -88,7 +88,6 @@ import {ModuleCommonModule} from "./module-common/module-common.module";
     ReactiveFormsModule,
     CarouselModule,
     NgxSpinnerModule,
-    AuthModule,
     AdminModule,
     ProductModule,
     SwiperModule,
