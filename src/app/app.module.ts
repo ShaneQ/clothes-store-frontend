@@ -44,6 +44,7 @@ import {ProductModule} from "./module-product/product.module";
 import {SwiperModule} from "swiper/angular";
 import {RegistrationSuccessComponent} from './registration-success/registration-success.component';
 import {ModuleCommonModule} from "./module-common/module-common.module";
+import { SubscribeComponent } from './subscribe/subscribe.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import {ModuleCommonModule} from "./module-common/module-common.module";
     FaqComponent,
     ContactComponent,
     AboutComponent,
-    RegistrationSuccessComponent
+    RegistrationSuccessComponent,
+    SubscribeComponent
   ],
   imports: [
     BrowserModule,
