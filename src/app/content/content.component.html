@@ -65,12 +65,11 @@
 
 
         <swiper [config]="config" class="mySwiper">
-          <ng-template *ngFor="let product of products$ | async | slice:0:10 ; let index = index" swiperSlide>
+          <ng-template *ngFor="let product of productsNew let index = index" swiperSlide>
             <img
               style="width: 100%"
-              [src]="product.imgCover.url"
-              [routerLink]="['/product', product.id]"
-            />
+              src="{{'../../assets/img/'+product}}"
+              alt="pretty pictures"/>
           </ng-template>
         </swiper>
         <div class="row">
