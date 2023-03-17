@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ProductDetailsComponent} from './module-product/product-details/product-details.component';
-import {ShopComponent} from './shop/shop.component';
 import {ContentComponent} from './content/content.component';
 import {MyAccountBaseComponent} from './my-account/my-account-base/my-account-base.component';
 import {MyAccountOrdersComponent} from './my-account/my-account-orders/my-account-orders.component';
@@ -16,6 +14,7 @@ import {RegistrationSuccessComponent} from "./registration-success/registration-
 import {CanRegisterAuthenticationGuard} from "./module-auth/app-registration-auth.guard";
 import {Role} from "./module-auth/roles";
 import {NoPageFoundComponent} from "./no-page-found/no-page-found.component";
+import {JoinComponent} from "./join/join.component";
 
 const routes: Routes = [
   {
@@ -27,12 +26,12 @@ const routes: Routes = [
     component: ContentComponent,
   },
   {
-    path: 'shop',
-    component: ShopComponent,
-  },
-  {
     path: 'about',
     component: AboutComponent,
+  },
+  {
+    path: 'join',
+    component: JoinComponent,
   },
   {
     path: 'faq',
@@ -43,55 +42,14 @@ const routes: Routes = [
     component: ContactComponent,
   },
   {
-    path: 'browser',
-    canActivate: [CanAuthenticationGuard],
-    component: ShopComponent,
-    data: {roles: [Role[Role.scc_user_role]]},
-  },
-  {
-    path: 'product/:productId',
-    component: ProductDetailsComponent,
-  },
-  {
     path: 'registration',
     component: RegistrationComponent,
     canActivate: [CanRegisterAuthenticationGuard],
 
   },
   {
-    path: 'registration-success',
-    component: RegistrationSuccessComponent,
-    canActivate: [CanRegisterAuthenticationGuard],
-  },
-  {
     path: '404',
     component:NoPageFoundComponent
-  },
-  {
-    path: 'account',
-    component: MyAccountBaseComponent,
-    canActivate: [CanAuthenticationGuard],
-    data: {roles: [Role[Role.scc_user_role]]},
-    children: [
-      {
-        path: '',
-        redirectTo: 'orders',
-        pathMatch: 'full',
-      },
-
-      {
-        path: 'orders',
-        component: MyAccountOrdersComponent,
-      },
-      {
-        path: 'personal',
-        component: MyAccountPersonalInfoComponent,
-      },
-      {
-        path: 'membership',
-        component: MyAccountMembershipComponent,
-      },
-    ],
   },
 
   //Wild Card Route for 404 request

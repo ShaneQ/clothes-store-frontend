@@ -46,6 +46,7 @@ import {RegistrationSuccessComponent} from './registration-success/registration-
 import {ModuleCommonModule} from "./module-common/module-common.module";
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { JoinComponent } from './join/join.component';
+import { SubscribeBarComponent } from './subscribe-bar/subscribe-bar.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { JoinComponent } from './join/join.component';
     AboutComponent,
     RegistrationSuccessComponent,
     SubscribeComponent,
-    JoinComponent
+    JoinComponent,
+    SubscribeBarComponent
   ],
   imports: [
     BrowserModule,
