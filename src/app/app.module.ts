@@ -45,6 +45,7 @@ import {SwiperModule} from "swiper/angular";
 import {RegistrationSuccessComponent} from './registration-success/registration-success.component';
 import {ModuleCommonModule} from "./module-common/module-common.module";
 import { SubscribeComponent } from './subscribe/subscribe.component';
+import { JoinComponent } from './join/join.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
     ContactComponent,
     AboutComponent,
     RegistrationSuccessComponent,
-    SubscribeComponent
+    SubscribeComponent,
+    JoinComponent
   ],
   imports: [
     BrowserModule,
