@@ -1,48 +1,46 @@
 <section class="bg-light">
-  <div class="container py-2">
+  <div class="container py-2 order-md-1">
     <div class="row">
 
       <!-- Promo -->
-      <div class="col-4">
-        <div class="me-xl-8">
-          <i class="fe fe-truck me-2"></i> <span class="heading-xxxs">Free Shipping Nationwide</span>
-          <img class="mb-1 me-1 pl-5" src="./assets/img/flags/ireland.png" alt="...">
+      <div class="col-7 pr-0">
+        <div class="me-xl-8 pr-0">
+          <i class="fe fe-truck me-2"></i> <span class="heading-xxxs">Shipping Nationwide</span>
+          <img class="mb-1 me-1 pl-5" src="../../assets/img/flags/Ireland.png" alt="...">
 
         </div>
       </div>
 
-      <div class="col-4">
-
-      </div>
-      <div class="col-4 text-right">
-        <ul class="span custom-control-inline mb-0" style="list-style-type: none;">
-          <li >
+      <div class="col-3 text-right pl-0 ml-0 order-md-3">
+        <ul class="span custom-control-inline mb-0 pl-0 pr-0" style="list-style-type: none;">
+          <li>
             <a class="text-gray-350 pl-3 pr-3"
                href="https://www.facebook.com/2ndclosetclub" target="_blank">
               <i class="fab fa-facebook fa-1x "></i>
             </a>
           </li>
-          <li >
-            <a class="text-gray-350 pl-3 pr-3"href="https://tiktok.com/@2ndclosetclub" target="_blank">
+          <li>
+            <a class="text-gray-350 pl-3 pr-3" href="https://tiktok.com/@2ndclosetclub" target="_blank">
               <i class="fab fa-tiktok fa-1x"></i>
             </a>
           </li>
-          <li >
+          <li>
             <a class="text-gray-350 pl-3 pr-3"
                href="http://instagram.com/_u/2ndclosetclub_dublin" target="_blank">
               <i class="fab fa-instagram fa-1x"></i>
             </a>
           </li>
-          <li >
+          <li>
             <a class="text-gray-350 pl-3 pr-3" href="https://wa.me/00353830959559" target="_blank">
-            <i class="fab fa-whatsapp fa-1x"></i>
+              <i class="fab fa-whatsapp fa-1x"></i>
             </a>
           </li>
         </ul>
 
       </div>
+      <div class="col-md-2 col-sm-0 order-md-2"></div>
     </div>
-    </div>
+  </div>
 </section>
 <div *ngIf="this.isAdmin">
   <app-admin-navbar></app-admin-navbar>
@@ -77,8 +75,8 @@
       <!-- Collapse -->
       <div class="collapse navbar-collapse" id="navbarLandingCollapse">
         <!-- Nav -->
-        <ul class="navbar-nav ml-xl-auto">
-          <li class="nav-item pr-8">
+        <ul class="navbar-nav ml-xl-auto text-center">
+          <li class="nav-item pr-sm-0 pr-md-8">
             <a
               class="nav-link active"
               routerLink="/home"
@@ -87,7 +85,7 @@
             >Home</a
             >
           </li>
-          <li class="nav-item pr-8">
+          <li class="nav-item pr-sm-0 pr-md-8">
             <a
               class="nav-link"
               routerLink="/about"
