@@ -47,6 +47,7 @@ import {ModuleCommonModule} from "./module-common/module-common.module";
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { JoinComponent } from './join/join.component';
 import { SubscribeBarComponent } from './subscribe-bar/subscribe-bar.component';
+import { JoinThanksComponent } from './modal/join-thanks/join-thanks.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { SubscribeBarComponent } from './subscribe-bar/subscribe-bar.component';
     RegistrationSuccessComponent,
     SubscribeComponent,
     JoinComponent,
-    SubscribeBarComponent
+    SubscribeBarComponent,
+    JoinThanksComponent
   ],
   imports: [
     BrowserModule,
@@ -101,6 +103,9 @@ import { SubscribeBarComponent } from './subscribe-bar/subscribe-bar.component';
     AppRoutingModule
   ],
   bootstrap: [AppComponent],
+  entryComponents:[
+    JoinThanksComponent
+  ]
 })
 export class AppModule {
 }
